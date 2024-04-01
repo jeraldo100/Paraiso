@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BookingController {
 	@GetMapping("/login")
 	public String loginPage() {
-		
 		return "loginPage";
+	}
+	@GetMapping("/home")
+	public String homePage() {
+		return "/Home/index";
 	}
 }
