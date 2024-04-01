@@ -10,6 +10,7 @@ public class BookingController {
 		
 		return "loginPage";
 	}
+
 	@GetMapping("/home")
 	public String home() {
 		
