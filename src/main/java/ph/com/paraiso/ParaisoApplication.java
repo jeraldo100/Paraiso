@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan("ph.com.paraiso.*")
-@EntityScan("ph.com.cpi.paraiso")
+@EntityScan("ph.com.paraiso.model")
 @EnableJpaRepositories("ph.com.paraiso.repository")
 public class ParaisoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParaisoApplication.class, args);
 	}
+	
+	
 
 }
