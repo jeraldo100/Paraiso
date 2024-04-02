@@ -5,11 +5,6 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-    <title>Contact</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
-
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
       rel="stylesheet"
@@ -21,13 +16,9 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
     <link href="/styles/Contact.css" rel="stylesheet" />
   </head>
-
   <body>
 
     <section id="contact" class="contact mb-5 mt-5">
@@ -41,8 +32,7 @@
         <iframe
           style="border: 0; width: 100%; height: 350px"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3931.824969050881!2d126.14940267353794!3d9.780873276769967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3303f63fa9732585%3A0x34db0037dcc8540a!2sSiargao%20Island%20Getaway!5e0!3m2!1sen!2sph!4v1711879355460!5m2!1sen!2sph"
-          frameborder="0"
-          allowfullscreen
+
         ></iframe>
       </div>
 
@@ -80,7 +70,7 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="" method="" role="form" class="">
+            <form action="" role="form" class="">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input

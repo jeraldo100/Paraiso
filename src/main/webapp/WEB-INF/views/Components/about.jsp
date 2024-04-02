@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Paraiso</title>
     <meta charset="ISO-8859-1">
     <meta
       name="viewport"

@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Paraiso Hotel</title>
 </head>
 <body>
-
+<%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/Services.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/Instagram.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/Footer.jsp" %>
 </body>
 </html>

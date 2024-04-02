@@ -4,13 +4,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Paraiso Hero</title>
     <link rel="stylesheet" href="/styles/HomeHeader.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -18,11 +16,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   </head>
 
   <body>
@@ -57,16 +51,12 @@
         </div>
       </div>
     </header>
-    <!-- #header -->
-
-    <!-- ##### Hero Area Start ##### -->
+ 
     <section class="hero-area">
       <div class="hero-slides owl-carousel">
-        <!-- Single Hero Slide -->
         <div
           class="single-hero-slide d-flex align-items-center justify-content-center"
         >
-          <!-- Slide Img -->
           <div
             class="slide-img bg-img"
             style="background-image: url(/images/HomeHeader/bg-1.jpg)"
@@ -74,7 +64,6 @@
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-12 col-lg-9">
-                <!-- Slide Content -->
                 <div
                   class="hero-slides-content"
                   data-animation="fadeInUp"
@@ -101,11 +90,9 @@
           </div>
         </div>
 
-        <!-- Single Hero Slide -->
         <div
           class="single-hero-slide d-flex align-items-center justify-content-center"
         >
-          <!-- Slide Img -->
           <div
             class="slide-img bg-img"
             style="background-image: url(/images/HomeHeader/bg-2.jpg)"
@@ -113,7 +100,6 @@
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-12 col-lg-9">
-                <!-- Slide Content -->
                 <div
                   class="hero-slides-content"
                   data-animation="fadeInUp"
@@ -139,11 +125,10 @@
           </div>
         </div>
 
-        <!-- Single Hero Slide -->
+
         <div
           class="single-hero-slide d-flex align-items-center justify-content-center"
         >
-          <!-- Slide Img -->
           <div
             class="slide-img bg-img"
             style="background-image: url(/images/HomeHeader/bg-3.jpg)"
