@@ -12,6 +12,10 @@ public class BookingController {
 	}
 	@GetMapping("/home")
 	public String homePage() {
-		return "/Home/index";
+		return "home";
+	}
+	@GetMapping("/contact")
+	public String contactPage() {
+		return "contact";
 	}
 }
