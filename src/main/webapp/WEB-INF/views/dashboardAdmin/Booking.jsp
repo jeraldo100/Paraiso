@@ -13,7 +13,8 @@
 
   <!-- CSS LINK -->
 
-  <link rel="stylesheet" href="/styles/dashboardAdmin/booking.css" />
+  <link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" />
+  
 </head>
 
 <body>

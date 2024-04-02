@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/styles/dashboardUser/dashboard.css">
+
 <div class="bg-success col-auto col-md-4 min-vh-100 d-flex flex-column justify-content-between sideBar">
         <div class="bg-success p-2 hi">
           <a class="d-flex text-decoration-none mt-1 align-items-center text-white">
