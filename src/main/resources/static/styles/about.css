@@ -1,0 +1,74 @@
+@charset "UTF-8";
+.ftco-section .ftco-sub-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: #d4d4d4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 300;
+}
+
+.ftco-wrap-about {
+  background-position: bottom center !important;
+}
+.ftco-wrap-about .img {
+  width: 100%;
+}
+
+@media (max-width: 767.98px) {
+  .ftco-section {
+    padding: 6em 0;
+  }
+}
+
+.about-section .img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 5px;
+}
+
+@media (max-width: 767.98px) {
+  .img-2 {
+    height: 300px;
+  }
+}
+
+.wrap-about {
+  position: relative;
+}
+
+.heading-section .subheading {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 5px;
+  color: #21cc7a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.heading-section h2 {
+  font-size: 38px;
+  font-weight: 700;
+  position: relative;
+}
+.heading-section h2 strong {
+  font-weight: 700;
+}
+@media (max-width: 767.98px) {
+  .heading-section h2 {
+    font-size: 28px;
+  }
+}
+
+.btn.btn-success {
+  background-color: #21cc7a;
+  border: none;
+}
+
+
+
+

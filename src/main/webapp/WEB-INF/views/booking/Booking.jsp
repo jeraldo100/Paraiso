@@ -20,7 +20,6 @@
 			"${currentDate}"
 			Check in: <input type="date" id="checkin_date" name="checkin_date" min="${currentDate}">
 			Check out: <input type="date" id="checkout_date" name="checkout_date" disabled>
-			<input type="button" value= "check availability">
 		</div>
 	</div>
 </body>

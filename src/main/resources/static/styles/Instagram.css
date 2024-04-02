@@ -1,0 +1,69 @@
+@charset "UTF-8";
+.instagram .insta-img {
+  display: block;
+  height: 280px;
+  position: relative;
+}
+.instagram .insta-img .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #21cc799e;
+  opacity: 0;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.instagram .insta-img .icon span {
+  color: #fff;
+  font-size: 40px;
+}
+.instagram .insta-img:hover .icon {
+  opacity: 1;
+}
+
+.instagram .heading-section h2 {
+  font-size: 30px;
+}
+
+.ftco-section {
+  padding: 6em 0;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .ftco-section {
+    padding: 6em 0;
+  }
+}
+
+.instagram .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.heading-section .subheading {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 5px;
+  color: #21cc7a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.image-popup {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+
+.insta-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
