@@ -58,3 +58,8 @@ img {
     background-color: var(--success);
     color: white;
 }
+
+.modal-header {
+    background-color: var(--success);
+    color: white;
+}
