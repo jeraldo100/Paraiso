@@ -15,6 +15,7 @@
 <body>
 	<div class="mainWrapper">
 		<div class="filterBar">
+<<<<<<< Updated upstream
 			<jsp:useBean id="now" class="java.util.Date" />
 			<fmt:formatDate var="currentDate" value="${now}" pattern="yyyy-mm-dd" />
 			Check in: <input type="date" id="checkin_date" name="checkin_date" min="2024-04-02">
@@ -26,4 +27,10 @@
 <script type="text/javascript">
 	
 </script>
+=======
+			
+		</div>
+	</div>
+</body>
+>>>>>>> Stashed changes
 </html>
