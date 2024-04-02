@@ -7,8 +7,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="BOOKED_ROOM")
 public class Booked_room {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer booked_room_id;
 	private Integer booking_id;
 	private Integer room_id;
 	private Date checkin_date;
@@ -18,7 +20,18 @@ public class Booked_room {
 	public Booked_room() {
 		super();
 	}
-	
+
+	public Booked_room(Integer booked_room_id, Integer booking_id, Integer room_id, Date checkin_date,
+			Date checkout_date, Double price) {
+		super();
+		this.booked_room_id = booked_room_id;
+		this.booking_id = booking_id;
+		this.room_id = room_id;
+		this.checkin_date = checkin_date;
+		this.checkout_date = checkout_date;
+		this.price = price;
+	}
+
 	public Booked_room(Integer booking_id, Integer room_id, Date checkin_date, Date checkout_date, Double price) {
 		super();
 		this.booking_id = booking_id;
@@ -28,12 +41,12 @@ public class Booked_room {
 		this.price = price;
 	}
 
-	public Booked_room(Integer room_id, Date checkin_date, Date checkout_date, Double price) {
-		super();
-		this.room_id = room_id;
-		this.checkin_date = checkin_date;
-		this.checkout_date = checkout_date;
-		this.price = price;
+	public Integer getBooked_room_id() {
+		return booked_room_id;
+	}
+
+	public void setBooked_room_id(Integer booked_room_id) {
+		this.booked_room_id = booked_room_id;
 	}
 
 	public Integer getBooking_id() {
@@ -78,8 +91,8 @@ public class Booked_room {
 
 	@Override
 	public String toString() {
-		return "Booked_room [booking_id=" + booking_id + ", room_id=" + room_id + ", checkin_date=" + checkin_date
-				+ ", checkout_date=" + checkout_date + ", price=" + price + "]";
+		return "Booked_room [booked_room_id=" + booked_room_id + ", booking_id=" + booking_id + ", room_id=" + room_id
+				+ ", checkin_date=" + checkin_date + ", checkout_date=" + checkout_date + ", price=" + price + "]";
 	}
 	
 }

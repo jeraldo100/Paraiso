@@ -1,0 +1,14 @@
+.mainWrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+}
+
+.filterBar{
+	width: 90%;
+	height: 3rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
