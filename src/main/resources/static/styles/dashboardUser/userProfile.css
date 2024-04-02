@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+
+* {
+    font-family: "Ubuntu Condensed", sans-serif;
+}
+
+:root {
+    --side: 20%; 
+    --success: #5cb85c;
+}
+
+.nav-pills li a:hover {
+    background-color: goldenrod;
+}
+
+.btn-success:hover {
+    background-color: green;
+    opacity: .8;
+    color:white;
+}
+
+.btn-danger:hover {
+    background-color: red;
+    opacity: 0.8;
+    color: white;
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sideBar {
+    width: var(--side);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.flexbox {
+    width: 100% - var(--side);
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
