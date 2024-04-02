@@ -1,0 +1,14 @@
+
+.material-symbols-outlined {
+    font-size: 8em !important;
+}
+
+.input-group-text {
+    background-color: var(--success);
+    color: white;
+}
+
+.modal-header {
+    background-color: var(--success);
+    color: white;
+}
