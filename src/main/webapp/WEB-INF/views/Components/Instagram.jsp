@@ -12,11 +12,11 @@
     
   </head>
   <body>
-    <section class="instagram ftco-section pb-0">
+    <section class="instagram instagram-section pb-0">
         <div class="container-fluid">
           <div class="row no-gutters justify-content-center pb-5">
-            <div class="col-md-7 text-center heading-section">
-                <span class="subheading">Photos</span>
+            <div class="col-md-7 text-center instagram-heading-section">
+                <span class="instagram-subheading">Photos</span>
               <h2><span>Instagram</span></h2>
             </div>
           </div>

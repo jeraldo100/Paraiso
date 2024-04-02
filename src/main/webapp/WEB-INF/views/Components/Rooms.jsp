@@ -22,7 +22,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <div class="half right-arrow d-flex">
                   <div
@@ -72,7 +72,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
@@ -125,7 +125,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <div class="half right-arrow d-flex">
                   <div
@@ -175,7 +175,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
@@ -222,7 +222,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <div class="half right-arrow d-flex">
                   <div
@@ -273,7 +273,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
@@ -324,7 +324,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <div class="half right-arrow d-flex">
                   <div
@@ -376,7 +376,7 @@
 
         <div class="roomsContainer">
           <div class="row no-gutters">
-            <div class="col-lg-12 ml-3 mr-3">
+            <div class="col-lg-12">
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"

@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <section class="hero spad set-bg">
+    <section class="home-booking">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">

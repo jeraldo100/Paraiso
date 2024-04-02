@@ -1,12 +1,6 @@
 @charset "UTF-8";
-.hero {
-  padding-top: 145px;
-  padding-bottom: 190px;
-}
-
-.spad {
-  padding-top: 70px;
-  padding-bottom: 70px;
+.home-booking {
+  margin-top: 70px;
 }
 
 .filter-form {
@@ -16,6 +10,7 @@
   display: flex;
   padding: 30px 0 30px 40px;
   position: relative;
+  border-radius: 10px;
 }
 
 .filter-form button {
@@ -31,6 +26,8 @@
   position: absolute;
   right: 0;
   top: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding: 0 12px;
   height: 100%;
   line-height: 100%;

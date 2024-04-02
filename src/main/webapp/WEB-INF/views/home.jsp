@@ -8,6 +8,7 @@
 </head>
 <body>
 <%@ include file = "/WEB-INF/views/Components/CSSPlugins.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/HomeHeader.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/HomeBooking.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/welcome.jsp" %>
