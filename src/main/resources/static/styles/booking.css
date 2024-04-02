@@ -7,7 +7,6 @@
 
 .filterBar{
 	width: 90%;
-	height: 3rem;
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
