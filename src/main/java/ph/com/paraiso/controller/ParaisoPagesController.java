@@ -30,5 +30,10 @@ public class ParaisoPagesController {
 	public String roomdetailPage() {
 		return "roomdetail";
 	}
+	
+	@GetMapping("/rooms")
+	public String roomsPage() {
+		return "rooms";
+	}
 
 }

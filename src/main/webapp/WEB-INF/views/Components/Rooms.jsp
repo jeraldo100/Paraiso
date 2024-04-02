@@ -9,19 +9,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="stylesheet" href="/styles/Rooms.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  </head>
+    </head>
   <body>
     <section class="rooms-section pb-0 mb-30">
-      <div class="container-fluid px-0">
+      <div class="container-fluid room-container px-0">
         <div class="row no-gutters justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center">
+          <div class="col-md-7 room-heading-section text-center">
             <span class="subheading">Experience Hotel Greatness</span>
             <h2 class="mb-4">Paraiso Hotel Rooms</h2>
           </div>
@@ -69,7 +62,7 @@
                 </div>
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/SuperiorKing.webp)"
                 ></a>
               </div>
@@ -83,7 +76,7 @@
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/PremiumKing.webp)"
                 ></a>
                 <div class="half left-arrow d-flex">
@@ -172,7 +165,7 @@
                 </div>
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/SuiteKing.webp)"
                 ></a>
               </div>
@@ -186,7 +179,7 @@
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/ClassicQueen.webp)"
                 ></a>
                 <div class="half left-arrow d-flex">
@@ -270,7 +263,7 @@
                 </div>
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/FamilyRoom.webp)"
                 ></a>
               </div>
@@ -284,7 +277,7 @@
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/CTwin.webp)"
                 ></a>
                 <div class="half left-arrow d-flex">
@@ -373,7 +366,7 @@
                 </div>
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/SuperiorTwin.webp)"
                 ></a>
               </div>
@@ -387,7 +380,7 @@
               <div class="room-wrap d-md-flex">
                 <a
                   href="#"
-                  class="img"
+                  class="img room-img"
                   style="background-image: url(/images/Rooms/junior.webp)"
                 ></a>
                 <div class="half left-arrow d-flex">

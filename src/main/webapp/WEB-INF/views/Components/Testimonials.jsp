@@ -8,24 +8,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="/styles/Testimonials.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  </head>
+      <link rel="stylesheet" href="/styles/Testimonials.css" />
+     </head>
   <body>
     <section class="testimony-section">
       <div class="container">
         <div class="row no-gutters justify-content-center">
           <div class="col-md-12 py-5 pl-md-5">
             <div class="py-md-5">
-              <div class="heading-section mb-4 text-center">
+              <div class="testimony-heading-section mb-4 text-center">
                 <span class="subheading">What our customers are saying</span>
                 <h2 class="mb-5">Customer Reviews</h2>
               </div>

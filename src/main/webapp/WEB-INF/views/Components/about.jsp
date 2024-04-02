@@ -9,10 +9,6 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="stylesheet" href="/styles/about.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <section class="ftco-section ftco-wrap-about pt-0 pb-0 m-2">

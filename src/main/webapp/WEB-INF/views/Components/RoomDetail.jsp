@@ -6,12 +6,6 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/RoomDetail.css" />
 </head>
 
@@ -31,7 +25,7 @@
             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="img/SuperiorKing/sp1.jpg" class="d-block w-100" alt="" />
+                  <img src="/images/RoomDetail/SuperiorKing/sp1.jpg" class="d-block w-100" alt="" />
                 </div>
                 <div class="carousel-item">
                   <img src="/images/RoomDetail/SuperiorKing/sp2.jpg" class="d-block w-100" alt="" />
