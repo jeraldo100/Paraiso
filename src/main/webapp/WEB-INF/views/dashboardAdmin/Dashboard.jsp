@@ -78,7 +78,6 @@
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-12 b-4">
-                    <a href="#" class="text-decoration-none">
                       <div class="card text-center p-3 text-success table-responsive"
                         style="max-height: 300px; overflow-y: auto">
                         <table class="table table-hover">
@@ -144,7 +143,6 @@
                           </tbody>
                         </table>
                       </div>
-                    </a>
                   </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mb-3">
@@ -152,7 +150,6 @@
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-12 b-4">
-                    <a href="#" class="text-decoration-none">
                       <div class="card text-center p-3 text-success table-responsive"
                         style="max-height: 300px; overflow-y: auto">
                         <table class="table table-hover">
@@ -246,7 +243,6 @@
                           </tbody>
                         </table>
                       </div>
-                    </a>
                   </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mb-3">
@@ -254,7 +250,6 @@
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-12 b-4">
-                    <a href="#" class="text-decoration-none">
                       <div class="card text-center p-3 text-success table-responsive"
                         style="max-height: 300px; overflow-y: auto">
                         <table class="table table-hover">
@@ -320,7 +315,6 @@
                           </tbody>
                         </table>
                       </div>
-                    </a>
                   </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mb-3">
@@ -328,7 +322,6 @@
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-12 b-4">
-                    <a href="#" class="text-decoration-none">
                       <div class="card text-center p-3 text-success table-responsive"
                         style="max-height: 300px; overflow-y: auto">
                         <table class="table table-hover">
@@ -387,7 +380,6 @@
                           </tbody>
                         </table>
                       </div>
-                    </a>
                   </div>
                 </div>
               </div>
