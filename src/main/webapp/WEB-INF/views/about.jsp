@@ -10,6 +10,7 @@
 <%@ include file = "/WEB-INF/views/Components/CSSPlugins.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/welcome.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/about.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/Instagram.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/Footer.jsp" %>

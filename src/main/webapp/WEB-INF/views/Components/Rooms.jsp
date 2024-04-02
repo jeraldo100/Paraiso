@@ -11,15 +11,9 @@
     <link rel="stylesheet" href="/styles/Rooms.css" />
     </head>
   <body>
+
     <section class="rooms-section pb-0 mb-30">
       <div class="container-fluid room-container px-0">
-        <div class="row no-gutters justify-content-center mb-5 pb-3">
-          <div class="col-md-7 room-heading-section text-center">
-            <span class="subheading">Experience Hotel Greatness</span>
-            <h2 class="mb-4">Paraiso Hotel Rooms</h2>
-          </div>
-        </div>
-
         <div class="roomsContainer">
           <div class="row no-gutters">
             <div class="col-lg-12">

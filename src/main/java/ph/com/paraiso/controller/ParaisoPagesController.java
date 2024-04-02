@@ -42,7 +42,7 @@ public class ParaisoPagesController {
     
     @GetMapping("/rooms")
     public String roomsPage(Model model) {
-        model.addAttribute("pageTitle", "Room Detail");
+        model.addAttribute("pageTitle", "Rooms");
         model.addAttribute("pageLink", "/rooms");
         return "rooms"; 
     }
