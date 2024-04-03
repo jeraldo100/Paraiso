@@ -19,28 +19,26 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-	<link rel="stylesheet" href="/styles/HomeBooking.css" type="text/css" />
+	<link rel="stylesheet" href="/styles/booking.css" type="text/css" />
 </head>
 <body>
 	<div class="mainWrapper">
 		<div class="filterBar">
-			<div class="filter-form-item">
-            	<p>Check In</p>
-                <div class="filter-form-datepicker">
-                	<span class="fa-regular fa-calendar"></span>
-                	<input id="checkin_date" type="text" class="datepicker-pop check-in" />
-                	<i class="fa-solid fa-angle-down"></i>
-                </div>
-        	</div>
-		</div>
-		<div class="filter-form-item">
-            <p>Check Out</p>
-        	<div class="filter-form-datepicker">
-                <span class="fa-regular fa-calendar"></span>
-                <input id="checkout_date" type="text" class="datepicker-pop check-out" />
-            	<i class="fa-solid fa-angle-down"></i>
+			<div class="datePicker">
+	            <p>Check In</p>
+	                <span class="fa-regular icon fa-calendar"></span>
+	                <input id="checkin_date" type="text" class="datepicker-pop check-in" />
+	                <i class="fa-solid fa-angle-down"></i>
             </div>
-        </div>
+            <div class="datePicker">
+	            <p>Check Out</p>
+	            <div>
+	            	<span class="fa-regular icon fa-calendar"></span>
+	                <input id="checkout_date" type="text" class="datepicker-pop check-out" />
+	            	<i class="fa-solid fa-angle-down"></i>
+	            </div>
+	                
+            </div>
 	</div>
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
