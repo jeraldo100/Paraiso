@@ -7,6 +7,7 @@
 <title>Paraiso Hotel</title>
 </head>
 <body>
+<%@ include file = "/WEB-INF/views/Components/CSSPlugins.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/RoomDetail.jsp" %>

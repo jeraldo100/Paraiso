@@ -118,14 +118,14 @@
   background-position: center center;
 }
 
-.heading-section .subheading {
+.testimony-heading-section .subheading {
   font-size: 16px;
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.heading-section h2 {
+.testimony-heading-section h2 {
   font-size: 30px;
   color: #21cc7a;
   text-transform: uppercase;
@@ -134,11 +134,11 @@
   font-weight: 700;
   position: relative;
 }
-.heading-section h2 strong {
+.testimony-heading-section h2 strong {
   font-weight: 700;
 }
 @media (max-width: 767.98px) {
-  .heading-section h2 {
+  .testimony-heading-section h2 {
     font-size: 28px;
   }
 }

@@ -6,7 +6,6 @@
 }
 
 .sub-hero-banner {
-  background: url(/images/SubPageHeader/hero-bg.jpg) center;
   height: 345px;
 }
 
@@ -18,7 +17,14 @@
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 1; 
 }
+
+.sub-hero-text {
+  position: relative;
+  z-index: 2;
+}
+
 
 .sub-hero-content {
   margin-top: 300px;

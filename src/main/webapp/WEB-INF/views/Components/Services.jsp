@@ -6,8 +6,6 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/Services.css" />
 </head>
 
@@ -57,7 +55,7 @@
               <img src="/images/Services/spa.png" alt="" style="height: 70px; width: 70px; margin-bottom: 10px" />
               <h3>Spa Center</h3>
               <p>
-                From revitalizing massages and facials to bespoke wellness
+                Revitalizing massages and wellness
                 programs, each service is tailored to meet your needs.
               </p>
             </div>
@@ -71,7 +69,7 @@
               <img src="/images/Services/bar.png" alt="" style="height: 70px; width: 70px; margin-bottom: 10px" />
               <h3>Lounge Bar</h3>
               <p>
-                Step into Paraiso Hotel Lounge Bar, a chic and sophisticated
+                Paraiso Hotel Lounge Bar, a chic and sophisticated
                 space where elegance meets relaxation.
               </p>
             </div>

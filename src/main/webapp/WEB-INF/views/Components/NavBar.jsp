@@ -5,8 +5,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/styles/NavBar.css">
 		</head>
 		<body>	
@@ -30,11 +28,11 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="rooms.html">Our Rooms</a></li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="/home">Home</a></li>
+							<li><a href="/about">About</a></li>
+							<li><a href="/rooms">Our Rooms</a></li>
+							<li><a href="/services">Services</a></li>
+							<li><a href="/contact">Contact</a></li>
 							<li><a class="login" href="services.html">Login</a></li>
               				<li><a class="ml-1 mr-2 signup" href="contact.html">Sign Up</a></li>
 				        </ul>

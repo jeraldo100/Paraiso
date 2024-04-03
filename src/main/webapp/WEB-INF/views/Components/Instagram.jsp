@@ -9,19 +9,14 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="stylesheet" href="/styles/Instagram.css" />
-        <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
+    
   </head>
   <body>
-    <section class="instagram ftco-section pb-0">
+    <section class="instagram instagram-section pb-0">
         <div class="container-fluid">
           <div class="row no-gutters justify-content-center pb-5">
-            <div class="col-md-7 text-center heading-section">
-                <span class="subheading">Photos</span>
+            <div class="col-md-7 text-center instagram-heading-section">
+                <span class="instagram-subheading">Photos</span>
               <h2><span>Instagram</span></h2>
             </div>
           </div>

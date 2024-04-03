@@ -8,18 +8,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+
     <link rel="stylesheet" href="/styles/welcome.css" />
   </head>
   <body>
-    <section class="ftco-section">
+    <section class="welcome-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center">
-            <span class="subheading">Welcome to Paraiso Hotel</span>
+          <div class="col-md-7 welcome-heading-section text-center">
+            <span class="welcome-subheading">Welcome to Paraiso Hotel</span>
             <h2 class="mb-4">You'll Never Want To Leave</h2>
           </div>
         </div>
@@ -98,6 +95,5 @@
       </div>
     </section>
   </body>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>

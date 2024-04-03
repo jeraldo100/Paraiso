@@ -30,15 +30,11 @@
   font-size: 30px;
 }
 
-.ftco-section {
-  padding: 6em 0;
+.instagram-section {
+  padding-top: 3rem;
   position: relative;
 }
-@media (max-width: 767.98px) {
-  .ftco-section {
-    padding: 6em 0;
-  }
-}
+
 
 .instagram .container-fluid {
   padding-left: 0;
@@ -46,7 +42,7 @@
   overflow: hidden;
 }
 
-.heading-section .subheading {
+.instagram-heading-section .instagram-subheading {
   font-size: 13px;
   display: block;
   margin-bottom: 5px;
