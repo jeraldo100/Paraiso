@@ -20,7 +20,7 @@
                 <p>Check In</p>
                 <div class="filter-form-datepicker">
                   <span class="fa-regular fa-calendar"></span>
-                  <input type="text" class="datepicker-pop check-in" />
+                  <input id="checkin_date"  type="text" class="datepicker-pop check-in" />
                   <i class="fa-solid fa-angle-down"></i>
                 </div>
               </div>
@@ -28,7 +28,7 @@
                 <p>Check Out</p>
                 <div class="filter-form-datepicker">
                   <span class="fa-regular fa-calendar"></span>
-                  <input type="text" class="datepicker-pop check-out" />
+                  <input id="checkout_date" type="text" class="datepicker-pop check-out" />
                   <i class="fa-solid fa-angle-down"></i>
                 </div>
               </div>
