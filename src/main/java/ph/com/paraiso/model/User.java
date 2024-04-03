@@ -1,5 +1,6 @@
 package ph.com.paraiso.model;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import jakarta.persistence.*;
@@ -7,9 +8,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="USERS")
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer user_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id") 
+    private Integer userid;
 	private String username;
 	private String password;
 	private String account_type;
@@ -17,7 +19,7 @@ public class User {
 	private String last_name;
 	private Date date_of_birth;
 	private String address;
-	private Integer phone;
+	private BigInteger phone;
 	private String email;
 	
 	public User() {
@@ -25,9 +27,9 @@ public class User {
 	}
 
 	public User(Integer user_id, String username, String password, String account_type, String first_name,
-			String last_name, Date date_of_birth, String address, Integer phone, String email) {
+			String last_name, Date date_of_birth, String address, BigInteger phone, String email) {
 		super();
-		this.user_id = user_id;
+		userid = user_id;
 		this.username = username;
 		this.password = password;
 		this.account_type = account_type;
@@ -40,7 +42,7 @@ public class User {
 	}
 
 	public User(String username, String password, String account_type, String first_name, String last_name,
-			Date date_of_birth, String address, Integer phone, String email) {
+			Date date_of_birth, String address, BigInteger phone, String email) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -51,14 +53,21 @@ public class User {
 		this.address = address;
 		this.phone = phone;
 		this.email = email;
+
+	}
+	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserid() {
+		return userid;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public String getUsername() {
@@ -77,35 +86,35 @@ public class User {
 		this.password = password;
 	}
 
-	public String getAccount_type() {
+	public String getAccountType() {
 		return account_type;
 	}
 
-	public void setAccount_type(String account_type) {
+	public void setAccountType(String account_type) {
 		this.account_type = account_type;
 	}
 
-	public String getFirst_name() {
+	public String getFirstName() {
 		return first_name;
 	}
 
-	public void setFirst_name(String first_name) {
+	public void setFirstName(String first_name) {
 		this.first_name = first_name;
 	}
 
-	public String getLast_name() {
+	public String getLastName() {
 		return last_name;
 	}
 
-	public void setLast_name(String last_name) {
+	public void setLastName(String last_name) {
 		this.last_name = last_name;
 	}
 
-	public Date getDate_of_birth() {
+	public Date getDateOfBirth() {
 		return date_of_birth;
 	}
 
-	public void setDate_of_birth(Date date_of_birth) {
+	public void setDateOfBirth(Date date_of_birth) {
 		this.date_of_birth = date_of_birth;
 	}
 
@@ -117,11 +126,11 @@ public class User {
 		this.address = address;
 	}
 
-	public Integer getPhone() {
+	public BigInteger getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(BigInteger phone) {
 		this.phone = phone;
 	}
 
@@ -135,7 +144,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", account_type="
+		return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", account_type="
 				+ account_type + ", first_name=" + first_name + ", last_name=" + last_name + ", date_of_birth="
 				+ date_of_birth + ", address=" + address + ", phone=" + phone + ", email=" + email + "]";
 	}
