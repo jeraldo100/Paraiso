@@ -22,7 +22,7 @@
     $(".check-out").val(today);
 
     // Initialize datepicker with specific format and disallow past dates
-    $("#checkin_date").datepicker({
+    $(".datepicker-pop").datepicker({
         dateFormat: "dd/mm/yy",
         minDate: 1,
     });
@@ -37,12 +37,13 @@
 	 }
     
     $("#checkin_date").on('change', function(){
-		/*let checkinDate = $("#checkin_date").val().split('/');*/
-		console.log('changed');
+        
 		$("#checkout_date").removeAttr('disabled');
 		$('#checkout_date').datepicker('destroy');
 		$("#checkout_date").datepicker({
+			dateFormat: "dd/mm/yy",
         	minDate: setMinDate(),
     	});
+    	$("#checkout_date").val($("#checkin_date").val());
 	})
 })(jQuery);
