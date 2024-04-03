@@ -9,13 +9,9 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="stylesheet" href="/styles/about.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <section class="ftco-section ftco-wrap-about pt-0 pb-0 m-2">
+    <section class="about-section about-wrap-about pt-0 pb-0 m-2">
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-7 order-md-last d-flex">
@@ -29,8 +25,8 @@
             ></div>
           </div>
           <div class="col-md-5 wrap-about pb-md-3 pr-md-5 pb-md-5 pt-md-4">
-            <div class="heading-section mb-4 my-5 my-md-0">
-              <span class="subheading">Paraiso Hotel</span>
+            <div class="about-heading-section mb-4 my-5 my-md-0">
+              <span class="about-subheading">Paraiso Hotel</span>
               <h2 class="mb-4">Where Luxury Meets Tranquility</h2>
             </div>
             <p>

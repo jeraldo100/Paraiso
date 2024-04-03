@@ -8,20 +8,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
     <link rel="stylesheet" href="/styles/FAQ.css" />
   </head>
 
   <body>
     <body></body>
-    <div class="col-md-12 px-0">
+    <div class="col-md-12 px-0 mt-5">
       <div class="faq_area pt-5 pb-5" id="faq">
         <div class="container">
           <div class="row justify-content-center">
@@ -49,7 +41,7 @@
               />
             </div>
 
-            <div class="col-6 col-sm-4 col-lg-8 ml-0 pl-0">
+             <div class="col-sm-12 col-md-12 col-lg-8 ml-0 pl-0">
               <div class="accordion faq-accordian" id="faqAccordion">
                 <div class="card border-0" style="visibility: visible">
                   <div class="card-header" id="headingOne">
