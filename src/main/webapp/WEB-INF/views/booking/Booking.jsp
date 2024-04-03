@@ -23,22 +23,66 @@
 </head>
 <body>
 	<div class="mainWrapper">
-		<div class="filterBar">
+		<form class="filterBar" action="checkAvailability" method="POST">
 			<div class="datePicker">
 	            <p>Check In</p>
+	            <div class="datePickerField">
 	                <span class="fa-regular icon fa-calendar"></span>
-	                <input id="checkin_date" type="text" class="datepicker-pop check-in" />
+	                <input name="checkin_date" id="checkin_date" type="text" class="datepicker-pop check-in" value="<c:out value="${checkin_date}"/>" />
 	                <i class="fa-solid fa-angle-down"></i>
+	             </div>
             </div>
             <div class="datePicker">
 	            <p>Check Out</p>
-	            <div>
+	            <div class="datePickerField">
 	            	<span class="fa-regular icon fa-calendar"></span>
-	                <input id="checkout_date" type="text" class="datepicker-pop check-out" />
+	                <input name="checkout_date" id="checkout_date" type="text" class="datepicker-pop check-out" value="<c:out value="${checkout_date}"/>"/>
 	            	<i class="fa-solid fa-angle-down"></i>
 	            </div>
-	                
             </div>
+            <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
+		</form>
+		<div class="roomsAndList">
+			<div class="roomsWrapper">
+				<c:forEach var="room_type" items="${room_types}">
+					<div class="room">
+						<div class="room-name">
+							<c:out value="${room_type.name}" />
+						</div>
+						<div class="room-details">
+							<div class="detail">
+								Capacity: <c:out value="${room_type.capacity}" />
+							</div>
+							<div class="detail">
+								Beds: <c:out value="${room_type.beds}" />
+							</div>
+							<div class="detail">
+								Bathrooms: <c:out value="${room_type.bathrooms}" />
+							</div>
+						</div>
+						<div class="description">
+							<c:out value="${room_type.description}" />
+						</div>
+						<div class="room-footer">
+							<div class="room-footer-left">
+								Rooms Available: <c:out value="${room_type.available}" />
+							</div>
+							<div class="room-footer-right">
+								<div>
+									Price per night: <c:out value="${room_type.price_per_night}" />
+								</div>
+								<a href = "booking/${room_type.type_id}">
+									Add Room
+								</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="listWrapper">
+				<c:out value="${days}" />
+			</div>
+		</div>
 	</div>
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
