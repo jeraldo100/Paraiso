@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,105 +63,47 @@
                             <th>Check In</th>
                             <th>Check Out</th>
                             <th>Total Price</th>
+                            <th>Arrival Time</th>
+                            <th>Adults</th>
+                            <th>Children</th>
+                            <th>Status</th>
+                            <th>Notes</th>
                             <th>Approval</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success">Approve</button>
-                              <button class="btn btn-danger">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success approve">Approve</button>
-                              <button class="btn btn-danger disapprove">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success">Approve</button>
-                              <button class="btn btn-danger">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success" id="approved">
-                                Approve
-                              </button>
-                              <button class="btn btn-danger" id="disapproved">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
+                        <c:forEach var="bookings" items="${bookings }">
+	                        <tr>
+	                            <td><input type="checkbox" /></td>
+	                            <td><c:out value="${bookings.booking_id }" /></td>
+	                            <td><c:out value="${bookings.user_id }" /></td>
+	                            <td><c:out value="${bookings.booking_id }" /></td>
+	                            <td><c:out value="${bookings.checkin_date }" /></td>
+	                            <td><c:out value="${bookings.checkout_date }" /></td>
+	                            <td><c:out value="${bookings.total_price }" /></td>
+	                            <td><c:out value="${bookings.arrival_time }" /></td>
+	                            <td><c:out value="${bookings.adults }" /></td>
+	                            <td><c:out value="${bookings.children }" /></td>
+	                            <td><c:out value="${bookings.status }" /></td>
+	                            <td><c:out value="${bookings.notes }" /></td>
+	                            <td>
+	                              <button class="btn btn-success">Approve</button>
+	                              <button class="btn btn-danger">
+	                                Disapprove
+	                              </button>
+	                            </td>
+	                            <td>
+	                              <button type="button" class="btn btn-success">
+	                                Edit
+	                              </button>
+	                              <button type="button" class="btn btn-danger">
+	                                Delete
+	                              </button>
+	                            </td>
+	                          </tr>
+                        </c:forEach>
+                          
                         </tbody>
                       </table>
                     </div>

@@ -4,10 +4,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import ph.com.paraiso.service.BookingService;
 import ph.com.paraiso.service.RoomService;
+import ph.com.paraiso.service.UserService;
 
 @Controller
 public class BookingController {
+	
+	private BookingService bookingService;
+	
+	public BookingController(BookingService bookingService) {
+		super();
+		this.bookingService = bookingService;
+	}
+
+	
+	@GetMapping("/AdminBooking")
+	public String adminBooking(Model model) {
+		model.addAttribute("bookings", bookingService.getAllBookings());
+		return "dashboardAdmin/Booking";
+	}
+	
 	@GetMapping("/booking")
 	public String bookingPage() {
 		
@@ -19,27 +36,6 @@ public class BookingController {
 		return "dashboardAdmin/Dashboard";
 	}
 	
-	@GetMapping("/AdminBooking")
-	public String adminBooking() {
-		return "dashboardAdmin/Booking";
-	}
-	
-	@GetMapping("/AdminDiscount")
-	public String adminDiscount() {
-		return "dashboardAdmin/Discount";
-	}
-	
-	
-	
-	@GetMapping("/AdminUsers")
-	public String adminUsers() {
-		return "dashboardAdmin/Users";
-	}
-	
-	@GetMapping("/UserDashboard")
-	public String userDashboard() {
-		return "dashboardUser/userDashboard";
-	}
 	
 	@GetMapping("/UserEditProfile")
 	public String userEditProfile() {
@@ -50,18 +46,7 @@ public class BookingController {
 	public String userProfile() {
 		return "dashboardUser/userProfile";
 	}
-	
-	private RoomService roomService;
 
-	public BookingController(RoomService roomService) {
-		super();
-		this.roomService = roomService;
-	}
 	
-	@GetMapping("/AdminRooms")
-	public String adminRooms(Model model) {
-		model.addAttribute("rooms",roomService.getAllRooms());
-		return "dashboardAdmin/Rooms";
-	}
 	
 }

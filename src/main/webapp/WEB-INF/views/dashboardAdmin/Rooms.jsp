@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
 
 <!-- CSS LINK -->
 
-<link rel="stylesheet" href="/styles/dashboardAdmin/rooms.css" />
+<link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" />
 
 <!-- GOOGLE ICON LINK -->
 
@@ -44,8 +44,9 @@
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success">Print</button>
-									<button type="button" class="btn btn-success"
-										data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+									<a href="/addRoom" class="btn btn-success">
+									Add
+									</a>
 									<select name="" id=""
 										class="form-select shadow-none bg-light w-auto">
 										<option value="0">Select timeline</option>
@@ -107,99 +108,7 @@
 		</div>
 	</div>
 
-
-	<div class="modal fade modal-xl" id="addModal"
-		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div
-			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="staticBackdropLabel">Add
-						Rooms</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="row mb-4">
-						<div class="col-md-12 b-4">
-							<a href="#" class="text-decoration-none">
-								<div
-									class="card text-center p-3 text-success table-responsive border-0"
-									style="max-height: 100%; overflow-y: auto">
-									<div class="row mb-4">
-										<div class="col-md-12 b-4">
-											<div
-												class="card text-center p-3 text-success table-responsive">
-												<span class="material-symbols-outlined"> photo </span>
-
-												<div class="files">
-													<input type="file">
-												</div>
-
-											</div>
-											<br />
-										</div>
-									</div>
-
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-										<input type="text" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Type
-											ID</span> <input type="number" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Room
-											ID</span> <input type="number" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Price
-											per night</span> <input type="number"
-											class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Description</span>
-										<input type="text" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Capacity</span>
-										<input type="number" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-									<div class="input-group mb-3">
-										<span class="input-group-text" id="inputGroup-sizing-default">Status</span>
-										<input type="text" class="form-control rounded-end"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default" />
-									</div>
-							</a>
-						</div>
-					</div>
-
-
-				</div>
-				<div class="modal-footer">
-					<p>Save changes?</p>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-success">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
+<%-- 	<jsp:include page="Modals/AddRoomsModal.jsp"></jsp:include> --%>
 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -17,7 +17,7 @@ public class User {
 	private String last_name;
 	private Date date_of_birth;
 	private String address;
-	private Integer phone;
+	private Long phone;
 	private String email;
 	
 	public User() {
@@ -25,7 +25,7 @@ public class User {
 	}
 
 	public User(Integer user_id, String username, String password, String account_type, String first_name,
-			String last_name, Date date_of_birth, String address, Integer phone, String email) {
+			String last_name, Date date_of_birth, String address, Long phone, String email) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
@@ -40,7 +40,7 @@ public class User {
 	}
 
 	public User(String username, String password, String account_type, String first_name, String last_name,
-			Date date_of_birth, String address, Integer phone, String email) {
+			Date date_of_birth, String address, Long phone, String email) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -117,11 +117,11 @@ public class User {
 		this.address = address;
 	}
 
-	public Integer getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(Long phone) {
 		this.phone = phone;
 	}
 

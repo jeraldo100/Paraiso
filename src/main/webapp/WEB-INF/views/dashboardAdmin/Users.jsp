@@ -43,7 +43,7 @@
                   <a href="#" class="text-decoration-none">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
-                      <table class="table table-hover">
+                      <table class="table table-hover table-responsive">
                         <thead>
                           <tr>
                             <th></th>
@@ -61,19 +61,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                        	<c:forEach var="rooms" items="${rooms }"> 
+                        	<c:forEach var="users" items="${users }"> 
                         	<tr>
                             <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
+                            <td><c:out value="${users.user_id }" /></td>
+                            <td><c:out value="${users.username }" /></td>
+                            <td><c:out value="${users.password }" /></td>
+                            <td><c:out value="${users.account_type }" /></td>
+                            <td><c:out value="${users.first_name }" /></td>
+                            <td><c:out value="${users.last_name }" /></td>
+                            <td><c:out value="${users.date_of_birth }" /></td>
+                            <td><c:out value="${users.address }" /></td>
+                            <td><c:out value="${users.phone }" /></td>
+                            <td><c:out value="${users.email }" /></td>
                             <td>
                               <button type="button" class="btn btn-success">
                                 Edit
@@ -83,9 +83,7 @@
                               </button>
                             </td>
                           </tr>
-                        	</c:forEach>
-                          
-                          
+                        	</c:forEach>	
                         </tbody>
                       </table>
                     </div>
