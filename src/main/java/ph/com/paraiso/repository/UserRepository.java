@@ -6,5 +6,5 @@ import ph.com.paraiso.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
-	public User findByusername(String username);
+	/* public User findByusername(String username); */
 }

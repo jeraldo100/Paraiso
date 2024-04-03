@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +61,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                        	<c:forEach var="rooms" items="${rooms }"> 
+                        	<tr>
                             <td><input type="checkbox" /></td>
                             <td>123</td>
                             <td>321</td>
@@ -78,111 +83,9 @@
                               </button>
                             </td>
                           </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>123</td>
-                            <td>321</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>1203</td>
-                            <td>Feb1</td>
-                            <td>Feb3</td>
-                            <td>$102</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
+                        	</c:forEach>
+                          
+                          
                         </tbody>
                       </table>
                     </div>
