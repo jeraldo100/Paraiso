@@ -92,8 +92,7 @@
                         <div class="login-signup-content">
                             <h3>Already have an account?</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                                accusantium dolor, eos incidunt minima iure?
+                               Log in to your account to enjoy the ease of tracking your bookings, receiving tailored recommendations, and unlocking special offers reserved for our members.
                             </p>
                             <button class="login-signup-btn" id="sign-in-btn">Login</button>
                         </div>
@@ -103,8 +102,7 @@
                         <div class="login-signup-content">
                             <h3>New here? Join us by signing up</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                                accusantium dolor, eos incidunt minima iure?
+                                Sign up today to receive personalized offers, access exclusive deals, and enjoy a faster Paraiso Hotel booking experience.
                             </p>
                             <button class="login-signup-btn" id="sign-up-btn">
                                 Sign up
