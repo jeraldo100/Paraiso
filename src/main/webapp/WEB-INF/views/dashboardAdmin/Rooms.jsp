@@ -85,16 +85,13 @@
 															<td><c:out value="${rooms.type_id }" /></td>
 															<td><c:out value="${rooms.status }" /></td>
 															<td>
-																<button type="button" class="btn btn-success">
-																	Edit</button>
-																<button type="button" class="btn btn-danger">
-																	Delete</button>
+																<a href="#" type="button" class="btn btn-success">
+																	Edit</a>
+																<a href="#" type="button" class="btn btn-danger">
+																	Delete</a>
 															</td>
 														</tr>
 													</c:forEach>
-
-
-
 												</tbody>
 											</table>
 										</div>

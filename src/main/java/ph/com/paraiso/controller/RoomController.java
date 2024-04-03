@@ -28,5 +28,7 @@ public class RoomController {
 		model.addAttribute("rooms", roomService.getAllRooms());
 		return "dashboardAdmin/Rooms";
 	}
+	
+	
 
 }
