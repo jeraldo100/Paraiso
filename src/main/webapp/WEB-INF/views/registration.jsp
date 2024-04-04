@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 container	justify-content-center card">
                     <div class="message" th:if="{message != null">
-                    [[${message}]]
+                    [${message}]
                     </div>
                     <h1>Register New User</h1>
                     <div class="card-body">
