@@ -43,44 +43,16 @@
             <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
 		</form>
 		<div class="roomsAndList">
-			<div class="roomsWrapper">
-				<c:forEach var="room_type" items="${room_types}">
-					<div class="room">
-						<div class="room-name">
-							<c:out value="${room_type.name}" />
-						</div>
-						<div class="room-details">
-							<div class="detail">
-								Capacity: <c:out value="${room_type.capacity}" />
-							</div>
-							<div class="detail">
-								Beds: <c:out value="${room_type.beds}" />
-							</div>
-							<div class="detail">
-								Bathrooms: <c:out value="${room_type.bathrooms}" />
-							</div>
-						</div>
-						<div class="description">
-							<c:out value="${room_type.description}" />
-						</div>
-						<div class="room-footer">
-							<div class="room-footer-left">
-								Rooms Available: <c:out value="${room_type.available}" />
-							</div>
-							<div class="room-footer-right">
-								<div>
-									Price per night: <c:out value="${room_type.price_per_night}" />
-								</div>
-								<a href = "booking/${room_type.type_id}">
-									Add Room
-								</a>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+			<div id="roomsWrapper" class="roomsWrapper">
+				
 			</div>
 			<div class="listWrapper">
-				<c:out value="${days}" />
+				<div>
+					Days <c:out value="${days}" />
+				</div>
+				<div class="roomsList">
+				
+				</div>
 			</div>
 		</div>
 	</div>
