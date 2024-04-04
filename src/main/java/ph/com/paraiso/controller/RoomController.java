@@ -57,13 +57,13 @@ public class RoomController {
 	}
 
 	@GetMapping("/editRoom/{room_id}")
-	public String editRoom(@PathVariable Integer room_id, Model model) {
+	public String editRoom(@PathVariable("room_id") Integer room_id, Model model) {
 		model.addAttribute("room", roomService.getRoomById(room_id));
 		return "dashboardAdmin/Modals/EditRoom";
 	}
 	
-	@PostMapping("/editRoom/update/{room_id}")
-	public String updateRoom(@PathVariable Integer room_id, 
+	@PostMapping("/update/{room_id}")
+	public String updateRoom(@PathVariable("room_id") Integer room_id, 
 			@ModelAttribute("room") Room room,
 			Model model) {
 		
@@ -77,16 +77,16 @@ public class RoomController {
 		
 		//save 
 		
-		roomService.editRoom(existingRoom);
-		return "redirect:/dashboardAdmin/Rooms";
+		roomService.updateRoom(existingRoom);
+		return "redirect:/AdminRooms";
 		
 		
 	}
 	
 	@GetMapping("/delete/{room_id}")
-	public String deleteRoom(@PathVariable Integer room_id) {
+	public String deleteRoom(@PathVariable("room_id") Integer room_id) {
 		roomService.deleteRoomById(room_id);
-		return "redirect:/dashboardAdmin/Rooms";
+		return "redirect:/AdminRooms";
 	}
 	
 }

@@ -61,7 +61,6 @@
 
 							<div class="row mb-4">
 								<div class="col-md-12 b-4">
-									<a href="#" class="text-decoration-none">
 										<div
 											class="card text-center p-3 text-success table-responsive"
 											style="max-height: 100%; overflow-y: auto">
@@ -85,7 +84,7 @@
 															<td><c:out value="${rooms.type_id }" /></td>
 															<td><c:out value="${rooms.status }" /></td>
 															<td>
-																<a href="editRoom/${rooms.room_id }" type="button" class="btn btn-success">
+																<a href="/editRoom/${rooms.room_id }" type="button" class="btn btn-success">
 																	Edit</a>
 																<a href="delete/${rooms.room_id }" type="button" class="btn btn-danger">
 																	Delete</a>
@@ -95,7 +94,6 @@
 												</tbody>
 											</table>
 										</div>
-									</a>
 								</div>
 							</div>
 						</div>

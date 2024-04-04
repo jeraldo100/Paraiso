@@ -1,11 +1,9 @@
-package ph.com.paraiso.service.impl;
+	package ph.com.paraiso.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ph.com.paraiso.dao.RoomDao;
 import ph.com.paraiso.model.Room;
 import ph.com.paraiso.repository.RoomRepository;
 import ph.com.paraiso.service.RoomService;
@@ -13,10 +11,6 @@ import ph.com.paraiso.service.RoomService;
 @Service 
 public class RoomServiceImpl implements RoomService {
 
-	@Autowired
-	RoomDao roomDao;
-	
-	@Autowired
 	private RoomRepository roomRepository;
 	
 	
@@ -38,23 +32,21 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public Room addRoom(Room room) {
 		// TODO Auto-generated method stub
-		return roomDao.addRoom(room);
+		return null;
 	}
 
 
 
 	@Override
-	public Room editRoom(Room room) {
-		// TODO Auto-generated method stub
-		return null;
+	public Room updateRoom(Room room) {
+		return roomRepository.save(room);
 	}
 
 
 
 	@Override
 	public Room getRoomById(Integer room_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return roomRepository.findById(room_id).get();
 	}
 
 
@@ -64,14 +56,6 @@ public class RoomServiceImpl implements RoomService {
 
 		roomRepository.deleteById(room_id);
 		
-	}
-
-
-
-
-
-
-
-	
+	};
 	
 }

@@ -13,7 +13,7 @@ public interface RoomService {
 	public Room addRoom(Room room);
 	
 	//Edit
-	public Room editRoom(Room room);
+	public Room updateRoom(Room room);
 	public Room getRoomById(Integer room_id);
 	
 	//Delete

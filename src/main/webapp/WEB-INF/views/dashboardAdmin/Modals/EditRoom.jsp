@@ -15,7 +15,7 @@
 	<div class="col-lg-6 col-md-6 container 	justify-content-center card">
 		<h1>Edit Room</h1>
 		<div class="card-body">
-			<form action="update/${rooms.room_id}" method="post">
+			<form action="/update/${room.room_id}" method="post">
 				<div class="form-group">
 					<label>Hotel ID :</label> <input type="text" name="hotel_id"
 						id="hotel_id" value="1" readonly placeholder="Enter Hotel ID" />
