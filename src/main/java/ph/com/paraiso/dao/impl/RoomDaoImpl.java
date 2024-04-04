@@ -13,5 +13,24 @@ import ph.com.paraiso.repository.RoomRepository;
 @Component
 public class RoomDaoImpl implements RoomDao{
 
+	@Autowired
+	RoomRepository roomRepository;
+	
+	@Override
+	public Room addRoom(Room room) {
+		// TODO Auto-generated method stub
+		return roomRepository.save(room);
+	}
+
+	@Override
+	public Room getRoomById(Integer room_id) {
+		return roomRepository.findById(room_id).get();
+	}
+
+	@Override
+	public Room updateRoom(Room room) {
+		return roomRepository.save(room);
+	}
+
 
 }

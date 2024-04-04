@@ -18,7 +18,7 @@ public class Booking {
 	private Integer adults;
 	private Integer children;
 	private String status;
-	private String notes;
+	/* private String notes; */
 	
 	public Booking() {
 		super();
@@ -36,7 +36,7 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
-		this.notes = notes;
+		/* this.notes = notes; */
 	}
 
 	public Booking(Integer user_id, Date checkin_date, Date checkout_date, Double total_price, String arrival_time,
@@ -50,7 +50,7 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
-		this.notes = notes;
+		/* this.notes = notes; */
 	}
 
 	public Integer getBooking_id() {
@@ -125,19 +125,17 @@ public class Booking {
 		this.status = status;
 	}
 
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
+	/*
+	 * public String getNotes() { return notes; }
+	 * 
+	 * public void setNotes(String notes) { this.notes = notes; }
+	 */
 
 	@Override
 	public String toString() {
 		return "Booking [booking_id=" + booking_id + ", user_id=" + user_id + ", checkin_date=" + checkin_date
 				+ ", checkout_date=" + checkout_date + ", total_price=" + total_price + ", arrival_time=" + arrival_time
-				+ ", adults=" + adults + ", children=" + children + ", status=" + status + ", notes=" + notes + "]";
+				+ ", adults=" + adults + ", children=" + children + ", status=" + status + "]";
 	}
 	
 }

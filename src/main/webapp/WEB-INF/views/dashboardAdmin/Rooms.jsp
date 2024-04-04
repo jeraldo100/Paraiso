@@ -44,7 +44,7 @@
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success">Print</button>
-									<a href="/addRoom" class="btn btn-success">
+									<a href="/addRoom" class="btn btn-success" data-dismiss="modal" >
 									Add
 									</a>
 									<select name="" id=""
@@ -85,9 +85,9 @@
 															<td><c:out value="${rooms.type_id }" /></td>
 															<td><c:out value="${rooms.status }" /></td>
 															<td>
-																<a href="#" type="button" class="btn btn-success">
+																<a href="editRoom/${rooms.room_id }" type="button" class="btn btn-success">
 																	Edit</a>
-																<a href="#" type="button" class="btn btn-danger">
+																<a href="delete/${rooms.room_id }" type="button" class="btn btn-danger">
 																	Delete</a>
 															</td>
 														</tr>
@@ -105,7 +105,7 @@
 		</div>
 	</div>
 
-<%-- 	<jsp:include page="Modals/AddRoomsModal.jsp"></jsp:include> --%>
+<%--  	<jsp:include page="Modals/AddRoomsModal.jsp"></jsp:include> --%>
 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

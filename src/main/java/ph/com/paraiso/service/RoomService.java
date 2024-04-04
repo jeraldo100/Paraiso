@@ -10,5 +10,12 @@ public interface RoomService {
 	public List<Room> getAllRooms();
 	
 	//Add
-	public void save(Room room);
+	public Room addRoom(Room room);
+	
+	//Edit
+	public Room editRoom(Room room);
+	public Room getRoomById(Integer room_id);
+	
+	//Delete
+	public void deleteRoomById(Integer room_id);
 }
