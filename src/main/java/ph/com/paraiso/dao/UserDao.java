@@ -13,8 +13,8 @@ public interface UserDao {
 	public User addUser(User user);
 	
 	//update
-	public User getUserById(Integer userid);
+	public User getUserById(Long userid);
 	public User updateUser(User user);
 	
-	public void deleteById(Integer userid);
+	public void deleteById(Long userid);
 }

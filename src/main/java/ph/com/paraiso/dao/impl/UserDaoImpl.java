@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserById(Integer userid) {
+	public User getUserById(Long userid) {
 		return userRepo.findById(userid).get();
 	}
 
@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public void deleteById(Integer userid) {
+	public void deleteById(Long userid) {
 		userRepo.deleteById(userid);
 		
 	}

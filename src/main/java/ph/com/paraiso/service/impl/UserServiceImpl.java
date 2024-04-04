@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service;
 
 import ph.com.paraiso.dao.UserDao;
 import ph.com.paraiso.model.User;
+import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.service.UserService;
+import ph.come.paraiso.dto.UserDto;
 
 @Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public String authenticate(User user) {
@@ -40,7 +45,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserById(Integer userid) {
+	public User getUserById(Long userid) {
 		return userDao.getUserById(userid);
 	}
 
@@ -50,8 +55,14 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public void deleteById(Integer userid) {
+	public void deleteById(Long userid) {
 		userDao.deleteById(userid);
 		
+	}
+
+	@Override
+	public User save(UserDto userDto) {
+		User user = new User(userDto.getUsername(), userDto.getPassword(), userDto.getAccountType(), userDto.getFirstName(), userDto.getLastName(), userDto.getAddress(), userDto.getDateOfBirth(), userDto.getPhone(), userDto.getEmail() );
+		return userRepository.save(user);
 	}
 }
