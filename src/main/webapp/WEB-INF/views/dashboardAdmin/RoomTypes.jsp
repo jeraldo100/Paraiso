@@ -52,23 +52,27 @@
 												<thead>
 													<tr>
 														<th></th>
-														<th>Voucher ID</th>
-														<th>Voucher Code</th>
+														<th>Type ID</th>
+														<th>Name</th>
 														<th>Description</th>
 														<th>Amount</th>
-														<th>Validity</th>
+														<th>Capacity</th>
+														<th>Beds</th>
+														<th>Bathrooms</th>
 														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="vouchers" items="${vouchers }">
+													<c:forEach var="room_types" items="${room_types }">
 														<tr>
-															<td><input type="checkbox" /></td>
-															<td><c:out value="${vouchers.voucher_id }" /></td>
-															<td><c:out value="${vouchers.voucher_code }" /></td>
-															<td><c:out value="${vouchers.description }" /></td>
-															<td><c:out value="${vouchers.amount }" /></td>
-															<td><c:out value="${vouchers.validation }" /></td>
+															<td><input type="checkbox"/></td>
+															<td><c:out value="${room_types.type_id }" /></td>
+															<td><c:out value="${room_types.name }" /></td>
+															<td><c:out value="${room_types.description }" /></td>
+															<td><c:out value="${room_types.price_per_night }" /></td>
+															<td><c:out value="${room_types.capacity }" /></td>
+															<td><c:out value="${room_types.beds }" /></td>
+															<td><c:out value="${room_types.bathrooms }" /></td>
 															<td>
 																<button type="button" class="btn btn-success">
 																	Edit</button>

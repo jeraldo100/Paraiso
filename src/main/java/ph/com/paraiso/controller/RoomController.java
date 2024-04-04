@@ -72,7 +72,7 @@ public class RoomController {
 		Room existingRoom = roomService.getRoomById(room_id);
 		existingRoom.setRoom_id(room_id);
 		existingRoom.setHotel_id(room.getHotel_id());
-		existingRoom.setType_id(room.getRoom_id());
+		existingRoom.setType_id(room.getType_id());
 		existingRoom.setStatus(room.getStatus());
 		
 		//save 
