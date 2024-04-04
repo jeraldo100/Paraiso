@@ -18,7 +18,6 @@ public class RoomDaoImpl implements RoomDao{
 	
 	@Override
 	public Room addRoom(Room room) {
-		// TODO Auto-generated method stub
 		return roomRepository.save(room);
 	}
 

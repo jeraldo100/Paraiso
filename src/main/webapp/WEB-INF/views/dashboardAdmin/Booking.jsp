@@ -59,7 +59,6 @@
                             <th></th>
                             <th>Booking ID</th>
                             <th>User ID</th>
-                            <th>Room ID</th>
                             <th>Check In</th>
                             <th>Check Out</th>
                             <th>Total Price</th>
@@ -67,7 +66,6 @@
                             <th>Adults</th>
                             <th>Children</th>
                             <th>Status</th>
-                            <th>Notes</th>
                             <th>Approval</th>
                             <th>Action</th>
                           </tr>
@@ -78,7 +76,6 @@
 	                            <td><input type="checkbox" /></td>
 	                            <td><c:out value="${bookings.booking_id }" /></td>
 	                            <td><c:out value="${bookings.user_id }" /></td>
-	                            <td><c:out value="${bookings.booking_id }" /></td>
 	                            <td><c:out value="${bookings.checkin_date }" /></td>
 	                            <td><c:out value="${bookings.checkout_date }" /></td>
 	                            <td><c:out value="${bookings.total_price }" /></td>
@@ -86,18 +83,17 @@
 	                            <td><c:out value="${bookings.adults }" /></td>
 	                            <td><c:out value="${bookings.children }" /></td>
 	                            <td><c:out value="${bookings.status }" /></td>
-	                            <td><c:out value="${bookings.notes }" /></td>
 	                            <td>
-	                              <button class="btn btn-success">Approve</button>
-	                              <button class="btn btn-danger">
+	                              <button class="btn btn-success m-1">Approve</button>
+	                              <button class="btn btn-danger m-1">
 	                                Disapprove
 	                              </button>
 	                            </td>
 	                            <td>
-	                              <button type="button" class="btn btn-success">
+	                              <button type="button" class="btn btn-success m-1">
 	                                Edit
 	                              </button>
-	                              <button type="button" class="btn btn-danger">
+	                              <button type="button" class="btn btn-danger m-1">
 	                                Delete
 	                              </button>
 	                            </td>

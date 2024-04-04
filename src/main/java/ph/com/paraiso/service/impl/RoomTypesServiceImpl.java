@@ -24,6 +24,12 @@ public class RoomTypesServiceImpl implements RoomTypesService {
 		return roomTypesRepository.findAll();
 	}
 
+	@Override
+	public Room_type addRoomTypes(Room_type room_types) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 }

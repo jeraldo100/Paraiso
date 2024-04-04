@@ -75,10 +75,10 @@
                             <td><c:out value="${users.phone }" /></td>
                             <td><c:out value="${users.email }" /></td>
                             <td>
-                              <button type="button" class="btn btn-success">
+                              <button type="button" class="btn btn-success m-1">
                                 Edit
                               </button>
-                              <button type="button" class="btn btn-danger">
+                              <button type="button" class="btn btn-danger m-1">
                                 Delete
                               </button>
                             </td>
