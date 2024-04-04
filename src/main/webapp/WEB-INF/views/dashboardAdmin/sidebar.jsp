@@ -27,6 +27,10 @@
 				class="nav-link text-white"> <ion-icon name="bed"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Rooms</span>
 			</a></li>
+			<li class="nav-item"><a href="/AdminRoomTypes"
+				class="nav-link text-white"> <ion-icon name="cog"></ion-icon><span
+					class="fs-4 ms-3 d-none d-sm-inline">Room Types</span>
+			</a></li>
 			<li class="nav-item"><a href="/AdminDiscount"
 				class="nav-link text-white"> <ion-icon name="star"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Voucher</span>

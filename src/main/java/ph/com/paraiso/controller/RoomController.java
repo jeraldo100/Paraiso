@@ -36,7 +36,7 @@ public class RoomController {
 		
 		model.addAttribute("room", room);
 		
-		return "dashboardAdmin/Modals/AddRoom";
+		return "dashboardAdmin/RoomCRUD/AddRoom";
 	}
 	
 	@PostMapping("/addRoom/save")
@@ -59,7 +59,7 @@ public class RoomController {
 	@GetMapping("/editRoom/{room_id}")
 	public String editRoom(@PathVariable("room_id") Integer room_id, Model model) {
 		model.addAttribute("room", roomService.getRoomById(room_id));
-		return "dashboardAdmin/Modals/EditRoom";
+		return "dashboardAdmin/RoomCRUD/EditRoom";
 	}
 	
 	@PostMapping("/update/{room_id}")
