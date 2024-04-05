@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
               <label>Validity :</label>
-              <input type="text" name="validation" id="validation" placeholder="Enter Validity (yyyy-mm-dd)" class="form-control" />
+              <input type="date" name="validation" id="validation" placeholder="Enter Validity (yyyy-mm-dd)" class="form-control" />
             </div>
             <div class="box-footer">
               <a type="button" href="/AdminDiscount" class="btn btn-danger float-end m-3">Back</a>
