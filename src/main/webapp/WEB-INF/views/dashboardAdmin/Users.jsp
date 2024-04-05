@@ -45,7 +45,6 @@
                       <table class="table table-hover table-responsive">
                         <thead>
                           <tr>
-                            <th></th>
                             <th>User ID</th>
                             <th>Username</th>
                             <th>Password</th>
@@ -62,7 +61,6 @@
                         <tbody>
                         	<c:forEach var="users" items="${users }"> 
                         	<tr>
-                            <td><input type="checkbox" /></td>
                             <td><c:out value="${users.user_id }" /></td>
                             <td><c:out value="${users.username }" /></td>
                             <td><c:out value="${users.password }" /></td>

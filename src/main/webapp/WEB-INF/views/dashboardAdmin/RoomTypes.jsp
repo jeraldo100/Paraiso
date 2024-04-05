@@ -50,7 +50,6 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th></th>
 														<th>Type ID</th>
 														<th>Name</th>
 														<th>Description</th>
@@ -64,7 +63,6 @@
 												<tbody>
 													<c:forEach var="room_types" items="${room_types }">
 														<tr>
-															<td><input type="checkbox"/></td>
 															<td><c:out value="${room_types.type_id }" /></td>
 															<td><c:out value="${room_types.name }" /></td>
 															<td><c:out value="${room_types.description }" /></td>

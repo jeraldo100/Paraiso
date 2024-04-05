@@ -50,7 +50,6 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th></th>
 														<th>Voucher ID</th>
 														<th>Voucher Code</th>
 														<th>Description</th>
@@ -62,7 +61,6 @@
 												<tbody>
 													<c:forEach var="vouchers" items="${vouchers }">
 														<tr>
-															<td><input type="checkbox" /></td>
 															<td><c:out value="${vouchers.voucher_id }" /></td>
 															<td><c:out value="${vouchers.voucher_code }" /></td>
 															<td><c:out value="${vouchers.description }" /></td>
