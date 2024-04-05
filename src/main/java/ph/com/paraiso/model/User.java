@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="BOOKING_USER", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name="USERS", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
@@ -49,6 +49,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
+	
+
 
 	public Long getUserid() {
 		return userid;

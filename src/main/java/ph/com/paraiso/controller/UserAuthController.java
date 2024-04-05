@@ -39,5 +39,37 @@ public class UserAuthController {
 		return "home";
 	}
 	
+	@GetMapping("/login")
+	public String loginsignupPage() {
+		return "loginPage";
+	}
+	
+	
+	@PostMapping("/auth")
+	public String authenticate(@RequestParam String email, String password, Model model) {
+		String returnPg = "loginPage";
+		
+		User user = new User(email, password);
+		String result = userSvc.authenticate(user);
+		List<User> users = userSvc.getUsers();
+		
+		model.addAttribute("error", "Invalid Credentials");
+		model.addAttribute("users", users);
+		if(result.equals("success")) {
+			returnPg = "mainPage";
+		}
+		
+	
+		return returnPg;
+	}
+	
+	@GetMapping("/")
+	public String getUsers(Model model) {
+		
+		List<User> users = userSvc.getUsers();
+		model.addAttribute("users",users);
+		
+		return "mainPage";
+	}
 
 }

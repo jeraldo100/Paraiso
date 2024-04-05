@@ -11,10 +11,41 @@ import ph.com.paraiso.dao.UserDao;
 
 @Component
 public class UserDaoImpl implements UserDao{
-	
+		
 	@Autowired
 	UserRepository userRepo;
 
-	
+	@Override
+	public User authenticate(User user) {
 
+		return userRepo.findByemail(user.getEmail());
+	}
+	
+	@Override
+	public List<User> getUsers() {
+		return userRepo.findAll();
+	}
+
+	@Override
+	public User addUser(User user) {
+		
+		return userRepo.save(user);
+	}
+
+	@Override
+	public User getUserById(Long userid) {
+		return userRepo.findById(userid).get();
+	}
+
+	@Override
+	public User updateUser(User user) {
+		return userRepo.save(user);
+	}
+
+	@Override
+	public void deleteById(Long userid) {
+		userRepo.deleteById(userid);
+		
+	}
 }
+

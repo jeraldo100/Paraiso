@@ -17,7 +17,49 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+		@Autowired
+		UserDao userDao;
 
+		@Override
+		public String authenticate(User user) {
+			String result = "failed";
+			
+			User vUser = userDao.authenticate(user);
+			
+			if(vUser != null) {
+				if(vUser.getPassword().equals(user.getPassword())) {
+					result = "success";
+				}
+			}
+			return result;
+		}
+
+		@Override
+		public List<User> getUsers() {
+			return userDao.getUsers();
+		}
+
+		@Override
+		public User addUser(User user) {
+			return userDao.addUser(user);
+		}
+
+		@Override
+		public User getUserById(Long userid) {
+			return userDao.getUserById(userid);
+		}
+
+		@Override
+		public User updateUser(User user) {
+			return userDao.updateUser(user);
+		}
+		
+		@Override
+		public void deleteById(Long userid) {
+			userDao.deleteById(userid);
+			
+		}
 
 	@Override
 	public User save(UserDto userDto) {
