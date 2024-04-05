@@ -26,7 +26,17 @@ public class BookingDaoImpl implements BookingDao {
 	}
 	
 	@Override
-	public Room_joined getRoom_joined(Integer room_type){
-		return rjRepo.getRoom_joined(room_type);	
+	public Room_joined getRoom_joined_first(Integer room_type, String checkin_date, String checkout_date){
+		return rjRepo.getRoom_joined_first(room_type, checkin_date, checkout_date);	
+	}
+	
+	@Override
+	public Room_joined getRoom_joined(Integer room_type, String checkin_date, String checkout_date, List<Integer> room_ids){
+		return rjRepo.getRoom_joined(room_type, checkin_date, checkout_date, room_ids);	
+	}
+	
+	@Override
+	public List<Room_joined> getRoom_joinedList(List<Integer> room_ids){
+		return rjRepo.getRoom_joinedList(room_ids);	
 	}
 }

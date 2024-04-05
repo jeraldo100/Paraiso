@@ -44,14 +44,22 @@
 		</form>
 		<div class="roomsAndList">
 			<div id="roomsWrapper" class="roomsWrapper">
-				
+				<!-- Empty room for adding available rooms -->
 			</div>
 			<div class="listWrapper">
-				<div>
-					Days <c:out value="${days}" />
+				<div class="roomList-header">
+					<div id="total-days" days="${days}">
+						Days <c:out value="${days}" />
+					</div>
+					<div id="roomList-totalPrice" class="roomList-totalPrice">
+						<!--Empty room for updating list total Price-->
+					</div>
 				</div>
-				<div class="roomsList">
-				
+				<div id="roomList-body" class="roomList-body">
+					<!--Empty room for appending list of added rooms-->
+				</div>
+				<div class="roomList-footer">
+					
 				</div>
 			</div>
 		</div>

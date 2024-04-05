@@ -18,7 +18,6 @@
 				// fetch all data from controller and display into html
 		        console.log(dat);
 		        let rooms = dat;
-				console.log(dat[0].name);
 				let roomsHtml = '';
 				
 				for(i = 0;i<rooms.length;i++){
@@ -89,7 +88,7 @@
     	$("#checkout_date").val($("#checkin_date").val());
 	})
 	
-	$("#checkAvailability").on("click",function(e){
+	/**$("#checkAvailability").on("click",function(e){
 		e.preventDefault();
 		let checkin_date = $("#checkin_date").val();
 		let checkout_date = $("#checkout_date").val();
@@ -101,7 +100,7 @@
 		        'checkout_date': checkout_date
       		},
 		})
-	})
+	}) **/
 		
 	
 })(jQuery);
@@ -111,6 +110,14 @@ function addRoom(type_id){
 	let checkin_date_val = $("#checkin_date").val();
 	let checkout_date_val = $("#checkout_date").val();
 	
+	let room_ids_val = '';
+	$('.roomAdded-name').each(function () {
+		let room_id = $(this).attr( "room_id" );
+		room_ids_val += room_id+' ';
+	});
+	
+	console.log(room_ids_val);
+	
 	$.ajax({
 		type:'POST',			
 		url: 'addRoom/' + type_id,
@@ -118,11 +125,86 @@ function addRoom(type_id){
 		dataType: 'json',
 		data: JSON.stringify({ 
 			checkin_date: checkin_date_val, 
-			checkout_date: checkout_date_val
+			checkout_date: checkout_date_val,
+			room_ids: room_ids_val
 	    }),
 		success: function (dat) {
 			console.log(dat)
+			let roomAdded = `
+				<div class="roomAdded">
+					<div class="room-added-details">
+						<div class="roomAdded-name" room_id='${dat.room_id}'>
+							${dat.name} / room_id: ${dat.room_id}
+						</div>
+						<div id="roomAdded-price" class="roomAdded-price" price="${dat.price_per_night}">
+							Price: ${dat.price_per_night}
+						</div>
+					</div>
+					<div id="trash-btn" onclick="removeRoom(${dat.room_id})">
+						<i class="fa-solid fa-trash"></i>
+					</div>
+				</div>
+				
+			`;
+			
+			let totalPrice = 0;
+			$('.roomAdded-price').each(function () {
+				let price = $(this).attr( "price" );
+				totalPrice += Number(price);
+			});
+			
+			totalPrice += dat.price_per_night;
+			totalPrice = totalPrice * $('#total-days').attr( "days" )
+			
+			$( '#roomList-totalPrice').html(totalPrice);
+			$( "#roomList-body" ).append( `${roomAdded}` );
 		}
 		
+	})
+}
+
+// Remove Room
+function removeRoom(room_id){
+	
+	let room_ids_val = [];
+	$('.roomAdded-name').each(function () {
+		let room_id = $(this).attr( "room_id" );
+		room_ids_val.push(Number(room_id));
+	});
+	
+	$.ajax({
+		type:'POST',			
+		url: 'removeRoom/' + room_id,
+		contentType: "application/json",
+		dataType: 'json',
+		data: JSON.stringify({ 
+			room_ids: room_ids_val
+	    }),
+	    success: function (dat) {
+			console.log(dat);
+			let roomsAddedHtml = '';
+			let totalPrice = 0;
+			for(i = 0;i<dat.length;i++){
+				totalPrice += dat[i].price_per_night;
+				roomsAddedHtml += `
+					<div class="roomAdded">
+						<div class="room-added-details">
+							<div class="roomAdded-name" room_id='${dat[i].room_id}'>
+								${dat[i].name} / room_id: ${dat[i].room_id}
+							</div>
+							<div id="roomAdded-price" class="roomAdded-price" price="${dat[i].price_per_night}">
+								Price: ${dat[i].price_per_night}
+							</div>
+						</div>
+						<div id="trash-btn" onclick="removeRoom(${dat[i].room_id})">
+							<i class="fa-solid fa-trash"></i>
+						</div>
+					</div>
+				
+				`;
+			}
+			$( '#roomList-body' ).html(roomsAddedHtml);
+			$( '#roomList-totalPrice').html(totalPrice);
+		}
 	})
 }

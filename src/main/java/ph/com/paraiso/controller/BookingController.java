@@ -3,6 +3,7 @@ package ph.com.paraiso.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -55,11 +56,13 @@ public class BookingController {
 	@GetMapping("/booking")
 	public String bookingPage(Model model) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		double diff = Math.abs( (sdf.parse(sdf.format(new Date())).getTime()) - (sdf.parse(sdf.format(new Date())).getTime()) );
+		Date today = new Date();
+		Date tommorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
+		double diff = Math.abs( (today.getTime()) - (tommorrow.getTime()) );
 		
 		model.addAttribute("days", TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS) );
-		model.addAttribute("checkin_date" , sdf.format(new Date()));
-		model.addAttribute("checkout_date" , sdf.format(new Date()));
+		model.addAttribute( "checkin_date" , sdf.format(today) );
+		model.addAttribute( "checkout_date" , sdf.format(tommorrow) );
 		return "booking/Booking";
 	}
 	
@@ -77,14 +80,44 @@ public class BookingController {
 	@ResponseBody
 	@PostMapping(value = "addRoom/{type_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Room_joined addRoom(@PathVariable Integer type_id, @RequestBody JsonNode jsonNode) throws JsonMappingException, JsonProcessingException{
+		Room_joined room = new Room_joined();
+		
 		ObjectMapper mapper = new ObjectMapper();
 		DateRanges dateRanges = mapper.treeToValue(jsonNode, DateRanges.class);
 		
 		String checkin_date = dateRanges.getCheckout_date();
 		String checkout_date = dateRanges.getCheckout_date();
+		String room_ids = dateRanges.getRoom_ids();
 		
-		Room_joined room = bookServ.getRoom_joined(type_id);
+		List<Integer> room_ids_list = new ArrayList<Integer>();
+		if( !(room_ids.equals("")) ) {
+			String [] room_ids_array = room_ids.trim().split(" ");
+			
+			for(Integer i = 0; i<room_ids_array.length; i++) {
+				room_ids_list.add( Integer.parseInt(room_ids_array[i]) );
+			}
+		}
+		
+		if(room_ids.equals("")){
+			room = bookServ.getRoom_joined_first(type_id, checkin_date, checkout_date);
+		} else {
+			room = bookServ.getRoom_joined(type_id, checkin_date, checkout_date, room_ids_list);
+		}
+		
 		return room;
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "removeRoom/{room_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Room_joined> removeRoom(@PathVariable Integer room_id, @RequestBody Map<String, List<Integer>> room_ids_request) throws JsonMappingException, JsonProcessingException{
+		
+		List<Integer> room_ids = room_ids_request.get("room_ids");
+		
+		room_ids.remove(Integer.valueOf(room_id));
+		
+		List<Room_joined> newRoomsAdded = bookServ.getRoom_joinedList(room_ids);
+
+		return newRoomsAdded;
 	}
 	
 	@GetMapping("/AdminDashboard")
