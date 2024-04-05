@@ -1,4 +1,7 @@
 
+var modal = document.getElementById("loginModal");
+var loginBtn = document.getElementById("loginBtn");
+var signUpBtn = document.getElementById("signUpBtn");
 
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -37,5 +40,12 @@ sign_in_btn2.addEventListener("click", () => {
     container.classList.remove("loginSignUpMode2");
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var closeButton = document.querySelector('.close-btn');
+  var modal = document.getElementById('loginModal');
 
+  closeButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+  });
 
+});

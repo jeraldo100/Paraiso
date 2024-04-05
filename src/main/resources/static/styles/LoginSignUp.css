@@ -1,6 +1,6 @@
 @charset "UTF-8";
  .login-signup-modal {
-  
+    display: none;
     position: fixed;
     z-index: 9999;
     left: 0;
