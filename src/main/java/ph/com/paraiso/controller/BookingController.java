@@ -2,6 +2,8 @@ package ph.com.paraiso.controller;
 
 import java.sql.Date;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -108,13 +110,6 @@ public class BookingController {
 		
 	}
 	
-	
-	@GetMapping("/AdminDashboard")
-	public String adminDashboardPage() {
-		return "dashboardAdmin/Dashboard";
-	}
-	
-	
 	@GetMapping("/UserEditProfile")
 	public String userEditProfile() {
 		return "dashboardUser/userEditProfile";
@@ -125,6 +120,18 @@ public class BookingController {
 		return "dashboardUser/userProfile";
 	}
 
-	
+	@PostMapping("/updateStatus/{bookingId}")
+	public ResponseEntity<String> updateStatus(@PathVariable("bookingId") Integer bookingId, @RequestParam("status") String status) {
+	    Booking booking = bookingService.getBookingById(bookingId);
+	    if (booking != null) {
+	        booking.setStatus(status);
+	        bookingService.updateBooking(booking);
+	        return new ResponseEntity<>("Status updated successfully", HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("Booking not found", HttpStatus.NOT_FOUND);
+	    }
+	    
+	    
+	}
 	
 }

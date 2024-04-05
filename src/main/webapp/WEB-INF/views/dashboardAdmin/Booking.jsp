@@ -18,7 +18,7 @@
   <!-- CSS LINK -->
 
   <link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" />
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -75,8 +75,8 @@
 	                            <td><c:out value="${bookings.children }" /></td>
 	                            <td><c:out value="${bookings.status }" /></td>
 	                            <td>
-	                              <button class="btn btn-success m-1">Approve</button>
-	                              <button class="btn btn-danger m-1">
+	                              <button class="btn btn-success m-1 approve-btn" value="Approved" data-booking-id="${bookings.booking_id }" >Approve</button>
+	                              <button class="btn btn-danger m-1 disapprove-btn" value="Disapproved" data-booking-id="${bookings.booking_id }">
 	                                Disapprove
 	                              </button>
 	                            </td>
@@ -102,21 +102,12 @@
       </div>
     </div>
   </div>
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script> -->
 </body>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-  integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> -->
 
 <!-- IONICONS LINK -->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-<script src="paraiso.js"></script>
+<script src="/js/paraiso.js"></script>
 
 </html>
