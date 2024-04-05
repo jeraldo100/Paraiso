@@ -33,14 +33,13 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Users</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-3">
-                  <button type="button" class="btn btn-success">Print</button>
-                  <button type="button" class="btn btn-success">Add</button>
+                  <a href="#" type="button" class="btn btn-success">Print</a>
+                  <a href="addUser" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>
 
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
-                  <a href="#" class="text-decoration-none">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
                       <table class="table table-hover table-responsive">
@@ -75,19 +74,18 @@
                             <td><c:out value="${users.phone }" /></td>
                             <td><c:out value="${users.email }" /></td>
                             <td>
-                              <button type="button" class="btn btn-success m-1">
+                              <a href="/editUser/${users.user_id }" type="button" class="btn btn-success m-1">
                                 Edit
-                              </button>
-                              <button type="button" class="btn btn-danger m-1">
+                              </a>
+                              <a href="/deleteUser/${users.user_id }" type="button" class="btn btn-danger m-1">
                                 Delete
-                              </button>
+                              </a>
                             </td>
                           </tr>
                         	</c:forEach>	
                         </tbody>
                       </table>
                     </div>
-                  </a>
                 </div>
               </div>
             </div>

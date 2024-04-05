@@ -37,14 +37,6 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <a href="#" type="button" class="btn btn-success">Print</a>
                   <a href="addBooking" type="button" class="btn btn-success">Add</a>
-                  <select name="" id="" class="form-select shadow-none bg-light w-auto">
-                    <option value="0">Select timeline</option>
-                    <option value="1">Past 30 Days</option>
-                    <option value="2">Past 60 Days</option>
-                    <option value="3">Past 90 Days</option>
-                    <option value="4">Past 1 Year</option>
-                    <option value="5">All time</option>
-                  </select>
                 </div>
               </div>
 

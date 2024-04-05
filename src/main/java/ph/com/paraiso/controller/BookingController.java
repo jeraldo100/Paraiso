@@ -109,12 +109,6 @@ public class BookingController {
 	}
 	
 	
-	@GetMapping("/booking")
-	public String bookingPage() {
-		
-		return "booking/Booking";
-	}
-	
 	@GetMapping("/AdminDashboard")
 	public String adminDashboardPage() {
 		return "dashboardAdmin/Dashboard";

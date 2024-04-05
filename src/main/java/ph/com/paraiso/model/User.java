@@ -2,6 +2,8 @@ package ph.com.paraiso.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class User {
 	private String account_type;
 	private String first_name;
 	private String last_name;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date_of_birth;
 	private String address;
 	private Long phone;
