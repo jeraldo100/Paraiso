@@ -35,8 +35,8 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Bookings</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button type="button" class="btn btn-success">Print</button>
-                  <button type="button" class="btn btn-success">Add</button>
+                  <a href="#" type="button" class="btn btn-success">Print</a>
+                  <a href="addBooking" type="button" class="btn btn-success">Add</a>
                   <select name="" id="" class="form-select shadow-none bg-light w-auto">
                     <option value="0">Select timeline</option>
                     <option value="1">Past 30 Days</option>
@@ -50,7 +50,6 @@
 
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
-                  <a href="#" class="text-decoration-none">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
                       <table class="table table-hover">
@@ -90,12 +89,12 @@
 	                              </button>
 	                            </td>
 	                            <td>
-	                              <button type="button" class="btn btn-success m-1">
+	                              <a href="/editBooking/${bookings.booking_id }" type="button" class="btn btn-success m-1">
 	                                Edit
-	                              </button>
-	                              <button type="button" class="btn btn-danger m-1">
+	                              </a>
+	                              <a href="/deleteBooking/${bookings.booking_id }" type="button" class="btn btn-danger m-1">
 	                                Delete
-	                              </button>
+	                              </a>
 	                            </td>
 	                          </tr>
                         </c:forEach>
@@ -103,7 +102,6 @@
                         </tbody>
                       </table>
                     </div>
-                  </a>
                 </div>
               </div>
             </div>

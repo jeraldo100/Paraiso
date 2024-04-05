@@ -69,10 +69,10 @@
 															<td><c:out value="${vouchers.amount }" /></td>
 															<td><c:out value="${vouchers.validation }" /></td>
 															<td>
-																<a href="#" type="button" class="btn btn-success">
+																<a href="/editVoucher/${vouchers.voucher_id }" type="button" class="btn btn-success">
 																	Edit</a>
-																<button type="button" class="btn btn-danger">
-																	Delete</button>
+																<a href="deleteVoucher/${vouchers.voucher_id}" type="button" class="btn btn-danger">
+																	Delete</a>
 															</td>
 														</tr>
 													</c:forEach>

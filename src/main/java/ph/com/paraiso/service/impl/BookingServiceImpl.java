@@ -1,6 +1,7 @@
 package ph.com.paraiso.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,7 @@ import ph.com.paraiso.service.BookingService;
 @Service
 public class BookingServiceImpl implements BookingService {
 
-	@Autowired
-	RoomDao roomDao;
-	
+
 	private BookingRepository bookingRepository;
 
 	public BookingServiceImpl(BookingRepository bookingRepository) {
@@ -29,7 +28,44 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> getAllBookings() {
 		return bookingRepository.findAll();
 	}
-	
+
+
+
+	@Override
+	public Booking addBooking(Booking booking) {
+		
+		return bookingRepository.save(booking);
+	}
+
+
+
+	@Override
+	public Booking updateBooking(Booking booking) {
+
+		return bookingRepository.save(booking);
+	}
+
+
+
+	@Override
+	public Booking getBookingById(Integer booking_id) {
+
+		return bookingRepository.findById(booking_id).get();
+	}
+
+
+
+	@Override
+	public void deleteById(Integer booking_id) {
+
+		bookingRepository.deleteById(booking_id);
+		
+	}
+
+
+
+
+
 
 	
 	

@@ -16,6 +16,19 @@ public class VoucherDaoImpl implements VoucherDao {
 
 		return voucherRepository.save(voucher);
 	}
+
+	@Override
+	public Voucher getVoucherById(Integer voucher_id) {
+
+		return voucherRepository.findById(voucher_id).get();
+	}
+
+	@Override
+	public Voucher updateVoucher(Voucher voucher) {
+
+		return voucherRepository.save(voucher);
+	}
+
 	
 
 

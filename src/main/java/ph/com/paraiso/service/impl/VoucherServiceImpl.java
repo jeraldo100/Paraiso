@@ -35,6 +35,34 @@ public class VoucherServiceImpl implements VoucherService {
 		return voucherRepository.save(voucher);
 	}
 
+
+
+	@Override
+	public Voucher getVoucherById(Integer voucher_id) {
+
+		return voucherRepository.findById(voucher_id).get();
+	}
+
+
+
+	@Override
+	public Voucher updateVoucher(Voucher voucher) {
+
+		return voucherRepository.save(voucher);
+	}
+
+
+
+	@Override
+	public void deleteVoucher(Integer voucher_id) {
+
+		voucherRepository.deleteById(voucher_id);
+		
+	}
+
+
+
+
 	
 	
 }
