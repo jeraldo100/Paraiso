@@ -54,72 +54,85 @@ pageEncoding="UTF-8"%>
         <div class="login-container">
           <span class="close-btn fa-solid fa-x"></span>
           <div class="signin-signup">
-            <form action="" class="sign-in-form">
+            <form class="sign-in-form" action="user/auth" method="post">
               <h2 class="login-title">Login</h2>
               <div class="login-signup-input">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username" />
+                <input type="text" name="email" placeholder="Email" />
               </div>
               <div class="login-signup-input">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" />
               </div>
-              <input type="submit" value="Login" class="login-signup-btn" />
+
+              <input
+                href="register"
+                type="submit"
+                value="Submit"
+                class="login-signup-btn"
+              />
+              <h3 class="err-msg">${error}</h3>
 
               <p class="account-text">
                 Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a>
               </p>
             </form>
 
-            <form action="" class="sign-up-form">
+            <form
+              action="/user/registration"
+              method="post"
+              role="form"
+              class="sign-up-form"
+            >
               <h2 class="signup-title">Sign up</h2>
 
               <div class="column-container">
                 <div class="signup-input signup-col1">
                   <i class="fas fa-user"></i>
-                  <input type="text" placeholder="First Name" />
+                  <input type="text" name="firstName" id="firstName" placeholder="First Name" value="${user.firstName}" />
                 </div>
 
                 <div class="signup-input signup-col2">
                   <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Last Name" />
+                  <input type="text" name="lastName" id="lastName" placeholder="Last Name" value="${user.lastName}" />
                 </div>
               </div>
               <div class="signup-input">
                 <i class="fa-solid fa-envelope"></i>
-                <input type="text" placeholder="Email" />
+                <input type="text" name="email" id="email"  placeholder="Email" />
               </div>
+
               <div class="signup-input">
                 <i class="fa-regular fa-user"></i>
-                <input type="text" placeholder="Username" />
+                <input type="text" name="username" id="username" placeholder="Username" />
               </div>
 
               <div class="signup-input">
                 <i class="fa-solid fa-location-dot"></i>
-                <input type="text" placeholder="Address" />
+                <input type="text" name="address" id="address" placeholder="Address" />
               </div>
 
               <div class="column-container">
                 <div class="signup-input signup-col1">
                   <i class="fa-solid fa-calendar"></i>
-                  <input type="text" placeholder="Date of Birth" />
+                  <input
+                    type="text" name="dateOfBirth"
+                    placeholder="Date of Birth"
+                    onfocus="(this.type='date')"
+                  />
                 </div>
 
                 <div class="signup-input signup-col2">
                   <i class="fa-solid fa-phone"></i>
-                  <input type="text" placeholder="Phone" />
+                  <input type="text" name="phone" id="phone" placeholder="Phone" />
                 </div>
               </div>
 
               <div class="signup-input">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
+                <input type="password" name="password" id="password" placeholder="Password" />
               </div>
-              <div class="signup-input">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Confirm Password" />
-              </div>
-              <input type="submit" value="Sign up" class="signup-btn" />
+              <input type="submit" value="Submit" class="signup-btn" />
               <p class="account-text">
                 Already have an account?
                 <a href="#" id="sign-in-btn2">Sign in</a>

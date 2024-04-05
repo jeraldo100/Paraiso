@@ -140,7 +140,7 @@ form.sign-up-form {
 }
 
 .signup-input input {
-    flex: 6;
+    flex: 5;
     background: none;
     border: none;
     outline: none;
@@ -198,6 +198,7 @@ form.sign-up-form {
     outline: none;
     width: 100%;
     margin-left: 20px;
+    margin-right: 20px;
     font-size: 18px;
     font-weight: 600;
     color: #444;

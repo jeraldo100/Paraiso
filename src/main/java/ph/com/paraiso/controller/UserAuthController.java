@@ -34,9 +34,10 @@ public class UserAuthController {
 	
 	@PostMapping("/registration")
 	public String saveUser(@ModelAttribute("user") UserDto userDto, Model model) {
+		userDto.setAccountType("USER");
 		userSvc.save(userDto);
 		model.addAttribute("message", "Registered Successfully");
-		return "home";
+		return "registration";
 	}
 	
 	@GetMapping("/login")
@@ -58,8 +59,6 @@ public class UserAuthController {
 		if(result.equals("success")) {
 			returnPg = "mainPage";
 		}
-		
-	
 		return returnPg;
 	}
 	

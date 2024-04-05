@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User save(UserDto userDto) {
-		User user = new User(userDto.getUsername(), userDto.getPassword(), userDto.getAccountType(), userDto.getFirstName(), userDto.getLastName(), userDto.getDateOfBirth(), userDto.getAddress(), userDto.getPhone(), userDto.getEmail());
+		User user = new User(userDto.getFirstName(), userDto.getLastName(), userDto.getUsername(), userDto.getEmail(), userDto.getAddress(), userDto.getAccountType(), userDto.getDateOfBirth(), userDto.getPhone(), userDto.getPassword());
 		return userRepository.save(user);
-	}
+}
 }

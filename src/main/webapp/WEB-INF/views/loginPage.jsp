@@ -17,7 +17,7 @@
         <div class="login-container">
           <span class="close-btn fa-solid fa-x"></span>
           <div class="signin-signup">
-            <form  class="sign-in-form" action="auth" method="post">
+            <form  class="sign-in-form" action="/auth" method="post">
               <h2 class="login-title">Login</h2>
               <div class="login-signup-input">
                 <i class="fas fa-user"></i>

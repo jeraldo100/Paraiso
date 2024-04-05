@@ -9,10 +9,9 @@ public interface UserDao {
 	public User authenticate(User user);
 	public List<User> getUsers();
 	
-	//add user
+
 	public User addUser(User user);
 	
-	//update
 	public User getUserById(Long userid);
 	public User updateUser(User user);
 	

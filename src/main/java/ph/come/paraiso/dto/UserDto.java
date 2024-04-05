@@ -18,44 +18,22 @@ public class UserDto {
 	private BigInteger phone;
 	private String password;
 	
+	 public UserDto() {
+		 super();
+	 }
 	
-   
-	public UserDto(String username, String password, String accountType, String firstName, String lastName,
-			Date dateOfBirth, String address, BigInteger phone, String email) {
+	public UserDto(String firstName, String lastName, String email, String username, String address, String accountType,
+			Date dateOfBirth, BigInteger phone, String password) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.accountType = accountType;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
-		this.address = address;
-		this.phone = phone;
 		this.email = email;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getAccountType() {
-		return accountType;
-	}
-
-	public void setAccountType(String accountType) {
+		this.address = address;
 		this.accountType = accountType;
+		this.dateOfBirth = dateOfBirth;
+		this.phone = phone;
+		this.password = password;
 	}
 
 	public String getFirstName() {
@@ -74,12 +52,20 @@ public class UserDto {
 		this.lastName = lastName;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getAddress() {
@@ -90,6 +76,22 @@ public class UserDto {
 		this.address = address;
 	}
 
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
 	public BigInteger getPhone() {
 		return phone;
 	}
@@ -98,13 +100,12 @@ public class UserDto {
 		this.phone = phone;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
 	
 }
