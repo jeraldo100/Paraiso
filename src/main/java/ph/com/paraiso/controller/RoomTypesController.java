@@ -71,6 +71,9 @@ public class RoomTypesController {
 		return "dashboardAdmin/RoomTypeCRUD/EditRoom";
 	}
 	
+	@PostMapping("/update/{type_id}")
+	public String updateRoomTypes(@PathVariable("type_id") Integer type_id,
+			@ModelAttribute("room")
 	
 	
 }
