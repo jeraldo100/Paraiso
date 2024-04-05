@@ -38,13 +38,12 @@
 								<h1>Discounts</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success">Print</button>
-									<button type="button" class="btn btn-success">Add</button>
+									<a href="/addVoucher" type="button" class="btn btn-success">Add</a>
 								</div>
 							</div>
 
 							<div class="row mb-4">
 								<div class="col-md-12 b-4">
-									<a href="#" class="text-decoration-none">
 										<div
 											class="card text-center p-3 text-success table-responsive"
 											style="max-height: 100%; overflow-y: auto">
@@ -70,8 +69,8 @@
 															<td><c:out value="${vouchers.amount }" /></td>
 															<td><c:out value="${vouchers.validation }" /></td>
 															<td>
-																<button type="button" class="btn btn-success">
-																	Edit</button>
+																<a href="#" type="button" class="btn btn-success">
+																	Edit</a>
 																<button type="button" class="btn btn-danger">
 																	Delete</button>
 															</td>
@@ -80,7 +79,6 @@
 												</tbody>
 											</table>
 										</div>
-									</a>
 								</div>
 							</div>
 						</div>

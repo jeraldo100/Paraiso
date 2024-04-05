@@ -43,6 +43,15 @@ public class RoomTypesServiceImpl implements RoomTypesService {
 		return roomTypesRepository.findById(type_id).get();
 	}
 
+	@Override
+	public void deleteById(Integer type_id) {
+
+		roomTypesRepository.deleteById(type_id);
+		
+	}
+
+
+
 
 
 

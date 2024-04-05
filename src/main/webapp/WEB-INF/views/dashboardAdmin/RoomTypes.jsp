@@ -75,8 +75,8 @@
 															<td>
 																<a href="/editRoomTypes/${room_types.type_id }" type="button" class="btn btn-success m-1">
 																	Edit</a>
-																<button type="button" class="btn btn-danger m-1">
-																	Delete</button>
+																<a href="/deleteType/${room_types.type_id}" type="button" class="btn btn-danger m-1">
+																	Delete</a>
 															</td>
 														</tr>
 													</c:forEach>

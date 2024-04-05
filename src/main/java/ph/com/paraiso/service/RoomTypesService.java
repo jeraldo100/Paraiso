@@ -15,4 +15,7 @@ public interface RoomTypesService {
 	//Edit
 	public Room_type updateRoomTypes(Room_type room_types);
 	public Room_type getRoomTypesById(Integer type_id);
+	
+	//delete
+	public void deleteById(Integer type_id);
 }

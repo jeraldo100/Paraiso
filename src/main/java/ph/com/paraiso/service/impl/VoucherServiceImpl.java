@@ -28,6 +28,13 @@ public class VoucherServiceImpl implements VoucherService {
 		return voucherRepository.findAll();
 	}
 
+
+
+	@Override
+	public Voucher addVoucher(Voucher voucher) {
+		return voucherRepository.save(voucher);
+	}
+
 	
 	
 }

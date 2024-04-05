@@ -8,4 +8,6 @@ public interface VoucherService {
 
 	List<Voucher> getAllVouchers();
 	
+	public Voucher addVoucher(Voucher voucher);
+	
 }

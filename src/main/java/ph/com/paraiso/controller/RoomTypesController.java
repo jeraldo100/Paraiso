@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +38,7 @@ public class RoomTypesController {
 		
 		model.addAttribute("room_type", room_type);
 		
-		return "dashboardAdmin/RoomTypeCRUD/AddRoom";
+		return "dashboardAdmin/RoomTypeCRUD/AddRoomType";
 	}
 	
 	@PostMapping("/addRoomTypes/save")
@@ -68,12 +69,35 @@ public class RoomTypesController {
 	@GetMapping("/editRoomTypes/{type_id}")
 	public String editRoomTypes(@PathVariable("type_id") Integer type_id, Model model) {
 		model.addAttribute("room_types", roomTypesService.getRoomTypesById(type_id));
-		return "dashboardAdmin/RoomTypeCRUD/EditRoom";
+		return "dashboardAdmin/RoomTypeCRUD/EditRoomType";
 	}
 	
-	@PostMapping("/update/{type_id}")
+	@PostMapping("/updates/{type_id}")
 	public String updateRoomTypes(@PathVariable("type_id") Integer type_id,
-			@ModelAttribute("room")
+			@ModelAttribute("room_types") Room_type room_types,
+			Model model) {
+		
+		Room_type existingRoom_type = roomTypesService.getRoomTypesById(type_id);
+		existingRoom_type.setType_id(type_id);
+		existingRoom_type.setName(room_types.getName());
+		existingRoom_type.setDescription(room_types.getDescription());
+		existingRoom_type.setPrice_per_night(room_types.getPrice_per_night());
+		existingRoom_type.setCapacity(room_types.getCapacity());
+		existingRoom_type.setBeds(room_types.getBeds());
+		existingRoom_type.setBathrooms(room_types.getBathrooms());
+		
+		roomTypesService.updateRoomTypes(existingRoom_type);
+		return "redirect:/AdminRoomTypes";
+		
+		
+	}
+	
+	@GetMapping("deleteType/{type_id}")
+	public String deleteType(@PathVariable("type_id") Integer type_id) {
+		roomTypesService.deleteById(type_id);
+		
+		return "redirect:/AdminRoomTypes";
+	}
 	
 	
 }

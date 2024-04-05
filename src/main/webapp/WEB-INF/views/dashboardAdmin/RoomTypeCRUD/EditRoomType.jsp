@@ -14,9 +14,9 @@
   <div class="row justify-content-center vertical-center">
     <div class="col-lg-6 col-md-6">
       <div class="card">
-        <h1 class="text-center p-3">Edit Room</h1>
+        <h1 class="text-center p-3">Edit Room Type</h1>
         <div class="card-body">
-          <form action="/update/${room_types.type_id}" method="post">
+          <form action="/updates/${room_types.type_id}" method="post">
             <div class="form-group">
               <label>Name :</label>
               <input type="text" name="name" id="name" placeholder="Enter Name of Room" class="form-control" />
