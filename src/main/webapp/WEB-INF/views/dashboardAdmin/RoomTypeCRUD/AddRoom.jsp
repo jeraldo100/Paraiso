@@ -16,27 +16,27 @@
           <form action="addRoomTypes/save" method="post">
             <div class="form-group">
               <label>Name :</label>
-              <input type="text" name="hotel_id" id="name" placeholder="Enter Name of Room" class="form-control" />
+              <input type="text" name="name" id="name" placeholder="Enter Name of Room" class="form-control" />
             </div>
             <div class="form-group">
               <label>Description :</label>
-              <input type="text" name="type_id" id="description" placeholder="Enter Description" class="form-control" />
+              <input type="text" name="description" id="description" placeholder="Enter Description" class="form-control" />
             </div>
             <div class="form-group">
               <label>Price per Night :</label>
-              <input type="text" name="status" id="price_per_night" placeholder="Enter Price per night" class="form-control" />
+              <input type="number" name="price_per_night" id="price_per_night" placeholder="Enter Price per night" class="form-control" />
             </div>
             <div class="form-group">
               <label>Capacity :</label>
-              <input type="text" name="hotel_id" id="capacity" placeholder="Enter Capacity" class="form-control" />
+              <input type="number" name="capacity" id="capacity" placeholder="Enter Capacity" class="form-control" />
             </div>
             <div class="form-group">
               <label>Beds :</label>
-              <input type="text" name="type_id" id="beds" placeholder="Enter Number of Beds" class="form-control" />
+              <input type="number" name="beds" id="beds" placeholder="Enter Number of Beds" class="form-control" />
             </div>
             <div class="form-group">
               <label>Bathrooms :</label>
-              <input type="text" name="status" id="bathrooms" placeholder="Enter Number of Bathrooms" class="form-control" />
+              <input type="number" name="bathrooms" id="bathrooms" placeholder="Enter Number of Bathrooms" class="form-control" />
             </div>
             <div class="box-footer">
               <a type="button" href="/AdminRoomTypes" class="btn btn-danger float-end m-3">Back</a>

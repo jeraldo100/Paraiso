@@ -31,8 +31,8 @@ public class RoomServiceImpl implements RoomService {
 
 	@Override
 	public Room addRoom(Room room) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return roomRepository.save(room);
 	}
 
 

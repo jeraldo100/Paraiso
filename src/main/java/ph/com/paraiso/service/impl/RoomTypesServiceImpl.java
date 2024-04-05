@@ -2,6 +2,7 @@ package ph.com.paraiso.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ph.com.paraiso.model.Room_type;
@@ -11,6 +12,7 @@ import ph.com.paraiso.service.RoomTypesService;
 @Service
 public class RoomTypesServiceImpl implements RoomTypesService {
 
+	@Autowired
 	private RoomTypesRepository roomTypesRepository;
 	
 	public RoomTypesServiceImpl(RoomTypesRepository roomTypesRepository) {
@@ -26,9 +28,22 @@ public class RoomTypesServiceImpl implements RoomTypesService {
 
 	@Override
 	public Room_type addRoomTypes(Room_type room_types) {
-		// TODO Auto-generated method stub
-		return null;
+		return roomTypesRepository.save(room_types);
 	}
+
+	@Override
+	public Room_type updateRoomTypes(Room_type room_types) {
+
+		return roomTypesRepository.save(room_types);
+	}
+
+	@Override
+	public Room_type getRoomTypesById(Integer type_id) {
+
+		return roomTypesRepository.findById(type_id).get();
+	}
+
+
 
 
 	
