@@ -7,5 +7,4 @@ import ph.com.paraiso.model.Booking;
 public interface DashboardRepository extends JpaRepository<Booking, Integer> {
 
 	
-	
 }
