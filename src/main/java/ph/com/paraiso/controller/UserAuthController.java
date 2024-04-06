@@ -1,5 +1,6 @@
 package ph.com.paraiso.controller;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import ph.com.config.SessionManager;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.service.UserService;
 import ph.come.paraiso.dto.UserDto;
 
 @Controller
-
 public class UserAuthController {
 	
 	@Autowired
@@ -27,7 +30,7 @@ public class UserAuthController {
 	
 	@PostMapping("/registration")
 	public String saveUser(@ModelAttribute("user") UserDto userDto, Model model) {
-		userDto.setAccountType("User");
+		userDto.setAccountType("USER");
 		userSvc.save(userDto);
 		model.addAttribute("message", "Registered Successfully");
 		return "registration";
@@ -40,7 +43,7 @@ public class UserAuthController {
 	
 	
 	@PostMapping("/auth")
-	public String authenticate(@RequestParam String email, String password, Model model) {
+	public String authenticate(@RequestParam String email, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
 		String returnPg = "loginPage";
 		
 		User user = new User(email, password);
@@ -50,6 +53,13 @@ public class UserAuthController {
 		model.addAttribute("error", "Invalid Credentials");
 		model.addAttribute("users", users);
 		if(result.equals("success")) {
+			// Generate session ID (you might want to use a more secure method)
+	        String sessionId = UUID.randomUUID().toString();
+	        // Set session cookie
+	        SessionManager.createSessionCookie(response, sessionId);
+	        
+	        // You may also want to store the session ID in the database or cache along with the user details for further verification
+	        
 			returnPg = "mainPage";
 		}
 		return returnPg;

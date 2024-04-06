@@ -130,10 +130,6 @@ pageEncoding="UTF-8"%>
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Password" />
               </div>
-               <div class="signup-input">
-                <i class="fas fa-lock"></i>
-                <input type="text" name="accountType" id="accountType" placeholder="Account Type" />
-              </div>
               <input type="submit" value="Submit" class="signup-btn" />
               <p class="account-text">
                 Already have an account?
