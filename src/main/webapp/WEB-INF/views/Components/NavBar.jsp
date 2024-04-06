@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
         <div class="login-container">
           <span class="close-btn fa-solid fa-x"></span>
           <div class="signin-signup">
-            <form class="sign-in-form" action="user/auth" method="post">
+            <form class="sign-in-form" action="auth" method="post">
               <h2 class="login-title">Login</h2>
               <div class="login-signup-input">
                 <i class="fas fa-user"></i>
@@ -79,7 +79,7 @@ pageEncoding="UTF-8"%>
             </form>
 
             <form
-              action="/user/registration"
+              action="registration"
               method="post"
               role="form"
               class="sign-up-form"
@@ -101,12 +101,10 @@ pageEncoding="UTF-8"%>
                 <i class="fa-solid fa-envelope"></i>
                 <input type="text" name="email" id="email"  placeholder="Email" />
               </div>
-
               <div class="signup-input">
                 <i class="fa-regular fa-user"></i>
                 <input type="text" name="username" id="username" placeholder="Username" />
               </div>
-
               <div class="signup-input">
                 <i class="fa-solid fa-location-dot"></i>
                 <input type="text" name="address" id="address" placeholder="Address" />
@@ -131,6 +129,10 @@ pageEncoding="UTF-8"%>
               <div class="signup-input">
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Password" />
+              </div>
+               <div class="signup-input">
+                <i class="fas fa-lock"></i>
+                <input type="text" name="accountType" id="accountType" placeholder="Account Type" />
               </div>
               <input type="submit" value="Submit" class="signup-btn" />
               <p class="account-text">

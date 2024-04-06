@@ -30,18 +30,18 @@ public class User {
 		super();
 	}
 	
-	public User(String firstName, String lastName, String email, String username, String address, String accountType,
-			Date dateOfBirth, BigInteger phone, String password) {
+	public User(String firstName, String lastName, String email, String username, String address,
+			Date dateOfBirth, BigInteger phone, String password, String accountType) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.address = address;
-		this.accountType = accountType;
 		this.dateOfBirth = dateOfBirth;
 		this.phone = phone;
 		this.password = password;
+		this.accountType = accountType;
 	}
 	
 	public User(String email, String password) {
