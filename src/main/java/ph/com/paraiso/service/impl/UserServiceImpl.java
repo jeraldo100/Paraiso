@@ -61,6 +61,16 @@ public class UserServiceImpl implements UserService{
 			userDao.deleteById(userid);
 			
 		}
+		
+		 @Override
+		    public String getAccountTypeByEmail(String email) {
+		        User user = userRepository.findByemail(email);
+		        if (user != null) {
+		            return user.getAccountType();
+		        } else {
+		            return null; 
+		        }
+		    }
 
 	@Override
 	public User save(UserDto userDto) {

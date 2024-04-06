@@ -28,5 +28,13 @@ public class SessionManager {
         }
         return null;
     }
+    
+    public static void deleteSessionCookie(HttpServletResponse response) {
+        Cookie cookie = new Cookie(SESSION_COOKIE_NAME, null);
+        cookie.setMaxAge(0); 
+        cookie.setPath("/"); 
+        response.addCookie(cookie);
+    }
+
 
 }

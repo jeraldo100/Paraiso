@@ -30,7 +30,7 @@ public class UserAuthController {
 	
 	@PostMapping("/registration")
 	public String saveUser(@ModelAttribute("user") UserDto userDto, Model model) {
-		userDto.setAccountType("USER");
+		userDto.setAccountType("ADMIN");
 		userSvc.save(userDto);
 		model.addAttribute("message", "Registered Successfully");
 		return "registration";
@@ -40,7 +40,6 @@ public class UserAuthController {
 	public String loginsignupPage() {
 		return "loginPage";
 	}
-	
 	
 	@PostMapping("/auth")
 	public String authenticate(@RequestParam String email, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -53,13 +52,14 @@ public class UserAuthController {
 		model.addAttribute("error", "Invalid Credentials");
 		model.addAttribute("users", users);
 		if(result.equals("success")) {
-			// Generate session ID (you might want to use a more secure method)
+
 	        String sessionId = UUID.randomUUID().toString();
-	        // Set session cookie
 	        SessionManager.createSessionCookie(response, sessionId);
-	        
-	        // You may also want to store the session ID in the database or cache along with the user details for further verification
-	        
+	        String accountType = userSvc.getAccountTypeByEmail(email);
+            if (accountType != null) {
+                model.addAttribute("accountType", accountType);
+                System.out.println("Account Type: " + accountType);
+            }
 			returnPg = "mainPage";
 		}
 		return returnPg;

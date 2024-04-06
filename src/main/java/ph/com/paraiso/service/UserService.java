@@ -11,9 +11,12 @@ public interface UserService {
 	public List<User> getUsers();
 	
 	public User addUser(User user);
+	
 
 	public User getUserById(Long userid);
 	public User updateUser(User user);
 	
 	public void deleteById(Long userid);
+	
+	public String getAccountTypeByEmail(String email);
 }
