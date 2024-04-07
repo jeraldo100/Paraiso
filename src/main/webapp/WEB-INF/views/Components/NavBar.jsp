@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
 						<div class="row justify-content-center align-items-center text-center mb-2 mt-2">
 						  <div class="col-12">
 							<img src="/images/NavBar/profile-icon.png" class="profile-icon" alt=""  />
-							<div class="mt-1 profile-name">Username</div>
+							<div class="mt-1 profile-name">${username}</div>
 						  </div>
 						</div>
 					  </div>
