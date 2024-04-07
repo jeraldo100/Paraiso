@@ -1,4 +1,4 @@
-package ph.com.paraiso.config;
+package ph.com.paraiso.session;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +47,10 @@ public class SessionManager {
         cookie.setMaxAge(0); 
         cookie.setPath("/"); 
         response.addCookie(cookie);
+    }
+    
+    public static void invalidateSession(String sessionId) {
+        sessionUserMap.remove(sessionId);
     }
 
 
