@@ -5,12 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+import ph.com.paraiso.config.SessionManager;
+
 
 @Controller
 public class ParaisoPagesController {
+
 	@GetMapping("/home")
-	public String homePage() {
-		return "home";
+	public String homePage(HttpServletRequest request, Model model) {
+	    String userEmail = SessionManager.getEmailFromSession(request);
+	    if (userEmail != null) {
+	    	 System.out.println("Email of the user with current session: " + userEmail);
+	        model.addAttribute("loggedIn", true);
+	    } else {
+	    	System.out.println("No user associated with the current session.");
+	        model.addAttribute("loggedIn", false);
+	    }
+ 
+	    return "home";
 	}
 	
     @GetMapping("/contact")

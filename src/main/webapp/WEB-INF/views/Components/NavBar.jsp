@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,7 +33,7 @@ pageEncoding="UTF-8"%>
       <div class="container main-menu">
         <div class="align-items-center justify-content-between d-flex">
           <div id="logo">
-            <a href="index.html"><img src=" " alt="" title="" /></a>
+            <a href="/home"><img src=" " alt="" /></a>
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
@@ -41,8 +42,33 @@ pageEncoding="UTF-8"%>
               <li><a href="/rooms">Our Rooms</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/contact">Contact</a></li>
-              <li><a class="login" id="loginBtn">Login</a></li>
-              <li><a class="ml-1 mr-2 signup" id="signUpBtn">Sign Up</a></li>
+              
+              
+<c:choose>
+    <c:when test="${loggedIn}">
+       <li class="menu-has-children">
+                <a class=" fa-solid fa-user text-white"><i class="fa-solid fa-chevron-down ml-1"></i></a>
+                <ul>
+					<div class="container">
+						<div class="row justify-content-center align-items-center text-center mb-2 mt-2">
+						  <div class="col-12">
+							<img src="/images/NavBar/profile-icon.png" class="profile-icon" alt=""  />
+							<div class="mt-1 profile-name">Username</div>
+						  </div>
+						</div>
+					  </div>
+                  <li><a href="blog-home.html">User Dashboard</a></li>
+                  <li><a href="blog-single.html">Logout</a></li>
+                </ul>
+              </li>
+    </c:when>
+    <c:otherwise>
+
+        <li><a class="login" id="loginBtn">Login</a></li>
+        <li><a class="ml-1 mr-2 signup" id="signUpBtn">Sign Up</a></li>
+    </c:otherwise>
+</c:choose>
+
             </ul>
           </nav>
         </div>

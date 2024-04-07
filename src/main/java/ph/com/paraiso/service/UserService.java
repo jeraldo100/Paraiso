@@ -19,4 +19,5 @@ public interface UserService {
 	public void deleteById(Long userid);
 	
 	public String getAccountTypeByEmail(String email);
+	public String getUsernameByEmail(String email);
 }

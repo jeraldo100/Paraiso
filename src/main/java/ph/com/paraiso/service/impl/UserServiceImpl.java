@@ -71,6 +71,16 @@ public class UserServiceImpl implements UserService{
 		            return null; 
 		        }
 		    }
+		 
+			@Override
+			public String getUsernameByEmail(String email) {
+		        User user = userRepository.findByemail(email);
+		        if (user != null) {
+		            return user.getUsername();
+		        } else {
+		            return null; 
+		        }
+			}
 
 	@Override
 	public User save(UserDto userDto) {
@@ -80,4 +90,6 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(encrypedPwd);
 		return userRepository.save(user);
 }
+
+
 }
