@@ -45,7 +45,7 @@
 										<a href="#" class="text-decoration-none">
 											<div class="card text-center p-3 text-success">
 												<h6 class="pt-3">Bookings</h6>
-												<h1>5</h1>
+												<h1><%= request.getAttribute("totalBooking") %></h1>
 											</div>
 										</a>
 									</div>
@@ -80,7 +80,6 @@
 														<th>Adults</th>
 														<th>Children</th>
 														<th>Status</th>
-														<th>Notes</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -96,7 +95,6 @@
 															<td><c:out value="${bookings.adults }" /></td>
 															<td><c:out value="${bookings.children }" /></td>
 															<td><c:out value="${bookings.status }" /></td>
-															<td><c:out value="${bookings.notes }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -127,29 +125,21 @@
 														<th>Address</th>
 														<th>Phone</th>
 														<th>Email</th>
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="users" items="${users }">
+													<c:forEach var="users" items="${user }">
 														<tr>
-															<td><input type="checkbox" /></td>
-															<td><c:out value="${users.user_id }" /></td>
-															<td><c:out value="${users.username }" /></td>
-															<td><c:out value="${users.password }" /></td>
-															<td><c:out value="${users.account_type }" /></td>
-															<td><c:out value="${users.first_name }" /></td>
-															<td><c:out value="${users.last_name }" /></td>
-															<td><c:out value="${users.date_of_birth }" /></td>
-															<td><c:out value="${users.address }" /></td>
-															<td><c:out value="${users.phone }" /></td>
-															<td><c:out value="${users.email }" /></td>
-															<td>
-																<button type="button" class="btn btn-success">
-																	Edit</button>
-																<button type="button" class="btn btn-danger">
-																	Delete</button>
-															</td>
+															<td><c:out value="${user.user_id }" /></td>
+															<td><c:out value="${user.username }" /></td>
+															<td><c:out value="${user.password }" /></td>
+															<td><c:out value="${user.account_type }" /></td>
+															<td><c:out value="${user.first_name }" /></td>
+															<td><c:out value="${user.last_name }" /></td>
+															<td><c:out value="${user.date_of_birth }" /></td>
+															<td><c:out value="${user.address }" /></td>
+															<td><c:out value="${user.phone }" /></td>
+															<td><c:out value="${user.email }" /></td>
 														</tr>
 													</c:forEach>
 
@@ -178,13 +168,13 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="rooms" items="${rooms }">
+													<c:forEach var="rooms" items="${room }">
 														<tr>
 															<td><input type="checkbox" /></td>
-															<td><c:out value="${rooms.room_id }" /></td>
-															<td><c:out value="${rooms.hotel_id }" /></td>
-															<td><c:out value="${rooms.type_id }" /></td>
-															<td><c:out value="${rooms.status }" /></td>
+															<td><c:out value="${room.room_id }" /></td>
+															<td><c:out value="${room.hotel_id }" /></td>
+															<td><c:out value="${room.type_id }" /></td>
+															<td><c:out value="${room.status }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>
