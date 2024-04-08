@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,21 +62,21 @@
                         <tbody>
                         	<c:forEach var="users" items="${users }"> 
                         	<tr>
-                            <td><c:out value="${users.user_id }" /></td>
+                            <td><c:out value="${users.userid }" /></td>
                             <td><c:out value="${users.username }" /></td>
-                            <td><c:out value="${users.password }" /></td>
-                            <td><c:out value="${users.account_type }" /></td>
-                            <td><c:out value="${users.first_name }" /></td>
-                            <td><c:out value="${users.last_name }" /></td>
-                            <td><c:out value="${users.date_of_birth }" /></td>
+                            <td><c:out value="${fn:substring(users.password, 0, 6)}" /></td>
+                            <td><c:out value="${users.accountType }" /></td>
+                            <td><c:out value="${users.firstName }" /></td>
+                            <td><c:out value="${users.lastName }" /></td>
+                            <td><c:out value="${users.dateOfBirth }" /></td>
                             <td><c:out value="${users.address }" /></td>
                             <td><c:out value="${users.phone }" /></td>
                             <td><c:out value="${users.email }" /></td>
                             <td>
-                              <a href="/editUser/${users.user_id }" type="button" class="btn btn-success m-1">
+                              <a href="/editUser/${users.userid }" type="button" class="btn btn-success m-1">
                                 Edit
                               </a>
-                              <a href="/deleteUser/${users.user_id }" type="button" class="btn btn-danger m-1">
+                              <a href="/deleteUser/${users.userid }" type="button" class="btn btn-danger m-1">
                                 Delete
                               </a>
                             </td>

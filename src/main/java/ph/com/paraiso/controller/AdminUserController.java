@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ph.com.paraiso.model.User;
@@ -15,6 +16,7 @@ import ph.com.paraiso.service.AdminUserService;
 import ph.com.paraiso.service.UserService;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminUserController {
 
 	private AdminUserService adminUserService;
@@ -67,7 +69,7 @@ public class AdminUserController {
 		
 	}
 	
-	@GetMapping("/editUser/{user_id}")
+	@GetMapping("/editUser/{userid}")
 	public String editUser(@PathVariable("user_id") Integer user_id, Model model) {
 		
 		model.addAttribute("user", adminUserService.getUserById(user_id));
@@ -75,7 +77,7 @@ public class AdminUserController {
 		return "dashboardAdmin/UsersCRUD/EditUsers";
 	}
 	
-	@PostMapping("/updateUser/{user_id}")
+	@PostMapping("/updateUser/{userid}")
 	public String updateUser(@PathVariable("user_id") Integer user_id,
 			@ModelAttribute("user_id") User user,
 			Model model) {
@@ -97,7 +99,7 @@ public class AdminUserController {
 
 	}
 	
-	@GetMapping("/deleteUser/{user_id}")
+	@GetMapping("/deleteUser/{userid}")
 	public String deleteUser(@PathVariable("user_id") Integer user_id) {
 		adminUserService.deleteUserById(user_id);
 		return "redirect:/AdminUsers";

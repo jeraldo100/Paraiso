@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer user_id;
+    private Integer userid;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -23,7 +23,7 @@ public class User {
 	private String accountType;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
-	private BigInteger phone;
+	private String phone;
 	private String password;
 	
 	public User() {
@@ -31,7 +31,7 @@ public class User {
 	}
 	
 	public User(String firstName, String lastName, String email, String username, String address,
-			Date dateOfBirth, BigInteger phone, String password, String accountType) {
+			Date dateOfBirth, String phone, String password, String accountType) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -53,11 +53,11 @@ public class User {
 
 
 	public Integer getUserid() {
-		return user_id;
+		return userid;
 	}
 
 	public void setUserid(Integer user_id) {
-		this.user_id = user_id;
+		this.userid = user_id;
 	}
 
 	public String getFirstName() {
@@ -116,11 +116,11 @@ public class User {
 		this.dateOfBirth = date_of_birth;
 	}
 
-	public BigInteger getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(BigInteger phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
