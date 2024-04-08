@@ -1,5 +1,19 @@
 package ph.com.paraiso.dao;
 
-public interface UserDao {
+import java.util.List;
 
+
+import ph.com.paraiso.model.User;
+
+public interface UserDao {
+	public User authenticate(User user);
+	public List<User> getUsers();
+	
+
+	public User addUser(User user);
+	
+	public User getUserById(Long userid);
+	public User updateUser(User user);
+	
+	public void deleteById(Long userid);
 }
