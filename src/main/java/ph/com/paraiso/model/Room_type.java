@@ -14,6 +14,8 @@ public class Room_type {
 	private Integer capacity;
 	private Integer beds;
 	private Integer bathrooms;
+	@Transient
+	private Integer available;
 	
 	public Room_type() {
 		super();
@@ -40,6 +42,19 @@ public class Room_type {
 		this.capacity = capacity;
 		this.beds = beds;
 		this.bathrooms = bathrooms;
+	}
+
+	public Room_type(Integer type_id, String name, String description, Double price_per_night, Integer capacity,
+			Integer beds, Integer bathrooms, Integer available) {
+		super();
+		this.type_id = type_id;
+		this.name = name;
+		this.description = description;
+		this.price_per_night = price_per_night;
+		this.capacity = capacity;
+		this.beds = beds;
+		this.bathrooms = bathrooms;
+		this.available = available;
 	}
 
 	public Integer getType_id() {
@@ -98,11 +113,19 @@ public class Room_type {
 		this.bathrooms = bathrooms;
 	}
 
+	public Integer getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Integer available) {
+		this.available = available;
+	}
+
 	@Override
 	public String toString() {
 		return "Room_type [type_id=" + type_id + ", name=" + name + ", description=" + description
 				+ ", price_per_night=" + price_per_night + ", capacity=" + capacity + ", beds=" + beds + ", bathrooms="
-				+ bathrooms + "]";
+				+ bathrooms + ", available=" + available + "]";
 	}
 	
 }

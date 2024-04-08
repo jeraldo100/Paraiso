@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+.footerSection {
+ padding-top:3.5rem;
+padding-bottom: 1rem;
+ 
+}
+@media (max-width: 767.98px) {
+  .footerSection {
+    padding: 2em 0;
+  }
+}
+
+.footer {
+  font-size: 16px;
+  position: relative;
+}
+.footer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  opacity: 0.9;
+  background: #21a553;
+}
+
+.footerHeading {
+  font-weight: normal;
+  z-index: 999; 
+  position: relative;
+  color: #fff;
+  margin-bottom: 40px;
+  height: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Nunito Sans", Arial, sans-serif;
+}
+
+
+.footer .footerParagraph{
+  color: rgba(255, 255, 255, 0.887);
+  z-index: 999; 
+  margin-top: 50px;
+  position: relative;
+}
+
+.footer a{
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  z-index: 999; 
+  position: relative;
+}
+
+
+.footer a:hover {
+  color: #ffffff;
+}
+.footer .text:hover {
+  color: #ffffff;
+}
+.footer-social li {
+  list-style: none;
+  z-index: 999; 
+  position: relative;
+  margin: 0 10px 0 0;
+  display: inline-block;
+}
+.footer-social li a {
+  height: 50px;
+  width: 50px;
+  display: block;
+  z-index: 999; 
+  position: relative;
+  float: left;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  position: relative;
+}
+
+.footer-social li a:hover{
+  background: #12d065;
+}
+
+
+.footer-social li a span {
+  position: absolute;
+  font-size: 26px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.footer-block ul {
+  padding: 0;
+}
+.footer-block ul li,
+.footer-block ul li > a {
+  display: table;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+.footer-block ul li span {
+  color: rgba(255, 255, 255, 0.966);
+}
+.footer-block ul li .icon,
+.footer-block ul li .text {
+  display: table-cell;
+  vertical-align: top;
+  z-index: 999; 
+  position: relative;
+}
+.footer-block ul li .icon {
+  width: 40px;
+  font-size: 18px;
+  padding-top: 2px;
+  color: white;
+  z-index: 999; 
+  position: relative;
+}
+
+.footer-img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+  
+

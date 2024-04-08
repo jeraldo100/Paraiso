@@ -53,10 +53,10 @@ public class AdminUserController {
 		
 		user.setUsername(username);
 		user.setPassword(password);
-		user.setAccount_type(account_type);
-		user.setFirst_name(first_name);
-		user.setLast_name(last_name);
-		user.setDate_of_birth(date_of_birth);
+		user.setAccountType(account_type);
+		user.setFirstName(first_name);
+		user.setLastName(last_name);
+		user.setDateOfBirth(date_of_birth);
 		user.setAddress(address);
 		user.setPhone(phone);
 		user.setEmail(email);
@@ -83,10 +83,10 @@ public class AdminUserController {
 		User existingUser = adminUserService.getUserById(user_id);
 		existingUser.setUsername(user.getUsername());
 		existingUser.setPassword(user.getPassword());
-		existingUser.setAccount_type(user.getAccount_type());
-		existingUser.setFirst_name(user.getFirst_name());
-		existingUser.setLast_name(user.getLast_name());
-		existingUser.setDate_of_birth(user.getDate_of_birth());
+		existingUser.setAccountType(user.getAccountType());
+		existingUser.setFirstName(user.getFirstName());
+		existingUser.setLastName(user.getLastName());
+		existingUser.setDateOfBirth(user.getDateOfBirth());
 		existingUser.setAddress(user.getAddress());
 		existingUser.setPhone(user.getPhone());
 		existingUser.setEmail(user.getEmail());

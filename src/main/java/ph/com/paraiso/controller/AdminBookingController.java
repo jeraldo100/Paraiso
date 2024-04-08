@@ -112,15 +112,6 @@ public class AdminBookingController {
 			
 		}
 		
-		@GetMapping("/UserEditProfile")
-		public String userEditProfile() {
-			return "dashboardUser/userEditProfile";
-		}
-		
-		@GetMapping("/UserProfile")
-		public String userProfile() {
-			return "dashboardUser/userProfile";
-		}
 
 		@PostMapping("/updateStatus/{bookingId}")
 		public ResponseEntity<String> updateStatus(@PathVariable("bookingId") Integer bookingId, @RequestParam("status") String status) {

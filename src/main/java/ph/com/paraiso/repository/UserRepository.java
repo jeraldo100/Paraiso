@@ -1,10 +1,11 @@
 package ph.com.paraiso.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import ph.com.paraiso.model.User;
 
-public interface UserRepository extends JpaRepository<User, Integer>{
-	
-	/* public User findByusername(String username); */
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
+	public User findByemail(String email);
 }

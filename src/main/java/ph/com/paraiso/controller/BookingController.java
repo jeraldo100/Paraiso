@@ -120,42 +120,7 @@ public class BookingController {
 		return newRoomsAdded;
 	}
 	
-	@GetMapping("/AdminDashboard")
-	public String adminDashboardPage() {
-		return "dashboardAdmin/Dashboard";
-	}
 	
-	@GetMapping("/AdminBooking")
-	public String adminBooking() {
-		return "dashboardAdmin/Booking";
-	}
-	
-	@GetMapping("/AdminDiscount")
-	public String adminDiscount() {
-		return "dashboardAdmin/Discount";
-	}
-	
-	
-	
-	@GetMapping("/AdminUsers")
-	public String adminUsers() {
-		return "dashboardAdmin/Users";
-	}
-	
-	@GetMapping("/UserDashboard")
-	public String userDashboard() {
-		return "dashboardUser/userDashboard";
-	}
-	
-	@GetMapping("/UserEditProfile")
-	public String userEditProfile() {
-		return "dashboardUser/userEditProfile";
-	}
-	
-	@GetMapping("/UserProfile")
-	public String userProfile() {
-		return "dashboardUser/userProfile";
-	}
 	
 	private RoomService roomService;
 
@@ -164,10 +129,5 @@ public class BookingController {
 		this.roomService = roomService;
 	}
 	
-	@GetMapping("/AdminRooms")
-	public String adminRooms(Model model) {
-		model.addAttribute("rooms",roomService.getAllRooms());
-		return "dashboardAdmin/Rooms";
-	}
 	
 }

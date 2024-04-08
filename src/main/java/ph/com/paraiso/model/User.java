@@ -1,5 +1,6 @@
 package ph.com.paraiso.model;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,125 +8,72 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="USERS")
+@Table(name="USERS", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer user_id;
-	private String username;
-	private String password;
-	private String account_type;
-	private String first_name;
-	private String last_name;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date date_of_birth;
-	private String address;
-	private Long phone;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer user_id;
+	private String firstName;
+	private String lastName;
 	private String email;
+	private String username;
+	private String address;
+	private String accountType;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateOfBirth;
+	private BigInteger phone;
+	private String password;
 	
 	public User() {
 		super();
 	}
-
-	public User(Integer user_id, String username, String password, String account_type, String first_name,
-			String last_name, Date date_of_birth, String address, Long phone, String email) {
+	
+	public User(String firstName, String lastName, String email, String username, String address,
+			Date dateOfBirth, BigInteger phone, String password, String accountType) {
 		super();
-		this.user_id = user_id;
-		this.username = username;
-		this.password = password;
-		this.account_type = account_type;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.date_of_birth = date_of_birth;
-		this.address = address;
-		this.phone = phone;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
+		this.username = username;
+		this.address = address;
+		this.dateOfBirth = dateOfBirth;
+		this.phone = phone;
+		this.password = password;
+		this.accountType = accountType;
 	}
-
-	public User(String username, String password, String account_type, String first_name, String last_name,
-			Date date_of_birth, String address, Long phone, String email) {
+	
+	public User(String email, String password) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.account_type = account_type;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.date_of_birth = date_of_birth;
-		this.address = address;
-		this.phone = phone;
 		this.email = email;
+		this.password = password;
 	}
+	
 
-	public Integer getUser_id() {
+
+	public Integer getUserid() {
 		return user_id;
 	}
 
-	public void setUser_id(Integer user_id) {
+	public void setUserid(Integer user_id) {
 		this.user_id = user_id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFirstName(String first_name) {
+		this.firstName = first_name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getAccount_type() {
-		return account_type;
-	}
-
-	public void setAccount_type(String account_type) {
-		this.account_type = account_type;
-	}
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
-	public Date getDate_of_birth() {
-		return date_of_birth;
-	}
-
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Long getPhone() {
-		return phone;
-	}
-
-	public void setPhone(Long phone) {
-		this.phone = phone;
+	public void setLastName(String last_name) {
+		this.lastName = last_name;
 	}
 
 	public String getEmail() {
@@ -136,10 +84,52 @@ public class User {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", account_type="
-				+ account_type + ", first_name=" + first_name + ", last_name=" + last_name + ", date_of_birth="
-				+ date_of_birth + ", address=" + address + ", phone=" + phone + ", email=" + email + "]";
+	public String getUsername() {
+		return username;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String account_type) {
+		this.accountType = account_type;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date date_of_birth) {
+		this.dateOfBirth = date_of_birth;
+	}
+
+	public BigInteger getPhone() {
+		return phone;
+	}
+
+	public void setPhone(BigInteger phone) {
+		this.phone = phone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }
