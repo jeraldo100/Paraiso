@@ -20,7 +20,6 @@ import ph.com.paraiso.service.RoomService;
 import ph.com.paraiso.service.UserService;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminBookingController {
 
 

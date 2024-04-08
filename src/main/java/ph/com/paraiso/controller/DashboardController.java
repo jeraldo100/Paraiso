@@ -1,5 +1,7 @@
 package ph.com.paraiso.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,18 +11,24 @@ import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.AdminBookingRepository;
+import ph.com.paraiso.repository.AdminUserRepository;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.RoomRepository;
 import ph.com.paraiso.repository.UserRepository;
+import ph.com.paraiso.repository.VoucherRepository;
 
 @Controller
 public class DashboardController {
 
-	@Autowired
-	BookingRepository bookingRepository;
 	
 	@Autowired
 	AdminBookingRepository adminBookingRepository;
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	RoomRepository roomRepository;
+	@Autowired
+	VoucherRepository voucherRepository;
 	
 	@GetMapping("/AdminDashboard")
 	public String adminDashboardPage(Model model) {
@@ -33,6 +41,9 @@ public class DashboardController {
 		
 		Iterable<Booking> bookings = adminBookingRepository.findAll();
 		model.addAttribute("bookings", bookings);
+		
+		Iterable<User> users = userRepository.findAll();
+		model.addAttribute("users", users);
 		
 		
 		return "dashboardAdmin/Dashboard";

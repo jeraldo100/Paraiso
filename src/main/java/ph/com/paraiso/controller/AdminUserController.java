@@ -16,7 +16,6 @@ import ph.com.paraiso.service.AdminUserService;
 import ph.com.paraiso.service.UserService;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminUserController {
 
 	private AdminUserService adminUserService;

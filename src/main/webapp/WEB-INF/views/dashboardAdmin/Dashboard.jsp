@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,18 +129,18 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="users" items="${user }">
+													<c:forEach var="users" items="${users }">
 														<tr>
-															<td><c:out value="${user.user_id }" /></td>
-															<td><c:out value="${user.username }" /></td>
-															<td><c:out value="${user.password }" /></td>
-															<td><c:out value="${user.account_type }" /></td>
-															<td><c:out value="${user.first_name }" /></td>
-															<td><c:out value="${user.last_name }" /></td>
-															<td><c:out value="${user.date_of_birth }" /></td>
-															<td><c:out value="${user.address }" /></td>
-															<td><c:out value="${user.phone }" /></td>
-															<td><c:out value="${user.email }" /></td>
+															<td><c:out value="${users.userid }" /></td>
+															<td><c:out value="${users.username }" /></td>
+															<td><c:out value="${fn:substring(users.password, 0, 6)}" /></td>
+															<td><c:out value="${users.accountType }" /></td>
+															<td><c:out value="${users.firstName }" /></td>
+															<td><c:out value="${users.lastName }" /></td>
+															<td><c:out value="${users.dateOfBirth }" /></td>
+															<td><c:out value="${users.address }" /></td>
+															<td><c:out value="${users.phone }" /></td>
+															<td><c:out value="${users.email }" /></td>
 														</tr>
 													</c:forEach>
 
