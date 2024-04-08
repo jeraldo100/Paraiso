@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room;
 import ph.com.paraiso.model.User;
+import ph.com.paraiso.model.Voucher;
 import ph.com.paraiso.repository.AdminBookingRepository;
 import ph.com.paraiso.repository.AdminUserRepository;
 import ph.com.paraiso.repository.BookingRepository;
@@ -20,7 +21,6 @@ import ph.com.paraiso.repository.VoucherRepository;
 @Controller
 public class DashboardController {
 
-	
 	@Autowired
 	AdminBookingRepository adminBookingRepository;
 	@Autowired
@@ -29,25 +29,24 @@ public class DashboardController {
 	RoomRepository roomRepository;
 	@Autowired
 	VoucherRepository voucherRepository;
-	
+
 	@GetMapping("/AdminDashboard")
 	public String adminDashboardPage(Model model) {
-		
+
 		Double totalPrice = adminBookingRepository.totalPrice();
-		model.addAttribute("totalPrice",totalPrice);
-		
+		model.addAttribute("totalPrice", totalPrice);
+
 		Integer totalBooking = adminBookingRepository.totalBooking();
 		model.addAttribute("totalBooking", totalBooking);
-		
+
 		Iterable<Booking> bookings = adminBookingRepository.findAll();
 		model.addAttribute("bookings", bookings);
-		
+
 		Iterable<User> users = userRepository.findAll();
 		model.addAttribute("users", users);
 		
-		
+
 		return "dashboardAdmin/Dashboard";
 	}
-	
-	
+
 }

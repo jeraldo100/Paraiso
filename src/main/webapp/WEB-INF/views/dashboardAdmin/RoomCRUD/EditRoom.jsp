@@ -19,11 +19,11 @@
           <form action="/update/${room.room_id}" method="post">
             <div class="form-group">
               <label>Hotel ID :</label>
-              <input type="text" name="hotel_id" id="hotel_id" value="1" readonly placeholder="Enter Hotel ID" class="form-control" />
+              <input type="number" name="hotel_id" id="hotel_id" value="1" readonly placeholder="Enter Hotel ID" class="form-control" />
             </div>
             <div class="form-group">
               <label>Type ID :</label>
-              <input type="text" name="type_id" id="type_id" placeholder="Enter Type ID" class="form-control" />
+              <input type="number" name="type_id" id="type_id" placeholder="Enter Type ID" class="form-control" />
             </div>
             <div class="form-group">
               <label>Status :</label>
