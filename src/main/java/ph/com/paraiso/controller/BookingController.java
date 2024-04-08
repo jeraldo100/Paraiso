@@ -76,6 +76,7 @@ public class BookingController {
 		String checkout_date = bookingInputs.getCheckout_date();
 		
 		List<Room_type> room_types = bookServ.listAllRoom_type(checkin_date, checkout_date);
+		System.out.println(room_types);
 		return room_types;
 	}
 	
