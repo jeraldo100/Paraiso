@@ -12,12 +12,12 @@ public interface UserService {
 	public User addUser(User user);
 	
 
-	public User getUserById(Long userid);
+	public User getUserById(Integer userid);
 	public User updateUser(User user);
 	
-	public void deleteById(Long userid);
+	public void deleteById(Integer userid);
 	
 	public String getAccountTypeByEmail(String email);
 	public String getUsernameByEmail(String email);
-	public Long getUserIdByEmail(String email);
+	public Integer getUserIdByEmail(String email);
 }

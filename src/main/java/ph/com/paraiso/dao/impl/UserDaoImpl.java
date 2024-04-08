@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserById(Long userid) {
+	public User getUserById(Integer userid) {
 		return userRepo.findById(userid).get();
 	}
 
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public void deleteById(Long userid) {
+	public void deleteById(Integer userid) {
 		userRepo.deleteById(userid);
 		
 	}

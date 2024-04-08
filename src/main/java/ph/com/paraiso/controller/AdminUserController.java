@@ -47,7 +47,7 @@ public class AdminUserController {
 			@RequestParam("last_name") String last_name,
 			@RequestParam("date_of_birth") Date date_of_birth,
 			@RequestParam("address") String address,
-			@RequestParam("phone") Long phone,
+			@RequestParam("phone") String phone,
 			@RequestParam("email") String email,
 			Model model) {
 		
