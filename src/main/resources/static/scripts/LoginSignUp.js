@@ -108,10 +108,7 @@ $(document).ready(function() {
             $("#phone").attr("placeholder", "Must be filled out").css("color", "red !important");
             isValid = false;
         }
-        else if (!phoneRegex.test(phone)) {
-            $("#phone").attr("placeholder", "Invalid phone number").css("color", "red !important");
-            isValid = false;
-        }
+
     
         var password = $("#password").val();
          if (password === "") {

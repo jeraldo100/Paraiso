@@ -12,8 +12,8 @@ public interface UserDao {
 
 	public User addUser(User user);
 	
-	public User getUserById(Long userid);
+	public User getUserById(Integer userid);
 	public User updateUser(User user);
 	
-	public void deleteById(Long userid);
+	public void deleteById(Integer userid);
 }

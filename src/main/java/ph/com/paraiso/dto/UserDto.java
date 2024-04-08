@@ -15,7 +15,7 @@ public class UserDto {
 	private String accountType;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
-	private BigInteger phone;
+	private String phone;
 	private String password;
 	
 	 public UserDto() {
@@ -23,7 +23,7 @@ public class UserDto {
 	 }
 	
 	public UserDto(String firstName, String lastName, String email, String username, String address, String accountType,
-			Date dateOfBirth, BigInteger phone, String password) {
+			Date dateOfBirth, String phone, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -92,11 +92,11 @@ public class UserDto {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public BigInteger getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(BigInteger phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

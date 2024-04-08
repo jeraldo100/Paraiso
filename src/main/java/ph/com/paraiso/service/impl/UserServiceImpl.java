@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
 		}
 
 		@Override
-		public User getUserById(Long userid) {
+		public User getUserById(Integer userid) {
 			return userDao.getUserById(userid);
 		}
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		@Override
-		public void deleteById(Long userid) {
+		public void deleteById(Integer userid) {
 			userDao.deleteById(userid);
 			
 		}
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService{
 			
 
 			@Override
-			public Long getUserIdByEmail(String email) {
+			public Integer getUserIdByEmail(String email) {
 		        User user = userRepository.findByemail(email);
 		        if (user != null) {
 		            return user.getUserid();
