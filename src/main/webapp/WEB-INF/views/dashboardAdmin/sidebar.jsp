@@ -35,11 +35,15 @@
 				class="nav-link text-white"> <ion-icon name="star"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Voucher</span>
 			</a></li>
+			<li class="nav-item"><a href="/AdminAddOns"
+				class="nav-link text-white"> <ion-icon name="bag-add"></ion-icon><span
+					class="fs-4 ms-3 d-none d-sm-inline">Add Ons</span>
+			</a></li>
 		</ul>
 	</div>
 	<div class="p-3">
 		<ul class="nav nav-pills flex-column mt-4">
-			<li class="nav-item py-2 py-sm-0"><a href="#"
+			<li class="nav-item py-2 py-sm-0"><a href="/logout"
 				class="nav-link text-white"> <ion-icon name="log-out"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Logout</span>
 			</a></li>
