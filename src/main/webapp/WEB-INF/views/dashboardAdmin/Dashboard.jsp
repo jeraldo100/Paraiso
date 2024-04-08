@@ -40,43 +40,20 @@
 									<h1>Dashboard</h1>
 								</div>
 								<div class="row mb-4">
-									<div class="col-md-2 b-4">
+									
+									<div class="col-md b-4">
 										<a href="#" class="text-decoration-none">
 											<div class="card text-center p-3 text-success">
-												<h6 class="pt-3">Confirmed</h6>
+												<h6 class="pt-3">Bookings</h6>
 												<h1>5</h1>
 											</div>
 										</a>
 									</div>
-									<div class="col-md-2 b-4">
-										<a href="#" class="text-decoration-none">
-											<div class="card text-center p-3 text-success">
-												<h6 class="pt-3">Check In</h6>
-												<h1>5</h1>
-											</div>
-										</a>
-									</div>
-									<div class="col-md-2 b-4">
-										<a href="#" class="text-decoration-none">
-											<div class="card text-center p-3 text-success">
-												<h6 class="pt-3">Check Out</h6>
-												<h1>5</h1>
-											</div>
-										</a>
-									</div>
-									<div class="col-md-2 b-4">
-										<a href="#" class="text-decoration-none">
-											<div class="card text-center p-3 text-success">
-												<h6 class="pt-3">Reserved</h6>
-												<h1>5</h1>
-											</div>
-										</a>
-									</div>
-									<div class="col-md-4 b-4">
+									<div class="col-md b-4">
 										<a href="#" class="text-decoration-none">
 											<div class="card text-center p-3 text-success">
 												<h6 class="pt-3">Revenue</h6>
-												<h1>$$$</h1>
+												<h1><%= request.getAttribute("totalPrice") %></h1>
 											</div>
 										</a>
 									</div>
