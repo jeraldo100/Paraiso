@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+
+* {
+    font-family: "Ubuntu Condensed", sans-serif;
+}
+
+.vertical-center {
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+  }
+  
+body {
+	background-color: #198754;
+}

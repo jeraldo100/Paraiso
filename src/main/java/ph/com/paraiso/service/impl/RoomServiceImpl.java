@@ -23,6 +23,37 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public List<Room> getAllRooms() {
 		return roomRepository.findAll();
+	}
+
+
+
+	@Override
+	public Room addRoom(Room room) {
+
+		return roomRepository.save(room);
+	}
+
+
+
+	@Override
+	public Room updateRoom(Room room) {
+		return roomRepository.save(room);
+	}
+
+
+
+	@Override
+	public Room getRoomById(Integer room_id) {
+		return roomRepository.findById(room_id).get();
+	}
+
+
+
+	@Override
+	public void deleteRoomById(Integer room_id) {
+
+		roomRepository.deleteById(room_id);
+		
 	};
 	
 }

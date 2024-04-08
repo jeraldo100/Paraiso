@@ -105,7 +105,7 @@ public class User {
 	}
 
 	public void setAccountType(String account_type) {
-		this.accountType = account_type;
+		accountType = account_type;
 	}
 
 	public Date getDateOfBirth() {
@@ -113,7 +113,7 @@ public class User {
 	}
 
 	public void setDateOfBirth(Date date_of_birth) {
-		this.dateOfBirth = date_of_birth;
+		dateOfBirth = date_of_birth;
 	}
 
 	public String getPhone() {

@@ -53,7 +53,6 @@ $(document).ready(function() {
 
 
         var emailRegex = /\S+@\S+\.\S+/;
-        var phoneRegex = /^\d{11}$/;
         var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 

@@ -1,5 +1,6 @@
 package ph.com.paraiso.dao;
 
+import ph.com.paraiso.model.User;
 import java.util.List;
 
 

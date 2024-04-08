@@ -6,5 +6,16 @@ import ph.com.paraiso.model.Room;
 
 public interface RoomService {
 
-	List<Room> getAllRooms();
+	//Showing
+	public List<Room> getAllRooms();
+	
+	//Add
+	public Room addRoom(Room room);
+	
+	//Edit
+	public Room updateRoom(Room room);
+	public Room getRoomById(Integer room_id);
+	
+	//Delete
+	public void deleteRoomById(Integer room_id);
 }

@@ -2,6 +2,8 @@ package ph.com.paraiso.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Voucher {
 	private String voucher_code;
 	private String description;
 	private Double amount;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date validation;
 	
 	public Voucher() {

@@ -1,5 +1,5 @@
 package ph.com.paraiso.dao.impl;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +8,15 @@ import org.springframework.stereotype.Component;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.dao.UserDao;
+import ph.com.paraiso.model.User;
+import ph.com.paraiso.repository.UserRepository;
 
 @Component
 public class UserDaoImpl implements UserDao{
 		
 	@Autowired
 	UserRepository userRepo;
-
+	
 	@Override
 	public User authenticate(User user) {
 
