@@ -1,7 +1,7 @@
 package ph.com.paraiso.service.impl;
 
 import java.util.List;
-
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import ph.com.paraiso.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
-	
+
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
 		}
 
 		@Override
-		public User getUserById(Long userid) {
+		public User getUserById(Integer userid) {
 			return userDao.getUserById(userid);
 		}
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		@Override
-		public void deleteById(Long userid) {
+		public void deleteById(Integer userid) {
 			userDao.deleteById(userid);
 			
 		}
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService{
 			
 
 			@Override
-			public Long getUserIdByEmail(String email) {
+			public Integer getUserIdByEmail(String email) {
 		        User user = userRepository.findByemail(email);
 		        if (user != null) {
 		            return user.getUserid();

@@ -98,6 +98,19 @@ public class BookingController {
 		return "booking/Booking";
 	}
 	
+	@GetMapping("/bookings")
+	public String bookingPages(Model model) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = new Date();
+		Date tommorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
+		double diff = Math.abs( (today.getTime()) - (tommorrow.getTime()) );
+		
+		model.addAttribute("days", TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS) );
+		model.addAttribute( "checkin_date" , sdf.format(today) );
+		model.addAttribute( "checkout_date" , sdf.format(tommorrow) );
+		return "Booking";
+	}
+	
 	@PostMapping("/checkAvailability")
 	public String checkAvailability(HttpServletRequest request, @RequestParam String checkin_date, String checkout_date, Integer adults, Integer children, Model model) throws ParseException {
 		setCommonAttributes(request, model);
@@ -220,38 +233,6 @@ public class BookingController {
 		return "dashboardAdmin/Dashboard";
 	}
 	
-	@GetMapping("/AdminBooking")
-	public String adminBooking() {
-		return "dashboardAdmin/Booking";
-	}
-	
-	@GetMapping("/AdminDiscount")
-	public String adminDiscount() {
-		return "dashboardAdmin/Discount";
-	}
-	
-	
-	
-	@GetMapping("/AdminUsers")
-	public String adminUsers() {
-		return "dashboardAdmin/Users";
-	}
-	
-	@GetMapping("/UserDashboard")
-	public String userDashboard() {
-		return "dashboardUser/userDashboard";
-	}
-	
-	@GetMapping("/UserEditProfile")
-	public String userEditProfile() {
-		return "dashboardUser/userEditProfile";
-	}
-	
-	@GetMapping("/UserProfile")
-	public String userProfile() {
-		return "dashboardUser/userProfile";
-	}
-	
 	private RoomService roomService;
 
 	public BookingController(RoomService roomService) {
@@ -259,10 +240,5 @@ public class BookingController {
 		this.roomService = roomService;
 	}
 	
-	@GetMapping("/AdminRooms")
-	public String adminRooms(Model model) {
-		model.addAttribute("rooms",roomService.getAllRooms());
-		return "dashboardAdmin/Rooms";
-	}
 	
 }

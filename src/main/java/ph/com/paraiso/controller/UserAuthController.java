@@ -52,7 +52,7 @@ public class UserAuthController {
             if (accountType != null) {
                 model.addAttribute("accountType", accountType);
                 if (accountType.equals("ADMIN")) {
-                    return "dashboardAdmin/Dashboard";
+                    return "redirect:/AdminDashboard";
                 }
                 if (accountType.equals("USER")) {
                 	return "redirect:/home";
@@ -67,7 +67,6 @@ public class UserAuthController {
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 	    String sessionId = SessionManager.getSessionId(request);
 	    if (sessionId != null) {
-	
 	        SessionManager.deleteSessionCookie(response);
 	        SessionManager.invalidateSession(sessionId); 
 	    }

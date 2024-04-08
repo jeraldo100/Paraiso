@@ -2,6 +2,8 @@ package ph.com.paraiso.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,7 +13,9 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer booking_id;
 	private Integer user_id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date checkin_date;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date checkout_date;
 	private Double total_price;
 	private String arrival_time;
@@ -35,6 +39,7 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
+
 	}
 
 	public Booking(Integer user_id, Date checkin_date, Date checkout_date, Double total_price, String arrival_time,
@@ -48,6 +53,7 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
+
 	}
 
 	public Integer getBooking_id() {
@@ -121,7 +127,6 @@ public class Booking {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 	@Override
 	public String toString() {

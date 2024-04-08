@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,7 @@
   <!-- CSS LINK -->
 
   <link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" />
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -31,137 +35,63 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Bookings</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button type="button" class="btn btn-success">Print</button>
-                  <button type="button" class="btn btn-success">Add</button>
-                  <select name="" id="" class="form-select shadow-none bg-light w-auto">
-                    <option value="0">Select timeline</option>
-                    <option value="1">Past 30 Days</option>
-                    <option value="2">Past 60 Days</option>
-                    <option value="3">Past 90 Days</option>
-                    <option value="4">Past 1 Year</option>
-                    <option value="5">All time</option>
-                  </select>
+                  <a href="#" type="button" class="btn btn-success">Print</a>
+                  <a href="addBooking" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>
 
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
-                  <a href="#" class="text-decoration-none">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
                       <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th></th>
                             <th>Booking ID</th>
                             <th>User ID</th>
-                            <th>Room ID</th>
                             <th>Check In</th>
                             <th>Check Out</th>
                             <th>Total Price</th>
+                            <th>Arrival Time</th>
+                            <th>Adults</th>
+                            <th>Children</th>
+                            <th>Status</th>
                             <th>Approval</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success">Approve</button>
-                              <button class="btn btn-danger">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success approve">Approve</button>
-                              <button class="btn btn-danger disapprove">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success">Approve</button>
-                              <button class="btn btn-danger">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button class="btn btn-success" id="approved">
-                                Approve
-                              </button>
-                              <button class="btn btn-danger" id="disapproved">
-                                Disapprove
-                              </button>
-                            </td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Delete
-                              </button>
-                            </td>
-                          </tr>
+                        <c:forEach var="bookings" items="${bookings }">
+	                        <tr>
+	                            <td><c:out value="${bookings.booking_id }" /></td>
+	                            <td><c:out value="${bookings.user_id }" /></td>
+	                            <td><c:out value="${bookings.checkin_date }" /></td>
+	                            <td><c:out value="${bookings.checkout_date }" /></td>
+	                            <td><c:out value="${bookings.total_price }" /></td>
+	                            <td><c:out value="${bookings.arrival_time }" /></td>
+	                            <td><c:out value="${bookings.adults }" /></td>
+	                            <td><c:out value="${bookings.children }" /></td>
+	                            <td><c:out value="${bookings.status }" /></td>
+	                            <td>
+	                              <button class="btn btn-success m-1 approve-btn" value="Approved" data-booking-id="${bookings.booking_id }" >Approve</button>
+	                              <button class="btn btn-danger m-1 disapprove-btn" value="Disapproved" data-booking-id="${bookings.booking_id }">
+	                                Disapprove
+	                              </button>
+	                            </td>
+	                            <td>
+	                              <a href="/editBooking/${bookings.booking_id }" type="button" class="btn btn-success m-1">
+	                                Edit
+	                              </a>
+	                              <a href="/deleteBooking/${bookings.booking_id }" type="button" class="btn btn-danger m-1">
+	                                Delete
+	                              </a>
+	                            </td>
+	                          </tr>
+                        </c:forEach>
+                          
                         </tbody>
                       </table>
                     </div>
-                  </a>
                 </div>
               </div>
             </div>
@@ -170,21 +100,12 @@
       </div>
     </div>
   </div>
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script> -->
 </body>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-  integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> -->
 
 <!-- IONICONS LINK -->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-<script src="paraiso.js"></script>
+<script src="/js/paraiso.js"></script>
 
 </html>

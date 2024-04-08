@@ -14,6 +14,7 @@ public class Room_type {
 	private Integer capacity;
 	private Integer beds;
 	private Integer bathrooms;
+	@Transient
 	private Integer available;
 	
 	public Room_type() {

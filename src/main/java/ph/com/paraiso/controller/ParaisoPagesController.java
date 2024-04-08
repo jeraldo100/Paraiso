@@ -19,7 +19,7 @@ public class ParaisoPagesController {
         if (userEmail != null) {
             String accountType = userSvc.getAccountTypeByEmail(userEmail);
             String username = userSvc.getUsernameByEmail(userEmail);
-            Long userId = userSvc.getUserIdByEmail(userEmail);
+            Integer userId = userSvc.getUserIdByEmail(userEmail);
             System.out.println("Email of the user with current session: " + userEmail);
             System.out.println("AccountType of the user with current session: " + accountType);
             System.out.println("username of the user with current session: " + username);
