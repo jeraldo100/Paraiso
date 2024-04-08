@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.service.AdminBookingService;
 import ph.com.paraiso.service.BookingService;
 import ph.com.paraiso.service.RoomService;
 import ph.com.paraiso.service.UserService;
@@ -21,17 +22,17 @@ import ph.com.paraiso.service.UserService;
 public class AdminBookingController {
 
 
-	private BookingService bookingService;
+	private AdminBookingService adminBookingService;
 		
-		public AdminBookingController(BookingService bookingService) {
+		public AdminBookingController(AdminBookingService adminBookingService) {
 			super();
-			this.bookingService = bookingService;
+			this.adminBookingService = adminBookingService;
 		}
 
 		
 		@GetMapping("/AdminBooking")
 		public String adminBooking(Model model) {
-			model.addAttribute("bookings", bookingService.getAllBookings());
+			model.addAttribute("bookings", adminBookingService.getAllBookings());
 			return "dashboardAdmin/Booking";
 		}
 		
@@ -69,14 +70,14 @@ public class AdminBookingController {
 			booking.setChildren(children);
 			booking.setStatus(status);
 			
-			bookingService.addBooking(booking);
+			adminBookingService.addBooking(booking);
 			
 			return "redirect:/AdminBooking";
 		}
 		
 		@GetMapping("/editBooking/{booking_id}")
 		public String editBooking(@PathVariable("booking_id") Integer booking_id, Model model) {
-			model.addAttribute("booking", bookingService.getBookingById(booking_id));
+			model.addAttribute("booking", adminBookingService.getBookingById(booking_id));
 			return "dashboardAdmin/BookingCRUD/EditBooking";
 		}
 		
@@ -85,7 +86,7 @@ public class AdminBookingController {
 				@ModelAttribute("booking") Booking booking,
 				Model model) {
 			
-			Booking existingBooking = bookingService.getBookingById(booking_id);
+			Booking existingBooking = adminBookingService.getBookingById(booking_id);
 			existingBooking.setBooking_id(booking_id);
 			existingBooking.setUser_id(booking.getUser_id());
 			existingBooking.setCheckin_date(booking.getCheckin_date());
@@ -96,7 +97,7 @@ public class AdminBookingController {
 			existingBooking.setChildren(booking.getChildren());
 			existingBooking.setStatus(booking.getStatus());
 			
-			bookingService.updateBooking(existingBooking);
+			adminBookingService.updateBooking(existingBooking);
 			return "redirect:/AdminBooking";
 			
 			
@@ -105,7 +106,7 @@ public class AdminBookingController {
 		@GetMapping("/deleteBooking/{booking_id}")
 		public String deleteBooking(@PathVariable("booking_id") Integer booking_id) {
 			
-			bookingService.deleteById(booking_id);
+			adminBookingService.deleteById(booking_id);
 			return "redirect:/AdminBooking";
 			
 			
@@ -123,10 +124,10 @@ public class AdminBookingController {
 
 		@PostMapping("/updateStatus/{bookingId}")
 		public ResponseEntity<String> updateStatus(@PathVariable("bookingId") Integer bookingId, @RequestParam("status") String status) {
-		    Booking booking = bookingService.getBookingById(bookingId);
+		    Booking booking = adminBookingService.getBookingById(bookingId);
 		    if (booking != null) {
 		        booking.setStatus(status);
-		        bookingService.updateBooking(booking);
+		        adminBookingService.updateBooking(booking);
 		        return new ResponseEntity<>("Status updated successfully", HttpStatus.OK);
 		    } else {
 		        return new ResponseEntity<>("Booking not found", HttpStatus.NOT_FOUND);
