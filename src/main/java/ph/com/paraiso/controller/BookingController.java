@@ -66,6 +66,19 @@ public class BookingController {
 		return "booking/Booking";
 	}
 	
+	@GetMapping("/bookings")
+	public String bookingPages(Model model) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = new Date();
+		Date tommorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
+		double diff = Math.abs( (today.getTime()) - (tommorrow.getTime()) );
+		
+		model.addAttribute("days", TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS) );
+		model.addAttribute( "checkin_date" , sdf.format(today) );
+		model.addAttribute( "checkout_date" , sdf.format(tommorrow) );
+		return "Booking";
+	}
+	
 	@PostMapping("/checkAvailability")
 	public String checkAvailability(@RequestParam String checkin_date, String checkout_date, Model model) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

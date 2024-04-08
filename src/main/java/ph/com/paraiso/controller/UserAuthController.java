@@ -67,7 +67,6 @@ public class UserAuthController {
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 	    String sessionId = SessionManager.getSessionId(request);
 	    if (sessionId != null) {
-	
 	        SessionManager.deleteSessionCookie(response);
 	        SessionManager.invalidateSession(sessionId); 
 	    }
