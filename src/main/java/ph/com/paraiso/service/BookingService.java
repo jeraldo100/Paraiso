@@ -2,22 +2,15 @@ package ph.com.paraiso.service;
 
 import java.util.List;
 
-import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.model.Room_joined;
+import ph.com.paraiso.model.Room_type;
 
 public interface BookingService {
-
-	//List
-	List<Booking> getAllBookings();
+	public List<Room_type> listAllRoom_type(String checkin_date, String checkout_date);
 	
-	//Add
-	public Booking addBooking(Booking booking);
+	public Room_joined getRoom_joined_first(Integer room_type, String checkin_date, String checkout_date);
 	
-	//Update
-	public Booking updateBooking(Booking booking);
-	public Booking getBookingById(Integer booking_id);
+	public Room_joined getRoom_joined(Integer room_type, String checkin_date, String checkout_date, List<Integer> room_ids);
 	
-	//Delete
-	
-	public void deleteById(Integer booking_id);
-	
+	public List<Room_joined> getRoom_joinedList(List<Integer> room_ids);
 }
