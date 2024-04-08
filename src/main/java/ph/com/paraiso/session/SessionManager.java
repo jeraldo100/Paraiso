@@ -9,14 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class SessionManager {
 
-	   public static final String SESSION_COOKIE_NAME = "PARAISOSESSION";
+	    public static final String SESSION_COOKIE_NAME = "PARAISOSESSION";
 	    public static final int SESSION_COOKIE_MAX_AGE_SECONDS = 86400;
-
 	    private static final Map<String, String> sessionUserMap = new HashMap<>();
-
 	    public static void createSessionCookie(HttpServletResponse response, String sessionId, String userEmail) {
 	        sessionUserMap.put(sessionId, userEmail);
-
 	        Cookie cookie = new Cookie(SESSION_COOKIE_NAME, sessionId);
 	        cookie.setMaxAge(SESSION_COOKIE_MAX_AGE_SECONDS);
 	        cookie.setPath("/");

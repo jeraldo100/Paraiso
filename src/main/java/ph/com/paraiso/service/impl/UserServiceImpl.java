@@ -7,10 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ph.com.paraiso.dao.UserDao;
+import ph.com.paraiso.dto.UserDto;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.service.UserService;
-import ph.come.paraiso.dto.UserDto;
 
 @Service
 public class UserServiceImpl implements UserService{

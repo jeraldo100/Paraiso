@@ -1,4 +1,4 @@
-package ph.come.paraiso.dto;
+package ph.com.paraiso.dto;
 
 import java.math.BigInteger;
 import java.util.Date;
