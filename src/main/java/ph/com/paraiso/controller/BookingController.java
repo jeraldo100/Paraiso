@@ -13,27 +13,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ph.com.paraiso.model.Booking;
-import ph.com.paraiso.service.BookingService;
-import ph.com.paraiso.service.RoomService;
-import ph.com.paraiso.service.UserService;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import ph.com.paraiso.service.BookingService;
+import ph.com.paraiso.service.RoomService;
+import ph.com.paraiso.service.UserService;
 
 
 
 
 @Controller
 public class BookingController {
-	
+	@Autowired
 	private BookingService bookServ;
+	
 	
 	public BookingController(BookingService bookingService) {
 		super();
@@ -169,6 +166,6 @@ public class BookingController {
 		model.addAttribute("checkout_date", checkout_date);
 		model.addAttribute("room_types",bookServ.listAllRoom_type(checkin_date, checkout_date));
 		return "booking/Booking";
-
+	}
 	
 }

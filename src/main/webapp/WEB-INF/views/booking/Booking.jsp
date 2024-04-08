@@ -2,20 +2,92 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+
 <html>
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Booking</title>
 	<link rel="stylesheet" href="/styles/reset.css">
 	<link rel="stylesheet" href="/styles/booking.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+	<link rel="stylesheet" href="/styles/booking.css" type="text/css" />
 </head>
 <body>
 	<div class="mainWrapper">
-		<div class="filterBar">
-			Check in: <input type="date" id="checkin_date" name="checkin_date">
-			Check out: <input type="date" id="checkout_date" name="checkout_date">
-			<input type="button" value= "check availability">
+		<form class="filterBar" action="checkAvailability" method="POST">
+			<div class="datePicker">
+	            <p>Check In</p>
+	            <div class="datePickerField">
+	                <span class="fa-regular icon fa-calendar"></span>
+	                <input name="checkin_date" id="checkin_date" type="text" class="datepicker-pop check-in" value="<c:out value="${checkin_date}"/>" />
+	                <i class="fa-solid fa-angle-down"></i>
+	             </div>
+            </div>
+            <div class="datePicker">
+	            <p>Check Out</p>
+	            <div class="datePickerField">
+	            	<span class="fa-regular icon fa-calendar"></span>
+	                <input name="checkout_date" id="checkout_date" type="text" class="datepicker-pop check-out" value="<c:out value="${checkout_date}"/>"/>
+	            	<i class="fa-solid fa-angle-down"></i>
+	            </div>
+            </div>
+            <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
+		</form>
+		<div class="roomsAndList">
+			<div class="roomsWrapper">
+				<c:forEach var="room_type" items="${room_types}">
+					<div class="room">
+						<div class="room-name">
+							<c:out value="${room_type.name}" />
+						</div>
+						<div class="room-details">
+							<div class="detail">
+								Capacity: <c:out value="${room_type.capacity}" />
+							</div>
+							<div class="detail">
+								Beds: <c:out value="${room_type.beds}" />
+							</div>
+							<div class="detail">
+								Bathrooms: <c:out value="${room_type.bathrooms}" />
+							</div>
+						</div>
+						<div class="description">
+							<c:out value="${room_type.description}" />
+						</div>
+						<div class="room-footer">
+							<div class="room-footer-left">
+								Rooms Available: <c:out value="${room_type.available}" />
+							</div>
+							<div class="room-footer-right">
+								<div>
+									Price per night: <c:out value="${room_type.price_per_night}" />
+								</div>
+								<a href = "booking/${room_type.type_id}">
+									Add Room
+								</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="listWrapper">
+				<c:out value="${days}" />
+			</div>
 		</div>
 	</div>
 </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="/scripts/booking/booking.js"></script>
 </html>

@@ -20,6 +20,5 @@ public interface BookingService {
 	//Delete
 	
 	public void deleteById(Integer booking_id);
-
 	public List<Room_type> listAllRoom_type(String checkin_date, String checkout_date);
 }
