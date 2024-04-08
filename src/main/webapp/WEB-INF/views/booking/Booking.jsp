@@ -23,22 +23,46 @@
 </head>
 <body>
 	<div class="mainWrapper">
-		<div class="filterBar">
+		<form class="filterBar" action="checkAvailability" method="POST">
 			<div class="datePicker">
 	            <p>Check In</p>
+	            <div class="datePickerField">
 	                <span class="fa-regular icon fa-calendar"></span>
-	                <input id="checkin_date" type="text" class="datepicker-pop check-in" />
+	                <input name="checkin_date" id="checkin_date" type="text" class="datepicker-pop check-in" value="<c:out value="${checkin_date}"/>" />
 	                <i class="fa-solid fa-angle-down"></i>
+	             </div>
             </div>
             <div class="datePicker">
 	            <p>Check Out</p>
-	            <div>
+	            <div class="datePickerField">
 	            	<span class="fa-regular icon fa-calendar"></span>
-	                <input id="checkout_date" type="text" class="datepicker-pop check-out" />
+	                <input name="checkout_date" id="checkout_date" type="text" class="datepicker-pop check-out" value="<c:out value="${checkout_date}"/>"/>
 	            	<i class="fa-solid fa-angle-down"></i>
 	            </div>
-	                
             </div>
+            <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
+		</form>
+		<div class="roomsAndList">
+			<div id="roomsWrapper" class="roomsWrapper">
+				<!-- Empty room for adding available rooms -->
+			</div>
+			<div class="listWrapper">
+				<div class="roomList-header">
+					<div id="total-days" days="${days}">
+						Days <c:out value="${days}" />
+					</div>
+					<div id="roomList-totalPrice" class="roomList-totalPrice">
+						<!--Empty room for updating list total Price-->
+					</div>
+				</div>
+				<div id="roomList-body" class="roomList-body">
+					<!--Empty room for appending list of added rooms-->
+				</div>
+				<div class="roomList-footer">
+					
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
