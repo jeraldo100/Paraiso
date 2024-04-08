@@ -52,7 +52,7 @@ public class UserAuthController {
             if (accountType != null) {
                 model.addAttribute("accountType", accountType);
                 if (accountType.equals("ADMIN")) {
-                    return "dashboardAdmin/Dashboard";
+                    return "redirect:/AdminDashboard";
                 }
                 if (accountType.equals("USER")) {
                 	return "redirect:/home";
