@@ -81,6 +81,17 @@ public class UserServiceImpl implements UserService{
 		            return null; 
 		        }
 			}
+			
+
+			@Override
+			public Long getUserIdByEmail(String email) {
+		        User user = userRepository.findByemail(email);
+		        if (user != null) {
+		            return user.getUserid();
+		        } else {
+		            return null; 
+		        }
+			}
 
 	@Override
 	public User save(UserDto userDto) {
@@ -90,6 +101,5 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(encrypedPwd);
 		return userRepository.save(user);
 }
-
 
 }

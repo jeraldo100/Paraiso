@@ -20,4 +20,5 @@ public interface UserService {
 	
 	public String getAccountTypeByEmail(String email);
 	public String getUsernameByEmail(String email);
+	public Long getUserIdByEmail(String email);
 }

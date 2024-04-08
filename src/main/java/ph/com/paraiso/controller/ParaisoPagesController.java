@@ -1,5 +1,4 @@
 package ph.com.paraiso.controller;
-
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +19,11 @@ public class ParaisoPagesController {
         if (userEmail != null) {
             String accountType = userSvc.getAccountTypeByEmail(userEmail);
             String username = userSvc.getUsernameByEmail(userEmail);
-//            System.out.println("Email of the user with current session: " + userEmail);
-//            System.out.println("AccountType of the user with current session: " + accountType);
-//            System.out.println("username of the user with current session: " + username);
+            Long userId = userSvc.getUserIdByEmail(userEmail);
+            System.out.println("Email of the user with current session: " + userEmail);
+            System.out.println("AccountType of the user with current session: " + accountType);
+            System.out.println("username of the user with current session: " + username);
+            System.out.println("user id of the user with current session: " + userId);
             model.addAttribute("username", username);
             model.addAttribute("loggedIn", true);
         } else {
