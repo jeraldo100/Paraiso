@@ -18,14 +18,13 @@ public class Booking {
 	private Integer adults;
 	private Integer children;
 	private String status;
-	private String notes;
 	
 	public Booking() {
 		super();
 	}
 
 	public Booking(Integer booking_id, Integer user_id, Date checkin_date, Date checkout_date, Double total_price,
-			String arrival_time, Integer adults, Integer children, String status, String notes) {
+			String arrival_time, Integer adults, Integer children, String status) {
 		super();
 		this.booking_id = booking_id;
 		this.user_id = user_id;
@@ -36,11 +35,10 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
-		this.notes = notes;
 	}
 
 	public Booking(Integer user_id, Date checkin_date, Date checkout_date, Double total_price, String arrival_time,
-			Integer adults, Integer children, String status, String notes) {
+			Integer adults, Integer children, String status) {
 		super();
 		this.user_id = user_id;
 		this.checkin_date = checkin_date;
@@ -50,7 +48,6 @@ public class Booking {
 		this.adults = adults;
 		this.children = children;
 		this.status = status;
-		this.notes = notes;
 	}
 
 	public Integer getBooking_id() {
@@ -125,19 +122,12 @@ public class Booking {
 		this.status = status;
 	}
 
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
 
 	@Override
 	public String toString() {
 		return "Booking [booking_id=" + booking_id + ", user_id=" + user_id + ", checkin_date=" + checkin_date
 				+ ", checkout_date=" + checkout_date + ", total_price=" + total_price + ", arrival_time=" + arrival_time
-				+ ", adults=" + adults + ", children=" + children + ", status=" + status + ", notes=" + notes + "]";
+				+ ", adults=" + adults + ", children=" + children + ", status=" + status + "]";
 	}
 	
 }
