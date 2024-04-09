@@ -9,6 +9,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Paraiso Hotel Dashboard</title>
+<link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 
 <!-- BOOTSTRAP LINK -->
 
@@ -26,6 +27,26 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+  
+  <script type="text/javascript">
+  	var contextPath = '${pageContext.request.contextPath}' + '/';
+  	
+  	$(document).ready(function(){
+  		$('#roomList').DataTable({
+  		  pageLength: 50,
+  		  columnDefs: [
+  		    { targets: [0, 1, 2, 3], searchable: true },
+  		    { targets: [4], searchable: false },
+  		  ]
+  		});
+
+  	});
+  </script>
 
 </head>
 
@@ -55,7 +76,7 @@
 										<div
 											class="card text-center p-3 text-success table-responsive"
 											style="max-height: 100%; overflow-y: auto">
-											<table class="table table-hover">
+											<table class="table table-hover" id="roomList">
 												<thead>
 													<tr>
 														<th>Room ID</th>

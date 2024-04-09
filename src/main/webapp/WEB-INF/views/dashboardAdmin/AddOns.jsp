@@ -18,9 +18,28 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous" />
 
-<!-- CSS LINK -->
+<link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 
-<!--  <link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+  
+  <script type="text/javascript">
+  	var contextPath = '${pageContext.request.contextPath}' + '/';
+  	
+  	$(document).ready(function(){
+  		$('#addOnsList').DataTable({
+  		  pageLength: 50,
+  		  columnDefs: [
+  		    { targets: [0, 1, 2, 3], searchable: true },
+  		    { targets: [4], searchable: false },
+  		  ]
+  		});
+
+  	});
+  </script>
+
 </head>
 
 <body>
@@ -47,7 +66,7 @@
 										<div
 											class="card text-center p-3 text-success table-responsive"
 											style="max-height: 100%; overflow-y: auto">
-											<table class="table table-hover">
+											<table class="table table-hover" id="addOnsList">
 												<thead>
 													<tr>
 														<th>ID</th>

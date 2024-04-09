@@ -10,15 +10,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Paraiso Hotel Dashboard</title>
+  <link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 
   <!-- BOOTSTRAP LINK -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 
-  <!-- CSS LINK -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.13/css/jquery.dataTables.min.css">
 
-  <!-- <link rel="stylesheet" href="/styles/dashboardAdmin/users.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+  
+  <script type="text/javascript">
+  	var contextPath = '${pageContext.request.contextPath}' + '/';
+  	
+  	$(document).ready(function(){
+  		$('#userList').DataTable({
+  		  pageLength: 50,
+  		  columnDefs: [
+  		    { targets: [0, 1, 2, 3,4,5,6,7,8,9], searchable: true },
+  		    { targets: [10], searchable: false },
+  		  ]
+  		});
+
+  	});
+  </script>
+
+
 </head>
 
 <body>
@@ -43,7 +64,7 @@
                 <div class="col-md-12 b-4">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
-                      <table class="table table-hover table-responsive">
+                      <table class="table table-hover table-responsive" id="userList">
                         <thead>
                           <tr>
                             <th>User ID</th>
@@ -117,5 +138,4 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 </html>
