@@ -1,5 +1,9 @@
 package ph.com.paraiso.model;
 
+import java.util.Arrays;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -16,10 +20,19 @@ public class Room_type {
 	private Integer bathrooms;
 	@Transient
 	private Integer available;
+	@Column(name = "ROOM_IMAGE")
 	@Lob
-	@Column(columnDefinition = "BLOB")
-	private String room_image;
+	private byte[] roomImage;
 	
+	
+	public byte[] getRoomImage() {
+		return roomImage;
+	}
+
+	public void setRoomImage(byte[] roomImage) {
+		this.roomImage = roomImage;
+	}
+
 	public Room_type() {
 		super();
 	}
@@ -37,7 +50,7 @@ public class Room_type {
 	}
 	
 	public Room_type(Integer type_id, String name, String description, Double price_per_night, Integer capacity,
-			Integer beds, Integer bathrooms, String room_image) {
+			Integer beds, Integer bathrooms, byte[] roomImage) {
 		super();
 		this.type_id = type_id;
 		this.name = name;
@@ -46,7 +59,7 @@ public class Room_type {
 		this.capacity = capacity;
 		this.beds = beds;
 		this.bathrooms = bathrooms;
-		this.room_image = room_image;
+		this.roomImage = roomImage;
 	}
 
 	public Room_type(String name, String description, Double price_per_night, Integer capacity, Integer beds,
@@ -73,13 +86,7 @@ public class Room_type {
 		this.available = available;
 	}
 
-	public String getRoomImage() {
-		return room_image;
-	}
 
-	public void setRoomImage(String room_image) {
-		this.room_image = room_image;
-	}
 
 	public Integer getType_id() {
 		return type_id;
@@ -149,7 +156,9 @@ public class Room_type {
 	public String toString() {
 		return "Room_type [type_id=" + type_id + ", name=" + name + ", description=" + description
 				+ ", price_per_night=" + price_per_night + ", capacity=" + capacity + ", beds=" + beds + ", bathrooms="
-				+ bathrooms + ", available=" + available + "]";
+				+ bathrooms + ", available=" + available + ", roomImage=" + Arrays.toString(roomImage) + "]";
 	}
+
+
 	
 }
