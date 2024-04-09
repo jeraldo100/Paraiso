@@ -167,12 +167,12 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="rooms" items="${room }">
+													<c:forEach var="rooms" items="${rooms }">
 														<tr>
-															<td><c:out value="${room.room_id }" /></td>
-															<td><c:out value="${room.hotel_id }" /></td>
-															<td><c:out value="${room.type_id }" /></td>
-															<td><c:out value="${room.status }" /></td>
+															<td><c:out value="${rooms.room_id }" /></td>
+															<td><c:out value="${rooms.hotel_id }" /></td>
+															<td><c:out value="${rooms.type_id }" /></td>
+															<td><c:out value="${rooms.status }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -192,19 +192,23 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th>Room ID</th>
-														<th>Hotel ID</th>
-														<th>Type</th>
-														<th>Status</th>
+														<th>Room Type ID</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Capacity</th>
+														<th>Beds</th>
+														<th>Bathrooms</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="rooms" items="${room }">
+													<c:forEach var="roomTypes" items="${roomTypes }">
 														<tr>
-															<td><c:out value="${room.room_id }" /></td>
-															<td><c:out value="${room.hotel_id }" /></td>
-															<td><c:out value="${room.type_id }" /></td>
-															<td><c:out value="${room.status }" /></td>
+															<td><c:out value="${roomTypes.type_id }" /></td>
+															<td><c:out value="${roomTypes.name }" /></td>
+															<td><c:out value="${roomTypes.description }" /></td>
+															<td><c:out value="${roomTypes.capacity }" /></td>
+															<td><c:out value="${roomTypes.beds }" /></td>
+															<td><c:out value="${roomTypes.bathrooms }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -229,23 +233,16 @@
 														<th>Description</th>
 														<th>Amount</th>
 														<th>Validity</th>
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="vouchers" items="${voucher }">
+													<c:forEach var="voucher" items="${voucher }">
 														<tr>
 															<td><c:out value="${voucher.voucher_id }" /></td>
 															<td><c:out value="${voucher.voucher_code }" /></td>
 															<td><c:out value="${voucher.description }" /></td>
 															<td><c:out value="${voucher.amount }" /></td>
 															<td><c:out value="${voucher.validation }" /></td>
-															<td>
-																<button type="button" class="btn btn-success">
-																	Edit</button>
-																<button type="button" class="btn btn-danger">
-																	Delete</button>
-															</td>
 														</tr>
 													</c:forEach>
 
@@ -266,19 +263,19 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th>Room ID</th>
-														<th>Hotel ID</th>
-														<th>Type</th>
-														<th>Status</th>
+														<th>Add Ons ID</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Amount</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="rooms" items="${room }">
+													<c:forEach var="addOns" items="${addOns }">
 														<tr>
-															<td><c:out value="${room.room_id }" /></td>
-															<td><c:out value="${room.hotel_id }" /></td>
-															<td><c:out value="${room.type_id }" /></td>
-															<td><c:out value="${room.status }" /></td>
+															<td><c:out value="${addOns.add_on_id }" /></td>
+															<td><c:out value="${addOns.add_on_name }" /></td>
+															<td><c:out value="${addOns.description }" /></td>
+															<td><c:out value="${addOns.amount }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>

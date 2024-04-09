@@ -32,8 +32,8 @@
 									aria-label=".form-select-sm example"
 									id="account_type" name="account_type">
 									<option selected>Select Account Type</option>
-									<option value="User">User</option>
-									<option value="Admin">Admin</option>
+									<option value="User">USER</option>
+									<option value="Admin">ADMIN</option>
 								</select> 
 							</div>
 							<div class="form-group">
