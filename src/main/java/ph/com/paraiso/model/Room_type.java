@@ -17,14 +17,15 @@ public class Room_type {
 	private Integer bathrooms;
 	@Transient
 	private Integer available;
-	@Column(name = "ROOM_IMAGE")
-	@Lob
-	private byte[] roomImage;
 	
-	
-	public byte[] getRoomImage() {
-		return roomImage;
-	}
+    @Lob
+    @Column(name = "ROOM_IMAGE")
+    private byte[] roomImage;
+
+    public byte[] getRoomImage() {
+        return roomImage;
+    }
+
 
 	public void setRoomImage(byte[] roomImage) {
 		this.roomImage = roomImage;
@@ -149,12 +150,7 @@ public class Room_type {
 		this.available = available;
 	}
 
-	@Override
-	public String toString() {
-		return "Room_type [type_id=" + type_id + ", name=" + name + ", description=" + description
-				+ ", price_per_night=" + price_per_night + ", capacity=" + capacity + ", beds=" + beds + ", bathrooms="
-				+ bathrooms + ", available=" + available + ", roomImage=" + Arrays.toString(roomImage) + "]";
-	}
+
 
 
 	

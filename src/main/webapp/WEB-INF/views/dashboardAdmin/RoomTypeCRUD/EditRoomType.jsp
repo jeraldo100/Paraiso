@@ -16,7 +16,8 @@
       <div class="card">
         <h1 class="text-center p-3">Edit Room Type</h1>
         <div class="card-body">
-          <form action="/updates/${room_types.type_id}" method="post">
+          <form action="/updates/${room_types.type_id}" method="post" enctype="multipart/form-data">
+
             <div class="form-group">
               <label>Name :</label>
               <input type="text" name="name" id="name" placeholder="Enter Name of Room" class="form-control" />

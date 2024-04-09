@@ -46,16 +46,18 @@ public class RoomTypesController {
 		return "dashboardAdmin/RoomTypeCRUD/AddRoomType";
 	}
 	
+	
+
 	@PostMapping("/addRoomTypes/save")
 	public String newRoomType(
-	        @RequestParam("name") String name,
-	        @RequestParam("description") String description,
-	        @RequestParam("price_per_night") Double price_per_night,
-	        @RequestParam("capacity") Integer capacity,
-	        @RequestParam("beds") Integer beds,
-	        @RequestParam("bathrooms") Integer bathrooms,
-	        @RequestParam("roomImage") MultipartFile roomImage,
-	        Model model) {
+	    @RequestParam("name") String name,
+	    @RequestParam("description") String description,
+	    @RequestParam("price_per_night") Double price_per_night,
+	    @RequestParam("capacity") Integer capacity,
+	    @RequestParam("beds") Integer beds,
+	    @RequestParam("bathrooms") Integer bathrooms,
+	    @RequestParam("roomImage") MultipartFile roomImage,
+	    Model model) {
 	    
 	    Room_type room_type = new Room_type();
 	    
@@ -64,9 +66,10 @@ public class RoomTypesController {
 	    room_type.setPrice_per_night(price_per_night);
 	    room_type.setCapacity(capacity);
 	    room_type.setBeds(beds);
-	    room_type.setBathrooms(bathrooms);	    
+	    room_type.setBathrooms(bathrooms);    
 	    try {
-	        room_type.setRoomImage(roomImage.getBytes()); 
+	        byte[] imageData = roomImage.getBytes();
+	        room_type.setRoomImage(imageData); 
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
@@ -85,23 +88,35 @@ public class RoomTypesController {
 	
 	@PostMapping("/updates/{type_id}")
 	public String updateRoomTypes(@PathVariable("type_id") Integer type_id,
-			@ModelAttribute("room_types") Room_type room_types,
-			Model model) {
-		
-		Room_type existingRoom_type = roomTypesService.getRoomTypesById(type_id);
-		existingRoom_type.setType_id(type_id);
-		existingRoom_type.setName(room_types.getName());
-		existingRoom_type.setDescription(room_types.getDescription());
-		existingRoom_type.setPrice_per_night(room_types.getPrice_per_night());
-		existingRoom_type.setCapacity(room_types.getCapacity());
-		existingRoom_type.setBeds(room_types.getBeds());
-		existingRoom_type.setBathrooms(room_types.getBathrooms());
-		
-		roomTypesService.updateRoomTypes(existingRoom_type);
-		return "redirect:/AdminRoomTypes";
-		
-		
+	    @RequestParam("name") String name,
+	    @RequestParam("description") String description,
+	    @RequestParam("price_per_night") Double price_per_night,
+	    @RequestParam("capacity") Integer capacity,
+	    @RequestParam("beds") Integer beds,
+	    @RequestParam("bathrooms") Integer bathrooms,
+	    @RequestParam("roomImage") MultipartFile roomImage,
+	    Model model) {
+
+	    Room_type existingRoom_type = roomTypesService.getRoomTypesById(type_id);
+	    existingRoom_type.setType_id(type_id);
+	    existingRoom_type.setName(name);
+	    existingRoom_type.setDescription(description);
+	    existingRoom_type.setPrice_per_night(price_per_night);
+	    existingRoom_type.setCapacity(capacity);
+	    existingRoom_type.setBeds(beds);
+	    existingRoom_type.setBathrooms(bathrooms);
+
+	    try {
+	        byte[] imageData = roomImage.getBytes();
+	        existingRoom_type.setRoomImage(imageData);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    roomTypesService.updateRoomTypes(existingRoom_type);
+	    return "redirect:/AdminRoomTypes";
 	}
+
 	
 	@GetMapping("deleteType/{type_id}")
 	public String deleteType(@PathVariable("type_id") Integer type_id) {
