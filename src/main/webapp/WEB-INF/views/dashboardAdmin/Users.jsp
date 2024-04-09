@@ -28,15 +28,26 @@
   	var contextPath = '${pageContext.request.contextPath}' + '/';
   	
   	$(document).ready(function(){
-  		$('#userList').DataTable({
-  		  pageLength: 50,
-  		  columnDefs: [
-  		    { targets: [0, 1, 2, 3,4,5,6,7,8,9], searchable: true },
-  		    { targets: [10], searchable: false },
-  		  ]
-  		});
+  	    var table = $('#userList').DataTable({
+  	    	lengthMenu: [1, 3, 5, 10, 50, 100],
+  	        pageLength: 50,
+  	        columnDefs: [
+  	            { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], searchable: true },
+  	            { targets: [10], searchable: false },
+  	        ]
+  	    });
+  	    
+  	    $('#printButton').click(function() {
+  	        var filteredData = table.rows({ search: 'applied' }).data();
 
+  	        // Loop through each row in the filtered data
+  	        filteredData.each(function(rowData) {
+  	            // Print each row data
+  	            console.log(rowData);
+  	        });
+  	    });
   	});
+
   </script>
 
 
@@ -55,7 +66,7 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Users</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-3">
-                  <a href="#" type="button" class="btn btn-success">Print</a>
+                  <input type="button" class="btn btn-success" id="printButton" value="Print">
                   <a href="addUser" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>

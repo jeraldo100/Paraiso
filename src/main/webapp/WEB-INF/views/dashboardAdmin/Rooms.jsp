@@ -37,15 +37,26 @@
   	var contextPath = '${pageContext.request.contextPath}' + '/';
   	
   	$(document).ready(function(){
-  		$('#roomList').DataTable({
-  		  pageLength: 50,
-  		  columnDefs: [
-  		    { targets: [0, 1, 2, 3], searchable: true },
-  		    { targets: [4], searchable: false },
-  		  ]
-  		});
+  	    var table = $('#roomList').DataTable({
+  	    	lengthMenu: [1, 3, 5, 10, 50, 100],
+  	        pageLength: 50,
+  	        columnDefs: [
+  	            { targets: [0, 1, 2, 3], searchable: true },
+  	            { targets: [4], searchable: false },
+  	        ]
+  	    });
+  	    
+  	    $('#printButton').click(function() {
+  	        var filteredData = table.rows({ search: 'applied' }).data();
 
+  	        // Loop through each row in the filtered data
+  	        filteredData.each(function(rowData) {
+  	            // Print each row data
+  	            console.log(rowData);
+  	        });
+  	    });
   	});
+
   </script>
 
 </head>
@@ -64,7 +75,7 @@
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<button type="button" class="btn btn-success">Print</button>
+									<button type="button" class="btn btn-success" id="printButton">Print</button>
 									<a href="/addRoom" class="btn btn-success" data-dismiss="modal" >
 									Add
 									</a>
