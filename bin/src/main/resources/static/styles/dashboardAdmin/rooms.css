@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+
+.modal-header {
+    background-color: var(--success);
+}
+
+input[type='file'] {
+    color: rgba(0, 0, 0, 0)
+}
+
+.material-symbols-outlined {
+    font-size: 8em !important;
+}
+
+.files {
+    display: flex;
+    justify-content: center;
+    margin-left: 15%;
+}
