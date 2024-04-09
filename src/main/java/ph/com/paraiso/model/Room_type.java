@@ -1,9 +1,6 @@
 package ph.com.paraiso.model;
 
 import java.util.Arrays;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import jakarta.persistence.*;
 
 @Entity
