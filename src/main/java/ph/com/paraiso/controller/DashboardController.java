@@ -65,7 +65,7 @@ public class DashboardController {
 		Iterable<AddOns> addOns = addOnsRepository.findAll();
 		model.addAttribute("addOns", addOns);
 		
-		return "dashboardAdmin/Dashboard";
+		return "dashboardAdmin/Dashboard"; 
 	}
 
 }
