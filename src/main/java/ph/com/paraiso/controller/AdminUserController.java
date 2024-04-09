@@ -16,7 +16,6 @@ import ph.com.paraiso.service.AdminUserService;
 import ph.com.paraiso.service.UserService;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminUserController {
 
 	private AdminUserService adminUserService;
@@ -70,19 +69,19 @@ public class AdminUserController {
 	}
 	
 	@GetMapping("/editUser/{userid}")
-	public String editUser(@PathVariable("user_id") Integer user_id, Model model) {
+	public String editUser(@PathVariable("userid") Integer userid, Model model) {
 		
-		model.addAttribute("user", adminUserService.getUserById(user_id));
+		model.addAttribute("user", adminUserService.getUserById(userid));
 		
 		return "dashboardAdmin/UsersCRUD/EditUsers";
 	}
 	
 	@PostMapping("/updateUser/{userid}")
-	public String updateUser(@PathVariable("user_id") Integer user_id,
+	public String updateUser(@PathVariable("user_id") Integer userid,
 			@ModelAttribute("user_id") User user,
 			Model model) {
 		
-		User existingUser = adminUserService.getUserById(user_id);
+		User existingUser = adminUserService.getUserById(userid);
 		existingUser.setUsername(user.getUsername());
 		existingUser.setPassword(user.getPassword());
 		existingUser.setAccountType(user.getAccountType());
@@ -100,8 +99,8 @@ public class AdminUserController {
 	}
 	
 	@GetMapping("/deleteUser/{userid}")
-	public String deleteUser(@PathVariable("user_id") Integer user_id) {
-		adminUserService.deleteUserById(user_id);
+	public String deleteUser(@PathVariable("userid") Integer userid) {
+		adminUserService.deleteUserById(userid);
 		return "redirect:/AdminUsers";
 	}
 	

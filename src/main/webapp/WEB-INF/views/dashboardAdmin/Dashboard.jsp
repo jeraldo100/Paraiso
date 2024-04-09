@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,7 +115,6 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th></th>
 														<th>User ID</th>
 														<th>Username</th>
 														<th>Password</th>
@@ -128,18 +128,18 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="users" items="${user }">
+													<c:forEach var="users" items="${users }">
 														<tr>
-															<td><c:out value="${user.user_id }" /></td>
-															<td><c:out value="${user.username }" /></td>
-															<td><c:out value="${user.password }" /></td>
-															<td><c:out value="${user.account_type }" /></td>
-															<td><c:out value="${user.first_name }" /></td>
-															<td><c:out value="${user.last_name }" /></td>
-															<td><c:out value="${user.date_of_birth }" /></td>
-															<td><c:out value="${user.address }" /></td>
-															<td><c:out value="${user.phone }" /></td>
-															<td><c:out value="${user.email }" /></td>
+															<td><c:out value="${users.userid }" /></td>
+															<td><c:out value="${users.username }" /></td>
+															<td><c:out value="${fn:substring(users.password, 0, 6)}" /></td>
+															<td><c:out value="${users.accountType }" /></td>
+															<td><c:out value="${users.firstName }" /></td>
+															<td><c:out value="${users.lastName }" /></td>
+															<td><c:out value="${users.dateOfBirth }" /></td>
+															<td><c:out value="${users.address }" /></td>
+															<td><c:out value="${users.phone }" /></td>
+															<td><c:out value="${users.email }" /></td>
 														</tr>
 													</c:forEach>
 
@@ -160,7 +160,6 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th></th>
 														<th>Room ID</th>
 														<th>Hotel ID</th>
 														<th>Type</th>
@@ -168,13 +167,48 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="rooms" items="${room }">
+													<c:forEach var="rooms" items="${rooms }">
 														<tr>
-															<td><input type="checkbox" /></td>
-															<td><c:out value="${room.room_id }" /></td>
-															<td><c:out value="${room.hotel_id }" /></td>
-															<td><c:out value="${room.type_id }" /></td>
-															<td><c:out value="${room.status }" /></td>
+															<td><c:out value="${rooms.room_id }" /></td>
+															<td><c:out value="${rooms.hotel_id }" /></td>
+															<td><c:out value="${rooms.type_id }" /></td>
+															<td><c:out value="${rooms.status }" /></td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-between mb-3">
+									<h3>Room Type</h3>
+								</div>
+								<div class="row mb-4">
+									<div class="col-md-12 b-4">
+										<div
+											class="card text-center p-3 text-success table-responsive"
+											style="max-height: 300px; overflow-y: auto">
+											<table class="table table-hover">
+												<thead>
+													<tr>
+														<th>Room Type ID</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Capacity</th>
+														<th>Beds</th>
+														<th>Bathrooms</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="roomTypes" items="${roomTypes }">
+														<tr>
+															<td><c:out value="${roomTypes.type_id }" /></td>
+															<td><c:out value="${roomTypes.name }" /></td>
+															<td><c:out value="${roomTypes.description }" /></td>
+															<td><c:out value="${roomTypes.capacity }" /></td>
+															<td><c:out value="${roomTypes.beds }" /></td>
+															<td><c:out value="${roomTypes.bathrooms }" /></td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -194,33 +228,56 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th></th>
 														<th>Voucher ID</th>
 														<th>Voucher Code</th>
 														<th>Description</th>
 														<th>Amount</th>
 														<th>Validity</th>
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="vouchers" items="${vouchers }">
+													<c:forEach var="voucher" items="${voucher }">
 														<tr>
-															<td><input type="checkbox" /></td>
-															<td><c:out value="${vouchers.voucher_id }" /></td>
-															<td><c:out value="${vouchers.voucher_code }" /></td>
-															<td><c:out value="${vouchers.description }" /></td>
-															<td><c:out value="${vouchers.amount }" /></td>
-															<td><c:out value="${vouchers.validation }" /></td>
-															<td>
-																<button type="button" class="btn btn-success">
-																	Edit</button>
-																<button type="button" class="btn btn-danger">
-																	Delete</button>
-															</td>
+															<td><c:out value="${voucher.voucher_id }" /></td>
+															<td><c:out value="${voucher.voucher_code }" /></td>
+															<td><c:out value="${voucher.description }" /></td>
+															<td><c:out value="${voucher.amount }" /></td>
+															<td><c:out value="${voucher.validation }" /></td>
 														</tr>
 													</c:forEach>
 
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-between mb-3">
+									<h3>Add Ons</h3>
+								</div>
+								<div class="row mb-4">
+									<div class="col-md-12 b-4">
+										<div
+											class="card text-center p-3 text-success table-responsive"
+											style="max-height: 300px; overflow-y: auto">
+											<table class="table table-hover">
+												<thead>
+													<tr>
+														<th>Add Ons ID</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Amount</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="addOns" items="${addOns }">
+														<tr>
+															<td><c:out value="${addOns.add_on_id }" /></td>
+															<td><c:out value="${addOns.add_on_name }" /></td>
+															<td><c:out value="${addOns.description }" /></td>
+															<td><c:out value="${addOns.amount }" /></td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 										</div>
@@ -234,18 +291,9 @@
 		</div>
 	</div>
 
-	<!-- <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script> -->
 
 </body>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-  integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> -->
 
 <!-- IONICONS LINK -->
 <script type="module"

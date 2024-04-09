@@ -42,7 +42,7 @@ public class VoucherController {
 	@PostMapping("addVoucher/save")
 	public String newVoucher(@RequestParam("voucher_code") String voucher_code,
 			@RequestParam("description") String description, @RequestParam("amount") Double amount,
-			@RequestParam("validation") Date validation, Model mode) {
+			@RequestParam("validation") Date validation, Model model) {
 
 		Voucher voucher = new Voucher();
 
