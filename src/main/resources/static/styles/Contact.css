@@ -194,7 +194,7 @@
   padding: 10px 12px;
 }
 
-.contact button[type="submit"] {
+.contact button[type="button"] {
   background: #21cc7a;
   border: 0;
   padding: 10px 35px;
@@ -203,7 +203,7 @@
   border-radius: 50px;
 }
 
-.contact button[type="submit"]:hover {
+.contact button[type="button"]:hover {
   background: rgb(75, 255, 168);
   color: #1a1814;
 }
