@@ -16,6 +16,9 @@ public class Room_type {
 	private Integer bathrooms;
 	@Transient
 	private Integer available;
+	@Lob
+	@Column(columnDefinition = "BLOB")
+	private String room_image;
 	
 	public Room_type() {
 		super();
@@ -31,6 +34,19 @@ public class Room_type {
 		this.capacity = capacity;
 		this.beds = beds;
 		this.bathrooms = bathrooms;
+	}
+	
+	public Room_type(Integer type_id, String name, String description, Double price_per_night, Integer capacity,
+			Integer beds, Integer bathrooms, String room_image) {
+		super();
+		this.type_id = type_id;
+		this.name = name;
+		this.description = description;
+		this.price_per_night = price_per_night;
+		this.capacity = capacity;
+		this.beds = beds;
+		this.bathrooms = bathrooms;
+		this.room_image = room_image;
 	}
 
 	public Room_type(String name, String description, Double price_per_night, Integer capacity, Integer beds,
@@ -55,6 +71,14 @@ public class Room_type {
 		this.beds = beds;
 		this.bathrooms = bathrooms;
 		this.available = available;
+	}
+
+	public String getRoomImage() {
+		return room_image;
+	}
+
+	public void setRoomImage(String room_image) {
+		this.room_image = room_image;
 	}
 
 	public Integer getType_id() {

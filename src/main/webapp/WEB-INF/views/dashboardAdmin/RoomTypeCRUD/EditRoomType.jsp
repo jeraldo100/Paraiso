@@ -41,6 +41,10 @@
               <label>Bathrooms :</label>
               <input type="number" name="bathrooms" id="bathrooms" placeholder="Enter Number of Bathrooms" class="form-control" />
             </div>
+            <div class="form-group">
+              <label>Image :</label>
+              <input type="file" name="roomImage"  id="roomImage" placeholder="Upload Image" class="form-control" />
+            </div>
             <div class="box-footer">
               <a type="button" href="/AdminRoomTypes" class="btn btn-danger float-end m-3">Back</a>
               <input type="submit" class="btn btn-success float-end m-3" value="Submit">
