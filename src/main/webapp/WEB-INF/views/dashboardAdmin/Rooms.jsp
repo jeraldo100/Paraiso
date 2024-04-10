@@ -9,6 +9,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Paraiso Hotel Dashboard</title>
+<link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 
 <!-- BOOTSTRAP LINK -->
 
@@ -27,6 +28,37 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+  
+  <script type="text/javascript">
+  	var contextPath = '${pageContext.request.contextPath}' + '/';
+  	
+  	$(document).ready(function(){
+  	    var table = $('#roomList').DataTable({
+  	    	lengthMenu: [1, 3, 5, 10, 50, 100],
+  	        pageLength: 50,
+  	        columnDefs: [
+  	            { targets: [0, 1, 2, 3], searchable: true },
+  	            { targets: [4], searchable: false },
+  	        ]
+  	    });
+  	    
+  	    $('#printButton').click(function() {
+  	        var filteredData = table.rows({ search: 'applied' }).data();
+
+  	        // Loop through each row in the filtered data
+  	        filteredData.each(function(rowData) {
+  	            // Print each row data
+  	            console.log(rowData);
+  	        });
+  	    });
+  	});
+
+  </script>
+
 </head>
 
 <body>
@@ -43,8 +75,8 @@
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<button type="button" class="btn btn-success">Print</button>
-									<a href="/addRoom" class="btn btn-success" data-dismiss="modal" >
+									<button type="button" class="btn btn-success" id="printButton">Print</button>
+									<a href="/admin/addRoom" class="btn btn-success" data-dismiss="modal" >
 									Add
 									</a>
 								</div>
@@ -55,7 +87,7 @@
 										<div
 											class="card text-center p-3 text-success table-responsive"
 											style="max-height: 100%; overflow-y: auto">
-											<table class="table table-hover">
+											<table class="table table-hover" id="roomList">
 												<thead>
 													<tr>
 														<th>Room ID</th>
@@ -73,9 +105,9 @@
 															<td><c:out value="${rooms.type_id }" /></td>
 															<td><c:out value="${rooms.status }" /></td>
 															<td>
-																<a href="/editRoom/${rooms.room_id }" type="button" class="btn btn-success">
+																<a href="/admin/editRoom/${rooms.room_id }" type="button" class="btn btn-success">
 																	Edit</a>
-																<a href="delete/${rooms.room_id }" type="button" class="btn btn-danger">
+																<a href="/admin/delete/${rooms.room_id }" type="button" class="btn btn-danger">
 																	Delete</a>
 															</td>
 														</tr>

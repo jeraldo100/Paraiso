@@ -13,7 +13,7 @@
       <div class="card">
         <h1 class="text-center p-3">Add New Room Type</h1>
         <div class="card-body">
-          <form action="addRoomTypes/save" method="post">
+          <form action="/admin/addRoomTypes/save" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Name :</label>
               <input type="text" name="name" id="name" placeholder="Enter Name of Room" class="form-control" />
@@ -37,6 +37,10 @@
             <div class="form-group">
               <label>Bathrooms :</label>
               <input type="number" name="bathrooms" id="bathrooms" placeholder="Enter Number of Bathrooms" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Image :</label>
+              <input type="file" name="roomImage"  id="roomImage" placeholder="Upload Image" class="form-control" />
             </div>
             <div class="box-footer">
               <a type="button" href="/AdminRoomTypes" class="btn btn-danger float-end m-3">Back</a>

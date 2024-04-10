@@ -121,14 +121,8 @@ $(document).ready(function() {
 
         return isValid; 
     }
-
-    $("#registrationForm").submit(function(event) {
-        if (!validateForm()) {
-            event.preventDefault(); 
-        }
-    });
-
-    function showModal(message) {
+    
+        function showModal(message) {
         var modal = $("#loginBtn");
         $('#message').text(message);
         modal.css("display", "block");
@@ -136,22 +130,59 @@ $(document).ready(function() {
         container.removeClass("loginSignUpMode2");
     }
 
-    $('#registrationForm').submit(function(event) {
-        event.preventDefault();
-        var formData = $(this).serialize();
+	    function showSignUpModal(message) {
+        var modal = $("#signUpBtn");
+        $('#signupMessage').text(message);
+        modal.css("display", "block");
+    }
 
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: formData,
-            success: function(response) {
-                console.log(response);
-                showModal(response);
-                $('#registrationForm')[0].reset();
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }
-        });
+   
+   $('#registrationForm').submit(function(event) {
+        if (!validateForm()) {   
+            event.preventDefault();
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                success: function(response) {
+                    console.log(response);
+                    showModal(response);
+                    $('#registrationForm')[0].reset();
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.responseText; 
+                    showSignUpModal(errorMessage);
+                }
+            });
+        }
+    });
+    
+    
+     $('#loginForm').submit(function(event) {
+      // Prevent form submission
+      event.preventDefault();
+
+      // Get form data
+      var formData = $(this).serialize();
+
+      // Send AJAX request
+      $.ajax({
+        type: 'POST',
+        url: 'auth',
+        data: formData,
+        success: function(response) {
+          // Handle successful authentication
+          if (response.redirectUrl) {
+            window.location.href = response.redirectUrl;
+          } else {
+            $('#message').text(response.error);
+          }
+        },
+        error: function() {
+          $('#message').text('Invalid credentials. Please try again.');
+        }
+      });
     });
 });

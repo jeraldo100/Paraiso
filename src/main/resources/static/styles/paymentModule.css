@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+html, body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.bg-success {
+	background-color: green;
+	color: white;
+}
+
+.bg-danger {
+	background-color: red;
+	color: white;
+}
+
+.d-flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card {
+	border-radius: 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+.main {
+	max-height: 650px;
+	overflow-y: auto;
+}
+
+.logo img {
+    max-width: 200px; /* Set the maximum width */
+    max-height: 200px; /* Set the maximum height */
+}

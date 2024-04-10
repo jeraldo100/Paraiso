@@ -17,7 +17,8 @@
 				<div class="card" style="max-height: 600px; overflow-y: auto">
 					<h1 class="text-center p-3">Add New User</h1>
 					<div class="card-body">
-						<form action="/updateUser/${user.user_id}" method="post">
+						<form action="/admin/updateUser/${user.userid}" method="post">
+
 							<div class="form-group">
 								<label>Username :</label> <input type="text" name="username"
 									id="username" placeholder="Enter Username" class="form-control" />
@@ -32,8 +33,8 @@
 									aria-label=".form-select-sm example"
 									id="account_type" name="account_type">
 									<option selected>Select Account Type</option>
-									<option value="User">User</option>
-									<option value="Admin">Admin</option>
+									<option value="User">USER</option>
+									<option value="Admin">ADMIN</option>
 								</select> 
 							</div>
 							<div class="form-group">

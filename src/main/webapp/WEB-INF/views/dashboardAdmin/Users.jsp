@@ -10,15 +10,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Paraiso Hotel Dashboard</title>
+  <link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 
   <!-- BOOTSTRAP LINK -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 
-  <!-- CSS LINK -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.13/css/jquery.dataTables.min.css">
 
-  <!-- <link rel="stylesheet" href="/styles/dashboardAdmin/users.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
+  <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+  
+  <script type="text/javascript">
+  	var contextPath = '${pageContext.request.contextPath}' + '/';
+  	
+  	$(document).ready(function(){
+  	    var table = $('#userList').DataTable({
+  	    	lengthMenu: [1, 3, 5, 10, 50, 100],
+  	        pageLength: 50,
+  	        columnDefs: [
+  	            { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], searchable: true },
+  	            { targets: [10], searchable: false },
+  	        ]
+  	    });
+  	    
+  	    $('#printButton').click(function() {
+  	        var filteredData = table.rows({ search: 'applied' }).data();
+
+  	        // Loop through each row in the filtered data
+  	        filteredData.each(function(rowData) {
+  	            // Print each row data
+  	            console.log(rowData);
+  	        });
+  	    });
+  	});
+
+  </script>
+
+
 </head>
 
 <body>
@@ -34,8 +66,8 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Users</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-3">
-                  <a href="#" type="button" class="btn btn-success">Print</a>
-                  <a href="addUser" type="button" class="btn btn-success">Add</a>
+                  <input type="button" class="btn btn-success" id="printButton" value="Print">
+                  <a href="/admin/addUser" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>
 
@@ -43,7 +75,7 @@
                 <div class="col-md-12 b-4">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
-                      <table class="table table-hover table-responsive">
+                      <table class="table table-hover table-responsive" id="userList">
                         <thead>
                           <tr>
                             <th>User ID</th>
@@ -73,10 +105,10 @@
                             <td><c:out value="${users.phone }" /></td>
                             <td><c:out value="${users.email }" /></td>
                             <td>
-                              <a href="/editUser/${users.userid }" type="button" class="btn btn-success m-1">
+                              <a href="/admin/editUser/${users.userid }" type="button" class="btn btn-success m-1">
                                 Edit
                               </a>
-                              <a href="/deleteUser/${users.userid }" type="button" class="btn btn-danger m-1">
+                              <a href="/admin/deleteUser/${users.userid }" type="button" class="btn btn-danger m-1">
                                 Delete
                               </a>
                             </td>
@@ -117,5 +149,4 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 </html>

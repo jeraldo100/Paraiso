@@ -36,6 +36,8 @@
     width: var(--side);
     position: sticky;
     top: 0;
+    left: 0;
+    bottom: 0;
     height: 100vh;
     overflow-y: auto;
 }
@@ -68,3 +70,4 @@ input[type='file'] {
     justify-content: center;
     margin-left: 15%;
 }
+

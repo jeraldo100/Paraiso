@@ -1,0 +1,56 @@
+
+
+.link-nav {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.sub-hero-banner {
+  height: 345px;
+}
+
+.sub-hero-banner .overlay-bg {
+  background: rgba(4, 9, 30, 0.4);
+  position: absolute;
+  height: 345px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1; 
+}
+
+.sub-hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+
+.sub-hero-content {
+  margin-top: 300px;
+  padding: 90px 0px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .sub-hero-content {
+    margin-top: 70px;
+  }
+}
+
+.sub-hero-content h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.sub-hero-content a {
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.sub-hero-content #lnr {
+  margin: 0px 10px;
+  font-weight: 600;
+}
+

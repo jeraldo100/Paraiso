@@ -35,6 +35,7 @@
                 <li><a href="/home">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/rooms">Our Rooms</a></li>
+                <li><a href="/booking">Booking</a></li>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/contact">Contact</a></li>
 
@@ -52,7 +53,7 @@
                             </div>
                           </div>
                         </div>
-                        <li><a href="/user/dashboard">User Dashboard</a></li>
+                        <li><a href="/userDashboard">User Dashboard</a></li>
                         <li><a href="/logout">Logout</a></li>
                       </ul>
                     </li>
@@ -75,7 +76,7 @@
           <div class="login-container">
             <span class="close-btn fa-solid fa-x"></span>
             <div class="signin-signup">
-              <form class="sign-in-form" action="auth" method="post">
+				<form id="loginForm" class="sign-in-form" action="auth" method="post">	
                 <h2 class="login-title">Login</h2>
                 <p id="message"></p>
                 <div class="login-signup-input">
@@ -97,7 +98,7 @@
 
             <form id="registrationForm" action="registration" method="post" role="form" class="sign-up-form">
                 <h2 class="signup-title">Sign up</h2>
-                
+                <p id="signupMessage"></p>
 
                 <div class="column-container">
                   <div class="signup-input signup-col1">

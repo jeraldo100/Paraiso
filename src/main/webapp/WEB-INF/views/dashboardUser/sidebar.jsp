@@ -18,17 +18,17 @@
                 <ion-icon name="book"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Bookings</span>
               </a>
             </li>
-            <li class="nav-item py-2 py-sm-0">
-              <a href="#" class="nav-link text-white">
-                <ion-icon name="cash"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Payment</span>
-              </a>
-            </li>
           </ul>
         </div>
         <div class="p-3">
           <ul class="nav nav-pills flex-column mt-4">
+          <li class="nav-item py-2 py-sm-0">
+              <a href="/home" class="nav-link text-white">
+                <ion-icon name="home"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Home</span>
+              </a>
+            </li>
             <li class="nav-item py-2 py-sm-0">
-              <a href="#" class="nav-link text-white">
+              <a href="/logout" class="nav-link text-white">
                 <ion-icon name="log-out"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Logout</span>
               </a>
             </li>

@@ -13,7 +13,7 @@
       <div class="card">
         <h1 class="text-center p-3">Add New Voucher</h1>
         <div class="card-body">
-          <form action="addVoucher/save" method="post">
+          <form action="/admin/addVoucher/save" method="post">
             <div class="form-group">
               <label>Voucher Code :</label>
               <input type="text" name="voucher_code" id="voucher_code" placeholder="Enter Voucher Code" class="form-control" />
