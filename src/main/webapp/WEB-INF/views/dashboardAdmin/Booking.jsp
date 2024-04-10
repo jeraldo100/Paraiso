@@ -76,7 +76,7 @@
                 <div class="col-md-12 b-4">
                     <div class="card text-center p-3 text-success table-responsive"
                       style="max-height: 100%; overflow-y: auto">
-                      <table class="table table-hover" id="bookingList">
+                      <table class="table table-hover" id="bookingList" >
                         <thead>
                           <tr>
                             <th>Booking ID</th>

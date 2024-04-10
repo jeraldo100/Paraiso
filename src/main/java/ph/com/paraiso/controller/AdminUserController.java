@@ -104,4 +104,8 @@ public class AdminUserController {
 		return "redirect:/AdminUsers";
 	}
 	
+	@GetMapping("/payment")
+	public String payment() {
+		return "paymentModule";
+	}
 }
