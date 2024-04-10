@@ -81,11 +81,11 @@
                 <p id="message"></p>
                 <div class="login-signup-input">
                   <i class="fas fa-user"></i>
-                  <input type="text" name="email" placeholder="Email" />
+                  <input type="text" name="email" placeholder="Email" autocomplete="current-password"/>
                 </div>
                 <div class="login-signup-input">
                   <i class="fas fa-lock"></i>
-                  <input type="password" name="password" placeholder="Password" />
+                  <input type="password" name="password" placeholder="Password" autocomplete="current-password" />
                 </div>
 
                 <input href="register" type="submit" value="Submit" class="login-signup-btn" />
@@ -114,11 +114,11 @@
                 </div>
                 <div class="signup-input">
                   <i class="fa-solid fa-envelope"></i>
-                  <input type="text" name="email" id="email" placeholder="Email" />
+                  <input type="text" name="email" id="email" placeholder="Email" autocomplete="current-password" />
                 </div>
                 <div class="signup-input">
                   <i class="fa-regular fa-user"></i>
-                  <input type="text" name="username" id="username" placeholder="Username" />
+                  <input type="text" name="username" id="username" placeholder="Username" autocomplete="current-password" />
                 </div>
                 <div class="signup-input">
                   <i class="fa-solid fa-location-dot"></i>
@@ -133,13 +133,13 @@
 
                   <div class="signup-input signup-col2">
                     <i class="fa-solid fa-phone"></i>
-                    <input type="text" name="phone" id="phone" placeholder="Phone" />
+                    <input type="text" name="phone" id="phone" placeholder="Phone" autocomplete="current-password"/>
                   </div>
                 </div>
 
                 <div class="signup-input">
                   <i class="fas fa-lock"></i>
-                  <input type="password" name="password" id="password" placeholder="Password" />
+                  <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password"/>
                 </div>
                 <input type="submit" value="Submit" class="signup-btn" />
                 <p class="account-text">
@@ -181,8 +181,9 @@
       </div>
 
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>
       <script src="/scripts/NavBar.js"></script>
       <script src="/scripts/LoginSignUp.js"></script>
       <script>
