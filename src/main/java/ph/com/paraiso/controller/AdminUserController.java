@@ -2,6 +2,7 @@ package ph.com.paraiso.controller;
 
 import java.sql.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.service.AdminUserService;
 import ph.com.paraiso.service.UserService;
+import ph.com.paraiso.session.SessionManager;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminUserController {
-
+	
+	@Autowired
+	UserService userSvc;
 	private AdminUserService adminUserService;
 
 	public AdminUserController(AdminUserService adminUserService) {
@@ -27,15 +32,33 @@ public class AdminUserController {
 	}
 	
 	@GetMapping("/AdminUsers")
-	public String adminUsers(Model model) {
-		model.addAttribute("users", adminUserService.getAllUsers());
-		return "dashboardAdmin/Users";
+	public String adminUsers(HttpServletRequest request, Model model) {
+		
+        String userEmail = SessionManager.getEmailFromSession(request);
+        if (userEmail != null) {
+            String accountType = userSvc.getAccountTypeByEmail(userEmail);
+            String username = userSvc.getUsernameByEmail(userEmail);
+            model.addAttribute("username", username);
+            if(accountType.equals("ADMIN")) {
+        		model.addAttribute("users", adminUserService.getAllUsers());
+        		return "dashboardAdmin/Users";
+            }
+        } 
+        return "ErrorPages/AccessDeniedError";
 	}
 	
 	@GetMapping("/addUser")
-	public String addUser(Model model) {
-		
-		return "dashboardAdmin/UsersCRUD/AddUsers";
+	public String addUser(HttpServletRequest request, Model model) {
+	     String userEmail = SessionManager.getEmailFromSession(request);
+	        if (userEmail != null) {
+	            String accountType = userSvc.getAccountTypeByEmail(userEmail);
+	            String username = userSvc.getUsernameByEmail(userEmail);
+	            model.addAttribute("username", username);
+	            if(accountType.equals("ADMIN")) {
+	            	return "dashboardAdmin/UsersCRUD/AddUsers";
+	            }
+	        } 
+	        return "ErrorPages/AccessDeniedError";	
 	}
 	
 	@PostMapping("/addUser/save")
@@ -70,11 +93,18 @@ public class AdminUserController {
 	}
 	
 	@GetMapping("/editUser/{userid}")
-	public String editUser(@PathVariable("userid") Integer userid, Model model) {
-		
-		model.addAttribute("user", adminUserService.getUserById(userid));
-		
-		return "dashboardAdmin/UsersCRUD/EditUsers";
+	public String editUser(HttpServletRequest request, @PathVariable("userid") Integer userid, Model model) {
+		 String userEmail = SessionManager.getEmailFromSession(request);
+	        if (userEmail != null) {
+	            String accountType = userSvc.getAccountTypeByEmail(userEmail);
+	            String username = userSvc.getUsernameByEmail(userEmail);
+	            model.addAttribute("username", username);
+	            if(accountType.equals("ADMIN")) {
+	        		model.addAttribute("user", adminUserService.getUserById(userid));        		
+	        		return "dashboardAdmin/UsersCRUD/EditUsers";
+	            }
+	        } 
+	        return "ErrorPages/AccessDeniedError";		
 	}
 	
 	@PostMapping("/updateUser/{userid}")
@@ -100,9 +130,19 @@ public class AdminUserController {
 	}
 	
 	@GetMapping("/deleteUser/{userid}")
-	public String deleteUser(@PathVariable("userid") Integer userid) {
-		adminUserService.deleteUserById(userid);
-		return "redirect:/AdminUsers";
+	public String deleteUser(HttpServletRequest request, @PathVariable("userid") Integer userid, Model model) {
+        String userEmail = SessionManager.getEmailFromSession(request);
+        if (userEmail != null) {
+            String accountType = userSvc.getAccountTypeByEmail(userEmail);
+            String username = userSvc.getUsernameByEmail(userEmail);
+            model.addAttribute("username", username);
+            if(accountType.equals("ADMIN")) {
+        		adminUserService.deleteUserById(userid);
+        		return "redirect:/AdminUsers";
+            }
+        } 
+        return "ErrorPages/AccessDeniedError";
+
 	}
 	
 	@GetMapping("/payment")

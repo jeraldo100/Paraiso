@@ -48,7 +48,7 @@
 									<div>
 										Price per night: ${rooms[i].price_per_night}
 									</div>
-									<div id="addRoomBtn" onclick="addRoom(${rooms[i].type_id})">
+									<div id="addRoomBtn" class="addRoomBtn" onclick="addRoom(${rooms[i].type_id})">
 										Add Room
 									</div>
 								</div>
@@ -88,20 +88,69 @@
     	$("#checkout_date").val($("#checkin_date").val());
 	})
 	
-	/**$("#checkAvailability").on("click",function(e){
-		e.preventDefault();
-		let checkin_date = $("#checkin_date").val();
-		let checkout_date = $("#checkout_date").val();
-		$.ajax({
-			type:'POST',
-			url: contextPath + 'checkAvailability',
-			data: { 
-		        'checkin_date': checkin_date, 
-		        'checkout_date': checkout_date
-      		},
-		})
-	}) **/
+	/*Adults controls*/
+	$('#adults-add').on('click', function(){
+		let adults = $('#adults-number').val();
+		if(adults <= 98){
+			$('#adults-number').val(Number(adults)+1);
+		}
+	})
+	
+	$('#adults-minus').on('click', function(){
+		let adults = $('#adults-number').val();
+		if(adults >= 2){
+			$('#adults-number').val(Number(adults)-1);
+		}
+	})
+	
+	/*Children controls*/
+	$('#children-add').on('click', function(){
+		let children = $('#children-number').val();
+		if(children <= 98){
+			$('#children-number').val(Number(children)+1);
+		}
+	})
+	
+	$('#children-minus').on('click', function(){
+		let children = $('#children-number').val();
+		if(children >= 1){
+			$('#children-number').val(Number(children)-1);
+		}
+	})
+	
+	$('#confirmBooking').on('click', function(){
+		let checkin_date_val = $("#checkin_date").val();
+		let checkout_date_val = $("#checkout_date").val();
+		let adults_val = $('#adults-number').val();
+		let children_val = $('#children-number').val();
 		
+		let room_ids_val = '';
+		$('.roomAdded-name').each(function () {
+			let room_id = $(this).attr( "room_id" );
+			room_ids_val += room_id+' ';
+		});
+		
+		if ( !(room_ids_val == '') ){
+			$.ajax({
+				type:'POST',			
+				url: 'confirmBooking/',
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify({ 
+					checkin_date: checkin_date_val, 
+					checkout_date: checkout_date_val,
+					room_ids: room_ids_val,
+					adults: adults_val,
+					children: adults_val
+			    }),
+			    success: function (dat) {
+					console.log(dat);
+				}
+			});
+		} else{
+			alert('Please select a Room')
+		}
+	})
 	
 })(jQuery);
 

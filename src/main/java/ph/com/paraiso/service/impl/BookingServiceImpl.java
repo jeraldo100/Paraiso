@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ph.com.paraiso.dao.BookingDao;
+import ph.com.paraiso.model.Booked_room;
+import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.service.BookingService;
@@ -34,5 +36,25 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public List<Room_joined> getRoom_joinedList(List<Integer> room_ids){
 		return bookDao.getRoom_joinedList(room_ids);	
+	}
+	
+	@Override
+	public Double getTotalPriceRooms(List<Integer> room_ids){
+		return bookDao.getTotalPriceRooms(room_ids);	
+	}
+	
+	@Override
+	public Booking addConfirmedBooking(Booking booking) {
+		return bookDao.addConfirmedBooking(booking);
+	}
+	
+	@Override
+	public Double getPriceOfRoomByRoomId(Integer room_id) {
+		return bookDao.getPriceOfRoomByRoomId(room_id);
+	}
+	
+	@Override
+	public void addBooked_room(Booked_room booked_room){
+		bookDao.addBooked_room(booked_room);
 	}
 }
