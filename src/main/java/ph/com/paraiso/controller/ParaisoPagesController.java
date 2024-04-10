@@ -25,6 +25,7 @@ public class ParaisoPagesController {
             System.out.println("username of the user with current session: " + username);
             System.out.println("user id of the user with current session: " + userId);
             model.addAttribute("username", username);
+            model.addAttribute("accountType", accountType);
             model.addAttribute("loggedIn", true);
         } else {
             System.out.println("No user associated with the current session.");

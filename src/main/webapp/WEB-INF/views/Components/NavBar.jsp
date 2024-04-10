@@ -53,7 +53,7 @@
                             </div>
                           </div>
                         </div>
-                        <li><a href="/userDashboard">User Dashboard</a></li>
+                        <li><a href="${accountType == 'ADMIN' ? '/admin/AdminDashboard' : '/userDashboard'}">Dashboard</a></li>
                         <li><a href="/logout">Logout</a></li>
                       </ul>
                     </li>
