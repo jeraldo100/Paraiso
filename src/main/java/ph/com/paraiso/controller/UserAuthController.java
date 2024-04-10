@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import ph.com.paraiso.dto.UserDto;
+import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.User;
+import ph.com.paraiso.service.BookingService;
 import ph.com.paraiso.service.UserService;
 import ph.com.paraiso.session.SessionManager;
 
@@ -72,5 +75,6 @@ public class UserAuthController {
 	    }
 	    return "redirect:/home"; 
 	}
+
 
 }

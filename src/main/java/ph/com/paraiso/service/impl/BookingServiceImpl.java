@@ -57,4 +57,5 @@ public class BookingServiceImpl implements BookingService {
 	public void addBooked_room(Booked_room booked_room){
 		bookDao.addBooked_room(booked_room);
 	}
+	
 }

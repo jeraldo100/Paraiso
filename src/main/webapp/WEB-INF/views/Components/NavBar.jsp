@@ -52,7 +52,7 @@
                             </div>
                           </div>
                         </div>
-                        <li><a href="/user/dashboard">User Dashboard</a></li>
+                        <li><a href="/userDashboard">User Dashboard</a></li>
                         <li><a href="/logout">Logout</a></li>
                       </ul>
                     </li>
