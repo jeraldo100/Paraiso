@@ -62,7 +62,7 @@
                                                         <td><c:out value="${room_type.beds}" /></td>
                                                         <td><c:out value="${room_type.bathrooms}" /></td>
                                                         <td>
-                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="Room Image" style="max-width: 100px; max-height: 100px;">
+                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="${room_type.name}" style="max-width: 100px; max-height: 100px;">
                                                         </td>
                                                         <td>
                                                             <a href="/editRoomTypes/${room_type.type_id}" type="button"
