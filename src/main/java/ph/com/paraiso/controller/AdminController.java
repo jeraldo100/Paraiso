@@ -48,19 +48,6 @@ public class AdminController {
     private final VoucherService voucherService;
     private final RoomTypesService roomTypesService;
     private final AddOnsService addOnsService;
-	
-	@Autowired
-    public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
-        this.adminBookingService = adminBookingService;
-        this.adminUserService = adminUserService;
-        this.roomService = roomService;
-        this.voucherService = voucherService;
-        this.roomTypesService = roomTypesService;
-		this.addOnsService = addOnsService;
-    }
-
-	
-	//DashboardController
 
 	@Autowired
 	AdminBookingRepository adminBookingRepository;
@@ -75,53 +62,77 @@ public class AdminController {
 	@Autowired
 	AddOnsRepository addOnsRepository;
 	
+	
+	@Autowired
+    public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
+        this.adminBookingService = adminBookingService;
+        this.adminUserService = adminUserService;
+        this.roomService = roomService;
+        this.voucherService = voucherService;
+        this.roomTypesService = roomTypesService;
+		this.addOnsService = addOnsService;
+    }
+
+	private boolean isAdminUser(HttpServletRequest request) {
+	    String userEmail = SessionManager.getEmailFromSession(request);
+	    if (userEmail != null) {
+	        String accountType = userSvc.getAccountTypeByEmail(userEmail);
+	        return accountType.equals("ADMIN");
+	    }
+	    return false;
+	}
+	
 	@GetMapping("/AdminDashboard")
-	public String adminDashboardPage(Model model) {
+	public String adminDashboardPage(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+	    	Double totalPrice = adminBookingRepository.totalPrice();
+    		model.addAttribute("totalPrice", totalPrice);
 
-		Double totalPrice = adminBookingRepository.totalPrice();
-		model.addAttribute("totalPrice", totalPrice);
+    		Integer totalBooking = adminBookingRepository.totalBooking();
+    		model.addAttribute("totalBooking", totalBooking);
 
-		Integer totalBooking = adminBookingRepository.totalBooking();
-		model.addAttribute("totalBooking", totalBooking);
+    		Iterable<Booking> bookings = adminBookingRepository.findAll();
+    		model.addAttribute("bookings", bookings);
 
-		Iterable<Booking> bookings = adminBookingRepository.findAll();
-		model.addAttribute("bookings", bookings);
-
-		Iterable<User> users = userRepository.findAll();
-		model.addAttribute("users", users);
-		
-		Iterable<Room> room = roomRepository.findAll();
-		model.addAttribute("rooms", room);
-		
-		Iterable<Room_type> roomTypes = roomTypesRepository.findAll();
-		model.addAttribute("roomTypes", roomTypes);
-		
-		Iterable<Voucher> voucher = voucherRepository.findAll();
-		model.addAttribute("voucher", voucher);
-		
-		Iterable<AddOns> addOns = addOnsRepository.findAll();
-		model.addAttribute("addOns", addOns);
-		
-		return "dashboardAdmin/Dashboard"; 
+    		Iterable<User> users = userRepository.findAll();
+    		model.addAttribute("users", users);
+    		
+    		Iterable<Room> room = roomRepository.findAll();
+    		model.addAttribute("rooms", room);
+    		
+    		Iterable<Room_type> roomTypes = roomTypesRepository.findAll();
+    		model.addAttribute("roomTypes", roomTypes);
+    		
+    		Iterable<Voucher> voucher = voucherRepository.findAll();
+    		model.addAttribute("voucher", voucher);
+    		
+    		Iterable<AddOns> addOns = addOnsRepository.findAll();
+    		model.addAttribute("addOns", addOns);
+    		return "dashboardAdmin/Dashboard"; 	
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	//BookingController
 
-	
 	@GetMapping("/AdminBooking")
-	public String adminBooking(Model model) {
-		model.addAttribute("bookings", adminBookingService.getAllBookings());
-		return "dashboardAdmin/Booking";
+	public String adminBooking(HttpServletRequest request, Model model) {
+        	    if (isAdminUser(request)) {
+            		model.addAttribute("bookings", adminBookingService.getAllBookings());
+            		return "dashboardAdmin/Booking";
+        	    }
+        	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	@GetMapping("/addBooking")
-	public String addBooking(Model model) {
+	public String addBooking(HttpServletRequest request, Model model) {
 		
-		Booking booking = new Booking();
-		
-		model.addAttribute("booking",booking);
-		
-		return "dashboardAdmin/BookingCRUD/AddBooking";
+   	    if (isAdminUser(request)) {
+   			Booking booking = new Booking();
+   			model.addAttribute("booking",booking);
+   			return "dashboardAdmin/BookingCRUD/AddBooking";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	
@@ -154,13 +165,13 @@ public class AdminController {
 	}
 	
 	@GetMapping("/editBooking/{booking_id}")
-	public String editBooking(@PathVariable("booking_id") Integer booking_id, Model model) {
+	public String editBooking(@PathVariable("booking_id") Integer booking_id,  Model model) {
 		model.addAttribute("booking", adminBookingService.getBookingById(booking_id));
 		return "dashboardAdmin/BookingCRUD/EditBooking";
 	}
 	
 	@PostMapping("/updateBooking/{booking_id}")
-	public String updateBooking(@PathVariable("booking_id") Integer booking_id,
+	public String updateBooking(@PathVariable("booking_id") Integer booking_id, 
 			@ModelAttribute("booking") Booking booking,
 			Model model) {
 		
@@ -212,32 +223,19 @@ public class AdminController {
 	
 	@GetMapping("/AdminUsers")
 	public String adminUsers(HttpServletRequest request, Model model) {
-		
-        String userEmail = SessionManager.getEmailFromSession(request);
-        if (userEmail != null) {
-            String accountType = userSvc.getAccountTypeByEmail(userEmail);
-            String username = userSvc.getUsernameByEmail(userEmail);
-            model.addAttribute("username", username);
-            if(accountType.equals("ADMIN")) {
-        		model.addAttribute("users", adminUserService.getAllUsers());
-        		return "dashboardAdmin/Users";
-            }
-        } 
-        return "ErrorPages/AccessDeniedError";
+	    if (isAdminUser(request)) {
+    		model.addAttribute("users", adminUserService.getAllUsers());
+    		return "dashboardAdmin/Users";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	@GetMapping("/addUser")
 	public String addUser(HttpServletRequest request, Model model) {
-	     String userEmail = SessionManager.getEmailFromSession(request);
-	        if (userEmail != null) {
-	            String accountType = userSvc.getAccountTypeByEmail(userEmail);
-	            String username = userSvc.getUsernameByEmail(userEmail);
-	            model.addAttribute("username", username);
-	            if(accountType.equals("ADMIN")) {
-	            	return "dashboardAdmin/UsersCRUD/AddUsers";
-	            }
-	        } 
-	        return "ErrorPages/AccessDeniedError";	
+	    if (isAdminUser(request)) {
+	    	return "dashboardAdmin/UsersCRUD/AddUsers";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	@PostMapping("/addUser/save")
@@ -332,18 +330,23 @@ public class AdminController {
 	//RoomController
 
 	@GetMapping("/AdminRooms")
-	public String adminRooms(Model model) {
-		model.addAttribute("rooms", roomService.getAllRooms());
-		return "dashboardAdmin/Rooms";
+	public String adminRooms(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			model.addAttribute("rooms", roomService.getAllRooms());
+			return "dashboardAdmin/Rooms";
+	    }
+	    return "ErrorPages/AccessDeniedError";
+
 	}
 	
 	@GetMapping("/addRoom")
-	public String addRoom(Model model) {
-		Room room = new Room();
-		
-		model.addAttribute("room", room);
-		
-		return "dashboardAdmin/RoomCRUD/AddRoom";
+	public String addRoom(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			Room room = new Room();	
+			model.addAttribute("room", room);			
+			return "dashboardAdmin/RoomCRUD/AddRoom";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	@PostMapping("/addRoom/save")
@@ -399,18 +402,23 @@ public class AdminController {
 	//RoomTypesController
 	
 	@GetMapping("/AdminRoomTypes")
-	public String adminRoomTypes(Model model) {
-		model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
-		return "dashboardAdmin/RoomTypes";
+	public String adminRoomTypes(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
+			return "dashboardAdmin/RoomTypes";
+	    }
+	    return "ErrorPages/AccessDeniedError";
+
 	}
 	
 	@GetMapping("/addRoomTypes")
-	public String addRoomTypes(Model model) {
-		Room_type room_type = new Room_type();
-		
-		model.addAttribute("room_type", room_type);
-		
-		return "dashboardAdmin/RoomTypeCRUD/AddRoomType";
+	public String addRoomTypes(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			Room_type room_type = new Room_type();	
+			model.addAttribute("room_type", room_type);	
+			return "dashboardAdmin/RoomTypeCRUD/AddRoomType";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 	}
 	
 	
@@ -495,19 +503,24 @@ public class AdminController {
 	//VoucherController
 
 	@GetMapping("/AdminDiscount")
-	public String adminVoucher(Model model) {
-		model.addAttribute("vouchers", voucherService.getAllVouchers());
-		return "dashboardAdmin/Discount";
+	public String adminVoucher(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			model.addAttribute("vouchers", voucherService.getAllVouchers());
+			return "dashboardAdmin/Discount";
+	    }
+	    return "ErrorPages/AccessDeniedError";
+
 	}
 
 	@GetMapping("/addVoucher")
-	public String addVoucher(Model model) {
+	public String addVoucher(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			Voucher voucher = new Voucher();
+			model.addAttribute("voucher", voucher);
+			return "dashboardAdmin/VoucherCRUD/AddVoucher";
+	    }
+	    return "ErrorPages/AccessDeniedError";
 
-		Voucher voucher = new Voucher();
-
-		model.addAttribute("voucher", voucher);
-
-		return "dashboardAdmin/VoucherCRUD/AddVoucher";
 	}
 
 	@PostMapping("addVoucher/save")
@@ -561,19 +574,24 @@ public class AdminController {
 	//AddOnsController
 	
 	@GetMapping("/AdminAddOns")
-	public String adminAddOns(Model model) {
-		model.addAttribute("addOns", addOnsService.getAllAddOns());
-		return "dashboardAdmin/AddOns";
+	public String adminAddOns(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			model.addAttribute("addOns", addOnsService.getAllAddOns());
+			return "dashboardAdmin/AddOns";
+	    }
+	    return "ErrorPages/AccessDeniedError";
+
 	}
 
 	@GetMapping("/addAddOns")
-	public String addAddOns(Model model) {
-		
-		AddOns addOns = new AddOns();
-		
-		model.addAttribute("addOns", addOns);
-		
-		return "dashboardAdmin/AddOnsCRUD/AddAddOns";
+	public String addAddOns(HttpServletRequest request, Model model) {
+	    if (isAdminUser(request)) {
+			AddOns addOns = new AddOns();
+			model.addAttribute("addOns", addOns);
+			return "dashboardAdmin/AddOnsCRUD/AddAddOns";
+	    }
+	    return "ErrorPages/AccessDeniedError";
+
 	}
 	
 	@PostMapping("addAddOns/save")
