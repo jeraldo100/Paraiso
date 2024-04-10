@@ -1,4 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 
 <head>
@@ -27,113 +29,25 @@
             <div class="col-lg-15 ms-auto p-4 overflow-hidden">
               <h1 class="display-3">Good morning, User!</h1>
               <hr />
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h1>Bookings</h1>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button type="button" class="btn btn-success">Print </button>
-                  <button type="button" class="btn btn-success">Add</button>
-                  <select name="" id="" class="form-select shadow-none bg-light w-auto">
-                    <option value="0">Select timeline</option>
-                    <option value="1">Past 30 Days</option>
-                    <option value="2">Past 60 Days</option>
-                    <option value="3">Past 90 Days</option>
-                    <option value="4">Past 1 Year</option>
-                    <option value="5">All time</option>
-                  </select>
-                </div>
-              </div>
 
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
-                  <a href="#" class="text-decoration-none">
-                    <div class="card text-center p-3 text-success table-responsive"
-                      style="max-height: 100%; overflow-y: auto">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th>Booking ID</th>
-                            <th>User ID</th>
-                            <th>Room ID</th>
-                            <th>Check In</th>
-                            <th>Check Out</th>
-                            <th>Total Price</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Cancel
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Cancel
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Cancel
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>121313</td>
-                            <td>1212</td>
-                            <td>12</td>
-                            <td>fev2</td>
-                            <td>fev4</td>
-                            <td>$12121</td>
-                            <td>
-                              <button type="button" class="btn btn-success">
-                                Edit
-                              </button>
-                              <button type="button" class="btn btn-danger">
-                                Cancel
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </a>
+                	<div class="bookings-wrapper">
+                		<c:forEach var="bookinglist" items="${bookingsAndRooms}">
+                			<c:forEach items="${bookinglist}" var="Map">
+                				<c:choose>
+								    <c:when test = "${Map.key == 'booking'}">
+								        <c:set value="${Map.value}" var="booking"/>
+								    </c:when>
+								    <c:otherwise>
+								        <c:set value="${Map.value}" var="room_names"/>
+								    </c:otherwise>
+								</c:choose>
+                			</c:forEach>
+                			<c:out value="${booking}"/>
+                			<c:out value="${room_names}"/>
+                		</c:forEach>
+                	</div>
                 </div>
               </div>
             </div>

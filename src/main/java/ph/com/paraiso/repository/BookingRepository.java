@@ -30,4 +30,10 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 			nativeQuery=true
 	)
 	Double getAddOnAmountByIds(List<Integer> add_on_ids);
+	
+	@Query(
+			value="SELECT * FROM BOOKINGS WHERE USER_ID = ?1",
+			nativeQuery=true
+	)
+	List<Booking> getBookingsByUserId(Integer user_id);
 }
