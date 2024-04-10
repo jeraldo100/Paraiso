@@ -20,4 +20,6 @@ public interface UserService {
 	public String getAccountTypeByEmail(String email);
 	public String getUsernameByEmail(String email);
 	public Integer getUserIdByEmail(String email);
+	boolean isEmailTaken(String email);
+	boolean isUsernameTaken(String username);
 }

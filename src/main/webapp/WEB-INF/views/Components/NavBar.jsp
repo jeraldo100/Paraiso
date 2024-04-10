@@ -75,7 +75,7 @@
           <div class="login-container">
             <span class="close-btn fa-solid fa-x"></span>
             <div class="signin-signup">
-              <form class="sign-in-form" action="auth" method="post">
+				<form id="loginForm" class="sign-in-form" action="auth" method="post">	
                 <h2 class="login-title">Login</h2>
                 <p id="message"></p>
                 <div class="login-signup-input">
@@ -97,7 +97,7 @@
 
             <form id="registrationForm" action="registration" method="post" role="form" class="sign-up-form">
                 <h2 class="signup-title">Sign up</h2>
-                
+                <p id="signupMessage"></p>
 
                 <div class="column-container">
                   <div class="signup-input signup-col1">

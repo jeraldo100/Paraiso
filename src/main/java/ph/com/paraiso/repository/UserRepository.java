@@ -8,4 +8,6 @@ import ph.com.paraiso.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 	public User findByemail(String email);
+
+	public User findByusername(String username);
 }
