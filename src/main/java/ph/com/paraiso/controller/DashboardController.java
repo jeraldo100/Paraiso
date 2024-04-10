@@ -26,48 +26,6 @@ import ph.com.paraiso.repository.VoucherRepository;
 @Controller
 @RequestMapping("/admin")
 public class DashboardController {
-
-	@Autowired
-	AdminBookingRepository adminBookingRepository;
-	@Autowired
-	UserRepository userRepository;
-	@Autowired
-	RoomRepository roomRepository;
-	@Autowired
-	VoucherRepository voucherRepository;
-	@Autowired
-	RoomTypesRepository roomTypesRepository;
-	@Autowired
-	AddOnsRepository addOnsRepository;
-
-	@GetMapping("/AdminDashboard")
-	public String adminDashboardPage(Model model) {
-
-		Double totalPrice = adminBookingRepository.totalPrice();
-		model.addAttribute("totalPrice", totalPrice);
-
-		Integer totalBooking = adminBookingRepository.totalBooking();
-		model.addAttribute("totalBooking", totalBooking);
-
-		Iterable<Booking> bookings = adminBookingRepository.findAll();
-		model.addAttribute("bookings", bookings);
-
-		Iterable<User> users = userRepository.findAll();
-		model.addAttribute("users", users);
-		
-		Iterable<Room> room = roomRepository.findAll();
-		model.addAttribute("rooms", room);
-		
-		Iterable<Room_type> roomTypes = roomTypesRepository.findAll();
-		model.addAttribute("roomTypes", roomTypes);
-		
-		Iterable<Voucher> voucher = voucherRepository.findAll();
-		model.addAttribute("voucher", voucher);
-		
-		Iterable<AddOns> addOns = addOnsRepository.findAll();
-		model.addAttribute("addOns", addOns);
-		
-		return "dashboardAdmin/Dashboard"; 
-	}
+	
 
 }
