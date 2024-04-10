@@ -62,6 +62,7 @@
 			<div id="roomsWrapper" class="roomsWrapper">
 				<!-- Empty room for adding available rooms -->
 			</div>
+			<!-- Booking Interface and List of Added Rooms -->
 			<div class="listWrapper">
 				<div class="roomList-header">
 					<div id="total-days" days="${days}">
@@ -72,34 +73,51 @@
 							<p>${days} <i style="color:#344955;" class="fa-solid fa-moon i"></i> Nights</p>
 						</div>
 					</div>
-					<div id="roomList-totalPrice" class="roomList-totalPrice">
-						<!--Empty room for updating list total Price-->
+					<div class="roomList-totalPrice">
+						<div id="roomList-totalPrice">0.00</div>Php
 					</div>
 				</div>
-				<p class="addOnLabel" style="margin-bottom: 0.8rem"><i class="fa-solid fa-square-plus icon"></i> Add-ons:</p>
+				<p class="addOnLabel"><i class="fa-solid fa-square-plus icon"></i> Add-ons:</p>
 				<div class="addOns">
-					<div>
-						<input type="checkbox" id="vehicle1" name="vehicle1" value="Breakfast">
-						<label for="vehicle1">Breakfast</label>
-					</div>
-					<div>
-						<input type="checkbox" id="vehicle1" name="vehicle1" value="extraLinen">
-						<label for="vehicle1">Extra Linen</label>
-					</div>
-					<div>
-						<input type="checkbox" id="vehicle1" name="vehicle1" value="extraPilows">
-						<label for="vehicle1">Extra Pilows</label>
-					</div>
-					<div>
-						<input type="checkbox" id="vehicle1" name="vehicle1" value="dinner">
-						<label for="vehicle1">Dinner</label>
-					</div>
+					<c:forEach var="addOn" items="${addOns}">
+						<div>
+							<input onclick="addOnToggle(this)" class="addOnnCheck" type="checkbox" value="${addOn.add_on_id}" amount="${addOn.amount}">
+							<label>${addOn.add_on_name} <span>${addOn.amount} Php</span></label>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="arrivalTimeField">
+					<p>Arrival Time: </p>
+					<select id="arrivalTime" class="form-select">
+						<option value="01:00-02:00">01:00 AM - 02:00 AM</option>
+						<option value="02:00-03:00">02:00 AM - 03:00 AM</option>
+						<option value="03:00-04:00">03:00 AM - 04:00 AM</option>
+						<option value="04:00-05:00">04:00 AM - 05:00 AM</option>
+						<option value="05:00-06:00">05:00 AM - 06:00 AM</option>
+						<option value="06:00-07:00">06:00 AM - 07:00 AM</option>
+						<option value="07:00-08:00">07:00 AM - 08:00 AM</option>
+						<option value="08:00-09:00" selected="selected">08:00 AM - 09:00 AM</option>
+						<option value="09:00-10:00">09:00 AM - 10:00 AM</option>
+						<option value="10:00-11:00">10:00 AM - 11:00 AM</option>
+						<option value="11:00-12:00">11:00 AM - 12:00 PM</option>
+						<option value="12:00-13:00">12:00 PM - 01:00 PM</option>
+						<option value="13:00-14:00">01:00 PM - 02:00 PM</option>
+						<option value="14:00-15:00">02:00 PM - 03:00 PM</option>
+						<option value="15:00-16:00">03:00 PM - 04:00 PM</option>
+						<option value="16:00-17:00">04:00 PM - 05:00 PM</option>
+						<option value="17:00-18:00">05:00 PM - 06:00 PM</option>
+						<option value="18:00-19:00">06:00 PM - 07:00 PM</option>
+						<option value="19:00-20:00">07:00 PM - 08:00 PM</option>
+						<option value="20:00-21:00">08:00 PM - 09:00 PM</option>
+						<option value="21:00-22:00">09:00 PM - 10:00 PM</option>
+						<option value="22:00-23:00">10:00 PM - 11:00 PM</option>
+					</select>
 				</div>
 				<div id="roomList-body" class="roomList-body">
 					<!--Empty room for appending list of added rooms-->
 				</div>
 				<div class="roomList-footer">
-					<div id="confirmBooking" href="/home" class="confirmBooking">
+					<div id="confirmBooking" class="confirmBooking">
 						Confirm Booking
 					</div>
 				</div>

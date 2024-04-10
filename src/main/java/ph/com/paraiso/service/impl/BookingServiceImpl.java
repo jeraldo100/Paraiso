@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ph.com.paraiso.dao.BookingDao;
+import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_type;
+import ph.com.paraiso.model.Room_typeBooking;
 import ph.com.paraiso.service.BookingService;
 
 @Service
@@ -19,7 +21,7 @@ public class BookingServiceImpl implements BookingService {
 	private BookingDao bookDao;
 	
 	@Override
-	public List<Room_type> listAllRoom_type(String checkin_date, String checkout_date){
+	public List<Room_typeBooking> listAllRoom_type(String checkin_date, String checkout_date){
 		return bookDao.listAllRoom_type(checkin_date, checkout_date);
 	}
 	
@@ -56,5 +58,15 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public void addBooked_room(Booked_room booked_room){
 		bookDao.addBooked_room(booked_room);
+	}
+	
+	@Override
+	public List<AddOns> getAllAddOnsBooking(){
+		return bookDao.getAllAddOnsBooking();
+	}
+	
+	@Override
+	public Double getAddOnAmountByIds(List<Integer> add_on_ids) {
+		return bookDao.getAddOnAmountByIds(add_on_ids);
 	}
 }

@@ -23,4 +23,11 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	)
 	Double getPriceOfRoomByRoomId(Integer room_id);
 	
+	@Query(
+			value="SELECT SUM(AMOUNT)\r\n"
+					+ "FROM ADD_ONS\r\n"
+					+ "WHERE ADD_ON_ID IN( ?1 )",
+			nativeQuery=true
+	)
+	Double getAddOnAmountByIds(List<Integer> add_on_ids);
 }

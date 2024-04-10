@@ -12,6 +12,9 @@
     if (dd < 10) {
         dd = "0" + dd;
     }
+    if (mm < 10){
+		mm = "0" + mm;
+	}
 
     // Format today's date as "DD MM YYYY"
     var today = dd + "/" + mm + "/" + yyyy;
@@ -31,19 +34,32 @@
      
      function setMinDate(){
 		let checkinDate = $("#checkin_date").val().split('/');
-		let checkoutMinDate = `${Number(checkinDate[2])}, ${Number(checkinDate[1])}, ${Number(checkinDate[0]) + 1} `;
-		console.log(checkoutMinDate)
-		return new Date(checkoutMinDate)
+		let checkoutMinDate = `${Number(checkinDate[2])}, ${Number(checkinDate[1])}, ${Number(checkinDate[0])} `;
+		checkoutMinDate = new Date(checkoutMinDate);
+		checkoutMinDate.setDate(checkoutMinDate.getDate() + 1);
+		return checkoutMinDate
 	 }
     
     $("#checkin_date").on('change', function(){
-        
+		let minDate = setMinDate();
 		$("#checkout_date").removeAttr('disabled');
 		$('#checkout_date').datepicker('destroy');
 		$("#checkout_date").datepicker({
 			dateFormat: "dd/mm/yy",
-        	minDate: setMinDate(),
+        	minDate: minDate,
     	});
-    	$("#checkout_date").val($("#checkin_date").val());
+    	
+    	let day = minDate.getDate();
+    	let month = minDate.getMonth() + 1;
+    	
+    	if(day < 10){
+			day = "0" + day;
+		}
+		if(month < 10){
+			month = "0" + month;
+		}
+    	
+    	let minDateToString = `${day}/${month}/${minDate.getFullYear()}`;
+    	$("#checkout_date").val(minDateToString);
 	})
 })(jQuery);

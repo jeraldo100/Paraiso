@@ -4,8 +4,10 @@ public class BookingInputs {
 	private String checkin_date;
 	private String checkout_date;
 	private String room_ids;
+	private String arrival_time;
 	private Integer adults;
 	private Integer children;
+	private String add_ons;
 	
 	public BookingInputs() {
 		super();
@@ -31,6 +33,18 @@ public class BookingInputs {
 		this.room_ids = room_ids;
 		this.adults = adults;
 		this.children = children;
+	}
+
+	public BookingInputs(String checkin_date, String checkout_date, String room_ids, String arrival_time, Integer adults, Integer children,
+			String add_ons) {
+		super();
+		this.checkin_date = checkin_date;
+		this.checkout_date = checkout_date;
+		this.room_ids = room_ids;
+		this.arrival_time = arrival_time;
+		this.adults = adults;
+		this.children = children;
+		this.add_ons = add_ons;
 	}
 
 	public String getCheckin_date() {
@@ -72,5 +86,22 @@ public class BookingInputs {
 	public void setChildren(Integer children) {
 		this.children = children;
 	}
+
+	public String getAdd_ons() {
+		return add_ons;
+	}
+
+	public void setAdd_ons(String add_ons) {
+		this.add_ons = add_ons;
+	}
+
+	public String getArrival_time() {
+		return arrival_time;
+	}
+
+	public void setArrival_time(String arrival_time) {
+		this.arrival_time = arrival_time;
+	}
+	
 	
 }

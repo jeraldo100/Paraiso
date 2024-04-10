@@ -11,7 +11,7 @@ import ph.com.paraiso.model.Room_joined;
 public interface Room_joinedRepository extends JpaRepository<Room_joined, Integer> {
 	
 	@Query(
-		value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT\r\n"
+		value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT, B.CAPACITY\r\n"
 				+ "FROM ROOMS A, ROOM_TYPES B\r\n"
 				+ "WHERE A.TYPE_ID = B.TYPE_ID AND A.TYPE_ID = ?1 AND A.ROOM_ID NOT IN\r\n"
 				+ "(\r\n"
@@ -26,7 +26,7 @@ public interface Room_joinedRepository extends JpaRepository<Room_joined, Intege
 	Room_joined getRoom_joined_first(Integer room_type, String checkin_date, String checkout_date);
 	
 	@Query(
-		value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT\r\n"
+		value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT, B.CAPACITY\r\n"
 				+ "FROM ROOMS A, ROOM_TYPES B\r\n"
 				+ "WHERE A.TYPE_ID = B.TYPE_ID AND A.TYPE_ID = ?1 AND A.ROOM_ID NOT IN\r\n"
 				+ "(\r\n"
@@ -42,7 +42,7 @@ public interface Room_joinedRepository extends JpaRepository<Room_joined, Intege
 	Room_joined getRoom_joined(Integer room_type, String checkin_date, String checkout_date, List<Integer> room_ids);
 	
 	@Query(
-			value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT\r\n"
+			value="SELECT A.ROOM_ID, B.NAME, B.PRICE_PER_NIGHT, B.CAPACITY\r\n"
 					+ "FROM ROOMS A, ROOM_TYPES B\r\n"
 					+ "WHERE A.TYPE_ID = B.TYPE_ID AND A.ROOM_ID IN ( ?1 )",
 			nativeQuery=true

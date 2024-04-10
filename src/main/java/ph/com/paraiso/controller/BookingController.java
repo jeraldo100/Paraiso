@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +29,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import jakarta.servlet.http.HttpServletRequest;
+import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.BookingInputs;
 import ph.com.paraiso.model.Room;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_type;
+import ph.com.paraiso.model.Room_typeBooking;
 import ph.com.paraiso.service.BookingService;
 import ph.com.paraiso.service.RoomService;
 import ph.com.paraiso.service.UserService;
@@ -68,14 +71,18 @@ public class BookingController {
 	
 	@ResponseBody
 	@PostMapping(value = "/booking/getRooms", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Room_type> getRooms(@RequestBody JsonNode jsonNode) throws JsonMappingException, JsonProcessingException{
+	public List<Room_typeBooking> getRooms(@RequestBody JsonNode jsonNode) throws JsonMappingException, JsonProcessingException{
 		ObjectMapper mapper = new ObjectMapper();
 		BookingInputs bookingInputs = mapper.treeToValue(jsonNode, BookingInputs.class);
 		
 		String checkin_date = bookingInputs.getCheckout_date();
 		String checkout_date = bookingInputs.getCheckout_date();
 		
-		List<Room_type> room_types = bookServ.listAllRoom_type(checkin_date, checkout_date);
+		List<Room_typeBooking> room_types = bookServ.listAllRoom_type(checkin_date, checkout_date);
+		/*
+		 * for(Room_typeBooking e: room_types) { e.setRoomImageEncoded(
+		 * Base64.getEncoder().encodeToString( e.getRoomImage() ) ); }
+		 */
 		System.out.println(room_types);
 		return room_types;
 	}
@@ -88,9 +95,11 @@ public class BookingController {
 		Date tommorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
 		double diff = Math.abs( (today.getTime()) - (tommorrow.getTime()) );
 		
-		
+		List<AddOns> addOns = bookServ.getAllAddOnsBooking();
+		System.out.println("addOns: " + addOns);
 		model.addAttribute("pageTitle", "Booking");
         model.addAttribute("pageLink", "/booking");
+        model.addAttribute("addOns", addOns);
 		model.addAttribute( "adults" , 1 );
 		model.addAttribute( "children" , 0 );
 		model.addAttribute("days", TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS) );
@@ -119,8 +128,11 @@ public class BookingController {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		double diff = Math.abs( (sdf.parse(checkin_date).getTime()) - (sdf.parse(checkout_date).getTime()) );
 		
+		List<AddOns> addOns = bookServ.getAllAddOnsBooking();
+		
 		model.addAttribute("pageTitle", "Booking");
         model.addAttribute("pageLink", "/booking");
+        model.addAttribute("addOns", addOns);
 		model.addAttribute("adults", adults);
 		model.addAttribute("children", children);
 		model.addAttribute("days", TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS) );
@@ -187,8 +199,10 @@ public class BookingController {
 		Date checkin_date = sdf.parse(bookingInputs.getCheckin_date());
 		Date checkout_date = sdf.parse(bookingInputs.getCheckout_date());
 		String room_ids = bookingInputs.getRoom_ids();
+		String arrival_time = bookingInputs.getArrival_time();
 		Integer adults = bookingInputs.getAdults();
 		Integer children = bookingInputs.getChildren();
+		String add_on_ids = bookingInputs.getAdd_ons();
 		
 		
 		List<Integer> room_ids_list = new ArrayList<Integer>();
@@ -198,6 +212,17 @@ public class BookingController {
 		}
 		
 		Double total_price = bookServ.getTotalPriceRooms(room_ids_list);
+		
+		if( !(add_on_ids.equals("")) ) {
+			List<Integer> add_on_ids_list = new ArrayList<Integer>();
+			String [] add_ons_array = add_on_ids.trim().split(" ");
+			for(Integer i = 0; i<add_ons_array.length; i++) {
+				add_on_ids_list.add( Integer.parseInt(add_ons_array[i]) );
+			}
+			total_price = total_price + bookServ.getAddOnAmountByIds(add_on_ids_list);
+			add_on_ids = add_on_ids.trim().replace(" ", ",");
+		}
+		
 		double diff = Math.abs( (checkin_date.getTime()) - (checkout_date.getTime()) );
 		Long nights = TimeUnit.DAYS.convert( (long) diff, TimeUnit.MILLISECONDS);
 		total_price = total_price*nights;
@@ -206,7 +231,7 @@ public class BookingController {
 		booking.setCheckin_date(checkin_date);
 		booking.setCheckout_date(checkout_date);
 		booking.setTotal_price(total_price);
-		booking.setArrival_time("01:00 - 02:00");
+		booking.setArrival_time(arrival_time);
 		booking.setAdults(adults);
 		booking.setChildren(children);
 		booking.setStatus("PENDING");

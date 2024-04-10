@@ -15,12 +15,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <form action="#" class="filter-form">
+            <form action="checkAvailability" class="filter-form" method="POST">
               <div class="filter-form-item">
                 <p>Check In</p>
                 <div class="filter-form-datepicker">
                   <span class="fa-regular fa-calendar"></span>
-                  <input id="checkin_date"  type="text" class="datepicker-pop check-in" />
+                  <input name="checkin_date" id="checkin_date"  type="text" class="datepicker-pop check-in" />
                   <i class="fa-solid fa-angle-down"></i>
                 </div>
               </div>
@@ -28,7 +28,7 @@
                 <p>Check Out</p>
                 <div class="filter-form-datepicker">
                   <span class="fa-regular fa-calendar"></span>
-                  <input id="checkout_date" type="text" class="datepicker-pop check-out" />
+                  <input name="checkout_date" id="checkout_date" type="text" class="datepicker-pop check-out" />
                   <i class="fa-solid fa-angle-down"></i>
                 </div>
               </div>
@@ -36,31 +36,32 @@
                 <p>Adults</p>
                 <div class="filter-form-select">
                   <span class="fa-solid fa-user"></span>
-                  <select>
-                    <option value="">1 Adult</option>
-                    <option value="">2 Adults</option>
-                    <option value="">3 Adults</option>
-                    <option value="">4 Adults</option>
-                    <option value="">5 Adults</option>
-                    <option value="">6 Adults</option>
-                    <option value="">7 Adults</option>
-                    <option value="">8 Adults</option>
+                  <select name="adults">
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4 Adults</option>
+                    <option value="5">5 Adults</option>
+                    <option value="6">6 Adults</option>
+                    <option value="7">7 Adults</option>
+                    <option value="8">8 Adults</option>
                   </select>
                 </div>
               </div>
               <div class="filter-form-item filter-form-item--select">
-                <p>Kids</p>
+                <p>Children</p>
                 <div class="filter-form-select">
                   <span class="fa-solid fa-child"></span>
-                  <select>
-                    <option value="">1 Kid</option>
-                    <option value="">2 Kids</option>
-                    <option value="">3 Kids</option>
-                    <option value="">4 Kids</option>
-                    <option value="">5 Kids</option>
-                    <option value="">6 Kids</option>
-                    <option value="">7 Kids</option>
-                    <option value="">8 Kids</option>
+                  <select name="children">
+                  	<option value="0">No Kids</option>
+                    <option value="1">1 Kid</option>
+                    <option value="2">2 Kids</option>
+                    <option value="3">3 Kids</option>
+                    <option value="4">4 Kids</option>
+                    <option value="5">5 Kids</option>
+                    <option value="6">6 Kids</option>
+                    <option value="7">7 Kids</option>
+                    <option value="8">8 Kids</option>
                   </select>
                 </div>
               </div>

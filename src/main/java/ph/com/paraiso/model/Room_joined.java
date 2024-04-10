@@ -13,16 +13,18 @@ public class Room_joined {
 	private Integer room_id;
 	private String name;
 	private Integer price_per_night;
+	private Integer capacity;
 	
 	public Room_joined() {
 		super();
 	}
 
-	public Room_joined(Integer room_id, String name, Integer price_per_night) {
+	public Room_joined(Integer room_id, String name, Integer price_per_night, Integer capacity) {
 		super();
 		this.room_id = room_id;
 		this.name = name;
 		this.price_per_night = price_per_night;
+		this.capacity = capacity;
 	}
 
 	public Integer getRoom_id() {
@@ -48,4 +50,13 @@ public class Room_joined {
 	public void setPrice_per_night(Integer price_per_night) {
 		this.price_per_night = price_per_night;
 	}
+
+	public Integer getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
+	}
+	
 }

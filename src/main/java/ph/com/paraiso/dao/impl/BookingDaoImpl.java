@@ -7,20 +7,27 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Component;
 
 import ph.com.paraiso.dao.BookingDao;
+import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_type;
+import ph.com.paraiso.model.Room_typeBooking;
+import ph.com.paraiso.repository.AddOnsRepository;
 import ph.com.paraiso.repository.Booked_roomRepository;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.Room_TypeRepository;
 import ph.com.paraiso.repository.Room_joinedRepository;
+import ph.com.paraiso.repository.Room_typeBookingRepository;
 
 @Component
 public class BookingDaoImpl implements BookingDao {
 	
 	@Autowired
 	public Room_TypeRepository rtRepo;
+	
+	@Autowired
+	public Room_typeBookingRepository rtbRepo;
 	
 	@Autowired
 	public Room_joinedRepository rjRepo;
@@ -31,9 +38,12 @@ public class BookingDaoImpl implements BookingDao {
 	@Autowired
 	public Booked_roomRepository BrRepo;
 	
+	@Autowired
+	public AddOnsRepository AddOnsRepo;
+	
 	@Override
-	public List<Room_type> listAllRoom_type(String checkin_date, String checkout_date){
-		return rtRepo.listAllRoom_type(checkin_date, checkout_date);	
+	public List<Room_typeBooking> listAllRoom_type(String checkin_date, String checkout_date){
+		return rtbRepo.listAllRoom_type(checkin_date, checkout_date);	
 	}
 	
 	@Override
@@ -69,5 +79,15 @@ public class BookingDaoImpl implements BookingDao {
 	@Override
 	public void addBooked_room(Booked_room booked_room) {
 		BrRepo.save(booked_room);
+	}
+	
+	@Override
+	public List<AddOns> getAllAddOnsBooking(){
+		return AddOnsRepo.findAll();
+	}
+	
+	@Override
+	public Double getAddOnAmountByIds(List<Integer> add_on_ids) {
+		return bookRepo.getAddOnAmountByIds(add_on_ids);
 	}
 }
