@@ -1,5 +1,6 @@
 package ph.com.paraiso.controller;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpServletRequest;
 import ph.com.paraiso.model.AddOns;
@@ -27,14 +29,36 @@ import ph.com.paraiso.repository.RoomRepository;
 import ph.com.paraiso.repository.RoomTypesRepository;
 import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.repository.VoucherRepository;
+import ph.com.paraiso.service.AddOnsService;
 import ph.com.paraiso.service.AdminBookingService;
 import ph.com.paraiso.service.AdminUserService;
+import ph.com.paraiso.service.RoomService;
+import ph.com.paraiso.service.RoomTypesService;
 import ph.com.paraiso.service.UserService;
+import ph.com.paraiso.service.VoucherService;
 import ph.com.paraiso.session.SessionManager;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+	private final AdminBookingService adminBookingService;
+    private final AdminUserService adminUserService;
+    private final RoomService roomService;
+    private final VoucherService voucherService;
+    private final RoomTypesService roomTypesService;
+    private final AddOnsService addOnsService;
+	
+	@Autowired
+    public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
+        this.adminBookingService = adminBookingService;
+        this.adminUserService = adminUserService;
+        this.roomService = roomService;
+        this.voucherService = voucherService;
+        this.roomTypesService = roomTypesService;
+		this.addOnsService = addOnsService;
+    }
+
 	
 	//DashboardController
 
@@ -82,13 +106,6 @@ public class AdminController {
 	}
 	
 	//BookingController
-	
-	private AdminBookingService adminBookingService;
-	
-	public AdminController(AdminBookingService adminBookingService) {
-		super();
-		this.adminBookingService = adminBookingService;
-	}
 
 	
 	@GetMapping("/AdminBooking")
@@ -133,7 +150,7 @@ public class AdminController {
 		
 		adminBookingService.addBooking(booking);
 		
-		return "redirect:/AdminBooking";
+		return "redirect:/admin/AdminBooking";
 	}
 	
 	@GetMapping("/editBooking/{booking_id}")
@@ -159,7 +176,7 @@ public class AdminController {
 		existingBooking.setStatus(booking.getStatus());
 		
 		adminBookingService.updateBooking(existingBooking);
-		return "redirect:/AdminBooking";
+		return "redirect:/admin/AdminBooking";
 		
 		
 	}
@@ -168,7 +185,7 @@ public class AdminController {
 	public String deleteBooking(@PathVariable("booking_id") Integer booking_id) {
 		
 		adminBookingService.deleteById(booking_id);
-		return "redirect:/AdminBooking";
+		return "redirect:/admin/AdminBooking";
 		
 		
 	}
@@ -192,12 +209,6 @@ public class AdminController {
 	
 	@Autowired
 	UserService userSvc;
-	private AdminUserService adminUserService;
-
-	public AdminController(AdminUserService adminUserService) {
-		super();
-		this.adminUserService = adminUserService;
-	}
 	
 	@GetMapping("/AdminUsers")
 	public String adminUsers(HttpServletRequest request, Model model) {
@@ -256,7 +267,7 @@ public class AdminController {
 		
 		adminUserService.addUser(user);
 		
-		return "redirect:/AdminUsers";
+		return "redirect:/admin/AdminUsers";
 		
 	}
 	
@@ -276,7 +287,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("/updateUser/{userid}")
-	public String updateUser(@PathVariable("user_id") Integer userid,
+	public String updateUser(@PathVariable("userid") Integer userid,
 			@ModelAttribute("user_id") User user,
 			Model model) {
 		
@@ -293,7 +304,7 @@ public class AdminController {
 		
 		adminUserService.updateUser(existingUser);
 		
-		return "redirect:/AdminUsers";
+		return "redirect:/admin/AdminUsers";
 
 	}
 	
@@ -306,7 +317,7 @@ public class AdminController {
             model.addAttribute("username", username);
             if(accountType.equals("ADMIN")) {
         		adminUserService.deleteUserById(userid);
-        		return "redirect:/AdminUsers";
+        		return "redirect:/admin/AdminUsers";
             }
         } 
         return "ErrorPages/AccessDeniedError";
@@ -316,6 +327,301 @@ public class AdminController {
 	@GetMapping("/payment")
 	public String payment() {
 		return "paymentModule";
+	}
+	
+	//RoomController
+
+	@GetMapping("/AdminRooms")
+	public String adminRooms(Model model) {
+		model.addAttribute("rooms", roomService.getAllRooms());
+		return "dashboardAdmin/Rooms";
+	}
+	
+	@GetMapping("/addRoom")
+	public String addRoom(Model model) {
+		Room room = new Room();
+		
+		model.addAttribute("room", room);
+		
+		return "dashboardAdmin/RoomCRUD/AddRoom";
+	}
+	
+	@PostMapping("/addRoom/save")
+	public String newRoom(
+			@RequestParam("hotel_id") Integer hotel_id,
+			@RequestParam("type_id") Integer type_id,
+			@RequestParam("status") String status,
+			Model model) {
+		Room room = new Room();
+		
+		room.setHotel_id(hotel_id);
+		room.setType_id(type_id);
+		room.setStatus(status);
+		
+		roomService.addRoom(room);
+		
+		return "redirect:/admin/AdminRooms";
+	}
+
+	@GetMapping("/editRoom/{room_id}")
+	public String editRoom(@PathVariable("room_id") Integer room_id, Model model) {
+		model.addAttribute("room", roomService.getRoomById(room_id));
+		return "dashboardAdmin/RoomCRUD/EditRoom";
+	}
+	
+	@PostMapping("/update/{room_id}")
+	public String updateRoom(@PathVariable("room_id") Integer room_id, 
+			@ModelAttribute("room") Room room,
+			Model model) {
+		
+		//get room from database by ID
+		
+		Room existingRoom = roomService.getRoomById(room_id);
+		existingRoom.setRoom_id(room_id);
+		existingRoom.setHotel_id(room.getHotel_id());
+		existingRoom.setType_id(room.getType_id());
+		existingRoom.setStatus(room.getStatus());
+		
+		//save 
+		
+		roomService.updateRoom(existingRoom);
+		return "redirect:/admin/AdminRooms";
+		
+		
+	}
+	
+	@GetMapping("/delete/{room_id}")
+	public String deleteRoom(@PathVariable("room_id") Integer room_id) {
+		roomService.deleteRoomById(room_id);
+		return "redirect:/admin/AdminRooms";
+	}
+	
+	//RoomTypesController
+	
+	@GetMapping("/AdminRoomTypes")
+	public String adminRoomTypes(Model model) {
+		model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
+		return "dashboardAdmin/RoomTypes";
+	}
+	
+	@GetMapping("/addRoomTypes")
+	public String addRoomTypes(Model model) {
+		Room_type room_type = new Room_type();
+		
+		model.addAttribute("room_type", room_type);
+		
+		return "dashboardAdmin/RoomTypeCRUD/AddRoomType";
+	}
+	
+	
+
+	@PostMapping("/addRoomTypes/save")
+	public String newRoomType(
+	    @RequestParam("name") String name,
+	    @RequestParam("description") String description,
+	    @RequestParam("price_per_night") Double price_per_night,
+	    @RequestParam("capacity") Integer capacity,
+	    @RequestParam("beds") Integer beds,
+	    @RequestParam("bathrooms") Integer bathrooms,
+	    @RequestParam("roomImage") MultipartFile roomImage,
+	    Model model) {
+	    
+	    Room_type room_type = new Room_type();
+	    
+	    room_type.setName(name);
+	    room_type.setDescription(description);
+	    room_type.setPrice_per_night(price_per_night);
+	    room_type.setCapacity(capacity);
+	    room_type.setBeds(beds);
+	    room_type.setBathrooms(bathrooms);    
+	    try {
+	        byte[] imageData = roomImage.getBytes();
+	        room_type.setRoomImage(imageData); 
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    roomTypesService.addRoomTypes(room_type);
+	    
+	    return "redirect:/admin/AdminRoomTypes";
+	}
+
+	
+	@GetMapping("/editRoomTypes/{type_id}")
+	public String editRoomTypes(@PathVariable("type_id") Integer type_id, Model model) {
+		model.addAttribute("room_types", roomTypesService.getRoomTypesById(type_id));
+		return "dashboardAdmin/RoomTypeCRUD/EditRoomType";
+	}
+	
+	@PostMapping("/updates/{type_id}")
+	public String updateRoomTypes(@PathVariable("type_id") Integer type_id,
+	    @RequestParam("name") String name,
+	    @RequestParam("description") String description,
+	    @RequestParam("price_per_night") Double price_per_night,
+	    @RequestParam("capacity") Integer capacity,
+	    @RequestParam("beds") Integer beds,
+	    @RequestParam("bathrooms") Integer bathrooms,
+	    @RequestParam("roomImage") MultipartFile roomImage,
+	    Model model) {
+
+	    Room_type existingRoom_type = roomTypesService.getRoomTypesById(type_id);
+	    existingRoom_type.setType_id(type_id);
+	    existingRoom_type.setName(name);
+	    existingRoom_type.setDescription(description);
+	    existingRoom_type.setPrice_per_night(price_per_night);
+	    existingRoom_type.setCapacity(capacity);
+	    existingRoom_type.setBeds(beds);
+	    existingRoom_type.setBathrooms(bathrooms);
+
+	    try {
+	        byte[] imageData = roomImage.getBytes();
+	        existingRoom_type.setRoomImage(imageData);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    roomTypesService.updateRoomTypes(existingRoom_type);
+	    return "redirect:/admin/AdminRoomTypes";
+	}
+
+	
+	@GetMapping("deleteType/{type_id}")
+	public String deleteType(@PathVariable("type_id") Integer type_id) {
+		roomTypesService.deleteById(type_id);
+		
+		return "redirect:/admin/AdminRoomTypes";
+	}
+	
+	//VoucherController
+
+	@GetMapping("/AdminDiscount")
+	public String adminVoucher(Model model) {
+		model.addAttribute("vouchers", voucherService.getAllVouchers());
+		return "dashboardAdmin/Discount";
+	}
+
+	@GetMapping("/addVoucher")
+	public String addVoucher(Model model) {
+
+		Voucher voucher = new Voucher();
+
+		model.addAttribute("voucher", voucher);
+
+		return "dashboardAdmin/VoucherCRUD/AddVoucher";
+	}
+
+	@PostMapping("addVoucher/save")
+	public String newVoucher(@RequestParam("voucher_code") String voucher_code,
+			@RequestParam("description") String description, @RequestParam("amount") Double amount,
+			@RequestParam("validation") Date validation, Model model) {
+
+		Voucher voucher = new Voucher();
+
+		voucher.setVoucher_code(voucher_code);
+		voucher.setDescription(description);
+		voucher.setAmount(amount);
+		voucher.setValidation(validation);
+
+		voucherService.addVoucher(voucher);
+
+		return "redirect:/admin/AdminDiscount";
+	}
+	
+	@GetMapping("/editVoucher/{voucher_id}")
+	public String editVoucher(@PathVariable("voucher_id") Integer voucher_id, Model model) {
+		model.addAttribute("voucher", voucherService.getVoucherById(voucher_id));
+		return "dashboardAdmin/VoucherCRUD/EditVoucher";
+	}
+	
+	@PostMapping("/updateVouchers/{voucher_id}")
+	public String updateVoucher(@PathVariable("voucher_id") Integer voucher_id,
+			@ModelAttribute("voucher") Voucher voucher,
+			Model model) {
+		
+		Voucher existingVoucher = voucherService.getVoucherById(voucher_id);
+		existingVoucher.setVoucher_id(voucher_id);
+		existingVoucher.setVoucher_code(voucher.getVoucher_code());
+		existingVoucher.setDescription(voucher.getDescription());
+		existingVoucher.setAmount(voucher.getAmount());
+		existingVoucher.setValidation(voucher.getValidation());
+		
+		voucherService.updateVoucher(existingVoucher);
+		
+		return "redirect:/admin/AdminDiscount";
+		
+	}
+	
+	@GetMapping("deleteVoucher/{voucher_id}")
+	public String deleteVoucher(@PathVariable("voucher_id") Integer voucher_id) {
+		voucherService.deleteVoucher(voucher_id);
+		
+		return "redirect:/admin/AdminDiscount";
+	}
+	
+	//AddOnsController
+	
+	@GetMapping("/AdminAddOns")
+	public String adminAddOns(Model model) {
+		model.addAttribute("addOns", addOnsService.getAllAddOns());
+		return "dashboardAdmin/AddOns";
+	}
+
+	@GetMapping("/addAddOns")
+	public String addAddOns(Model model) {
+		
+		AddOns addOns = new AddOns();
+		
+		model.addAttribute("addOns", addOns);
+		
+		return "dashboardAdmin/AddOnsCRUD/AddAddOns";
+	}
+	
+	@PostMapping("addAddOns/save")
+	public String newAddOns(
+			@RequestParam("add_on_name") String add_on_name,
+			@RequestParam("description") String description,
+			@RequestParam("amount") Integer amount,Model model) {
+		
+		AddOns addOns = new AddOns();
+		
+		addOns.setAdd_on_name(add_on_name);
+		addOns.setDescription(description);
+		addOns.setAmount(amount);
+		
+		addOnsService.addAddOns(addOns);
+		
+		return "redirect:/admin/AdminAddOns";
+		
+	}
+	
+	@GetMapping("/editAddOns/{add_on_id}")
+	public String editAddOns(@PathVariable("add_on_id") Integer add_on_id, Model model) {
+		model.addAttribute("addOns", addOnsService.getAddOnsById(add_on_id));
+		return "dashboardAdmin/AddOnsCRUD/EditAddOns";
+	}
+	
+	@PostMapping("/updateAddOns/{add_on_id}")
+	public String updateAddOns(@PathVariable("add_on_id") Integer add_on_id,
+			@ModelAttribute("addOns") AddOns addOns,
+			Model model) {
+		
+		AddOns existingAddOns = addOnsService.getAddOnsById(add_on_id);
+		existingAddOns.setAdd_on_id(add_on_id);
+		existingAddOns.setAdd_on_name(addOns.getAdd_on_name());
+		existingAddOns.setDescription(addOns.getDescription());
+		existingAddOns.setAmount(addOns.getAmount());
+		
+		addOnsService.updateVoucher(existingAddOns);
+		
+		return "redirect:/admin/AdminAddOns";
+		
+	}
+	
+	@GetMapping("deleteAddOns/{add_on_id}")
+	public String deleteAddOns(@PathVariable("add_on_id") Integer add_on_id) {
+		addOnsService.deleteAddOns(add_on_id);
+		
+		return "redirect:/admin/AdminAddOns";
 	}
 	
 }

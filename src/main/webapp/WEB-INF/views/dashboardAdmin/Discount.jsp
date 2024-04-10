@@ -69,7 +69,7 @@
 								<h1>Discounts</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success" id="printButton">Print</button>
-									<a href="/addVoucher" type="button" class="btn btn-success">Add</a>
+									<a href="/admin/addVoucher" type="button" class="btn btn-success">Add</a>
 								</div>
 							</div>
 
@@ -98,9 +98,9 @@
 															<td><c:out value="${vouchers.amount }" /></td>
 															<td><c:out value="${vouchers.validation }" /></td>
 															<td>
-																<a href="/editVoucher/${vouchers.voucher_id }" type="button" class="btn btn-success">
+																<a href="/admin/editVoucher/${vouchers.voucher_id }" type="button" class="btn btn-success">
 																	Edit</a>
-																<a href="deleteVoucher/${vouchers.voucher_id}" type="button" class="btn btn-danger">
+																<a href="/admin/deleteVoucher/${vouchers.voucher_id}" type="button" class="btn btn-danger">
 																	Delete</a>
 															</td>
 														</tr>

@@ -76,7 +76,7 @@
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success" id="printButton">Print</button>
-									<a href="/addRoom" class="btn btn-success" data-dismiss="modal" >
+									<a href="/admin/addRoom" class="btn btn-success" data-dismiss="modal" >
 									Add
 									</a>
 								</div>
@@ -105,9 +105,9 @@
 															<td><c:out value="${rooms.type_id }" /></td>
 															<td><c:out value="${rooms.status }" /></td>
 															<td>
-																<a href="/editRoom/${rooms.room_id }" type="button" class="btn btn-success">
+																<a href="/admin/editRoom/${rooms.room_id }" type="button" class="btn btn-success">
 																	Edit</a>
-																<a href="delete/${rooms.room_id }" type="button" class="btn btn-danger">
+																<a href="/admin/delete/${rooms.room_id }" type="button" class="btn btn-danger">
 																	Delete</a>
 															</td>
 														</tr>

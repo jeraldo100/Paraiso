@@ -13,7 +13,7 @@
       <div class="card">
         <h1 class="text-center p-3">Add New Booking</h1>
         <div class="card-body">
-          <form action="addAddOns/save" method="post">
+          <form action="/admin/addAddOns/save" method="post">
             <div class="form-group">
               <label>Add On Name :</label>
               <input type="text" name="add_on_name" id="add_on_name" placeholder="Enter Add Ons Name" class="form-control" />

@@ -16,7 +16,7 @@
       <div class="card">
         <h1 class="text-center p-3">Edit Room</h1>
         <div class="card-body">
-          <form action="/update/${room.room_id}" method="post">
+          <form action="/admin/update/${room.room_id}" method="post">
             <div class="form-group">
               <label>Hotel ID :</label>
               <input type="number" name="hotel_id" id="hotel_id" value="1" readonly placeholder="Enter Hotel ID" class="form-control" />

@@ -13,7 +13,7 @@
       <div class="card">
         <h1 class="text-center p-3">Add New Booking</h1>
         <div class="card-body">
-          <form action="addBooking/save" method="post">
+          <form action="/admin/addBooking/save" method="post">
             <div class="form-group">
               <label>User ID :</label>
               <input type="number" name="user_id" id="user_id" placeholder="Enter User ID" class="form-control" />

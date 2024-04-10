@@ -71,7 +71,7 @@
 								<h1>Room Types</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success" id="printButton">Print</button>
-									<a href="/addRoomTypes" class="btn btn-success" data-dismiss="modal" >Add</a>
+									<a href="/admin/addRoomTypes" class="btn btn-success" data-dismiss="modal" >Add</a>
 								</div>
 							</div>
 
@@ -104,9 +104,9 @@
 															<td><c:out value="${room_types.beds }" /></td>
 															<td><c:out value="${room_types.bathrooms }" /></td>
 															<td>
-																<a href="/editRoomTypes/${room_types.type_id }" type="button" class="btn btn-success m-1">
+																<a href="/admin/editRoomTypes/${room_types.type_id }" type="button" class="btn btn-success m-1">
 																	Edit</a>
-																<a href="/deleteType/${room_types.type_id}" type="button" class="btn btn-danger m-1">
+																<a href="/admin/deleteType/${room_types.type_id}" type="button" class="btn btn-danger m-1">
 																	Delete</a>
 															</td>
 														</tr>

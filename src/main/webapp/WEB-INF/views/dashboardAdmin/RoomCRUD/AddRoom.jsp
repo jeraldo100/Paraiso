@@ -13,7 +13,7 @@
       <div class="card">
         <h1 class="text-center p-3">Add New Room</h1>
         <div class="card-body">
-          <form action="addRoom/save" method="post">
+          <form action="/admin/addRoom/save" method="post">
             <div class="form-group">
               <label>Hotel ID :</label>
               <input type="number" name="hotel_id" id="hotel_id" value="1" readonly placeholder="Enter Hotel ID" class="form-control" />

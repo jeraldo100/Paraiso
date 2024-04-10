@@ -67,7 +67,7 @@
                 <h1>Users</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-3">
                   <input type="button" class="btn btn-success" id="printButton" value="Print">
-                  <a href="addUser" type="button" class="btn btn-success">Add</a>
+                  <a href="/admin/addUser" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>
 
@@ -105,10 +105,10 @@
                             <td><c:out value="${users.phone }" /></td>
                             <td><c:out value="${users.email }" /></td>
                             <td>
-                              <a href="/editUser/${users.userid }" type="button" class="btn btn-success m-1">
+                              <a href="/admin/editUser/${users.userid }" type="button" class="btn btn-success m-1">
                                 Edit
                               </a>
-                              <a href="/deleteUser/${users.userid }" type="button" class="btn btn-danger m-1">
+                              <a href="/admin/deleteUser/${users.userid }" type="button" class="btn btn-danger m-1">
                                 Delete
                               </a>
                             </td>

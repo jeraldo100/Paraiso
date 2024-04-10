@@ -17,7 +17,7 @@
 				<div class="card" style="max-height: 600px; overflow-y: auto">
 					<h1 class="text-center p-3">Add New User</h1>
 					<div class="card-body">
-						<form action="addUser/save" method="post">
+						<form action="/admin/addUser/save" method="post">
 							<div class="form-group">
 								<label>Username :</label> <input type="text" name="username"
 									id="username" placeholder="Enter Username" class="form-control" />

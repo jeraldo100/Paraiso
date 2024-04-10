@@ -68,7 +68,7 @@
 								<h1>Add Ons</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<button type="button" class="btn btn-success" id="printButton">Print</button>
-									<a href="/addAddOns" class="btn btn-success" data-dismiss="modal" >Add</a>
+									<a href="/admin/addAddOns" class="btn btn-success" data-dismiss="modal" >Add</a>
 								</div>
 							</div>
 
@@ -95,9 +95,9 @@
 															<td><c:out value="${addOns.description }" /></td>
 															<td><c:out value="${addOns.amount }" /></td>
 															<td>
-																<a href="/editAddOns/${addOns.add_on_id }" type="button" class="btn btn-success m-1">
+																<a href="/admin/editAddOns/${addOns.add_on_id }" type="button" class="btn btn-success m-1">
 																	Edit</a>
-																<a href="/deleteAddOns/${addOns.add_on_id}" type="button" class="btn btn-danger m-1">
+																<a href="/admin/deleteAddOns/${addOns.add_on_id}" type="button" class="btn btn-danger m-1">
 																	Delete</a>
 															</td>
 														</tr>
