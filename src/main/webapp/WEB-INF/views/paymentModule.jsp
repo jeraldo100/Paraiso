@@ -14,46 +14,8 @@
 <!-- CSS LINK -->
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css" />
-<style>
-html, body {
-	height: 100vh;
-	margin: 0;
-	padding: 0;
-}
+<link rel="stylesheet" href="/styles/paymentModule.css"/>
 
-.full-height {
-	height: 100%;
-}
-
-.bg-success {
-	background-color: green;
-	color: white;
-}
-
-.bg-danger {
-	background-color: red;
-	color: white;
-}
-
-.d-flex {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.card {
-	border-radius: 20px;
-}
-
-.hidden {
-	display: none;
-}
-
-.main {
-	max-height: 650px;
-	overflow-y: auto;
-}
-</style>
 </head>
 
 <body>
@@ -130,7 +92,7 @@ html, body {
 					id="paymentDetailsGcash">
 					<div class="card-body">
 						<!-- GCash payment details content here -->
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center logo">
 							<img src="/images/logo/gcashLogo.png">
 						</div>
 
@@ -157,7 +119,7 @@ html, body {
 					id="paymentDetailsMaya">
 					<div class="card-body">
 						<!-- Maya payment details content here -->
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center logo">
 							<img src="/images/logo/mayaLogo.png">
 						</div>
 						<div class="form-group p-3 m-3">
@@ -183,7 +145,7 @@ html, body {
 					id="paymentDetailsGotyme">
 					<div class="card-body">
 						<!-- GoTYME payment details content here -->
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center logo">
 							<img src="/images/logo/gotymeLogo.png">
 						</div>
 						<div class="form-group p-3 m-3">
@@ -218,61 +180,8 @@ html, body {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
-	<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const paymentDetailsGcash = document.getElementById('paymentDetailsGcash');
-        const paymentDetailsMaya = document.getElementById('paymentDetailsMaya');
-        const paymentDetailsGotyme = document.getElementById('paymentDetailsGotyme');
-
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('click', function () {
-                if (this.checked && this.id === 'gcashRadio') {
-                    paymentDetailsGcash.classList.remove('hidden');
-                    paymentDetailsMaya.classList.add('hidden');
-                    paymentDetailsGotyme.classList.add('hidden');
-                } else if (this.checked && this.id === 'mayaRadio') {
-                    paymentDetailsGcash.classList.add('hidden');
-                    paymentDetailsMaya.classList.remove('hidden');
-                    paymentDetailsGotyme.classList.add('hidden');
-                } else if (this.checked && this.id === 'gotymeRadio') {
-                    paymentDetailsGcash.classList.add('hidden');
-                    paymentDetailsMaya.classList.add('hidden');
-                    paymentDetailsGotyme.classList.remove('hidden');
-                } else {
-                    paymentDetailsGcash.classList.add('hidden');
-                    paymentDetailsMaya.classList.add('hidden');
-                    paymentDetailsGotyme.classList.add('hidden');
-                }
-            });
-        });
-
-        document.querySelectorAll('.btn-success').forEach(button => {
-            button.addEventListener('click', function () {
-                const payButton = this;
-                payButton.textContent = 'Pay';
-                setTimeout(function () {
-                    payButton.textContent = 'Paid';
-                }, 2000);
-            });
-        });
-    });
-
-    function generateReferenceNumber() {
-        const referenceNumberInputGcash = document.getElementById('referenceNumberInputGcash');
-        const referenceNumberInputMaya = document.getElementById('referenceNumberInputMaya');
-        const referenceNumberInputGotyme = document.getElementById('referenceNumberInputGotyme');
-
-        const referenceNumber = Math.floor(100000 + Math.random() * 900000); // Generate a random 6-digit number
-
-        if (document.getElementById('gcashRadio').checked) {
-            referenceNumberInputGcash.value = referenceNumber;
-        } else if (document.getElementById('mayaRadio').checked) {
-            referenceNumberInputMaya.value = referenceNumber;
-        } else if (document.getElementById('gotymeRadio').checked) {
-            referenceNumberInputGotyme.value = referenceNumber;
-        }
-    }
-
+	<script src="/scripts/paymentModule.js">
+    
     </script>
 </body>
 
