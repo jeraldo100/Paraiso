@@ -58,7 +58,7 @@
 									<div 
 										id="addRoomBtn" 
 										class="${rooms[i].available < 1 ? "noRoomBtn": "addRoomBtn"}" 
-										${rooms[i].available < 1 ? "onclick='addRoom(" + rooms[i].type_id + ")'": ""} 
+										${rooms[i].available > 0 ? "onclick='addRoom(" + rooms[i].type_id + ")'": ""} 
 									>
 										${rooms[i].available < 1 ? "No Rooms Available": "Add Room"}
 									</div>
@@ -276,7 +276,7 @@ function addOnToggle(addOn){
 		minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
 	};
-	if( $(addOn).children('.addOnnCheck').is(':checked') ){
+	if( $(addOn).is(':checked') ){
 		let newTotal_price = ( total_price + (amount * nights) ).toLocaleString('en-US', options);
 		$('#roomList-totalPrice').html( newTotal_price );
 	}else{

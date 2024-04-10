@@ -4,33 +4,34 @@
 
     // Initialize today's date variables
     var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; 
-    var yyyy = today.getFullYear();
+    var tommorow = new Date()
+    tommorow.setDate(tommorow.getDate() + 1);
     
-    // Add leading zero to day if less than 10
-    if (dd < 10) {
+    function dateToString(date){
+		var dd = date.getDate();
+	    var mm = date.getMonth() + 1; 
+	    var yyyy = date.getFullYear();
+	    // Add leading zero to day if less than 10
+	    if (dd < 10) {
         dd = "0" + dd;
-    }
-    if (mm < 10){
-		mm = "0" + mm;
+	    }
+	    if (mm < 10){
+			mm = "0" + mm;
+		}
+		// Format today's date as "DD/MM/YYYY"
+		return dd + "/" + mm + "/" + yyyy;
 	}
-
-    // Format today's date as "DD MM YYYY"
-    var today = dd + "/" + mm + "/" + yyyy;
 
 
     // Set formatted date as value for check-in and check-out inputs
-    $(".check-in").val(today);
-    $(".check-out").val(today);
+    $(".check-in").val(dateToString(today));
+    $(".check-out").val(dateToString(tommorow));
 
     // Initialize datepicker with specific format and disallow past dates
     $(".datepicker-pop").datepicker({
         dateFormat: "dd/mm/yy",
         minDate: 1,
     });
-    
-     $("#checkout_date").attr('disabled','disabled');
      
      function setMinDate(){
 		let checkinDate = $("#checkin_date").val().split('/');
@@ -42,7 +43,6 @@
     
     $("#checkin_date").on('change', function(){
 		let minDate = setMinDate();
-		$("#checkout_date").removeAttr('disabled');
 		$('#checkout_date').datepicker('destroy');
 		$("#checkout_date").datepicker({
 			dateFormat: "dd/mm/yy",
