@@ -47,7 +47,7 @@
               <input type="file" name="roomImage"  id="roomImage" placeholder="Upload Image" class="form-control" />
             </div>
             <div class="box-footer">
-              <a type="button" href="/AdminRoomTypes" class="btn btn-danger float-end m-3">Back</a>
+              <a type="button" href="/admin/AdminRoomTypes" class="btn btn-danger float-end m-3">Back</a>
               <input type="submit" class="btn btn-success float-end m-3" value="Submit">
             </div>
           </form>

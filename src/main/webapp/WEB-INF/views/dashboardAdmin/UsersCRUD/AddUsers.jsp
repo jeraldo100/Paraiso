@@ -63,7 +63,7 @@
 									id="email" placeholder="Enter Email" class="form-control" />
 							</div>
 							<div class="box-footer">
-								<a type="button" href="/AdminUsers"
+								<a type="button" href="/admin/AdminUsers"
 									class="btn btn-danger float-end m-3">Back</a> <input
 									type="submit" class="btn btn-success float-end m-3"
 									value="Submit">

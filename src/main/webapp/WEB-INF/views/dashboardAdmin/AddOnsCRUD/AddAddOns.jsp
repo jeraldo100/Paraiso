@@ -27,7 +27,7 @@
               <input type="number" name="amount" id="amount" placeholder="Enter Price" class="form-control" />
             </div>
             <div class="box-footer">
-              <a type="button" href="/AdminAddOns" class="btn btn-danger float-end m-3">Back</a>
+              <a type="button" href="/admin/AdminAddOns" class="btn btn-danger float-end m-3">Back</a>
               <input type="submit" class="btn btn-success float-end m-3" value="Submit">
             </div>
           </form>
