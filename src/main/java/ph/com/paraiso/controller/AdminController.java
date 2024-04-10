@@ -63,7 +63,6 @@ public class AdminController {
 	AddOnsRepository addOnsRepository;
 	
 	
-	@Autowired
     public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
         this.adminBookingService = adminBookingService;
         this.adminUserService = adminUserService;
@@ -224,6 +223,9 @@ public class AdminController {
 	@GetMapping("/AdminUsers")
 	public String adminUsers(HttpServletRequest request, Model model) {
 	    if (isAdminUser(request)) {
+			String userEmail = SessionManager.getEmailFromSession(request);
+			Integer userId = userSvc.getUserIdByEmail(userEmail);
+			model.addAttribute("userId", userId);
     		model.addAttribute("users", adminUserService.getAllUsers());
     		return "dashboardAdmin/Users";
 	    }

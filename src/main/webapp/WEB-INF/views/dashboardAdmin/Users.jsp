@@ -66,7 +66,7 @@
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h1>Users</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-3">
-                  <input type="button" class="btn btn-success" id="printButton" value="Print">
+                  <a href="href="jasperpdf/export/${userId}" type="button" class="btn btn-success">Print</a>
                   <a href="/admin/addUser" type="button" class="btn btn-success">Add</a>
                 </div>
               </div>
