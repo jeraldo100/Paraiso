@@ -17,9 +17,9 @@
                 <div class="sub-hero-content col-lg-12" style="margin-top:80px;">
                     <h1 class="text-white">${pageTitle}</h1>
                     <p class="text-white link-nav">
-                        <a href="/home">Home </a> 
+                        <a href="/home" class="text-decoration-none">Home </a> 
                         <span class="fa-solid fa-arrow-right p-2"></span> 
-                        <a href="${pageLink}"> ${pageTitle}</a>
+                        <a href="${pageLink}" class="text-decoration-none"> ${pageTitle}</a>
                     </p>
                 </div>
             </div>
