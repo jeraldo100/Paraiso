@@ -14,6 +14,7 @@ import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.service.AddOnsService;
 
 @Controller
+@RequestMapping("/admin")
 public class AddOnsController {
 	
 	@Autowired

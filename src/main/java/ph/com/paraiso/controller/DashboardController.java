@@ -24,6 +24,7 @@ import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.repository.VoucherRepository;
 
 @Controller
+@RequestMapping("/admin")
 public class DashboardController {
 
 	@Autowired

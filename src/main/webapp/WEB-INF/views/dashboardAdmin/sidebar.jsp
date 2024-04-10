@@ -11,31 +11,31 @@
 		</span>
 		</a>
 		<ul class="nav nav-pills flex-column mt-4 pt-5">
-			<li class="nav-item py-2 py-sm-0"><a href="/AdminDashboard"
+			<li class="nav-item py-2 py-sm-0"><a href="${pageContext.request.contextPath}/admin/AdminDashboard"
 				class="nav-link text-white"> <ion-icon name="home"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Dashboard</span>
 			</a></li>
-			<li class="nav-item py-2 py-sm-0"><a href="/AdminBooking"
+			<li class="nav-item py-2 py-sm-0"><a href="${pageContext.request.contextPath}/admin/AdminBooking"
 				class="nav-link text-white"> <ion-icon name="book"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Bookings</span>
 			</a></li>
-			<li class="nav-item py-2 py-sm-0"><a href="/AdminUsers"
+			<li class="nav-item py-2 py-sm-0"><a href="${pageContext.request.contextPath}/admin/AdminUsers"
 				class="nav-link text-white"> <ion-icon name="person"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Users</span>
 			</a></li>
-			<li class="nav-item py-2 py-sm-0"><a href="/AdminRooms"
+			<li class="nav-item py-2 py-sm-0"><a href="${pageContext.request.contextPath}/admin/AdminRooms"
 				class="nav-link text-white"> <ion-icon name="bed"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Rooms</span>
 			</a></li>
-			<li class="nav-item"><a href="/AdminRoomTypes"
+			<li class="nav-item"><a href="${pageContext.request.contextPath}/admin/AdminRoomTypes"
 				class="nav-link text-white"> <ion-icon name="cog"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Room Types</span>
 			</a></li>
-			<li class="nav-item"><a href="/AdminDiscount"
+			<li class="nav-item"><a href="${pageContext.request.contextPath}/admin/AdminDiscount"
 				class="nav-link text-white"> <ion-icon name="star"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Voucher</span>
 			</a></li>
-			<li class="nav-item"><a href="/AdminAddOns"
+			<li class="nav-item"><a href="${pageContext.request.contextPath}/admin/AdminAddOns"
 				class="nav-link text-white"> <ion-icon name="bag-add"></ion-icon><span
 					class="fs-4 ms-3 d-none d-sm-inline">Add Ons</span>
 			</a></li>
