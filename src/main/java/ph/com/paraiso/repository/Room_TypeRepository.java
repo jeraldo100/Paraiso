@@ -10,7 +10,7 @@ import ph.com.paraiso.model.Room_type;
 public interface Room_TypeRepository extends JpaRepository<Room_type, Integer> {
 	@Query(
 			value =
-			"SELECT A.TYPE_ID, A.NAME, A.DESCRIPTION, A.PRICE_PER_NIGHT, A.CAPACITY, A.BEDS, A.BATHROOMS, \r\n"
+			"SELECT A.TYPE_ID, A.NAME, A.DESCRIPTION, A.PRICE_PER_NIGHT, A.CAPACITY, A.BEDS, A.BATHROOMS, A.ROOM_IMAGE \r\n"
 			+ "(\r\n"
 			+ "    (\r\n"
 			+ "        SELECT COUNT(B.ROOM_ID) \r\n"
