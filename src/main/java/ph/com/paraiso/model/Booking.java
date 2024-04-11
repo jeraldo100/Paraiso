@@ -22,7 +22,6 @@ public class Booking {
 	private Integer adults;
 	private Integer children;
 	private String status;
-	
 	public Booking() {
 		super();
 	}

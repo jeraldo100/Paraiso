@@ -54,9 +54,10 @@
 								<h1>Bookings</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 							<button id="printTotalPriceBtn" class="btn btn-success">Print Total Revenue</button>
-							
-									<input type="button" class="btn btn-success" value="Print Booking"
-										id="printButton"> <a href="addBooking" type="button"
+										<a
+										href="/jasperpdf/export"
+										type="button" class="btn btn-success m-1" id="printButton"> Print Booking</a>
+										<a href="addBooking" type="button"
 										class="btn btn-success">Add</a>
 								</div>
 							</div>

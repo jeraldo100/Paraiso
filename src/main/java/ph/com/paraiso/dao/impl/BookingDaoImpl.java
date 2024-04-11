@@ -13,6 +13,7 @@ import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.model.Room_typeBooking;
+import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.AddOnsRepository;
 import ph.com.paraiso.repository.Booked_roomRepository;
 import ph.com.paraiso.repository.BookingRepository;
@@ -90,4 +91,5 @@ public class BookingDaoImpl implements BookingDao {
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids) {
 		return bookRepo.getAddOnAmountByIds(add_on_ids);
 	}
+
 }

@@ -1,7 +1,10 @@
 package ph.com.paraiso.service;
 
+import java.io.IOException;
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
 import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
@@ -28,4 +31,6 @@ public interface BookingService {
 	public List<AddOns> getAllAddOnsBooking();
 	
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids);
+	
+	public void exportJasperReportRoom(HttpServletResponse response) throws JRException, IOException;
 }

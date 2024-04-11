@@ -83,6 +83,16 @@ public class AdminController {
 	    return false;
 	}
 	
+	@GetMapping("/AdminBooking")
+	public String adminBooking(HttpServletRequest request, Model model) {
+        	    if (isAdminUser(request)) {
+            		model.addAttribute("bookings", adminBookingService.getAllBookings());
+            		return "dashboardAdmin/Booking";
+        	    }
+        	    return "ErrorPages/AccessDeniedError";
+	}
+	
+	
 	@GetMapping("/AdminDashboard")
 	public String adminDashboardPage(HttpServletRequest request, Model model) {
 	    if (isAdminUser(request)) {
@@ -114,16 +124,7 @@ public class AdminController {
 	    return "ErrorPages/AccessDeniedError";
 	}
 	
-	//BookingController
 
-	@GetMapping("/AdminBooking")
-	public String adminBooking(HttpServletRequest request, Model model) {
-        	    if (isAdminUser(request)) {
-            		model.addAttribute("bookings", adminBookingService.getAllBookings());
-            		return "dashboardAdmin/Booking";
-        	    }
-        	    return "ErrorPages/AccessDeniedError";
-	}
 	
 	@GetMapping("/addBooking")
 	public String addBooking(HttpServletRequest request, Model model) {
@@ -433,10 +434,8 @@ public class AdminController {
 	    @RequestParam("beds") Integer beds,
 	    @RequestParam("bathrooms") Integer bathrooms,
 	    @RequestParam("roomImage") MultipartFile roomImage,
-	    Model model) {
-	    
+	    Model model) {    
 	    Room_type room_type = new Room_type();
-	    
 	    room_type.setName(name);
 	    room_type.setDescription(description);
 	    room_type.setPrice_per_night(price_per_night);
@@ -448,10 +447,8 @@ public class AdminController {
 	        room_type.setRoomImage(imageData); 
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	    }
-	    
-	    roomTypesService.addRoomTypes(room_type);
-	    
+	    }    
+	    roomTypesService.addRoomTypes(room_type);    
 	    return "redirect:/admin/AdminRoomTypes";
 	}
 
@@ -501,7 +498,6 @@ public class AdminController {
 		return "redirect:/admin/AdminRoomTypes";
 	}
 	
-	//VoucherController
 
 	@GetMapping("/AdminDiscount")
 	public String adminVoucher(HttpServletRequest request, Model model) {
