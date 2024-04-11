@@ -32,7 +32,7 @@
 		<div class="row flex-nowrap">
 			<jsp:include page="sidebar.jsp"></jsp:include>
 			<!-- Main Content -->
-			<div class="col">
+			<div class="col overflow-hidden">
 				<div>
 					<div class="container-fluid" id="main-content">
 						<div class="row">

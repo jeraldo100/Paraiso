@@ -23,9 +23,6 @@ $(document).ready(function() {
             success: function(response) {
                 console.log("Status updated successfully");
 
-                var disabledButtonInfo = { bookingId: bookingId, buttonClass: buttonClass };
-                localStorage.setItem('disabledButtonInfo', JSON.stringify(disabledButtonInfo));
-
                 location.reload();
             },
             error: function(xhr, status, error) {

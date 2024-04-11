@@ -30,69 +30,8 @@
 <link rel="stylesheet"
 	href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
 <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="/js/dataTable.js"></script>
 
-<script type="text/javascript">
-	var contextPath = '${pageContext.request.contextPath}' + '/';
-
-	$(document).ready(function() {
-	    var table = $('#bookingList').DataTable({
-	        lengthMenu: [1, 3, 5, 10, 50, 100],
-	        pageLength: 50,
-	        columnDefs: [{
-	                targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-	                searchable: true
-	            },
-	            {
-	                targets: [10],
-	                searchable: false
-	            },
-	        ],
-	        initComplete: function() {
-	            this.api().columns().every(function() {
-	                var that = this;
-
-	                $('input', this.header()).on('keyup change clear', function() {
-	                    if (that.search() !== this.value) {
-	                        that.search('^(?=.*\\b' + $.fn.dataTable.util.escapeRegex(this.value) + '\\b).*$',
-	                            true, false).draw();
-	                    }
-	                });
-	            });
-	        }
-	    });
-
-	    $('#printButton').click(function() {
-	        var displayedData = [];
-	        table.rows({ search: 'applied' }).every(function() {
-	            var rowData = this.data();
-	            displayedData.push(rowData);
-	        });
-
-	        console.log(displayedData);
-	    });
-
-	    
-	    $('#printTotalPriceBtn').click(function() {
-	        var totalPrice = 0;
-	        $('#bookingList tbody tr').each(function() {
-	            var price = parseFloat($(this).find('td:eq(4)').text()); 
-	            if (!isNaN(price)) {
-	                totalPrice += price;
-	            }
-	        });
-
-	        var printWindow = window.open('', '_blank');
-	        printWindow.document.write('<html><head><title>Total Price</title></head><body><div id="totalPrice">Total Revenue: ' + totalPrice.toFixed(2) + '</div></body></html>');
-	        printWindow.document.close();
-
-	        printWindow.print();
-	        printWindow.close();
-	    });
-
-	});
-
-
-</script>
 
 </head>
 
@@ -101,7 +40,7 @@
 		<div class="row flex-nowrap">
 			<jsp:include page="sidebar.jsp"></jsp:include>
 			<!-- Main Content -->
-			<div class="col">
+			<div class="col overflow-hidden">
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
@@ -126,6 +65,7 @@
 										<table class="table table-hover" id="bookingList">
 											<thead>
 												<tr>
+													<th></th>>
 													<th>Booking ID</th>
 													<th>User ID</th>
 													<th>Check In</th>
@@ -142,6 +82,7 @@
 											<tbody>
 												<c:forEach var="bookings" items="${bookings }">
 													<tr>
+														<td><input type="checkbox" value="${bookings.user_id }"></td>
 														<td><c:out value="${bookings.booking_id }" /></td>
 														<td><c:out value="${bookings.user_id }" /></td>
 														<td><c:out value="${bookings.checkin_date }" /></td>

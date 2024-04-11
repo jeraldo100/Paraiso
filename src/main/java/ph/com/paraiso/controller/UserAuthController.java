@@ -46,33 +46,36 @@ public class UserAuthController {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Registration failed. Please try again later.");
 	    }
 	}
-
-
+				
 		@PostMapping("/auth")
 		@ResponseBody
 		public ResponseEntity<Object> authenticate(@RequestParam String email, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
-		
-			    User user = new User(email, password);
-			    String result = userSvc.authenticate(user);
-			    List<User> users = userSvc.getUsers();
-			    model.addAttribute("users", users);
-			    if (result.equals("success")) {
-			        String sessionId = UUID.randomUUID().toString();
-			        SessionManager.createSessionCookie(response, sessionId, email);
-			        String accountType = userSvc.getAccountTypeByEmail(email);
-			        if (accountType != null) {
-			            model.addAttribute("accountType", accountType);
-			            if (accountType.equals("ADMIN")) {
-			                return ResponseEntity.ok().body(Collections.singletonMap("redirectUrl", "/admin/AdminDashboard"));
-			            }
-			            if (accountType.equals("USER")) {
-			                return ResponseEntity.ok().body(Collections.singletonMap("redirectUrl", "/home"));
-			            }
-			        }
-			    }
-			    
-			    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "Invalid Credentials"));
-			}
+		    User user = new User(email, password);
+		    String result = userSvc.authenticate(user);
+		    List<User> users = userSvc.getUsers();
+		    model.addAttribute("users", users);
+		    if (result.equals("success")) {
+		        String sessionId = UUID.randomUUID().toString();
+		        SessionManager.createSessionCookie(response, sessionId, email);
+		        
+		        // Get the user_id and store it in the session
+		        Integer user_id = userSvc.getUserIdByEmail(email);
+		        request.getSession().setAttribute("user_id", user_id);
+		        
+		        String accountType = userSvc.getAccountTypeByEmail(email);
+		        if (accountType != null) {
+		            model.addAttribute("accountType", accountType);
+		            if (accountType.equals("ADMIN")) {
+		                return ResponseEntity.ok().body(Collections.singletonMap("redirectUrl", "/admin/AdminDashboard"));
+		            }
+		            if (accountType.equals("USER")) {
+		                return ResponseEntity.ok().body(Collections.singletonMap("redirectUrl", "/home"));
+		            }
+		        }
+		    }
+		    
+		    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "Invalid Credentials"));
+		}
 	
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
