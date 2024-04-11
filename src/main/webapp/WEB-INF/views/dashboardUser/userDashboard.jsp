@@ -17,6 +17,8 @@
   <!-- CSS LINK -->
 
   <link rel="stylesheet" href="/styles/dashboardUser/dashboard.css" />
+  <link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
 </head>
 
 <body>
@@ -28,7 +30,7 @@
         <div class="container-fluid" id="main-content">
           <div class="row">
             <div class="col-lg-15 ms-auto p-4 overflow-hidden">
-              <h1 class="display-3">Good morning, User!</h1>
+              <h1 class="display-3">Bookings</h1>
               <hr />
 
               <div class="row mb-4">

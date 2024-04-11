@@ -1,5 +1,7 @@
 package ph.com.paraiso.repository;
 
+import java.time.LocalDate;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,5 +14,7 @@ public interface AdminBookingRepository extends JpaRepository<Booking, Integer> 
 
 	@Query("SELECT count(b.booking_id) from Booking b")
 	Integer totalBooking();
+	
+
 	
 }

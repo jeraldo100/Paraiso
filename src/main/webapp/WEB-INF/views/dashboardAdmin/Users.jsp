@@ -46,7 +46,7 @@
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, Admin!</h1>
+							<h1 class="display-3">Greetings!</h1>
 							<hr />
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
@@ -60,8 +60,7 @@
 
 							<div class="row mb-4">
 								<div class="col-md-12 b-4">
-									<div class="card text-center p-3 text-success table-responsive "
-										style="max-height: 100%; overflow-y: auto">
+									<div class="card text-center p-3 text-success table-responsive ">
 										<table class="table table-hover table-responsive"
 											id="userList">
 											<thead>
@@ -89,7 +88,7 @@
 														<td><c:out value="${users.accountType }" /></td>
 														<td><c:out value="${users.firstName }" /></td>
 														<td><c:out value="${users.lastName }" /></td>
-														<td><c:out value="${users.dateOfBirth }" /></td>
+														<td><c:out value="${fn:substring(users.dateOfBirth,0,10) }" /></td>
 														<td><c:out value="${users.address }" /></td>
 														<td><c:out value="${users.phone }" /></td>
 														<td><c:out value="${users.email }" /></td>

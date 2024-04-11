@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +45,7 @@
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, Admin!</h1>
+							<h1 class="display-3">Greetings!</h1>
 							<hr />
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
@@ -61,11 +62,10 @@
 							<div class="row mb-4">
 								<div class="col-md-12 b-4">
 									<div class="card text-center p-3 text-success table-responsive"
-										style="max-height: 100%; overflow-y: auto">
-										<table class="table table-hover" id="bookingList">
+										style="max-height: 100%;">
+										<table class="table table-hover table-responsive" id="bookingList">
 											<thead>
 												<tr>
-													<th></th>>
 													<th>Booking ID</th>
 													<th>User ID</th>
 													<th>Check In</th>
@@ -82,11 +82,10 @@
 											<tbody>
 												<c:forEach var="bookings" items="${bookings }">
 													<tr>
-														<td><input type="checkbox" value="${bookings.user_id }"></td>
 														<td><c:out value="${bookings.booking_id }" /></td>
 														<td><c:out value="${bookings.user_id }" /></td>
-														<td><c:out value="${bookings.checkin_date }" /></td>
-														<td><c:out value="${bookings.checkout_date }" /></td>
+														<td><c:out value="${fn:substring(bookings.checkin_date,0,10) }" /></td>
+														<td><c:out value="${fn:substring(bookings.checkout_date,0,10) }" /></td>
 														<td><c:out value="${bookings.total_price }" /></td>
 														<td><c:out value="${bookings.arrival_time }" /></td>
 														<td><c:out value="${bookings.adults }" /></td>

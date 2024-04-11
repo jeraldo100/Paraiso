@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="/styles/dashboardUser/userProfile.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+	<link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
 </head>
 <body>
 	<div class="container-fluid">

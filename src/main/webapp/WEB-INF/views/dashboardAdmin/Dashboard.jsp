@@ -92,10 +92,10 @@
 															<td><c:out value="${bookings.booking_id }" /></td>
 															<td><c:out value="${bookings.user_id }" /></td>
 															<td><c:out value="${bookings.booking_id }" /></td>
-															<td><c:out value="${bookings.checkin_date }" /></td>
-															<td><c:out value="${bookings.checkout_date }" /></td>
+															<td><c:out value="${fn:substring(bookings.checkin_date,0,10) }" /></td>
+															<td><c:out value="${fn:substring(bookings.checkout_date,0,10) }" /></td>
 															<td><c:out value="${bookings.total_price }" /></td>
-															<td><c:out value="${bookings.arrival_time }" /></td>
+															<td><c:out value="${fn:substring(bookings.arrival_time,0,10) }" /></td>
 															<td><c:out value="${bookings.adults }" /></td>
 															<td><c:out value="${bookings.children }" /></td>
 															<td><c:out value="${bookings.status }" /></td>
@@ -139,7 +139,7 @@
 															<td><c:out value="${users.accountType }" /></td>
 															<td><c:out value="${users.firstName }" /></td>
 															<td><c:out value="${users.lastName }" /></td>
-															<td><c:out value="${users.dateOfBirth }" /></td>
+															<td><c:out value="${fn:substring(users.dateOfBirth,0,10) }" /></td>
 															<td><c:out value="${users.address }" /></td>
 															<td><c:out value="${users.phone }" /></td>
 															<td><c:out value="${users.email }" /></td>
@@ -245,7 +245,7 @@
 															<td><c:out value="${voucher.voucher_code }" /></td>
 															<td><c:out value="${voucher.description }" /></td>
 															<td><c:out value="${voucher.amount }" /></td>
-															<td><c:out value="${voucher.validation }" /></td>
+															<td><c:out value="${fn:substring(voucher.validation,0,10) }" /></td>
 														</tr>
 													</c:forEach>
 

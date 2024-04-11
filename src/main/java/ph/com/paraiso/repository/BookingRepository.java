@@ -36,4 +36,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 			nativeQuery=true
 	)
 	List<Booking> getBookingsByUserId(Integer user_id);
+	
+	
 }
