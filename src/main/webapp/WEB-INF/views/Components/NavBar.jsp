@@ -59,6 +59,7 @@
                     </li>
                   </c:when>
                   <c:otherwise>
+
                     <li><a class="login" id="loginBtn">Login</a></li>
                     <li><a class="ml-1 mr-2 signup" id="signUpBtn">Sign Up</a></li>
                   </c:otherwise>

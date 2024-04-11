@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import ph.com.paraiso.model.Booking;
-import ph.com.paraiso.model.User;
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	@Query(
@@ -39,5 +38,4 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	List<Booking> getBookingsByUserId(Integer user_id);
 	
 	
-
 }

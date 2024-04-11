@@ -28,10 +28,10 @@
                     <div class="footerColumn mb-4">
                         <h2 class="footerHeading">Useful Links</h2>
                         <ul class="list-unstyled" style="color: #fff;">
-                            <li><a href="/home" class="py-2 d-block">Home</a></li>
-                            <li><a href="/rooms" class="py-2 d-block">Rooms</a></li>
-                            <li><a href="/services" class="py-2 d-block">Services</a></li>
-                            <li><a href="#" class="py-2 d-block">Register</a></li>
+                            <li><a href="#" class="py-2 d-block">Home</a></li>
+                            <li><a href="#" class="py-2 d-block">Rooms</a></li>
+                            <li><a href="#" class="py-2 d-block">Services</a></li>
+                            <li><a href="#" class="py-2 d-block">Discount Codes</a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,10 +39,10 @@
                     <div class="footerColumn mb-4">
                         <h2 class="footerHeading">Privacy</h2>
                         <ul class="list-unstyled" style="color: #fff;">
-                            <li><a href="/booking" class="py-2 d-block">Booking</a></li>
-                            <li><a href="/about" class="py-2 d-block">About Us</a></li>
-                            <li><a href="/about" class="py-2 d-block">Contact Us</a></li>
-                            <li><a href="/services" class="py-2 d-block">Services</a></li>
+                            <li><a href="#" class="py-2 d-block">Booking</a></li>
+                            <li><a href="#" class="py-2 d-block">About Us</a></li>
+                            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="#" class="py-2 d-block">Services</a></li>
                         </ul>
                     </div>
                 </div>

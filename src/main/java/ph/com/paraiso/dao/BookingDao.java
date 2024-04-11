@@ -7,7 +7,6 @@ import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_typeBooking;
-import ph.com.paraiso.model.User;
 
 public interface BookingDao {
 	public List<Room_typeBooking> listAllRoom_type(String checkin_date, String checkout_date);
@@ -29,5 +28,4 @@ public interface BookingDao {
 	public List<AddOns> getAllAddOnsBooking();
 	
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids);
-
 }

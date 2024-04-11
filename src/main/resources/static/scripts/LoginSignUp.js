@@ -151,7 +151,7 @@ $(document).ready(function() {
                     showModal(response);
                     $('#registrationForm')[0].reset();
                 },
-                error: function(xhr) {
+                error: function(xhr, status, error) {
                     var errorMessage = xhr.responseText; 
                     showSignUpModal(errorMessage);
                 }
@@ -161,13 +161,19 @@ $(document).ready(function() {
     
     
      $('#loginForm').submit(function(event) {
+      // Prevent form submission
       event.preventDefault();
+
+      // Get form data
       var formData = $(this).serialize();
+
+      // Send AJAX request
       $.ajax({
         type: 'POST',
         url: 'auth',
         data: formData,
         success: function(response) {
+          // Handle successful authentication
           if (response.redirectUrl) {
             window.location.href = response.redirectUrl;
           } else {
