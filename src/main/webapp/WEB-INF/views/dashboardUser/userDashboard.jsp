@@ -34,6 +34,7 @@
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
                 	<div class="bookings-wrapper">
+                		<div>Loyalty points: ${loyaltyPoints}</div>
                 		<c:forEach var="bookinglist" items="${bookingsAndRooms}">
                 			<c:forEach items="${bookinglist}" var="Map">
                 				<c:choose>
@@ -161,33 +162,40 @@
       <div class="modal-body">
       	<div class="payment-content">
       		<div hidden id="payment-price-hidden"><!-- hidden price --></div>
-      		<div id="payment-price">
-      			
-      			<!-- container for price -->
+      		<div class="payment-price-container">
+	      		<div id="payment-price">
+	      			<!-- container for price -->
+	      		</div><p>Php</p>
       		</div>
-      		<div>
+      		<div class="voucher-container">
       			<input type="text" id="voucherField" />
       			<button id="check-voucher">Check Voucher</button>
       		</div>
-      		<div>
+      		<div class="loyalty-container">
       			<select id="loyalty-select">
+      				<option value="0" selected>Use Loyalty Points</option>
       				<option value="500">500</option>
       				<option value="1000">1000</option>
       				<option value="2000">2000</option>
+      				<option value="3000">3000</option>
       			</select>
       		</div>
       		<div class="payment-options">
-      			<div class="paymant-option">
+      			<div class="payment-option">
       				<input checked type="radio" class="payment-radio" id="Gcash" name="payment-method" value="Gcash">
       				<label>Gcash</label>
       			</div>
-      			<div class="paymant-option">
+      			<div class="payment-option">
       				<input type="radio" class="payment-radio" id="CardPayment" name="payment-method" value="Credit/Debit Card">
       				<label>Credit/Debit Card</label>
       			</div>
+      			<div class="payment-option">
+      				<input type="radio" class="payment-radio" id="Paymaya" name="payment-method" value="Paymaya">
+      				<label>Paymaya</label>
+      			</div>
       			<div id="payment-fields">
-	      			Enter OTP <input type="number"/>
-					Enter MPIN <input type="number"/>
+	      			<div class="payment-field">Enter OTP <input type="number"/><div>
+					<div class="payment-field">Enter MPIN <input type="number"/></div>
       				<!-- Empty field for inserting fields -->
       			</div>
       		</div>
@@ -201,24 +209,7 @@
   </div>
 </div>
 
-  <!-- <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script> -->
-
 </body>
-<!-- <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-    crossorigin="anonymous"
-  ></script> -->
-
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

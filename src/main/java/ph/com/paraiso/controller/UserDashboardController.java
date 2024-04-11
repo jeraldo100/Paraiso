@@ -90,6 +90,14 @@ public class UserDashboardController {
 		List<Map<String, Object>> bookingsAndRooms = new ArrayList();
 		List<Booking> bookings = bookRepo.getBookingsByUserId(user_id);
 		
+		Loyalty loyalty = loyalRepo.getLoyaltyByUserId(user_id);
+		Double loyalty_points;
+		if (loyalty == null) {
+			loyalty_points = (double) 0;
+		}else {
+			loyalty_points = loyalty.getAvailable_points();	
+		}
+		
 		for(Booking booking: bookings) {
 			Map bAndRs = new HashMap();
 			bAndRs.put("booking", booking);
@@ -103,6 +111,7 @@ public class UserDashboardController {
 			bookingsAndRooms.add(bAndRs);
 		}
 		
+		model.addAttribute("loyaltyPoints", loyalty_points);
 		model.addAttribute("bookingsAndRooms", bookingsAndRooms);
 		return "dashboardUser/userDashboard";
 	}
@@ -134,8 +143,8 @@ public class UserDashboardController {
 	}
 	
 	@ResponseBody
-	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String confirmPayment(HttpServletRequest request, @PathVariable("booking_id") Integer booking_id, @PathVariable("paymentMethod") String paymentMethod, @PathVariable("voucherInput") String voucherInput) {
+	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}/{loyalty_payment}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String confirmPayment(HttpServletRequest request, @PathVariable("booking_id") Integer booking_id, @PathVariable("paymentMethod") String paymentMethod, @PathVariable("voucherInput") String voucherInput, @PathVariable("loyalty_payment") Double loyalty_payment) {
 		Booking booking = bookRepo.findById(booking_id).get();
 		
 		String userEmail = SessionManager.getEmailFromSession(request);
@@ -143,7 +152,13 @@ public class UserDashboardController {
 		
 		Loyalty loyalty = loyalRepo.getLoyaltyByUserId(user_id);
 		
-		
+		Double loyalty_points;
+		if (loyalty == null) {
+			loyalty_points = (double) 0;
+			loyalty = loyalRepo.save(new Loyalty(user_id, loyalty_points, loyalty_points, loyalty_points));
+		}else {
+			loyalty_points = loyalty.getAvailable_points();	
+		}
 		
 		Double newPrice;
 		Double oldPrice = booking.getTotal_price();
@@ -160,6 +175,17 @@ public class UserDashboardController {
 			newPrice = oldPrice;
 		}
 		
+		if(loyalty_payment != 0) {
+			if(loyalty_payment < loyalty_points) {
+				newPrice = newPrice - loyalty_payment;
+				loyalty.setRedeemed_points(loyalty_payment);
+				loyalty.setAvailable_points(loyalty_points - loyalty_payment);
+			}
+		}
+		Double loyaltyAddedPoints = newPrice * 0.04;
+		loyalty.setAvailable_points(loyaltyAddedPoints + loyalty_points);
+		loyalty.setTotal_points(loyaltyAddedPoints + loyalty.getTotal_points());
+		
 		payment.setBooking_id(booking_id);
 		payment.setAmount(newPrice);
 		payment.setPayment_date(new Date());
@@ -170,6 +196,7 @@ public class UserDashboardController {
 		
 		payRepo.save(payment);
 		bookRepo.save(booking);
+		loyalRepo.save(loyalty);
 		
 		return "Success";
 	}

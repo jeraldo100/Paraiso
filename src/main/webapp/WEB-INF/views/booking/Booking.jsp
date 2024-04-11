@@ -58,6 +58,7 @@
 			</div>
             <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
 		</form>
+		<div class="booking-warning"></div>
 		<div class="roomsAndList">
 			<div id="roomsWrapper" class="roomsWrapper">
 				<!-- Empty room for adding available rooms -->

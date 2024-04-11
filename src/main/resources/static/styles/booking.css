@@ -106,6 +106,14 @@ input::-webkit-inner-spin-button {
 
 /* END of filter Bar */
 
+.booking-warning{
+	width: 90%;
+	padding: 0.4rem;
+	text-align: center;
+	background-color: #21cc7a;
+	color: white;
+}
+
 .roomsAndList{
 	display: flex;
 	flex-direction: row;

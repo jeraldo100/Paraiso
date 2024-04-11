@@ -166,8 +166,6 @@
 			}
 		});
 		
-		console.log( "capacity needed: " + (Number(adults_val) + Number(children_val) ) );
-		console.log( "total_capacity: " + total_capacity );
 		if ( !(room_ids_val == '') ){
 			if( total_capacity >= (Number(adults_val) + Number(children_val)) ){
 				$.ajax({
@@ -189,10 +187,10 @@
 					}
 				});
 			}else{
-				alert("Not Enough Rooms for Guests");
+				$('.booking-warning').html("Not Enough Rooms for Guests");
 			}
 		} else{
-			alert('Please select a Room')
+			$('.booking-warning').html('Please select a Room')
 		}
 	})
 	

@@ -122,3 +122,80 @@ img {
     justify-content: space-between;
     padding-top: 0.4rem;
 }
+
+.payment-content{
+	display: flex;
+	flex-direction: collumn;
+	gap: 0.6rem;
+}
+
+.payment-price-container{
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.payment-price-container{
+	color: #21cc7a;
+}
+
+.voucher-container{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+.voucher-container input{
+	padding: 0.4rem;
+	border-radius: 0.4rem;
+	border: 1px solid #ccc;
+}
+.voucher-container button{
+	border-radius: 0.4rem;
+	padding: 0.4rem;
+	background-color: #21cc7a;
+}
+
+.loyalty-container select{
+	border-radius: 0.4rem;
+	padding: 0.4rem;
+	background-color: #21cc7a;
+	color: white;
+}
+
+.payment-options{
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	flex-wrap: wrap;
+	
+}
+.payment-option{
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	flex-wrap: nowrap;
+}
+
+.payment-fields{
+	display: flex;
+	flex-direction: collumn;
+	gap: 1rem;
+}
+.payment-field{
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+.payment-field input{
+	padding: 0.4rem;
+	border: 1px solid #ccc;
+	border-radius: 0.4rem;
+}
+.payment-field select{
+	padding: 0.4rem;
+	border: 1px solid #ccc;
+	border-radius: 0.4rem;
+}

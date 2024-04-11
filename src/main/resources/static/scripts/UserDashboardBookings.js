@@ -14,8 +14,30 @@
 	$('#CardPayment').on('click', function(){
 		$('#payment-fields').html(
 			`
-				Enter Card Number: <input type="number"/>
-				Enter Expiration: <input type="text"/>
+				<div class="payment-field">Enter Card Number: <input type="number"/></div>
+				<div class="payment-field">Enter Expiration: 
+					<select>
+						<option selected>Month</option>
+						<option>01</option>
+						<option>02</option>
+						<option>03</option>
+						<option>04</option>
+						<option>05</option>
+						<option>07</option>
+						<option>08</option>
+						<option>09</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+					</select>
+					<select>
+						<option selected>Year</option>
+						<option>2024</option>
+						<option>2025</option>
+						<option>2026</option>
+						<option>2027</option>
+					</select>
+				</div>
 			`
 		);
 	})
@@ -23,8 +45,17 @@
 	$('#Gcash').on('click', function(){
 		$('#payment-fields').html(
 			`
-				Enter OTP <input type="number"/>
-				Enter MPIN <input type="number"/>
+				<div class="payment-field">Enter OTP <input type="number"/><div>
+				<div class="payment-field">Enter MPIN <input type="number"/></div>
+			`
+		);
+	})
+	
+	$('#Paymaya').on('click', function(){
+		$('#payment-fields').html(
+			`
+				<div class="payment-field">Enter OTP <input type="number"/><div>
+				<div class="payment-field">Enter MPIN <input type="number"/></div>
 			`
 		);
 	})
@@ -40,6 +71,7 @@
 		
 		$('#confirm-payment').bind( "click", function() {
 			let paymentMethod;
+			let loyalty_payment = Number( $('#loyalty-select').val() );
 			
 			$('.payment-radio-name').each(function () {
 				if($(this).attr('checked', 'checked') ){
@@ -55,7 +87,7 @@
 			console.log(booking_id);
 		 	$.ajax({
 				type:'POST',
-				url: 'userDashboard/confirmPayment/'+booking_id+'/'+ paymentMethod +'/'+voucherInput,
+				url: 'userDashboard/confirmPayment/'+booking_id+'/'+ paymentMethod +'/'+voucherInput+'/'+loyalty_payment,
 				success: function(dat){
 					console.log(dat);
 					location.reload();
