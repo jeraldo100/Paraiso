@@ -136,32 +136,5 @@ public class UserServiceImpl implements UserService{
         return user != null;
 	}
 
-	public void exportJasperReportRoom(HttpServletResponse response) throws JRException {
-		 List<Booking> bookings = bookingRepository.findAll();
-		
-        //Get file and compile it
-        File file = null;
-		try {
-			file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("createdBy", "flocer");
-
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        try {
-			JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
-		} catch (JRException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
-
-
 
 }

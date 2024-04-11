@@ -23,7 +23,6 @@ import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
-import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.model.Room_typeBooking;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.service.BookingService;
@@ -88,7 +87,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 	
 	
-	public void exportJasperReportRoom(HttpServletResponse response) throws JRException, IOException {
+	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException {
 	    List<Booking> bookings = bookingRepository.findAll();
 	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -107,7 +106,5 @@ public class BookingServiceImpl implements BookingService {
 	        throw new RuntimeException("Error generating report", e);
 	    }
 	}
-
-	
 	
 }
