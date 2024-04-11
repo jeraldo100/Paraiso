@@ -32,32 +32,7 @@
   
   <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
   <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
-  
-  <script type="text/javascript">
-  	var contextPath = '${pageContext.request.contextPath}' + '/';
-  	
-  	$(document).ready(function(){
-  	    var table = $('#roomList').DataTable({
-  	    	lengthMenu: [1, 3, 5, 10, 50, 100],
-  	        pageLength: 50,
-  	        columnDefs: [
-  	            { targets: [0, 1, 2, 3], searchable: true },
-  	            { targets: [4], searchable: false },
-  	        ]
-  	    });
-  	    
-  	    $('#printButton').click(function() {
-  	        var filteredData = table.rows({ search: 'applied' }).data();
-
-  	        // Loop through each row in the filtered data
-  	        filteredData.each(function(rowData) {
-  	            // Print each row data
-  	            console.log(rowData);
-  	        });
-  	    });
-  	});
-
-  </script>
+  <script src="/js/dataTable.js"></script>
 
 </head>
 
