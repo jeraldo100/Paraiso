@@ -1,14 +1,32 @@
 package ph.com.paraiso.service.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
+
+import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
+import ph.com.paraiso.dao.BookingDao;
 import ph.com.paraiso.dao.UserDao;
 import ph.com.paraiso.dto.UserDto;
+import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.User;
+import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.service.UserService;
 
@@ -19,8 +37,13 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BookingRepository bookingRepository;
+	
 		@Autowired
 		UserDao userDao;
+		BookingDao bookingDao;
+
 
 		@Override
 		public String authenticate(User user) {
@@ -112,5 +135,33 @@ public class UserServiceImpl implements UserService{
         User user = userRepository.findByusername(username);
         return user != null;
 	}
+
+	public void exportJasperReportRoom(HttpServletResponse response) throws JRException {
+		 List<Booking> bookings = bookingRepository.findAll();
+		
+        //Get file and compile it
+        File file = null;
+		try {
+			file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "flocer");
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        try {
+			JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
+		} catch (JRException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
 
 }
