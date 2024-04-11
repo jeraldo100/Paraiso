@@ -28,7 +28,7 @@
         <div class="container-fluid" id="main-content">
           <div class="row">
             <div class="col-lg-15 ms-auto p-4 overflow-hidden">
-              <h1 class="display-3">Good morning, User!</h1>
+              <h1 class="display-3">Bookings!</h1>
               <hr />
 
               <div class="row mb-4">
@@ -93,15 +93,21 @@
 										        >Cancel</button>
 										    </c:when>
 										    <c:when test = "${booking.status == 'Approved'}">
-										        <input type="button" value="Cancel"/>
-										        <input 
+										        <button
 										        	type="button" 
+										        	class="cancelButton"
+										        	data-bs-toggle="modal" 
+										        	data-bs-target="#CancelModal" 
+										        	data-bs-booking_id="${booking.booking_id}"
+										        >Cancel</button>
+										        <button 
+										        	type="button" 
+										        	data-bs-toggle="modal" 
 										        	data-bs-target="#payment-modal" 
 										        	data-bs-booking_id="${booking.booking_id}" 
 										        	data-bs-price="${booking.total_price}" 
-										        	class="payment-button" 
-										        	value="Pay"
-										        />
+										        	class="payment-button"
+										        >Pay</button>
 										    </c:when>
 										    <c:when test = "${booking.status == 'Cancelled'}">
 										        <div>Booking is Cancelled</div>
@@ -145,7 +151,7 @@
 </div>
 
 <!-- Payment Modal -->
-<div class="modal fade" id="payment-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="payment-modal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -154,12 +160,36 @@
       </div>
       <div class="modal-body">
       	<div class="payment-content">
-      		<div class="payment-price">
+      		<div hidden id="payment-price-hidden"><!-- hidden price --></div>
+      		<div id="payment-price">
+      			
       			<!-- container for price -->
       		</div>
       		<div>
       			<input type="text" id="voucherField" />
       			<button id="check-voucher">Check Voucher</button>
+      		</div>
+      		<div>
+      			<select id="loyalty-select">
+      				<option value="500">500</option>
+      				<option value="1000">1000</option>
+      				<option value="2000">2000</option>
+      			</select>
+      		</div>
+      		<div class="payment-options">
+      			<div class="paymant-option">
+      				<input checked type="radio" class="payment-radio" id="Gcash" name="payment-method" value="Gcash">
+      				<label>Gcash</label>
+      			</div>
+      			<div class="paymant-option">
+      				<input type="radio" class="payment-radio" id="CardPayment" name="payment-method" value="Credit/Debit Card">
+      				<label>Credit/Debit Card</label>
+      			</div>
+      			<div id="payment-fields">
+	      			Enter OTP <input type="number"/>
+					Enter MPIN <input type="number"/>
+      				<!-- Empty field for inserting fields -->
+      			</div>
       		</div>
       	</div>
       </div>

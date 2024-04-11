@@ -4,6 +4,7 @@ package ph.com.paraiso.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +24,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.model.Loyalty;
+import ph.com.paraiso.model.Payment;
 import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.model.Voucher;
 import ph.com.paraiso.repository.Booked_roomRepository;
 import ph.com.paraiso.repository.BookingRepository;
+import ph.com.paraiso.repository.LoyaltyRepository;
+import ph.com.paraiso.repository.PaymentRepository;
 import ph.com.paraiso.repository.Room_TypeRepository;
 import ph.com.paraiso.repository.VoucherRepository;
 import ph.com.paraiso.service.UserService;
@@ -50,6 +55,12 @@ public class UserDashboardController {
 	
 	@Autowired
 	VoucherRepository vRepo;
+	
+	@Autowired
+	PaymentRepository payRepo;
+	
+	@Autowired
+	LoyaltyRepository loyalRepo;
 	
 	public void setCommonAttributes(HttpServletRequest request, Model model) { 
         String userEmail = SessionManager.getEmailFromSession(request);
@@ -96,13 +107,71 @@ public class UserDashboardController {
 		return "dashboardUser/userDashboard";
 	}
 	
+	public Double doubleToPerc(Double amount) {
+		String amountStr;
+		if(amount < 10) {
+			amountStr = "0.0"+(amount+"").replace(".", "");
+		}else {
+			amountStr = "0."+(amount+"").replace(".", "");
+		}
+		return Double.parseDouble(amountStr);
+	}
+	
 	@ResponseBody
 	@PostMapping(value="userDashboard/checkVoucher/{voucherInput}/{oldPrice}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Double checkVoucher(@PathVariable("voucherInput") String voucherInput, @PathVariable("oldPrice") Double oldPrice) {
 		Voucher voucher = vRepo.getVoucherByCode(voucherInput);
-		Double discount = oldPrice - voucher.getAmount();
+		if(voucher == null) {
+			return oldPrice;
+		}
+		Double amount = voucher.getAmount();
+		
+		Double amountToPerc = doubleToPerc(amount);
+		
+		Double discount = oldPrice - (oldPrice * amountToPerc);
 		Double newPrice = discount;
 		return newPrice;
+	}
+	
+	@ResponseBody
+	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String confirmPayment(HttpServletRequest request, @PathVariable("booking_id") Integer booking_id, @PathVariable("paymentMethod") String paymentMethod, @PathVariable("voucherInput") String voucherInput) {
+		Booking booking = bookRepo.findById(booking_id).get();
+		
+		String userEmail = SessionManager.getEmailFromSession(request);
+		Integer user_id = userSvc.getUserIdByEmail(userEmail);
+		
+		Loyalty loyalty = loyalRepo.getLoyaltyByUserId(user_id);
+		
+		
+		
+		Double newPrice;
+		Double oldPrice = booking.getTotal_price();
+		Voucher voucher = new Voucher();
+		Payment payment = new Payment();
+		
+		
+		if(!(voucherInput.equals("none") ) ) {
+			voucher = vRepo.getVoucherByCode(voucherInput);
+			Double amountToPerc = doubleToPerc(voucher.getAmount());
+			newPrice = oldPrice - (oldPrice * amountToPerc);
+			
+		}else {
+			newPrice = oldPrice;
+		}
+		
+		payment.setBooking_id(booking_id);
+		payment.setAmount(newPrice);
+		payment.setPayment_date(new Date());
+		payment.setPayment_method(paymentMethod);
+		
+		booking.setStatus("Paid");
+		booking.setTotal_price(newPrice);
+		
+		payRepo.save(payment);
+		bookRepo.save(booking);
+		
+		return "Success";
 	}
 	
 	@PostMapping("userDashboard/cancel/{booking_id}") 
