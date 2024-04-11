@@ -31,7 +31,7 @@
 							<table class="table" id="bookingList">
 								<tbody>
 									<tr>
-										<td><h1 class="display-3">Welcome, ${user.username}</h1></td>
+										<td><h1 class="display-3">Welcome, ${user.username}!</h1></td>
 									</tr>
 								</tbody>
 							</table>
@@ -44,7 +44,7 @@
 								</div>
 							</div>
 
-							<div class="card">
+							<div class="card border-0">
 								<div class="card-body">
 									<table class="table table-hover" id="bookingList">
 										<thead>

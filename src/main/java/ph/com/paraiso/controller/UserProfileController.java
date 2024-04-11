@@ -1,6 +1,7 @@
 package ph.com.paraiso.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,16 +90,20 @@ public class UserProfileController {
 	    existingUser.setUsername(userDto.getUsername());
 	    existingUser.setFirstName(userDto.getFirstName());
 	    existingUser.setLastName(userDto.getLastName());
+	    existingUser.setEmail(userDto.getEmail());
 	    existingUser.setAddress(userDto.getAddress());
 	    existingUser.setPhone(userDto.getPhone());
-	    existingUser.setEmail(userDto.getEmail());
 	    existingUser.setDateOfBirth(userDto.getDateOfBirth());
-	    existingUser.setPassword(userDto.getPassword()); 
 
-	    
+	    // Encrypt the password
+	    BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+	    String encryptedPwd = bcrypt.encode(userDto.getPassword());
+	    existingUser.setPassword(encryptedPwd);
+
+	    // Save the updated user
 	    userSvc.updateUser(existingUser);
 
-	    return "redirect:/user/userProfile"; 
+	    return "redirect:/user/userProfile"; // Redirect to the user profile page
 	}
 	
 }

@@ -60,12 +60,14 @@
 
 														<tr>
 															<td>
-																<form action="/user/updateUser" method="post">
+																
+																<form action="/user/updateUser" method="post" onsubmit="return validateForm()">
 																<div class="mb-3">
-																		<label for="firstName" class="form-label">Username</label> <input type="text" class="form-control"
-																			id="username" name="username"
-																			placeholder="${user.username}">
-																	</div>
+																	<label for="username" class="form-label">Username</label>
+																	<input type="text" class="form-control" id="username"
+																		name="username"
+																		placeholder="${user.firstName}">
+																</div>
 																	<div class="mb-3">
 																		<label for="firstName" class="form-label">First
 																			Name</label> <input type="text" class="form-control"
