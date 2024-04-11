@@ -9,6 +9,8 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="stylesheet" href="/styles/about.css" />
+    <link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
   </head>
   <body>
     <section class="about-section about-wrap-about pt-0 pb-0 m-2">

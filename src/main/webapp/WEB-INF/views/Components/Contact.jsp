@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="/styles/Contact.css" rel="stylesheet" />
+    <link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
   </head>
 
   <body>

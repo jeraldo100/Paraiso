@@ -71,3 +71,47 @@ input[type='file'] {
     margin-left: 15%;
 }
 
+#bookingList thead th {
+    text-align: center;
+}
+
+#bookingList tbody td {
+    text-align: center;
+}
+
+#voucherList thead th {
+    text-align: center;
+}
+
+#voucherList tbody td {
+    text-align: center;
+}
+#addOnsList thead th {
+    text-align: center;
+}
+
+#addOnsList tbody td {
+    text-align: center;
+}
+#userList thead th {
+    text-align: center;
+}
+
+#userList tbody td {
+    text-align: center;
+}
+#roomList thead th {
+    text-align: center;
+}
+
+#roomList tbody td {
+    text-align: center;
+}
+#roomTypesList thead th {
+    text-align: center;
+}
+
+#roomTypesList tbody td {
+    text-align: center;
+}
+

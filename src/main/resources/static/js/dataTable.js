@@ -45,6 +45,15 @@
   	            { targets: [9,10], searchable: false },
   	        ]
 		});
+		
+		var table = $('#roomTypesList').DataTable({
+			lengthMenu: [1, 3, 5, 10, 50, 100],
+			pageLength: 50,
+  	        columnDefs: [
+  	            { targets: [0, 1, 2, 3, 4, 5, 6], searchable: true },
+  	            { targets: [7,8], searchable: false },
+  	        ]
+		});
   	    
   	    $('#printButton').click(function() {
     // Get the DataTable's filtered and paginated data source

@@ -32,7 +32,9 @@
 	href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css">
 <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
 <script src="/js/dataTable.js"></script>
+<style>
 
+</style>
 
 </head>
 

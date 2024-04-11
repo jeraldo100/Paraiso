@@ -18,6 +18,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 	<link rel="stylesheet" href="/styles/booking.css" type="text/css" />
+	<link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
 </head>
 <body>
 	<%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>

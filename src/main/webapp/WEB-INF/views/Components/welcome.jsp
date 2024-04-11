@@ -10,6 +10,7 @@
     />
 
     <link rel="stylesheet" href="/styles/welcome.css" />
+    
   </head>
   <body>
     <section class="welcome-section">

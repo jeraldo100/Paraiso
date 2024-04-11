@@ -12,19 +12,13 @@
 <title>Paraiso Hotel Dashboard</title>
 <link rel="icon" href="/images/logo/logoo.png" sizes="any"
 	type="image/png">
-
-<!-- BOOTSTRAP LINK -->
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous" />
 
-<link rel="icon" href="/images/logo/logoo.png" sizes="any"
-	type="image/png">
 
-<!-- CSS LINK -->
 
 <link rel="stylesheet" href="/styles/dashboardAdmin/dashboard.css" />
 <script
@@ -60,7 +54,8 @@
 
 							<div class="row mb-4">
 								<div class="col-md-12 b-4">
-									<div class="card text-center p-3 text-success table-responsive ">
+									<div
+										class="card text-center p-3 text-success table-responsive ">
 										<table class="table table-hover table-responsive"
 											id="userList">
 											<thead>
@@ -88,7 +83,8 @@
 														<td><c:out value="${users.accountType }" /></td>
 														<td><c:out value="${users.firstName }" /></td>
 														<td><c:out value="${users.lastName }" /></td>
-														<td><c:out value="${fn:substring(users.dateOfBirth,0,10) }" /></td>
+														<td><c:out
+																value="${fn:substring(users.dateOfBirth,0,10) }" /></td>
 														<td><c:out value="${users.address }" /></td>
 														<td><c:out value="${users.phone }" /></td>
 														<td><c:out value="${users.email }" /></td>
@@ -112,10 +108,6 @@
 
 
 </body>
-
-
-<!-- IONICONS LINK -->
-
 <script type="module"
 	src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule

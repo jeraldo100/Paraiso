@@ -212,6 +212,7 @@
 															<td><c:out value="${roomTypes.capacity }" /></td>
 															<td><c:out value="${roomTypes.beds }" /></td>
 															<td><c:out value="${roomTypes.bathrooms }" /></td>
+															
 														</tr>
 													</c:forEach>
 												</tbody>

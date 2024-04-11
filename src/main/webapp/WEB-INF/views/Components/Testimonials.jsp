@@ -9,6 +9,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
       <link rel="stylesheet" href="/styles/Testimonials.css" />
+      
      </head>
   <body>
     <section class="testimony-section">

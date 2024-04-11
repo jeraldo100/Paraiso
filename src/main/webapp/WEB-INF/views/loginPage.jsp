@@ -6,7 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="icon" href="/images/logo/logoo.png" sizes="any"
+	type="image/png">
 </head>
 <body>
 <h3 class="err-msg">${error}</h3>
