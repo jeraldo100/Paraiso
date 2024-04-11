@@ -390,7 +390,6 @@ public class AdminController {
 		roomService.updateRoom(existingRoom);
 		return "redirect:/admin/AdminRooms";
 		
-		
 	}
 	
 	@GetMapping("/delete/{room_id}")
@@ -405,6 +404,7 @@ public class AdminController {
 	public String adminRoomTypes(HttpServletRequest request, Model model) {
 	    if (isAdminUser(request)) {
 			model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
+			
 			return "dashboardAdmin/RoomTypes";
 	    }
 	    return "ErrorPages/AccessDeniedError";

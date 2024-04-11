@@ -13,7 +13,6 @@
     <!-- BOOTSTRAP LINK -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-<script src="/js/dataTable.js"></script>
 
 </head>
 
@@ -21,7 +20,7 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <jsp:include page="sidebar.jsp"></jsp:include>
-            <div class="col overflow-hidden">
+            <div class="col">
                 <div class="container-fluid" id="main-content">
                     <div class="row">
                         <div class="col-lg-15 ms-auto p-4 overflow-hidden">
@@ -30,9 +29,8 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h1>Room Types</h1>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <input type="button" class="btn btn-success" value="Print Booking"
-										id="printButton">
-                                    <a href="/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
+                                    <button type="button" class="btn btn-success">Print</button>
+                                    <a href="/admin/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
                                 </div>
                             </div>
 
@@ -65,12 +63,12 @@
                                                         <td><c:out value="${room_type.beds}" /></td>
                                                         <td><c:out value="${room_type.bathrooms}" /></td>
                                                         <td>
-                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="${room_type.name}" style="max-width: 100px; max-height: 100px;">
+                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="" style="max-width: 100px; max-height: 100px;">                            
                                                         </td>
                                                         <td>
-                                                            <a href="/editRoomTypes/${room_type.type_id}" type="button"
+                                                            <a href="/admin/editRoomTypes/${room_type.type_id}" type="button"
                                                                 class="btn btn-success m-1">Edit</a>
-                                                            <a href="/deleteType/${room_type.type_id}" type="button"
+                                                            <a href="/admin/deleteType/${room_type.type_id}" type="button"
                                                                 class="btn btn-danger m-1">Delete</a>
                                                         </td>
                                                     </tr>

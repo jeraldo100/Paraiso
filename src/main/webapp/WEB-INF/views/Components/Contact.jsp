@@ -126,7 +126,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="member" data-aos="zoom-in" data-aos-delay="300">
-              <img src="/images/Contact/jerald.jpg" class="img-fluid" alt="" />
+              <img src="/images/Contact/amiel.jpg" class="img-fluid" alt="" />
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Amiel Gonzales</h4>

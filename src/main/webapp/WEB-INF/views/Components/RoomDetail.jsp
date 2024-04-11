@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +14,8 @@
 <body>
   <div class="room-name mb-4 mt-5 pb-3">
     <div class="col-md-7 heading-section text-center">
-      <h2>SUPERIOR KING</h2>
-      <span class="subheading">₱7000.00 <span class="price-subheading">/ Per Night</span></span>
+      <h2>${room_type.name}</h2>
+      <span class="subheading">₱${room_type.price_per_night} <span class="price-subheading">/ Per Night</span></span>
     </div>
   </div>
 
@@ -24,18 +26,13 @@
           <div class="room-image mb-50 align-item-center">
   		   <img src="/images/RoomDetail/SuperiorKing/sp1.jpg" style="width: 700px; height: 400px;" alt="" />
           </div>
-          <div class="room-features-area d-flex flex-wrap mb-5 mt-5">
-            <h6>Size: <span>31 m² </span></h6>
-            <h6>Capacity: <span>Max 5 persons</span></h6>
-            <h6>Bed: <span>2 King beds</span></h6>
-            <h6> Bathroom: <span>1 bathroom</span></h6>
-          </div>
+		<div class="room-features-area d-flex flex-wrap justify-content-center align-items-center mb-5 mt-5">
+    			<h6>Capacity: <span>Max ${room_type.capacity} persons</span></h6>
+   				 <h6>Bed: <span>${room_type.beds} beds</span></h6>
+  				  <h6>Bathroom: <span>${room_type.bathrooms} bathroom</span></h6>
+				</div>
           <p>
-            Our Superior King rooms at Paraiso Hotel are beautifully designed
-            with inspiration drawn from the Siargao island tropical sea. The
-            tasteful interiors feature a king-sized bed, LED flat-screen TV
-            with a wide range of local and international channels, and a
-            vanity desk that also functions as a work desk.
+			${room_type.description}
           </p>
 
         </div>
