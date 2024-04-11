@@ -58,14 +58,6 @@ public class ParaisoPagesController {
 		model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
 	    return "home";
 	}
-	
-    @GetMapping("/contact")
-    public String contactPage(HttpServletRequest request, Model model) {
-        model.addAttribute("pageTitle", "Contact");
-        model.addAttribute("pageLink", "/contact");
-		setCommonAttributes(request, model);
-        return "contact"; 
-    }
     
     @GetMapping("/about")
     public String aboutPage(HttpServletRequest request, Model model) {
