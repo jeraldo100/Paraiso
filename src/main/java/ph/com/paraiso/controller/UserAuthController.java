@@ -58,9 +58,11 @@ public class UserAuthController {
 	    }
 	}
 				
+	
 		@PostMapping("/auth")
 		@ResponseBody
-		public ResponseEntity<Object> authenticate(@RequestParam String email, String password, HttpServletRequest request, HttpServletResponse response, Model model) {
+		public ResponseEntity<Object> authenticate(@RequestParam String email, String password, HttpServletRequest request, 
+			HttpServletResponse response, Model model) {
 		    User user = new User(email, password);
 		    String result = userSvc.authenticate(user);
 		    List<User> users = userSvc.getUsers();
@@ -68,8 +70,6 @@ public class UserAuthController {
 		    if (result.equals("success")) {
 		        String sessionId = UUID.randomUUID().toString();
 		        SessionManager.createSessionCookie(response, sessionId, email);
-		        
-		        // Get the user_id and store it in the session
 		        Integer user_id = userSvc.getUserIdByEmail(email);
 		        request.getSession().setAttribute("user_id", user_id);
 		        
@@ -98,8 +98,8 @@ public class UserAuthController {
 	    return "redirect:/home"; 
 	}
 
-@RestController
-public class BookingController {
+	@RestController
+	public class BookingController {
 
     private final BookingService bookingService;
 

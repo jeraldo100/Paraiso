@@ -94,7 +94,7 @@ public class BookingServiceImpl implements BookingService {
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
 	    Map<String, Object> parameters = new HashMap<>();
-	    parameters.put("createdBy", "Sy");
+	    parameters.put("createdBy", "");
 
 	    try {
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
@@ -107,7 +107,4 @@ public class BookingServiceImpl implements BookingService {
 	        throw new RuntimeException("Error generating report", e);
 	    }
 	}
-
-	
-	
 }

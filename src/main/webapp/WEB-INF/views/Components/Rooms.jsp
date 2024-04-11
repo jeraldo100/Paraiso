@@ -28,7 +28,7 @@
                                                         <span class="fa-solid fa-star"></span>
                                                     </p>
                                                     <p class="mb-2">
-                                                        <span class="price mr-1">${room_type.price_per_night}</span>
+                                                        <span class="price mr-1"> ₱${room_type.price_per_night}</span>
                                                         <span class="per">per night</span>
                                                     </p>
                                                     <h3 class="mb-3"><a href="rooms.html">${room_type.name}</a></h3>

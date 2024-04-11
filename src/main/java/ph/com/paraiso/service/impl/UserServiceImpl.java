@@ -120,10 +120,16 @@ public class UserServiceImpl implements UserService{
 	public User save(UserDto userDto) {
 		BCryptPasswordEncoder bcrypt= new BCryptPasswordEncoder();
 		String encrypedPwd = bcrypt.encode(userDto.getPassword());
-		User user = new User(userDto.getFirstName(), userDto.getLastName(), userDto.getEmail(), userDto.getUsername(), userDto.getAddress(), userDto.getDateOfBirth(), userDto.getPhone(), userDto.getPassword(), userDto.getAccountType());
+		User user = new User(userDto.getFirstName(), userDto.getLastName(), userDto.getEmail(), 
+	    userDto.getUsername(), userDto.getAddress(), userDto.getDateOfBirth(), userDto.getPhone(), 
+	    userDto.getPassword(), userDto.getAccountType());
 		user.setPassword(encrypedPwd);
 		return userRepository.save(user);
-}
+	}
+	
+	
+	
+	
 
 	@Override
 	public boolean isEmailTaken(String email) {
