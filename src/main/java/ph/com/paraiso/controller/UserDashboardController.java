@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import ph.com.paraiso.model.Booked_room;
@@ -86,10 +87,13 @@ public class UserDashboardController {
 	}
 	
 	
-	/*
-	 * @PostMapping("userDashboard/cancel/{booking_id}") public String
-	 * cancelBooking(@PathVariable Integer booking_id){ return "redirect:/" }
-	 */
+	
+	@PostMapping("userDashboard/cancel/{booking_id}") 
+	public ModelAndView cancelBooking(@PathVariable Integer booking_id){ 
+		System.out.println(booking_id);
+		 return new ModelAndView("redirect:/userDashboard");
+	}
+	 
 
 }
 	
