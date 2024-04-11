@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +35,9 @@
                                             <a href="rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a>
                                         </p>
                                     </div>
-                                </div>
-                                <img class="img room-img" src="data:image/jpeg;base64,${room_type.roomImage}" alt="${room_type.name}">
-                            </div>
+                                </div>                                                                                
+								 <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="" style="max-width: 100px; max-height: 100px;">                            
+							</div>
                         </div>
                     </div>
                 </div>
