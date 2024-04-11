@@ -23,12 +23,18 @@
 		<div class="row flex-nowrap">
 			<jsp:include page="sidebar.jsp"></jsp:include>
 			<!-- Main Content -->
+
 			<div class="col">
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, User!</h1>
-							<hr />
+							<table class="table" id="bookingList">
+								<tbody>
+									<tr>
+										<td><h1 class="display-3">Welcome, ${user.username}</h1></td>
+									</tr>
+								</tbody>
+							</table>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h1>Profile</h1>
@@ -37,74 +43,66 @@
 										class="btn btn-success m-1"> Edit </a>
 								</div>
 							</div>
-							<table class="table table-hover" id="bookingList">
-								<thead>
 
-								</thead>
-								<tbody>
-									<tr>
-										<th>User ID:</th>
-										<td class="text-center">${user.userid}</td>
-									</tr>
-									<tr>
+							<div class="card">
+								<div class="card-body">
+									<table class="table table-hover" id="bookingList">
+										<thead>
 
-										<th>Username:</th>
-										<td  class="text-center">${user.username}</td>
+										</thead>
+										<tbody>
+											<tr>
+												<th>User ID:</th>
+												<td class="text-center">${user.userid}</td>
+											</tr>
+											<tr>
 
-									</tr>
-									<tr>
-										<th>Password:</th>
-										<td  class="text-center">${fn:substring(user.password, 0, 6)}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Account Type:</th>
-										<td  class="text-center">${user.accountType}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>First Name:</th>
-										<td  class="text-center">${user.firstName}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Last Name:</th>
-										<td  class="text-center">${user.lastName}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Date of Birth:</th>
-										<td  class="text-center">${user.dateOfBirth}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Address:</th>
-										<td  class="text-center">${user.address}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Phone:</th>
-										<td  class="text-center">${user.phone}</td>
-										
-									
-									</tr>
-									<tr>
-										<th>Email:</th>
-										<td  class="text-center">${user.email}</td>
-										
-									
-									</tr>
-									
-								</tbody>
+												<th>Username:</th>
+												<td class="text-center">${user.username}</td>
 
-							</table>
+											</tr>
+											<tr>
+												<th>First Name:</th>
+												<td class="text-center">${user.firstName}</td>
 
+
+											</tr>
+											<tr>
+												<th>Last Name:</th>
+												<td class="text-center">${user.lastName}</td>
+
+
+											</tr>
+											<tr>
+												<th>Date of Birth:</th>
+												<td class="text-center">${fn:substring(user.dateOfBirth,0,10)}</td>
+
+
+											</tr>
+											<tr>
+												<th>Address:</th>
+												<td class="text-center">${user.address}</td>
+
+
+											</tr>
+											<tr>
+												<th>Phone:</th>
+												<td class="text-center">${user.phone}</td>
+
+
+											</tr>
+											<tr>
+												<th>Email:</th>
+												<td class="text-center">${user.email}</td>
+
+
+											</tr>
+
+										</tbody>
+
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

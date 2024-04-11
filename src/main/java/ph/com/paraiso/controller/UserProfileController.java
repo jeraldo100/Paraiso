@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import ph.com.paraiso.dto.UserDto;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.service.UserService;
 
@@ -44,8 +45,60 @@ public class UserProfileController {
 	}
 	
 	@GetMapping("/editProfile")
-	public String editProfile() {
+	public String editProfile(HttpServletRequest request, Model model) {
+		// Get the user_id from the session
+	    Integer user_id = (Integer) request.getSession().getAttribute("user_id");
+	    
+	    if (user_id == null) {
+	        // Handle case where user_id is not found in session
+	        return "redirect:/login"; // Redirect to login page or show an error message
+	    }
+
+	    // Use the user_id to fetch user-specific data
+	    User user = userSvc.getUserById(user_id);
+	    if (user == null) {
+	        // Handle case where user is not found
+	        return "redirect:/login"; // Redirect to login page or show an error message
+	    }
+
+	    // Add the user data to the model
+	    model.addAttribute("user", user);
 		return "dashboardUser/userEditProfile";
+	}
+	
+	
+	@PostMapping("/updateUser")
+	public String updateUser(@ModelAttribute UserDto userDto, HttpServletRequest request) {
+	    // Get the user_id from the session
+	    Integer userId = (Integer) request.getSession().getAttribute("user_id");
+
+	    if (userId == null) {
+	        // Handle case where user_id is not found in session
+	        return "redirect:/login"; // Redirect to login page or show an error message
+	    }
+
+	    // Use the user_id to fetch the user
+	    User existingUser = userSvc.getUserById(userId);
+
+	    if (existingUser == null) {
+	        // Handle case where user is not found
+	        return "redirect:/login"; // Redirect to login page or show an error message
+	    }
+
+	    // Update the user's details
+	    existingUser.setUsername(userDto.getUsername());
+	    existingUser.setFirstName(userDto.getFirstName());
+	    existingUser.setLastName(userDto.getLastName());
+	    existingUser.setAddress(userDto.getAddress());
+	    existingUser.setPhone(userDto.getPhone());
+	    existingUser.setEmail(userDto.getEmail());
+	    existingUser.setDateOfBirth(userDto.getDateOfBirth());
+	    existingUser.setPassword(userDto.getPassword()); 
+
+	    
+	    userSvc.updateUser(existingUser);
+
+	    return "redirect:/user/userProfile"; 
 	}
 	
 }
