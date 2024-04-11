@@ -16,4 +16,14 @@ public interface JasperRepository extends JpaRepository<Room, Integer>{
             "WHERE r.type_id = :typeId",
       nativeQuery = true)
 	List<Object[]> findRoomsHistoryByTypeId(Integer typeId);
+	
+	
+    @Query(value = "SELECT u.username, u.first_name || ' ' || u.last_name AS name, r.room_id, br.checkin_date, br.checkout_date, br.price AS total_price, b.status " +
+            "FROM bookings b " +
+            "JOIN users u ON b.user_id = u.user_id " +
+            "JOIN booked_rooms br ON b.booking_id = br.booking_id " +
+            "JOIN rooms r ON br.room_id = r.room_id " +
+            "JOIN room_types rt ON r.type_id = rt.type_id",
+    nativeQuery = true)
+    List<Object[]> findAllBookingsDetails();
 }

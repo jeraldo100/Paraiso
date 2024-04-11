@@ -40,6 +40,15 @@ public class BookingController {
         response.setHeader(headerKey, headerValue);
         bookingService.exportJasperReportRoomHistory(response, typeId);
     }
+    
+    @GetMapping("/jasperpdfbookings/export")
+    public void jasperAllBookingDetails(HttpServletResponse response) throws IOException, JRException {
+        response.setContentType("application/pdf");
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=bookings.pdf";
+        response.setHeader(headerKey, headerValue);
+        bookingService.exportJasperReportBooking(response);
+    }
 
     @GetMapping("/jasperpdf/export")
     public void createPDF(HttpServletResponse response) throws IOException, JRException {
@@ -47,12 +56,21 @@ public class BookingController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=bookings.pdf";
         response.setHeader(headerKey, headerValue);
+        
         List<Object[]> roomsHistory = bookingService.findRoomsHistoryByTypeId(30);
         for (Object[] row : roomsHistory) {
             for (Object value : row) {
                 System.out.print(value + "\t");
             }
             System.out.println(); 
+        }
+        
+        List<Object[]> bookingDetails = bookingService.findAllBookingsDetails();
+        for (Object[] row : bookingDetails) {
+            for (Object value : row) {
+                System.out.print(value + "\t");
+            }
+            System.out.println();
         }
         bookingService.exportJasperReportBooking(response);
     }
