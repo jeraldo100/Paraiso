@@ -1,11 +1,13 @@
 package ph.com.paraiso.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_type;
@@ -89,9 +92,14 @@ public class UserDashboardController {
 	
 	
 	@PostMapping("userDashboard/cancel/{booking_id}") 
-	public ModelAndView cancelBooking(@PathVariable Integer booking_id){ 
+	public ModelAndView cancelBooking(@PathVariable Integer booking_id, HttpServletRequest request, HttpServletResponse response) throws IOException{ 
 		System.out.println(booking_id);
-		 return new ModelAndView("redirect:/userDashboard");
+		Booking booking = bookRepo.findById(booking_id).get();
+		
+		booking.setStatus("Cancelled");
+		bookRepo.save(booking);
+		
+		return new ModelAndView("redirect:/userDashboard");
 	}
 	 
 
