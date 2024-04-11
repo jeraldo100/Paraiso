@@ -17,6 +17,8 @@ public class Room_type {
 	private Integer bathrooms;
 	@Transient
 	private Integer available;
+	@Transient
+	private String roomImageEncoded;
 	
     @Lob
     @Column(name = "ROOM_IMAGE")
@@ -84,6 +86,14 @@ public class Room_type {
 		this.available = available;
 	}
 
+	public Room_type(Integer type_id, String name, Double price_per_night, Integer capacity, byte[] roomImage) {
+		super();
+		this.type_id = type_id;
+		this.name = name;
+		this.price_per_night = price_per_night;
+		this.capacity = capacity;
+		this.roomImage = roomImage;
+	}
 
 
 	public Integer getType_id() {
@@ -151,6 +161,16 @@ public class Room_type {
 	}
 
 
+	public String getRoomImageEncoded() {
+		return roomImageEncoded;
+	}
+
+
+	public void setRoomImageEncoded(String roomImageEncoded) {
+		this.roomImageEncoded = roomImageEncoded;
+	}
+
+	
 
 
 	

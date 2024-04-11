@@ -2,6 +2,7 @@ package ph.com.paraiso.controller;
 
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.repository.Booked_roomRepository;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.Room_TypeRepository;
@@ -70,14 +73,23 @@ public class UserDashboardController {
 			bAndRs.put("booking", booking);
 			Integer booking_id = booking.getBooking_id();
 			List<Integer> room_ids = brRepo.getAllRoomIdByBookingId(booking_id);
-			List<String> room_names = rtRepo.getAllRoomNamesByRoomIds(room_ids);
-			bAndRs.put("room_names", room_names);
+			List<Room_type> room_types = rtRepo.getAllRoomNamesByRoomIds(room_ids);
+			for(Room_type e: room_types) { 
+				e.setRoomImageEncoded(Base64.getEncoder().encodeToString( e.getRoomImage() ) ); 
+			}
+			bAndRs.put("room_names", room_types);
 			bookingsAndRooms.add(bAndRs);
 		}
 		
 		model.addAttribute("bookingsAndRooms", bookingsAndRooms);
 		return "dashboardUser/userDashboard";
 	}
+	
+	
+	/*
+	 * @PostMapping("userDashboard/cancel/{booking_id}") public String
+	 * cancelBooking(@PathVariable Integer booking_id){ return "redirect:/" }
+	 */
 
 }
 	
