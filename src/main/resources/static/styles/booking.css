@@ -56,7 +56,9 @@ p{
 	padding: 0.6rem;
 	display: flex;
 	flex-direction: row;
-	gap: 0.6rem;
+	gap: 1.3rem;
+	justify-content:center;
+	width: 170px;
 	align-items: center;
 	font-size: medium;
 	-webkit-user-select: none;
@@ -71,11 +73,12 @@ input::-webkit-inner-spin-button {
 }
 
 .capacity-field input[type=number] {
-	-moz-appearance: textfield;
-	border: none;
-	width: 1.6rem;
-	text-align: center; 
+    -moz-appearance: textfield;
+    border: none;
+    width: 1.6rem;
+    text-align: center; 
 }
+
 
 .capacity-field i{
 	color: #21cc7a;
@@ -98,6 +101,7 @@ input::-webkit-inner-spin-button {
 }
 .checkAvailabilityBtn:hover{
 	opacity: 80%;
+	color: black;
 }
 
 /* END of filter Bar */
@@ -253,7 +257,7 @@ input::-webkit-inner-spin-button {
 .addOns{
 	display: flex;
 	flex-direction: row;
-	row-gap: 0.2rem;
+	row-gap: 0.5rem;
 	column-gap: 1rem;
 	flex-wrap: wrap;
 	padding-bottom: 1rem;

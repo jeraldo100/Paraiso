@@ -19,7 +19,7 @@ $(document).ready(function() {
     function updateStatus(bookingId, status, buttonClass, button) {
         $.ajax({
             type: "POST",
-            url: "/updateStatus/" + bookingId + "?status=" + status,
+            url: "/admin/updateStatus/" + bookingId + "?status=" + status,
             success: function(response) {
                 console.log("Status updated successfully");
 

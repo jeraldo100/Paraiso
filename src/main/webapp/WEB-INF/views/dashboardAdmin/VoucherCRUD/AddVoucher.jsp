@@ -31,7 +31,7 @@
               <input type="date" name="validation" id="validation" placeholder="Enter Validity (yyyy-mm-dd)" class="form-control" />
             </div>
             <div class="box-footer">
-              <a type="button" href="/AdminDiscount" class="btn btn-danger float-end m-3">Back</a>
+              <a type="button" href="/admin/AdminDiscount" class="btn btn-danger float-end m-3">Back</a>
               <input type="submit" class="btn btn-success float-end m-3" value="Submit">
             </div>
           </form>

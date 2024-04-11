@@ -22,8 +22,8 @@
 <body>
 	<%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
 	<%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
-	<div class="mainWrapper">
-		<form class="filterBar" action="checkAvailability" method="POST">
+	<div class="mainWrapper mt-4 mb-5">
+		<form class="filterBar mb-5" action="checkAvailability" method="POST">
 			<div class="datePicker">
 	            <p>Check In</p>
 	            <div class="datePickerField">
@@ -63,7 +63,7 @@
 				<!-- Empty room for adding available rooms -->
 			</div>
 			<!-- Booking Interface and List of Added Rooms -->
-			<div class="listWrapper">
+			<div class="listWrapper ml-4">
 				<div class="roomList-header">
 					<div id="total-days" days="${days}">
 						<div class="dateRange">
@@ -80,7 +80,7 @@
 				<p class="addOnLabel"><i class="fa-solid fa-square-plus icon"></i> Add-ons:</p>
 				<div class="addOns">
 					<c:forEach var="addOn" items="${addOns}">
-						<div>
+						<div class="mb-2 mr-3">
 							<input onclick="addOnToggle(this)" class="addOnnCheck" type="checkbox" value="${addOn.add_on_id}" amount="${addOn.amount}">
 							<label>${addOn.add_on_name} <span>${addOn.amount} Php</span></label>
 						</div>

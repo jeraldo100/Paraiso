@@ -12,6 +12,7 @@
 <%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/welcome.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/about.jsp" %>
+<%@ include file = "/WEB-INF/views/Components/Contact.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/Instagram.jsp" %>
 <%@ include file = "/WEB-INF/views/Components/Footer.jsp" %>
 </body>

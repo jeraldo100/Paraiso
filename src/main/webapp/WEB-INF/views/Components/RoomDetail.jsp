@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,64 +12,27 @@
 </head>
 
 <body>
-  <div class="row no-gutters justify-content-center mb-4 mt-5 pb-3">
+  <div class="room-name mb-4 mt-5 pb-3">
     <div class="col-md-7 heading-section text-center">
-      <h2>SUPERIOR KING</h2>
-      <span class="subheading">₱7000.00 <span class="price-subheading">/ Per Night</span></span>
+      <h2>${room_type.name}</h2>
+      <span class="subheading">₱${room_type.price_per_night} <span class="price-subheading">/ Per Night</span></span>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container roomdetail">
     <div class="row">
-      <div class="col-12 col-lg-8 order-2 order-lg-1">
+      <div class="col-12">
         <div class="single-room-details-area mb-50">
-          <div class="room-thumbnail-slides mb-50">
-            <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/images/RoomDetail/SuperiorKing/sp1.jpg" class="d-block w-100" alt="" />
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/RoomDetail/SuperiorKing/sp2.jpg" class="d-block w-100" alt="" />
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/RoomDetail/SuperiorKing/sp3.jpg" class="d-block w-100" alt="" />
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/RoomDetail/SuperiorKing/sp4.jpg" class="d-block w-100" alt="" />
-                </div>
-              </div>
-
-              <ol class="carousel-indicators">
-                <li data-target="#room-thumbnail--slide" data-slide-to="0" class="active">
-                  <img src="/images/RoomDetail/SuperiorKing/sp1.jpg" class="d-block w-100" alt="" />
-                </li>
-                <li data-target="#room-thumbnail--slide" data-slide-to="1">
-                  <img src="/images/RoomDetail/SuperiorKing/sp2.jpg" class="d-block w-100" alt="" />
-                </li>
-                <li data-target="#room-thumbnail--slide" data-slide-to="2">
-                  <img src="/images/RoomDetail/SuperiorKing/sp3.jpg" class="d-block w-100" alt="" />
-                </li>
-                <li data-target="#room-thumbnail--slide" data-slide-to="3">
-                  <img src="/images/RoomDetail/SuperiorKing/sp4.jpg" class="d-block w-100" alt="" />
-                </li>
-              </ol>
-            </div>
+          <div class="room-image mb-50 align-item-center">
+  		   <img src="/images/RoomDetail/SuperiorKing/sp1.jpg" style="width: 700px; height: 400px;" alt="" />
           </div>
-
-          <!-- Room Features -->
-          <div class="room-features-area d-flex flex-wrap mb-5 mt-5">
-            <h6>Size: <span>31 m² </span></h6>
-            <h6>Capacity: <span>Max 5 persons</span></h6>
-            <h6>Bed: <span>2 King beds</span></h6>
-            <h6> Bathroom: <span>1 bathroom</span></h6>
-          </div>
+		<div class="room-features-area d-flex flex-wrap justify-content-center align-items-center mb-5 mt-5">
+    			<h6>Capacity: <span>Max ${room_type.capacity} persons</span></h6>
+   				 <h6>Bed: <span>${room_type.beds} beds</span></h6>
+  				  <h6>Bathroom: <span>${room_type.bathrooms} bathroom</span></h6>
+				</div>
           <p>
-            Our Superior King rooms at Paraiso Hotel are beautifully designed
-            with inspiration drawn from the Siargao island tropical sea. The
-            tasteful interiors feature a king-sized bed, LED flat-screen TV
-            with a wide range of local and international channels, and a
-            vanity desk that also functions as a work desk.
+			${room_type.description}
           </p>
 
         </div>
@@ -91,69 +56,12 @@
           </ul>
         </div>
       </div>
-
-      <div class="col-12 col-lg-4 mb-5 order-1 order-lg-2">
-        <div class="hotel-reservation--area mb-100">
-          <form action="#" method="post">
-            <div class="form-group mb-30">
-              <label for="checkInDate">Date</label>
-              <div class="input-daterange" id="datepicker">
-                <div class="row no-gutters">
-                  <div class="col-6">
-                    <input type="text" class="input-small form-control" name="checkInDate" id="checkInDate"
-                      placeholder="Check In" />
-                  </div>
-                  <div class="col-6">
-                    <input type="text" class="input-small form-control" name="checkOutDate" placeholder="Check Out" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group mb-30">
-              <label for="guests">Guests</label>
-              <div class="row">
-                <div class="col-6">
-                  <select name="adults" id="guests" class="form-control">
-                    <option value="adults">Adults</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                  </select>
-                </div>
-                <div class="col-6">
-                  <select name="children" id="children" class="form-control">
-                    <option value="children">Children</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn roomDetailButton w-100 mt-4">
-                Book Now
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+  </div>
   </div>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>					
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-  <script src="/scripts/RoomDetail.js"></script>
 </body>
 
 </html>
