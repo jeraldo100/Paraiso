@@ -10,11 +10,13 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,9 +24,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_type;
+import ph.com.paraiso.model.Voucher;
 import ph.com.paraiso.repository.Booked_roomRepository;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.Room_TypeRepository;
+import ph.com.paraiso.repository.VoucherRepository;
 import ph.com.paraiso.service.UserService;
 import ph.com.paraiso.session.SessionManager;
 
@@ -43,6 +47,9 @@ public class UserDashboardController {
 	
 	@Autowired
 	Room_TypeRepository rtRepo;
+	
+	@Autowired
+	VoucherRepository vRepo;
 	
 	public void setCommonAttributes(HttpServletRequest request, Model model) { 
         String userEmail = SessionManager.getEmailFromSession(request);
@@ -89,7 +96,14 @@ public class UserDashboardController {
 		return "dashboardUser/userDashboard";
 	}
 	
-	
+	@ResponseBody
+	@PostMapping(value="userDashboard/checkVoucher/{voucherInput}/{oldPrice}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Double checkVoucher(@PathVariable("voucherInput") String voucherInput, @PathVariable("oldPrice") Double oldPrice) {
+		Voucher voucher = vRepo.getVoucherByCode(voucherInput);
+		Double discount = oldPrice - voucher.getAmount();
+		Double newPrice = discount;
+		return newPrice;
+	}
 	
 	@PostMapping("userDashboard/cancel/{booking_id}") 
 	public ModelAndView cancelBooking(@PathVariable Integer booking_id, HttpServletRequest request, HttpServletResponse response) throws IOException{ 

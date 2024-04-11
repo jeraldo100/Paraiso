@@ -8,11 +8,6 @@
 				type:'POST',
 				url: 'userDashboard/cancel/'+booking_id
 			})
-			
-			$.ajax({
-				type:'GET',
-				url: 'userDashboard'
-			})
 		});
 	})
 	
@@ -21,6 +16,20 @@
 		let total_price = $(this).attr('data-bs-price');
 		
 		$('.payment-price').text(total_price);
+		
+	})
+	
+	$('#check-voucher').on('click', function(){
+		let voucherInput = $('#voucherField').val();
+		let total_price = Number( $('#payment-price').text() );
+		$.ajax({
+			type:'POST',
+			url: 'userDashboard/checkVoucher/'+voucherInput+"/"+total_price,
+			success: function (dat) {
+				console.log(dat);
+			}
+		})
+		
 		
 	})
 })(jQuery);
