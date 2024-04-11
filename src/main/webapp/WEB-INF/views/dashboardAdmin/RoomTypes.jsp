@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <jsp:include page="sidebar.jsp"></jsp:include>
-            <div class="col">
+            <div class="col overflow-hidden">
                 <div class="container-fluid" id="main-content">
                     <div class="row">
                         <div class="col-lg-15 ms-auto p-4 overflow-hidden">
@@ -30,7 +30,8 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h1>Room Types</h1>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="button" class="btn btn-success">Print</button>
+                                    <input type="button" class="btn btn-success" value="Print Booking"
+										id="printButton">
                                     <a href="/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
                                 </div>
                             </div>

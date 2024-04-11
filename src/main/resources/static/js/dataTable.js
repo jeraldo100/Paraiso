@@ -41,21 +41,22 @@
 			lengthMenu: [1, 3, 5, 10, 50, 100],
 			pageLength: 50,
   	        columnDefs: [
-  	            { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], searchable: true },
-  	            { targets: [9,10], searchable: false },
+  	            { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8,9], searchable: true },
+  	            { targets: [10,11], searchable: false },
   	        ]
 		});
   	    
   	    $('#printButton').click(function() {
-    // Get the DataTable's raw data source
-    var dataSource = table.rows().data().toArray();
+    // Get the DataTable's filtered and paginated data source
+    var visibleData = table.rows({ search: 'applied', page: 'current' }).data().toArray();
 
     // Loop through each row data
-    dataSource.forEach(function(rowData) {
+    visibleData.forEach(function(rowData) {
         // Print each row data
         console.log(rowData);
     });
 });
+
   	    
   	    $('#printTotalPriceBtn').click(function() {
 	        var totalPrice = 0;

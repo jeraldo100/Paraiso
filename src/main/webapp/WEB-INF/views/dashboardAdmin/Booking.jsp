@@ -40,7 +40,7 @@
 		<div class="row flex-nowrap">
 			<jsp:include page="sidebar.jsp"></jsp:include>
 			<!-- Main Content -->
-			<div class="col">
+			<div class="col overflow-hidden">
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
@@ -65,6 +65,7 @@
 										<table class="table table-hover" id="bookingList">
 											<thead>
 												<tr>
+													<th></th>>
 													<th>Booking ID</th>
 													<th>User ID</th>
 													<th>Check In</th>
@@ -81,6 +82,7 @@
 											<tbody>
 												<c:forEach var="bookings" items="${bookings }">
 													<tr>
+														<td><input type="checkbox" value="${bookings.user_id }"></td>
 														<td><c:out value="${bookings.booking_id }" /></td>
 														<td><c:out value="${bookings.user_id }" /></td>
 														<td><c:out value="${bookings.checkin_date }" /></td>

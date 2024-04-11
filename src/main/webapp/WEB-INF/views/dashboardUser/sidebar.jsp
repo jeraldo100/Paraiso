@@ -9,8 +9,8 @@
           </a>
           <ul class="nav nav-pills flex-column mt-4 pt-5">
             <li class="nav-item py-2 py-sm-0">
-              <a href="userProfile.html" class="nav-link text-white">
-                <ion-icon name="home"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Profile</span>
+              <a href="/user/userProfile" class="nav-link text-white">
+                <ion-icon name="person"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Profile</span>
               </a>
             </li>
             <li class="nav-item py-2 py-sm-0">
