@@ -4,7 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.servlet.http.HttpServletRequest;
+import ph.com.paraiso.repository.AddOnsRepository;
+import ph.com.paraiso.repository.AdminBookingRepository;
+import ph.com.paraiso.repository.RoomRepository;
+import ph.com.paraiso.repository.RoomTypesRepository;
+import ph.com.paraiso.repository.UserRepository;
+import ph.com.paraiso.repository.VoucherRepository;
+import ph.com.paraiso.service.AddOnsService;
+import ph.com.paraiso.service.AdminBookingService;
+import ph.com.paraiso.service.AdminUserService;
+import ph.com.paraiso.service.RoomService;
+import ph.com.paraiso.service.RoomTypesService;
 import ph.com.paraiso.service.UserService;
+import ph.com.paraiso.service.VoucherService;
 import ph.com.paraiso.session.SessionManager;
 
 
@@ -13,6 +25,7 @@ public class ParaisoPagesController {
 	
 	@Autowired
 	UserService userSvc;
+	
 	
     public void setCommonAttributes(HttpServletRequest request, Model model) { 
         String userEmail = SessionManager.getEmailFromSession(request);
@@ -33,9 +46,13 @@ public class ParaisoPagesController {
         }
     }
 
+	@Autowired
+	private RoomTypesService roomTypesService;
+
 	@GetMapping("/home")
 	public String homePage(HttpServletRequest request, Model model) {
 		setCommonAttributes(request, model);
+		model.addAttribute("room_types", roomTypesService.getAllRoomTypes());
 	    return "home";
 	}
 	

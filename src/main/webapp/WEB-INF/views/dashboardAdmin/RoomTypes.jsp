@@ -30,7 +30,7 @@
                                 <h1>Room Types</h1>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button type="button" class="btn btn-success">Print</button>
-                                    <a href="/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
+                                    <a href="/admin/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
                                 </div>
                             </div>
 
@@ -63,12 +63,12 @@
                                                         <td><c:out value="${room_type.beds}" /></td>
                                                         <td><c:out value="${room_type.bathrooms}" /></td>
                                                         <td>
-                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="${room_type.name}" style="max-width: 100px; max-height: 100px;">
+                                                            <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="" style="max-width: 100px; max-height: 100px;">                            
                                                         </td>
                                                         <td>
-                                                            <a href="/editRoomTypes/${room_type.type_id}" type="button"
+                                                            <a href="/admin/editRoomTypes/${room_type.type_id}" type="button"
                                                                 class="btn btn-success m-1">Edit</a>
-                                                            <a href="/deleteType/${room_type.type_id}" type="button"
+                                                            <a href="/admin/deleteType/${room_type.type_id}" type="button"
                                                                 class="btn btn-danger m-1">Delete</a>
                                                         </td>
                                                     </tr>

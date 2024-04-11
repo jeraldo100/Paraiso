@@ -149,9 +149,4 @@ public class Room_type {
 	public void setAvailable(Integer available) {
 		this.available = available;
 	}
-
-
-
-
-	
 }
