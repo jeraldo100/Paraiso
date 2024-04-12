@@ -130,7 +130,7 @@ public class UserDashboardController {
 	}
 	
 	@ResponseBody
-	@PostMapping(value="userDashboard/checkVoucher/{voucherInput}/{oldPrice}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="user/userDashboard/checkVoucher/{voucherInput}/{oldPrice}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Double checkVoucher(@PathVariable("voucherInput") String voucherInput, @PathVariable("oldPrice") Double oldPrice) {
 		Voucher voucher = vRepo.getVoucherByCode(voucherInput);
 		if(voucher == null) {
@@ -146,7 +146,7 @@ public class UserDashboardController {
 	}
 	
 	@ResponseBody
-	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}/{loyalty_payment}")
+	@PostMapping(value="user/userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}/{loyalty_payment}")
 	public String confirmPayment(HttpServletRequest request, @PathVariable("booking_id") Integer booking_id, @PathVariable("paymentMethod") String paymentMethod, @PathVariable("voucherInput") String voucherInput, @PathVariable("loyalty_payment") Double loyalty_payment) {
 		Booking booking = bookRepo.findById(booking_id).get();
 		
@@ -205,7 +205,7 @@ public class UserDashboardController {
 	}
 	
 	@ResponseBody
-	@PostMapping("userDashboard/cancel/{booking_id}") 
+	@PostMapping("user/userDashboard/cancel/{booking_id}") 
 	public String cancelBooking(@PathVariable Integer booking_id){ 
 
 		Booking booking = bookRepo.findById(booking_id).get();

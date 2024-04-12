@@ -139,6 +139,10 @@ img {
 	color: #21cc7a;
 }
 
+#payment-price{
+	font-size: large;
+}
+
 .voucher-container{
 	display:flex;
 	flex-direction: row;
@@ -154,6 +158,8 @@ img {
 	border-radius: 0.4rem;
 	padding: 0.4rem;
 	background-color: #21cc7a;
+	border: none;
+	color: white;
 }
 
 .loyalty-container select{

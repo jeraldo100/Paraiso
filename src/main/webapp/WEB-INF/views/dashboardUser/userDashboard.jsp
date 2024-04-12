@@ -203,6 +203,7 @@
       				<label>Paymaya</label>
       			</div>
       			<div id="payment-fields">
+      				<img style="height: 3rem; object-fit: cover;" src="/images/logo/gcashLogo.png" />
 	      			<div class="payment-field">Enter OTP <input type="number"/></div>
 					<div class="payment-field">Enter MPIN <input type="number"/></div>
       				<!-- Empty field for inserting fields -->
