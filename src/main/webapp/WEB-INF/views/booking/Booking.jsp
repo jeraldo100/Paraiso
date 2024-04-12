@@ -23,6 +23,7 @@
 	<%@ include file = "/WEB-INF/views/Components/NavBar.jsp" %>
 	<%@ include file = "/WEB-INF/views/Components/SubPageHero.jsp" %>
 	<div class="mainWrapper mt-4 mb-5">
+		<input hidden id="email-hidden" type="text" value="${email}" />
 		<form class="filterBar mb-5" action="checkAvailability" method="POST">
 			<div class="datePicker">
 	            <p>Check In</p>
@@ -58,6 +59,7 @@
 			</div>
             <input type="submit" class="checkAvailabilityBtn" value="Check Availability" />
 		</form>
+		<div class="booking-warning-container"></div>
 		<div class="roomsAndList">
 			<div id="roomsWrapper" class="roomsWrapper">
 				<!-- Empty room for adding available rooms -->

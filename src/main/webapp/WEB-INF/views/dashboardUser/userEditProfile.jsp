@@ -33,8 +33,13 @@
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, User!</h1>
-							<hr />
+							<table class="table" id="bookingList">
+								<tbody>
+									<tr>
+										<td><h1 class="display-3">Welcome, ${user.username}</h1></td>
+									</tr>
+								</tbody>
+							</table>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h1>Edit Profile</h1>
@@ -49,73 +54,79 @@
 									<div class="col-lg col-md">
 										<div class="card border-0">
 											<div class="card-body">
-												<form action="/user/updateUser/${user.user_id }"
-													method="post">
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">First Name</span> <input
-															type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Last Name</span> <input
-															type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Email</span> <input
-															type="email" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Username</span> <input
-															type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Address</span> <input
-															type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Date of Birth</span> <input
-															type="date" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Phone</span> <input
-															type="number" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default">Password</span> <input
-															type="password" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default">
-													</div>
-													<div class="container">
-														<div class="d-flex justify-content-end">
-															<a type="button" href="/user/userProfile"
-																class="btn btn-danger float-end m-3">Back</a> <input
-																type="submit" class="btn btn-success float-end m-3"
-																value="Submit">
-														</div>
-													</div>
-												</form>
+												<table class="table" id="bookingList">
+
+													<tbody>
+
+														<tr>
+															<td>
+																
+																<form action="/user/updateUser" method="post" onsubmit="return validateForm()">
+																<div class="mb-3">
+																	<label for="username" class="form-label">Username</label>
+																	<input type="text" class="form-control" id="username"
+																		name="username"
+																		placeholder="${user.firstName}">
+																</div>
+																	<div class="mb-3">
+																		<label for="firstName" class="form-label">First
+																			Name</label> <input type="text" class="form-control"
+																			id="firstName" name="firstName"
+																			placeholder="${user.firstName}">
+																	</div>
+																	<div class="mb-3">
+																		<label for="lastName" class="form-label">Last
+																			Name</label> <input type="text" class="form-control"
+																			id="lastName" name="lastName"
+																			placeholder="${user.lastName}">
+																	</div>
+																	<div class="mb-3">
+																		<label for="email" class="form-label">Email</label> <input
+																			type="email" class="form-control" id="email"
+																			name="email" placeholder="${user.email}"
+																			>
+																	</div>
+																	<div class="mb-3">
+																		<label for="address" class="form-label">Address</label>
+																		<input type="text" class="form-control" id="address"
+																			name="address"
+																			placeholder="${user.address}">
+																	</div>
+																	<div class="mb-3">
+																		<label for="phone" class="form-label">Phone</label> <input
+																			type="text" class="form-control" id="phone"
+																			name="phone" placeholder="${user.phone}">
+																	</div>
+																	<div class="mb-3">
+																		<label for="dateOfBirth" class="form-label">Date
+																			of Birth</label> <input type="date" class="form-control"
+																			id="dateOfBirth" name="dateOfBirth"
+																			placeholder="${user.dateOfBirth}">
+																	</div>
+																	<div class="mb-3">
+																		<label for="password" class="form-label">Password</label>
+																		<input type="password" class="form-control"
+																			id="password" name="password"
+																			placeholder="Enter password">
+																	</div>
+																	<input type="hidden" name="${_csrf.parameterName}"
+																		placeholder="${_csrf.token}" />
+																	<div class="container">
+																		<div class="d-flex justify-content-end border-0">
+																			<a type="button" href="/user/userProfile"
+																				class="btn btn-danger float-end m-3">Back</a> <input
+																				type="submit" class="btn btn-success float-end m-3"
+																				placeholder="Submit">
+																		</div>
+																	</div>
+																</form>
+															</td>
+														</tr>
+
+													</tbody>
+
+												</table>
+
 											</div>
 										</div>
 									</div>

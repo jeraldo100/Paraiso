@@ -80,26 +80,29 @@ public class BookingController {
 		String checkout_date = bookingInputs.getCheckout_date();
 		
 		List<Room_typeBooking> room_types = bookServ.listAllRoom_type(checkin_date, checkout_date);
-		/*
-		 * for(Room_typeBooking e: room_types) { e.setRoomImageEncoded(
-		 * Base64.getEncoder().encodeToString( e.getRoomImage() ) ); }
-		 */
-		System.out.println(room_types);
+
 		return room_types;
 	}
 	
 	@GetMapping("/booking")
 	public String bookingPage(HttpServletRequest request, Model model) throws ParseException {
 		setCommonAttributes(request, model);
+		
+		String userEmail = SessionManager.getEmailFromSession(request);
+		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date today = new Date();
 		Date tommorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
 		double diff = Math.abs( (today.getTime()) - (tommorrow.getTime()) );
 		
 		List<AddOns> addOns = bookServ.getAllAddOnsBooking();
-		System.out.println("addOns: " + addOns);
+		
+		
 		model.addAttribute("pageTitle", "Booking");
         model.addAttribute("pageLink", "/booking");
+        
+        model.addAttribute("email", userEmail);
         model.addAttribute("addOns", addOns);
 		model.addAttribute( "adults" , 1 );
 		model.addAttribute( "children" , 0 );
@@ -185,6 +188,7 @@ public class BookingController {
 		return newRoomsAdded;
 	}
 	
+	@ResponseBody
 	@PostMapping(value = "confirmBooking/", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String confirmBooking(HttpServletRequest request, @RequestBody JsonNode jsonNode) throws JsonProcessingException, IllegalArgumentException, ParseException {
 		Booking booking = new Booking();
@@ -237,10 +241,7 @@ public class BookingController {
 		booking.setChildren(children);
 		booking.setStatus("PENDING");
 		
-		System.out.println(booking.toString());
-		
 		Booking addedBooking = bookServ.addConfirmedBooking(booking);
-		System.out.println(addedBooking.getBooking_id());
 		
 		for(Integer room_id: room_ids_list) {
 			Double price = bookServ.getPriceOfRoomByRoomId(room_id);
@@ -249,9 +250,7 @@ public class BookingController {
 			bookServ.addBooked_room(booked_room);
 		}
 		
-
-		
-		return "redirect:/home";
+		return "\""+"Success"+"\"";
 	}
 	
 }

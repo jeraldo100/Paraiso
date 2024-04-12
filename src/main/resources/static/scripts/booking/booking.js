@@ -146,6 +146,11 @@
 	
 	/* Confirm Booking button */
 	$('#confirmBooking').on('click', function(){
+		let emailHidden = $('#email-hidden').val();
+		if(emailHidden == ""){
+			emailHidden = "none";
+		}
+		
 		let checkin_date_val = $("#checkin_date").val();
 		let checkout_date_val = $("#checkout_date").val();
 		let adults_val = $('#adults-number').val();
@@ -166,34 +171,38 @@
 			}
 		});
 		
-		console.log( "capacity needed: " + (Number(adults_val) + Number(children_val) ) );
-		console.log( "total_capacity: " + total_capacity );
-		if ( !(room_ids_val == '') ){
-			if( total_capacity >= (Number(adults_val) + Number(children_val)) ){
-				$.ajax({
-					type:'POST',			
-					url: 'confirmBooking/',
-					contentType: "application/json",
-					dataType: 'json',
-					data: JSON.stringify({ 
-						checkin_date: checkin_date_val, 
-						checkout_date: checkout_date_val,
-						room_ids: room_ids_val,
-						arrival_time: arrival_time_val,
-						adults: adults_val,
-						children: adults_val,
-						add_ons: add_ons_val
-				    }),
-				    success: function (dat) {
-						console.log(dat);
-					}
-				});
-			}else{
-				alert("Not Enough Rooms for Guests");
+		if(emailHidden != "none"){
+			if ( !(room_ids_val == '') ){
+				if( total_capacity >= (Number(adults_val) + Number(children_val)) ){
+					$.ajax({
+						type:'POST',			
+						url: 'confirmBooking/',
+						contentType: "application/json",
+						dataType: 'json',
+						data: JSON.stringify({ 
+							checkin_date: checkin_date_val, 
+							checkout_date: checkout_date_val,
+							room_ids: room_ids_val,
+							arrival_time: arrival_time_val,
+							adults: adults_val,
+							children: adults_val,
+							add_ons: add_ons_val
+					    }),
+					    success: function(dat){
+							console.log(dat);
+							window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
+						}
+					});
+				}else{
+					$('.booking-warning-container').html("<div class='booking-warning'>Not Enough Rooms for Guests</div>");
+				}
+			} else{
+				$('.booking-warning-container').html("<div class='booking-warning'>Please select a Room</div>")
 			}
 		} else{
-			alert('Please select a Room')
+			$('.booking-warning-container').html("<div class='booking-warning'>Please Login to an Account First</div>")
 		}
+		
 	})
 	
 })(jQuery);
@@ -227,7 +236,7 @@ function addRoom(type_id){
 				<div class="roomAdded">
 					<div class="room-added-details">
 						<div class="roomAdded-name" room_id='${dat.room_id}' capacity='${dat.capacity}'>
-							${dat.name} / room_id: ${dat.room_id}
+							${dat.name}
 						</div>
 						<div id="roomAdded-price" class="roomAdded-price" price="${dat.price_per_night}">
 							Price: ${dat.price_per_night}
@@ -312,7 +321,7 @@ function removeRoom(room_id){
 					<div class="roomAdded">
 						<div class="room-added-details">
 							<div class="roomAdded-name" room_id='${dat[i].room_id}' capacity='${dat.capacity}'>
-								${dat[i].name} / room_id: ${dat[i].room_id}
+								${dat[i].name}
 							</div>
 							<div id="roomAdded-price" class="roomAdded-price" price="${dat[i].price_per_night}">
 								Price: ${dat[i].price_per_night}
