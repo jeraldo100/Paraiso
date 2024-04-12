@@ -48,4 +48,9 @@ public class UserProfileController {
 		return "dashboardUser/userEditProfile";
 	}
 	
+	@GetMapping("/userDashboard")
+	public String dashboardUser() {
+		return "dashboardUser/userDashboard";
+	}
+	
 }
