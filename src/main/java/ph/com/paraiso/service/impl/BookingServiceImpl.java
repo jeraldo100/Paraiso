@@ -19,10 +19,12 @@ import ph.com.paraiso.dao.BookingDao;
 import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.model.Room;
 import ph.com.paraiso.model.Room_joined;
 import ph.com.paraiso.model.Room_typeBooking;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.JasperRepository;
+import ph.com.paraiso.repository.RoomRepository;
 import ph.com.paraiso.service.BookingService;
 
 @Service
@@ -35,8 +37,10 @@ public class BookingServiceImpl implements BookingService {
 	private BookingRepository bookingRepository;
 	
 	@Autowired
-	private JasperRepository jasperRepository;
+	private RoomRepository roomRepository;
 	
+	
+
 	@Override
 	public List<Room_typeBooking> listAllRoom_type(String checkin_date, String checkout_date){
 		return bookDao.listAllRoom_type(checkin_date, checkout_date);
@@ -90,7 +94,7 @@ public class BookingServiceImpl implements BookingService {
 	
 	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException {
 	    List<Booking> bookings = bookingRepository.findAll();
-	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/historybookings.jrxml");
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
 	    Map<String, Object> parameters = new HashMap<>();
@@ -108,42 +112,15 @@ public class BookingServiceImpl implements BookingService {
 	    }
 	}
 
-	public void jasperBookingHistory(HttpServletResponse response) throws JRException, IOException {
-        List<Object[]> bookingDetails = jasperRepository.findAllBookingsDetails();
-        File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingDetails);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("createdBy", "flocer");
-
-        try {
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-            if (jasperPrint.getPages().isEmpty()) {
-                System.out.println("The report has no pages.");
-            }
-            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
-        } catch (JRException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error generating report", e);
-        }
-    }
-    
-	@Override
-	public List<Object[]> findRoomsHistoryByTypeId(Integer typeId) {
-	    return jasperRepository.findRoomsHistoryByTypeId(typeId);
-	}
 	
-    public List<Object[]> findAllBookingsDetails() {
-        return jasperRepository.findAllBookingsDetails();
-    }
-    
-	public void exportJasperReportRoomHistory(HttpServletResponse response, Integer typeId) throws JRException, IOException {
-	    List<Object[]> roomsHistory = findRoomsHistoryByTypeId(typeId);
-	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/roomBookingHistory.jrxml");
+
+	public void exportJasperReportRooms(HttpServletResponse response) throws JRException, IOException {
+	    List<Room> bookings = roomRepository.findAll();
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/historyrooms.jrxml");
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
+	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
 	    Map<String, Object> parameters = new HashMap<>();
-	    parameters.put("typeId", typeId);
+	    parameters.put("createdBy", "flocer");
 
 	    try {
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
@@ -156,4 +133,7 @@ public class BookingServiceImpl implements BookingService {
 	        throw new RuntimeException("Error generating report", e);
 	    }
 	}
+	
+
+    
 }
