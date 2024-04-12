@@ -24,45 +24,38 @@ public class UserProfileController {
 	
 	@GetMapping("/userProfile")
 	public String userProfile(HttpServletRequest request, Model model) {
-	    // Get the user_id from the session
 	    Integer user_id = (Integer) request.getSession().getAttribute("user_id");
 	    
 	    if (user_id == null) {
-	        // Handle case where user_id is not found in session
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login";
 	    }
 
-	    // Use the user_id to fetch user-specific data
 	    User user = userSvc.getUserById(user_id);
 	    if (user == null) {
-	        // Handle case where user is not found
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login";
 	    }
 
-	    // Add the user data to the model
+	    
 	    model.addAttribute("user", user);
 
-	    return "dashboardUser/userProfile"; // Return the view for the user profile page
+	    return "dashboardUser/userProfile"; 
 	}
 	
 	@GetMapping("/editProfile")
 	public String editProfile(HttpServletRequest request, Model model) {
-		// Get the user_id from the session
 	    Integer user_id = (Integer) request.getSession().getAttribute("user_id");
 	    
 	    if (user_id == null) {
-	        // Handle case where user_id is not found in session
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login"; 
 	    }
 
-	    // Use the user_id to fetch user-specific data
+	    
 	    User user = userSvc.getUserById(user_id);
 	    if (user == null) {
-	        // Handle case where user is not found
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login"; 
 	    }
 
-	    // Add the user data to the model
+	    
 	    model.addAttribute("user", user);
 		return "dashboardUser/userEditProfile";
 	}
@@ -70,20 +63,17 @@ public class UserProfileController {
 	
 	@PostMapping("/updateUser")
 	public String updateUser(@ModelAttribute UserDto userDto, HttpServletRequest request) {
-	    // Get the user_id from the session
 	    Integer userId = (Integer) request.getSession().getAttribute("user_id");
 
 	    if (userId == null) {
-	        // Handle case where user_id is not found in session
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login"; 
 	    }
 
-	    // Use the user_id to fetch the user
+	    
 	    User existingUser = userSvc.getUserById(userId);
 
 	    if (existingUser == null) {
-	        // Handle case where user is not found
-	        return "redirect:/login"; // Redirect to login page or show an error message
+	        return "redirect:/login";
 	    }
 
 	    // Update the user's details

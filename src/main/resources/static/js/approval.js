@@ -1,13 +1,5 @@
 $(document).ready(function() {
 
-    var disabledButtonInfo = localStorage.getItem('disabledButtonInfo');
-    if (disabledButtonInfo) {
-        disabledButtonInfo = JSON.parse(disabledButtonInfo); 
-        var selector = "[data-booking-id='" + disabledButtonInfo.bookingId + "']." + disabledButtonInfo.buttonClass;
-        $(selector).prop('disabled', true);
-        localStorage.removeItem('disabledButtonInfo'); 
-    }
-
     $(".approve-btn, .disapprove-btn").click(function() {
         var bookingId = $(this).data("booking-id");
         var status = $(this).hasClass("approve-btn") ? "Approved" : "Disapproved";

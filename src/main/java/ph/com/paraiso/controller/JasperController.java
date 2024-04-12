@@ -137,7 +137,7 @@ public class JasperController {
             String userEmail = SessionManager.getEmailFromSession(request);
     		Integer user_id = userSvc.getUserIdByEmail(userEmail);
             // Load the JasperReport template
-            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary1.jrxml");
+            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary.jrxml");
             InputStream inputStream = resource.getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 
@@ -146,11 +146,7 @@ public class JasperController {
             System.out.println(user_id);
             parameters.put("P_USER_ID", user_id);
 
-            // Fetch data for your dashboard (optional)
-            // Implement this method to fetch data needed for your report
-            // List<YourDataClass> data = fetchDataForDashboard();
 
-            // Convert the data to a JRBeanCollectionDataSource
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingList);
 
