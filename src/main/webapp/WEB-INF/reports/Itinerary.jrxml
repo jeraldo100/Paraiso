@@ -4,7 +4,6 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="P_USER_ID" class="java.lang.Integer"/>
-	<parameter name="P_LOGO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM BOOKINGS B, USERS U WHERE u.USER_ID = B.USER_ID AND U.USER_ID = $P{P_USER_ID}]]>
 	</queryString>
@@ -19,14 +18,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
-		<band height="96" splitType="Stretch">
-			<image>
-				<reportElement x="207" y="0" width="141" height="96" uuid="0fa83872-c5dc-4db0-932b-4527c941c9f8"/>
-				<imageExpression><![CDATA[$P{P_LOGO}]]></imageExpression>
-			</image>
-		</band>
-	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
