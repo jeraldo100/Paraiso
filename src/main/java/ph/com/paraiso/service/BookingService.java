@@ -31,11 +31,7 @@ public interface BookingService {
 	public List<AddOns> getAllAddOnsBooking();
 	
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids);
-	
+	public void exportJasperReportRooms(HttpServletResponse response) throws JRException, IOException;
 	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException;
-	public List<Object[]> findAllBookingsDetails();
-	public List<Object[]> findRoomsHistoryByTypeId(Integer typeId);
-	public void jasperBookingHistory(HttpServletResponse response) throws JRException, IOException;
-	public void exportJasperReportRoomHistory(HttpServletResponse response, Integer typeId) throws JRException, IOException;
 	
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bookings" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="700b6283-27ad-4cb6-9b89-8e6c3668202a">
-	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.zoom" value="2.1435888100000016"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -21,100 +21,94 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="254" y="23" width="69" height="28" uuid="1c042fec-af94-444d-81d4-4fa9c9803b18"/>
+				<reportElement x="220" y="27" width="123" height="28" uuid="1c042fec-af94-444d-81d4-4fa9c9803b18"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Bookings]]></text>
+				<text><![CDATA[Booking History]]></text>
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="61" height="20" uuid="965968f2-99ca-473f-ab55-f40d328dfdb0"/>
-				<text><![CDATA[booking_id]]></text>
+				<reportElement x="0" y="0" width="61" height="20" uuid="352e6703-b420-4eba-b607-cd2f51889dba"/>
+				<text><![CDATA[Booking ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="61" y="0" width="61" height="20" uuid="0d7eb085-4793-45fb-bbd0-79a622ee6deb"/>
-				<text><![CDATA[user_id]]></text>
+				<reportElement x="61" y="0" width="47" height="20" uuid="93c1a23c-9640-436b-b55c-67be0ebaef8d"/>
+				<text><![CDATA[User ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="122" y="0" width="61" height="20" uuid="2269d5f3-f376-485f-8e3f-52f4617547be"/>
-				<text><![CDATA[checkin_date]]></text>
+				<reportElement x="105" y="0" width="61" height="20" uuid="e119c228-03a5-40a1-a9aa-fcbb5ffbc0ea"/>
+				<text><![CDATA[Check-ins]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="183" y="0" width="61" height="20" uuid="135e34f1-af28-4844-916e-5a08af335335"/>
-				<text><![CDATA[checkout_date]]></text>
+				<reportElement x="183" y="0" width="61" height="20" uuid="536b3014-392d-4dfd-bab0-877fb523922d"/>
+				<text><![CDATA[Check-outs]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="244" y="0" width="61" height="20" uuid="fd6120bb-793d-410c-a845-35a97a223e50"/>
-				<text><![CDATA[total_price]]></text>
+				<reportElement x="261" y="0" width="39" height="20" uuid="599b100c-7c78-436b-b31d-a5a131a8031b"/>
+				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="305" y="0" width="61" height="20" uuid="a1d035b2-9593-448f-89e1-5b007eb31f5d"/>
-				<text><![CDATA[arrival_time]]></text>
+				<reportElement x="316" y="0" width="61" height="20" uuid="be8e3edc-ed11-48b3-990d-4a9cdd3bff34"/>
+				<text><![CDATA[Arrival Time]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="366" y="0" width="61" height="20" uuid="f613d1a5-d8ec-4dd0-8bc8-d1e42b5f53fe"/>
-				<text><![CDATA[adults]]></text>
+				<reportElement x="390" y="0" width="36" height="20" uuid="6997112c-b7b6-4ac7-91d4-2c93952100cd"/>
+				<text><![CDATA[Adults]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="427" y="0" width="61" height="20" uuid="9b46cb28-94e9-4508-8cf2-adb12749966a"/>
-				<text><![CDATA[children]]></text>
+				<reportElement x="438" y="0" width="40" height="20" uuid="cb4181cf-f693-4efd-8678-db115bc657c8"/>
+				<text><![CDATA[Children]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="488" y="0" width="61" height="20" uuid="ab69997a-7e21-47dd-a5d0-6297380a6e90"/>
-				<text><![CDATA[status]]></text>
+				<reportElement x="488" y="0" width="61" height="20" uuid="f627977a-1b3c-420e-9631-a311b4b426a0"/>
+				<text><![CDATA[Status]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="61" height="20" uuid="38daa411-df6c-4e5b-81fd-fd0486bb5693"/>
+				<reportElement x="0" y="0" width="61" height="20" uuid="2880bfe3-ec5c-49f2-a4e1-e47b1833a0b4"/>
 				<textFieldExpression><![CDATA[$F{booking_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="0" width="61" height="20" uuid="307b7714-1baf-467c-b82b-5bd5447a5c81"/>
+				<reportElement x="61" y="0" width="47" height="20" uuid="b582c1d8-7f4e-4fad-a027-ac44c8f21d05"/>
 				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="122" y="0" width="61" height="20" uuid="f268780b-6ad3-4b39-9629-7df9dba31bb4"/>
+				<reportElement x="105" y="0" width="61" height="20" uuid="c04e7d5d-a5aa-4246-96ed-521800f2e674"/>
 				<textFieldExpression><![CDATA[$F{checkin_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="0" width="61" height="20" uuid="8959116f-9622-457b-a528-d361ad105de0"/>
+				<reportElement x="183" y="0" width="61" height="20" uuid="fa1786c0-75b7-47fa-898f-7a95889a11b0"/>
 				<textFieldExpression><![CDATA[$F{checkout_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="244" y="0" width="61" height="20" uuid="995433c2-2f2a-4e08-b5f2-a68d895bc4c3"/>
+				<reportElement x="261" y="0" width="39" height="20" uuid="002f060f-41e0-4565-8dd0-ad7b5d237d20"/>
 				<textFieldExpression><![CDATA[$F{total_price}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="305" y="0" width="61" height="20" uuid="da0c323c-1fe3-479a-b7a2-c14ef760a916"/>
+				<reportElement x="316" y="0" width="61" height="20" uuid="2c63c622-5022-4db7-a3cd-2511af2f78af"/>
 				<textFieldExpression><![CDATA[$F{arrival_time}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="366" y="0" width="61" height="20" uuid="fcc705c3-3284-4d97-bed0-bff4b48de5c8"/>
+				<reportElement x="390" y="0" width="36" height="20" uuid="b6098f3c-6214-4c02-acc7-65dd0062ed30"/>
 				<textFieldExpression><![CDATA[$F{adults}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="427" y="0" width="61" height="20" uuid="8b6a64ff-f056-46d4-af66-d7dff4f717db"/>
+				<reportElement x="438" y="0" width="40" height="20" uuid="384b42d1-8e3f-49b3-81a2-30a0be1faf3a"/>
 				<textFieldExpression><![CDATA[$F{children}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="488" y="0" width="61" height="20" uuid="021d3eaa-65bc-4574-abef-b6ff467ca385"/>
+				<reportElement x="488" y="0" width="61" height="20" uuid="cbedfd00-f5a9-47f1-801c-7770691a300e"/>
 				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>

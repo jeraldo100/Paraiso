@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historyrooms" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57cf9dd4-4102-48ee-b152-6bad7bd6b27a">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from rooms]]>
+	</queryString>
+	<field name="room_id" class="java.math.BigDecimal"/>
+	<field name="hotel_id" class="java.math.BigDecimal"/>
+	<field name="type_id" class="java.math.BigDecimal"/>
+	<field name="status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="221" y="27" width="123" height="28" uuid="6689b451-f00d-44a0-85ed-c5561ee863cf"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Rooms History]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="0" width="107" height="20" uuid="9723b5a2-8789-46af-a7e8-bdc3e533aa69"/>
+				<text><![CDATA[Room ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="0" width="94" height="20" uuid="f0fd6333-b80c-49aa-800d-fe8d03b8900c"/>
+				<text><![CDATA[Hotel ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="0" width="109" height="20" uuid="34d0c6af-4fe7-456a-a1bc-61d534011606"/>
+				<text><![CDATA[Type ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="0" width="88" height="20" uuid="16a5bfde-34a4-4a8b-8619-762e1707f4f9"/>
+				<text><![CDATA[Room Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="28" y="0" width="107" height="20" uuid="fe606bc5-97e4-4522-9fd0-e548eb44cbec"/>
+				<textFieldExpression><![CDATA[$F{room_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="0" width="94" height="20" uuid="5a06de80-31ee-48db-8639-85897cc19c08"/>
+				<textFieldExpression><![CDATA[$F{hotel_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="0" width="109" height="20" uuid="d4a02298-e156-433a-9ef5-a389b629c0a2"/>
+				<textFieldExpression><![CDATA[$F{type_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="0" width="88" height="20" uuid="2f630d2a-717e-475f-a14c-88b37ce6dedf"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="41" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
