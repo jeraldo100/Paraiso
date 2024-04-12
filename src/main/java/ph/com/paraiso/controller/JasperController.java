@@ -99,7 +99,7 @@ public class JasperController {
             String userEmail = SessionManager.getEmailFromSession(request);
     		Integer user_id = userSvc.getUserIdByEmail(userEmail);
             // Load the JasperReport template
-            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary1.jrxml");
+            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary.jrxml");
             InputStream inputStream = resource.getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 
