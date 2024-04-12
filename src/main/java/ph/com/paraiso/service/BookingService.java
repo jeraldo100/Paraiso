@@ -37,4 +37,5 @@ public interface BookingService {
 	public List<Object[]> findRoomsHistoryByTypeId(Integer typeId);
 	public void jasperBookingHistory(HttpServletResponse response) throws JRException, IOException;
 	public void exportJasperReportRoomHistory(HttpServletResponse response, Integer typeId) throws JRException, IOException;
+	
 }

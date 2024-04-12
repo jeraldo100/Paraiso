@@ -14,7 +14,7 @@
               </a>
             </li>
             <li class="nav-item py-2 py-sm-0">
-              <a href="#" class="nav-link text-white">
+              <a href="/user/userDashboard" class="nav-link text-white">
                 <ion-icon name="book"></ion-icon><span class="fs-4 ms-3 d-none d-sm-inline">Bookings</span>
               </a>
             </li>
