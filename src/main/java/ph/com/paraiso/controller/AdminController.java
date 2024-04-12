@@ -64,7 +64,8 @@ public class AdminController {
 	
 	
 	@Autowired
-    public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
+    public AdminController(AdminBookingService adminBookingService, AdminUserService adminUserService, RoomService roomService, 
+    		VoucherService voucherService, RoomTypesService roomTypesService, AddOnsService addOnsService) {
         this.adminBookingService = adminBookingService;
         this.adminUserService = adminUserService;
         this.roomService = roomService;
