@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_type;
@@ -71,7 +70,7 @@ public class UserDashboardController {
     }
 	
 	@GetMapping("/userDashboard")
-	public String userDashboard(HttpSession session, HttpServletRequest request, Model model){
+	public String userDashboard(HttpServletRequest request, Model model){
 		setCommonAttributes(request, model);
 		
 		String userEmail = SessionManager.getEmailFromSession(request);
@@ -79,7 +78,7 @@ public class UserDashboardController {
 		
 		List<Map<String, Object>> bookingsAndRooms = new ArrayList();
 		List<Booking> bookings = bookRepo.getBookingsByUserId(user_id);
-		session.setAttribute("userBookings", bookings);
+		
 		for(Booking booking: bookings) {
 			Map bAndRs = new HashMap();
 			bAndRs.put("booking", booking);

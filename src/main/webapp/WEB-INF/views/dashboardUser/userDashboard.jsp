@@ -34,12 +34,12 @@
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, User!</h1>
+							<h1 class="display-3">Bookings</h1>
 							<hr />
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
-									<a href="/jasperReportItinerary" class="btn btn-success"
-										data-dismiss="modal">Print Itinerary</a>
+								<div class="d-grid gap-2 d-md-flex justify-content-md-end"> <a
+										href="/user/jasperpdf/export" class="btn btn-success"> Print Itinerary </a>
 								</div>
 							</div>
 							<div class="row mb-4">
