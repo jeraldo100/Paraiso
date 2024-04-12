@@ -1,6 +1,8 @@
 package ph.com.paraiso.service;
 
 import java.util.List;
+
+import jakarta.servlet.http.HttpServletResponse;
 import ph.com.paraiso.dto.UserDto;
 import ph.com.paraiso.model.User;
 
@@ -22,6 +24,4 @@ public interface UserService {
 	public Integer getUserIdByEmail(String email);
 	boolean isEmailTaken(String email);
 	boolean isUsernameTaken(String username);
-	
-	public void exportJasperReportItinerary(Httpservelet )
 }

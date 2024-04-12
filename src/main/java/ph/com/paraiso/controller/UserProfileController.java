@@ -110,19 +110,6 @@ public class UserProfileController {
 
 	    return "redirect:/user/userProfile"; // Redirect to the user profile page
 	}
-	
-	@GetMapping("/jasperpdf/export")
-	public void createPDF(HttpServletResponse response, @PathVariable Integer userid, Model model ) throws IOException, JRException {
-		response.setContentType("application/pdf");
-		Date date = new Date();
-		SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd:mm:ss");
-		String stringDate = DateFor.format(date);
-		
-		String headerkey = "Content-Disposition";
-		String headervalue = "attachment; filename=Itinerary" + stringDate +".pdf";
-		response.setHeader(headerkey, headervalue);
-		
-		userSvc.exportJasperReportUser(response);
-	}
+
 	
 }
