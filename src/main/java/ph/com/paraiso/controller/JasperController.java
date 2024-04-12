@@ -94,10 +94,12 @@ public class JasperController {
     @GetMapping("/jasperReportItinerary")
     public void printUserDashboard(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
     	setCommonAttributes(request, model);
+    	File logo = null;
         try {
             ServletContext servletContext = request.getServletContext();
             String userEmail = SessionManager.getEmailFromSession(request);
     		Integer user_id = userSvc.getUserIdByEmail(userEmail);
+    		logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
             // Load the JasperReport template
             ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary.jrxml");
             InputStream inputStream = resource.getInputStream();
@@ -107,7 +109,7 @@ public class JasperController {
             Map<String, Object> parameters = new HashMap<>();
             System.out.println(user_id);
             parameters.put("P_USER_ID", user_id);
-
+            parameters.put("P_LOGO", logo.getAbsolutePath());
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingList);
 

@@ -2,8 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Itinerary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="217d77c9-d9c7-427f-8df9-ad0979909469">
 	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="102"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="P_USER_ID" class="java.lang.Integer"/>
+	<parameter name="P_LOGO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM BOOKINGS B, USERS U WHERE u.USER_ID = B.USER_ID AND U.USER_ID = $P{P_USER_ID}]]>
 	</queryString>
@@ -22,7 +23,7 @@
 		<band height="96" splitType="Stretch">
 			<image>
 				<reportElement x="207" y="0" width="141" height="96" uuid="0fa83872-c5dc-4db0-932b-4527c941c9f8"/>
-				<imageExpression><![CDATA["C:\\Users\\TRAINEES-TAG1164\\Downloads\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{P_LOGO}]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
