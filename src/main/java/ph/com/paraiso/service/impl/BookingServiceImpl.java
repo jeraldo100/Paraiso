@@ -5,13 +5,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
+import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import ph.com.paraiso.dao.BookingDao;
 import ph.com.paraiso.model.AddOns;
 import ph.com.paraiso.model.Booked_room;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.Room_joined;
-import ph.com.paraiso.model.Room_type;
 import ph.com.paraiso.model.Room_typeBooking;
+import ph.com.paraiso.repository.BookingRepository;
+import ph.com.paraiso.repository.JasperRepository;
 import ph.com.paraiso.service.BookingService;
 
 @Service
@@ -19,6 +36,12 @@ public class BookingServiceImpl implements BookingService {
 	
 	@Autowired
 	private BookingDao bookDao;
+	
+	@Autowired
+	private BookingRepository bookingRepository;
+	
+	@Autowired
+	private JasperRepository jasperRepository;
 	
 	@Override
 	public List<Room_typeBooking> listAllRoom_type(String checkin_date, String checkout_date){
@@ -68,5 +91,74 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids) {
 		return bookDao.getAddOnAmountByIds(add_on_ids);
+	}
+	
+	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException {
+	    List<Booking> bookings = bookingRepository.findAll();
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
+	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
+	    Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("createdBy", "flocer");
+
+	    try {
+	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+	        if (jasperPrint.getPages().isEmpty()) {
+	            System.out.println("The report has no pages.");
+	        }
+	        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+	    } catch (JRException e) {
+	        e.printStackTrace();
+	        throw new RuntimeException("Error generating report", e);
+	    }
+	}
+
+	public void jasperBookingHistory(HttpServletResponse response) throws JRException, IOException {
+        List<Object[]> bookingDetails = jasperRepository.findAllBookingsDetails();
+        File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/bookings.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingDetails);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "flocer");
+
+        try {
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+            if (jasperPrint.getPages().isEmpty()) {
+                System.out.println("The report has no pages.");
+            }
+            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+        } catch (JRException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error generating report", e);
+        }
+    }
+    
+	@Override
+	public List<Object[]> findRoomsHistoryByTypeId(Integer typeId) {
+	    return jasperRepository.findRoomsHistoryByTypeId(typeId);
+	}
+	
+    public List<Object[]> findAllBookingsDetails() {
+        return jasperRepository.findAllBookingsDetails();
+    }
+    
+	public void exportJasperReportRoomHistory(HttpServletResponse response, Integer typeId) throws JRException, IOException {
+	    List<Object[]> roomsHistory = findRoomsHistoryByTypeId(typeId);
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/roomBookingHistory.jrxml");
+	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
+	    Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("typeId", typeId);
+
+	    try {
+	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+	        if (jasperPrint.getPages().isEmpty()) {
+	            System.out.println("The report has no pages.");
+	        }
+	        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+	    } catch (JRException e) {
+	        e.printStackTrace();
+	        throw new RuntimeException("Error generating report", e);
+	    }
 	}
 }
