@@ -1,7 +1,6 @@
 (function ($) {
 	// Get all rooms on page load
     $(window).on('load', function() {
-		console.log("reached");
 		let checkin_date_val = $("#checkin_date").val();
 		let checkout_date_val = $("#checkout_date").val();
 		
@@ -16,7 +15,6 @@
       		}),
       		success: function (dat) {
 				// fetch all data from controller and display into html
-		        console.log(dat);
 		        let rooms = dat;
 				let roomsHtml = '';
 				
@@ -189,7 +187,6 @@
 							add_ons: add_ons_val
 					    }),
 					    success: function(dat){
-							console.log(dat);
 							window.location.replace(location.protocol + '//' + location.host + '/user/userDashboard');
 						}
 					});
@@ -218,7 +215,6 @@ function addRoom(type_id){
 		room_ids_val += room_id+' ';
 	});
 	
-	console.log(room_ids_val);
 	
 	$.ajax({
 		type:'POST',			
@@ -231,7 +227,6 @@ function addRoom(type_id){
 			room_ids: room_ids_val
 	    }),
 		success: function (dat) {
-			console.log(dat)
 			let roomAdded = `
 				<div class="roomAdded">
 					<div class="room-added-details">
@@ -312,7 +307,6 @@ function removeRoom(room_id){
 			room_ids: room_ids_val
 	    }),
 	    success: function (dat) {
-			console.log(dat);
 			let roomsAddedHtml = '';
 			let totalPrice = 0;
 			for(i = 0;i<dat.length;i++){

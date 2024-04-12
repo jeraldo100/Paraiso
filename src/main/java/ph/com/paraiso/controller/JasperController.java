@@ -49,14 +49,9 @@ public class JasperController {
             String accountType = userSvc.getAccountTypeByEmail(userEmail);
             String username = userSvc.getUsernameByEmail(userEmail);
             Integer userId = userSvc.getUserIdByEmail(userEmail);
-            System.out.println("Email of the user with current session: " + userEmail);
-            System.out.println("AccountType of the user with current session: " + accountType);
-            System.out.println("username of the user with current session: " + username);
-            System.out.println("user id of the user with current session: " + userId);
             model.addAttribute("username", username);
             model.addAttribute("loggedIn", true);
         } else {
-            System.out.println("No user associated with the current session.");
             model.addAttribute("loggedIn", false);
         }
     }
@@ -107,7 +102,6 @@ public class JasperController {
 
             // Set parameters
             Map<String, Object> parameters = new HashMap<>();
-            System.out.println(user_id);
             parameters.put("P_USER_ID", user_id);
             parameters.put("P_LOGO", logo.getAbsolutePath());
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
@@ -119,7 +113,6 @@ public class JasperController {
             response.setHeader("Content-Disposition", "inline; filename=userDashboard.pdf");
             JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 
-            System.out.println("User dashboard printed successfully.");
         } catch (JRException | IOException e) {
             e.printStackTrace();
         }

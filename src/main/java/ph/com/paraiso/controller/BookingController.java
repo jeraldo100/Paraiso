@@ -58,14 +58,9 @@ public class BookingController {
             String accountType = userSvc.getAccountTypeByEmail(userEmail);
             String username = userSvc.getUsernameByEmail(userEmail);
             Integer userId = userSvc.getUserIdByEmail(userEmail);
-            System.out.println("Email of the user with current session: " + userEmail);
-            System.out.println("AccountType of the user with current session: " + accountType);
-            System.out.println("username of the user with current session: " + username);
-            System.out.println("user id of the user with current session: " + userId);
             model.addAttribute("username", username);
             model.addAttribute("loggedIn", true);
         } else {
-            System.out.println("No user associated with the current session.");
             model.addAttribute("loggedIn", false);
         }
     }
@@ -198,7 +193,6 @@ public class BookingController {
 		String userEmail = SessionManager.getEmailFromSession(request);
 		Integer user_id = userSvc.getUserIdByEmail(userEmail);
 		
-		System.out.println("confirmBooking: ");
 		ObjectMapper mapper = new ObjectMapper();
 		BookingInputs bookingInputs = mapper.treeToValue(jsonNode, BookingInputs.class);
 		
@@ -248,7 +242,6 @@ public class BookingController {
 		for(Integer room_id: room_ids_list) {
 			Double price = bookServ.getPriceOfRoomByRoomId(room_id);
 			Booked_room booked_room = new Booked_room(addedBooking.getBooking_id(), room_id, checkin_date, checkout_date, price);
-			System.out.println(booked_room.toString());
 			bookServ.addBooked_room(booked_room);
 		}
 		
