@@ -97,7 +97,6 @@ public class BookingServiceImpl implements BookingService {
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
 	    Map<String, Object> parameters = new HashMap<>();
 	    parameters.put("createdBy", "flocer");
-
 	    try {
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 	        if (jasperPrint.getPages().isEmpty()) {

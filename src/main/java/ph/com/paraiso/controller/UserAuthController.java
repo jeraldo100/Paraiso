@@ -69,7 +69,6 @@ public class UserAuthController {
 		        String sessionId = UUID.randomUUID().toString();
 		        SessionManager.createSessionCookie(response, sessionId, email);
 		        
-		        // Get the user_id and store it in the session
 		        Integer user_id = userSvc.getUserIdByEmail(email);
 		        request.getSession().setAttribute("user_id", user_id);
 		        
