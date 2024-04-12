@@ -82,7 +82,7 @@ public class UserDashboardController {
         }
     }
 	
-	@GetMapping("/userDashboard")
+	@GetMapping("/user/userDashboard")
 	public String userDashboard(HttpSession session, HttpServletRequest request, Model model){
 		setCommonAttributes(request, model);
 		

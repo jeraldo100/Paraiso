@@ -9,7 +9,7 @@
 				url: 'userDashboard/cancel/'+booking_id,
 				success: function(dat){
 					console.log(dat);
-					window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
+					window.location.replace(location.protocol + '//' + location.host + '/user/userDashboard');
 				}
 			})
 		});
@@ -95,7 +95,7 @@
 				url: 'userDashboard/confirmPayment/'+booking_id+'/'+ paymentMethod +'/'+voucherInput+'/'+loyalty_payment,
 				success: function(dat){
 					console.log(dat);
-					window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
+					window.location.replace(location.protocol + '//' + location.host + '/user/userDashboard');
 				}
 			})
 			

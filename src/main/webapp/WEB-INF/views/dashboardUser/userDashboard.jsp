@@ -38,7 +38,12 @@
               <div class="row mb-4">
                 <div class="col-md-12 b-4">
                 	<div class="bookings-wrapper">
-                		<div>Loyalty points: ${loyaltyPoints}</div>
+                		<div>Loyalty points: ${loyaltyPoints}</div> 
+                		<div
+								class="d-flex align-items-center justify-content-between mb-4">
+									<a href="/jasperReportItinerary" class="btn btn-success"
+										data-dismiss="modal">Print Itinerary</a>
+								</div>
                 		<c:forEach var="bookinglist" items="${bookingsAndRooms}">
                 			<c:forEach items="${bookinglist}" var="Map">
                 				<c:choose>

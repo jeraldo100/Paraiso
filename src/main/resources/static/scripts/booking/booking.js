@@ -190,7 +190,7 @@
 					    }),
 					    success: function(dat){
 							console.log(dat);
-							window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
+							window.location.replace(location.protocol + '//' + location.host + '/user/userDashboard');
 						}
 					});
 				}else{
