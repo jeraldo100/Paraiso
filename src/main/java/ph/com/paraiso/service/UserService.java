@@ -22,4 +22,6 @@ public interface UserService {
 	public Integer getUserIdByEmail(String email);
 	boolean isEmailTaken(String email);
 	boolean isUsernameTaken(String username);
+	
+	public void exportJasperReportItinerary(Httpservelet )
 }

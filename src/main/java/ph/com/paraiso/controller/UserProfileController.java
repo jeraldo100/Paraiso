@@ -1,5 +1,9 @@
 package ph.com.paraiso.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import ph.com.paraiso.dto.UserDto;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.service.UserService;
@@ -104,6 +109,20 @@ public class UserProfileController {
 	    userSvc.updateUser(existingUser);
 
 	    return "redirect:/user/userProfile"; // Redirect to the user profile page
+	}
+	
+	@GetMapping("/jasperpdf/export")
+	public void createPDF(HttpServletResponse response, @PathVariable Integer userid, Model model ) throws IOException, JRException {
+		response.setContentType("application/pdf");
+		Date date = new Date();
+		SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd:mm:ss");
+		String stringDate = DateFor.format(date);
+		
+		String headerkey = "Content-Disposition";
+		String headervalue = "attachment; filename=Itinerary" + stringDate +".pdf";
+		response.setHeader(headerkey, headervalue);
+		
+		userSvc.exportJasperReportUser(response);
 	}
 	
 }
