@@ -70,6 +70,15 @@ public class JasperController {
 	        bookingService.exportJasperReportRooms(response);
 	    }
 	    
+	    @GetMapping("/jasperpdfrevenue/export")
+	    public void createRevenuePDF(HttpServletResponse response) throws IOException, JRException {
+	        response.setContentType("application/pdf");
+	        String headerKey = "Content-Disposition";
+	        String headerValue = "attachment; filename=revenue.pdf";
+	        response.setHeader(headerKey, headerValue);
+	        bookingService.exportJasperReportRevenue(response);
+	    }
+	    
 
 		@GetMapping("/jasperpdf/export")
 		public void createPDF(HttpServletResponse response) throws IOException, JRException {
@@ -79,8 +88,6 @@ public class JasperController {
 			response.setHeader(headerKey, headerValue);
 			bookingService.exportJasperReportBooking(response);
 		}
-
-	
 
     private ServletContext servletContext;
     
@@ -101,18 +108,11 @@ public class JasperController {
             System.out.println(user_id);
             parameters.put("P_USER_ID", user_id);
 
-            // Fetch data for your dashboard (optional)
-            // Implement this method to fetch data needed for your report
-            // List<YourDataClass> data = fetchDataForDashboard();
-
-            // Convert the data to a JRBeanCollectionDataSource
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingList);
 
-            // Fill the report with datas
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 
-            // Export the report to PDF and send it to the response
             response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", "inline; filename=userDashboard.pdf");
             JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());

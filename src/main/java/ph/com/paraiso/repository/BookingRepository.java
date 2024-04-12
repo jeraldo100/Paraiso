@@ -37,6 +37,8 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	)
 	List<Booking> getBookingsByUserId(Integer user_id);
 	
-	
+	@Query("SELECT SUM(b.total_price) FROM Booking b")
+    Double sumTotalPrice();
+
 
 }

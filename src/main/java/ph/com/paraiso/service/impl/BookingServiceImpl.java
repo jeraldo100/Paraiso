@@ -1,6 +1,7 @@
 package ph.com.paraiso.service.impl;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,6 +110,27 @@ public class BookingServiceImpl implements BookingService {
 	    }
 	}
 	
+	
+	
+	public void exportJasperReportRevenue(HttpServletResponse response) throws JRException, IOException {
+	    Double totalrevenue = bookingRepository.sumTotalPrice();
+
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/revenues.jrxml");
+	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+
+	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Collections.emptyList());
+
+	    Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("totalrevenue", totalrevenue);
+	    parameters.put("createdBy", "flocer");
+
+	    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+	    if (jasperPrint.getPages().isEmpty()) {
+	        System.out.println("The report has no pages.");
+	    }
+	    JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+	}
 	
 	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException {
 	    List<Booking> bookings = bookingRepository.findAll();

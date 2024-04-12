@@ -29,7 +29,7 @@ public interface BookingService {
 	public void addBooked_room(Booked_room booked_room);
 	
 	public List<AddOns> getAllAddOnsBooking();
-	
+	public void exportJasperReportRevenue(HttpServletResponse response) throws JRException, IOException;
 	public Double getAddOnAmountByIds(List<Integer> add_on_ids);
 	public void exportJasperReportRooms(HttpServletResponse response) throws JRException, IOException;
 	public void exportJasperReportBooking(HttpServletResponse response) throws JRException, IOException;
