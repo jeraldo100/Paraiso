@@ -49,6 +49,7 @@
 	$('#Gcash').on('click', function(){
 		$('#payment-fields').html(
 			`
+				<img style="height: 3rem; object-fit: cover;" src="/images/logo/gcashLogo.png" />
 				<div class="payment-field">Enter OTP <input type="number"/></div>
 				<div class="payment-field">Enter MPIN <input type="number"/></div>
 			`
@@ -58,6 +59,7 @@
 	$('#Paymaya').on('click', function(){
 		$('#payment-fields').html(
 			`
+				<img style="height: 3rem; object-fit: cover;" src="/images/logo/mayaLogo.png" />
 				<div class="payment-field">Enter OTP <input type="number"/></div>
 				<div class="payment-field">Enter MPIN <input type="number"/></div>
 			`

@@ -128,12 +128,14 @@ public class BookingController {
 	@PostMapping("/checkAvailability")
 	public String checkAvailability(HttpServletRequest request, @RequestParam String checkin_date, String checkout_date, Integer adults, Integer children, Model model) throws ParseException {
 		setCommonAttributes(request, model);
+		String userEmail = SessionManager.getEmailFromSession(request);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		double diff = Math.abs( (sdf.parse(checkin_date).getTime()) - (sdf.parse(checkout_date).getTime()) );
 		
 		List<AddOns> addOns = bookServ.getAllAddOnsBooking();
 		
+		model.addAttribute("email", userEmail);
 		model.addAttribute("pageTitle", "Booking");
         model.addAttribute("pageLink", "/booking");
         model.addAttribute("addOns", addOns);
