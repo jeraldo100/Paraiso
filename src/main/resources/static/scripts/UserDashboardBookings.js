@@ -6,7 +6,11 @@
 		$('#cancel-booking-button').bind( "click", function() {
 		 	$.ajax({
 				type:'POST',
-				url: 'userDashboard/cancel/'+booking_id
+				url: 'userDashboard/cancel/'+booking_id,
+				success: function(dat){
+					console.log(dat);
+					window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
+				}
 			})
 		});
 	})
@@ -45,7 +49,7 @@
 	$('#Gcash').on('click', function(){
 		$('#payment-fields').html(
 			`
-				<div class="payment-field">Enter OTP <input type="number"/><div>
+				<div class="payment-field">Enter OTP <input type="number"/></div>
 				<div class="payment-field">Enter MPIN <input type="number"/></div>
 			`
 		);
@@ -54,7 +58,7 @@
 	$('#Paymaya').on('click', function(){
 		$('#payment-fields').html(
 			`
-				<div class="payment-field">Enter OTP <input type="number"/><div>
+				<div class="payment-field">Enter OTP <input type="number"/></div>
 				<div class="payment-field">Enter MPIN <input type="number"/></div>
 			`
 		);
@@ -73,9 +77,10 @@
 			let paymentMethod;
 			let loyalty_payment = Number( $('#loyalty-select').val() );
 			
-			$('.payment-radio-name').each(function () {
-				if($(this).attr('checked', 'checked') ){
+			$('.payment-radio').each(function () {
+				if($(this).is(':checked') ){
 					paymentMethod = $(this).attr('value');
+					console.log($(this).attr('value'));
 				}
 			})
 			
@@ -90,7 +95,7 @@
 				url: 'userDashboard/confirmPayment/'+booking_id+'/'+ paymentMethod +'/'+voucherInput+'/'+loyalty_payment,
 				success: function(dat){
 					console.log(dat);
-					location.reload();
+					window.location.replace(location.protocol + '//' + location.host + '/userDashboard');
 				}
 			})
 			

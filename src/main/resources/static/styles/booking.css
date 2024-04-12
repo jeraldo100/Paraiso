@@ -106,12 +106,17 @@ input::-webkit-inner-spin-button {
 
 /* END of filter Bar */
 
-.booking-warning{
+.booking-warning-container{
 	width: 90%;
+}
+
+.booking-warning{
+	width: 100%;
 	padding: 0.4rem;
 	text-align: center;
 	background-color: #21cc7a;
 	color: white;
+	border-radius: 0.4rem
 }
 
 .roomsAndList{

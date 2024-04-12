@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -143,7 +144,7 @@ public class UserDashboardController {
 	}
 	
 	@ResponseBody
-	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}/{loyalty_payment}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="userDashboard/confirmPayment/{booking_id}/{paymentMethod}/{voucherInput}/{loyalty_payment}")
 	public String confirmPayment(HttpServletRequest request, @PathVariable("booking_id") Integer booking_id, @PathVariable("paymentMethod") String paymentMethod, @PathVariable("voucherInput") String voucherInput, @PathVariable("loyalty_payment") Double loyalty_payment) {
 		Booking booking = bookRepo.findById(booking_id).get();
 		
@@ -178,12 +179,12 @@ public class UserDashboardController {
 		if(loyalty_payment != 0) {
 			if(loyalty_payment < loyalty_points) {
 				newPrice = newPrice - loyalty_payment;
-				loyalty.setRedeemed_points(loyalty_payment);
-				loyalty.setAvailable_points(loyalty_points - loyalty_payment);
+				loyalty.setRedeemed_points(loyalty_payment + loyalty.getRedeemed_points());
+				loyalty.setAvailable_points(loyalty.getAvailable_points() - loyalty_payment);
 			}
 		}
 		Double loyaltyAddedPoints = newPrice * 0.04;
-		loyalty.setAvailable_points(loyaltyAddedPoints + loyalty_points);
+		loyalty.setAvailable_points(loyaltyAddedPoints + loyalty.getAvailable_points());
 		loyalty.setTotal_points(loyaltyAddedPoints + loyalty.getTotal_points());
 		
 		payment.setBooking_id(booking_id);
@@ -201,15 +202,16 @@ public class UserDashboardController {
 		return "Success";
 	}
 	
+	@ResponseBody
 	@PostMapping("userDashboard/cancel/{booking_id}") 
-	public ModelAndView cancelBooking(@PathVariable Integer booking_id, HttpServletRequest request, HttpServletResponse response) throws IOException{ 
-		System.out.println(booking_id);
+	public String cancelBooking(@PathVariable Integer booking_id){ 
+
 		Booking booking = bookRepo.findById(booking_id).get();
 		
 		booking.setStatus("Cancelled");
 		bookRepo.save(booking);
 		
-		return new ModelAndView("redirect:/userDashboard");
+		return "Success";
 	}
 	 
 

@@ -87,7 +87,7 @@
 										    <c:when test = "${booking.status == 'PENDING'}">
 										        <button
 										        	type="button" 
-										        	class="cancelButton"
+										        	class="cancelButton btn btn-danger"
 										        	data-bs-toggle="modal" 
 										        	data-bs-target="#CancelModal" 
 										        	data-bs-booking_id="${booking.booking_id}"
@@ -96,7 +96,7 @@
 										    <c:when test = "${booking.status == 'Approved'}">
 										        <button
 										        	type="button" 
-										        	class="cancelButton"
+										        	class="cancelButton btn btn-danger"
 										        	data-bs-toggle="modal" 
 										        	data-bs-target="#CancelModal" 
 										        	data-bs-booking_id="${booking.booking_id}"
@@ -107,7 +107,7 @@
 										        	data-bs-target="#payment-modal" 
 										        	data-bs-booking_id="${booking.booking_id}" 
 										        	data-bs-price="${booking.total_price}" 
-										        	class="payment-button"
+										        	class="payment-button btn btn-success"
 										        >Pay</button>
 										    </c:when>
 										    <c:when test = "${booking.status == 'Cancelled'}">
@@ -186,7 +186,7 @@
       				<label>Gcash</label>
       			</div>
       			<div class="payment-option">
-      				<input type="radio" class="payment-radio" id="CardPayment" name="payment-method" value="Credit/Debit Card">
+      				<input type="radio" class="payment-radio" id="CardPayment" name="payment-method" value="CreditOrDebitCard">
       				<label>Credit/Debit Card</label>
       			</div>
       			<div class="payment-option">
@@ -194,13 +194,14 @@
       				<label>Paymaya</label>
       			</div>
       			<div id="payment-fields">
-	      			<div class="payment-field">Enter OTP <input type="number"/><div>
+	      			<div class="payment-field">Enter OTP <input type="number"/></div>
 					<div class="payment-field">Enter MPIN <input type="number"/></div>
       				<!-- Empty field for inserting fields -->
       			</div>
       		</div>
       	</div>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button id="confirm-payment" type="button" class="btn btn-primary">Pay</button>
