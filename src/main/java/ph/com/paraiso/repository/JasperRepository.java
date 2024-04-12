@@ -18,7 +18,7 @@ public interface JasperRepository extends JpaRepository<Room, Integer>{
 	List<Object[]> findRoomsHistoryByTypeId(Integer typeId);
 	
 	
-    @Query(value = "SELECT u.username, u.first_name || ' ' || u.last_name AS name, r.room_id, br.checkin_date, br.checkout_date, br.price AS total_price, b.status " +
+    @Query(value = "SELECT u.username, r.room_id, br.checkin_date, br.checkout_date, br.price AS total_price, b.status " +
             "FROM bookings b " +
             "JOIN users u ON b.user_id = u.user_id " +
             "JOIN booked_rooms br ON b.booking_id = br.booking_id " +

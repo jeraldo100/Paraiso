@@ -139,7 +139,7 @@ public class BookingServiceImpl implements BookingService {
     
 	public void exportJasperReportRoomHistory(HttpServletResponse response, Integer typeId) throws JRException, IOException {
 	    List<Object[]> roomsHistory = findRoomsHistoryByTypeId(typeId);
-	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/roomshistory.jrxml");
+	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/roomBookingHistory.jrxml");
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
 	    Map<String, Object> parameters = new HashMap<>();

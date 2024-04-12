@@ -47,7 +47,7 @@ public class BookingController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=bookings.pdf";
         response.setHeader(headerKey, headerValue);
-        bookingService.exportJasperReportBooking(response);
+        bookingService.jasperBookingHistory(response);
     }
 
     @GetMapping("/jasperpdf/export")
@@ -57,7 +57,7 @@ public class BookingController {
         String headerValue = "attachment; filename=bookings.pdf";
         response.setHeader(headerKey, headerValue);
         
-        List<Object[]> roomsHistory = bookingService.findRoomsHistoryByTypeId(30);
+        List<Object[]> roomsHistory = bookingService.findRoomsHistoryByTypeId(80);
         for (Object[] row : roomsHistory) {
             for (Object value : row) {
                 System.out.print(value + "\t");
