@@ -39,6 +39,9 @@ public class JasperController {
 
 	@Autowired
 	UserService userSvc;
+
+	@Autowired
+	BookingService bookingService;
 	
 	public void setCommonAttributes(HttpServletRequest request, Model model) { 
         String userEmail = SessionManager.getEmailFromSession(request);
@@ -57,42 +60,25 @@ public class JasperController {
             model.addAttribute("loggedIn", false);
         }
     }
-	
-	
-	@RestController
-	public class BookingController {
-
-		private final BookingService bookingService;
-
-		public BookingController(BookingService bookingService) {
-			this.bookingService = bookingService;
-		}
-
-		@GetMapping("/jasperpdf/export/{typeId}")
-		public void createRoomHistoryPDF(HttpServletResponse response, @PathVariable Integer typeId)
-				throws IOException, JRException {
-			response.setContentType("application/pdf");
-			String headerKey = "Content-Disposition";
-			String headerValue = "attachment; filename=rooms_history.pdf";
-			List<Object[]> roomsHistory = bookingService.findRoomsHistoryByTypeId(typeId);
-			for (Object[] row : roomsHistory) {
-				for (Object value : row) {
-					System.out.print(value + "\t");
-				}
-				System.out.println();
-			}
-			response.setHeader(headerKey, headerValue);
-			bookingService.exportJasperReportRoomHistory(response, typeId);
-		}
-
-		@GetMapping("/jasperpdfbookings/export")
-		public void jasperAllBookingDetails(HttpServletResponse response) throws IOException, JRException {
-			response.setContentType("application/pdf");
-			String headerKey = "Content-Disposition";
-			String headerValue = "attachment; filename=bookings.pdf";
-			response.setHeader(headerKey, headerValue);
-			bookingService.jasperBookingHistory(response);
-		}
+		
+	    @GetMapping("/jasperpdfrooms/export")
+	    public void createRoomsPDF(HttpServletResponse response) throws IOException, JRException {
+	        response.setContentType("application/pdf");
+	        String headerKey = "Content-Disposition";
+	        String headerValue = "attachment; filename=rooms.pdf";
+	        response.setHeader(headerKey, headerValue);
+	        bookingService.exportJasperReportRooms(response);
+	    }
+	    
+	    @GetMapping("/jasperpdfrevenue/export")
+	    public void createRevenuePDF(HttpServletResponse response) throws IOException, JRException {
+	        response.setContentType("application/pdf");
+	        String headerKey = "Content-Disposition";
+	        String headerValue = "attachment; filename=revenue.pdf";
+	        response.setHeader(headerKey, headerValue);
+	        bookingService.exportJasperReportRevenue(response);
+	    }
+	    
 
 		@GetMapping("/jasperpdf/export")
 		public void createPDF(HttpServletResponse response) throws IOException, JRException {
@@ -100,32 +86,8 @@ public class JasperController {
 			String headerKey = "Content-Disposition";
 			String headerValue = "attachment; filename=bookings.pdf";
 			response.setHeader(headerKey, headerValue);
-
-			List<Object[]> roomsHistory = bookingService.findRoomsHistoryByTypeId(80);
-			for (Object[] row : roomsHistory) {
-				for (Object value : row) {
-					System.out.print(value + "\t");
-				}
-				System.out.println();
-			}
-
-			List<Object[]> bookingDetails = bookingService.findAllBookingsDetails();
-			for (Object[] row : bookingDetails) {
-				for (Object value : row) {
-					System.out.print(value + "\t");
-				}
-				System.out.println();
-			}
 			bookingService.exportJasperReportBooking(response);
 		}
-
-	}
-
-	private final BookingService bookingService;
-
-    public JasperController(BookingService bookingService) {
-        this.bookingService = bookingService;
-    }
 
     private ServletContext servletContext;
     
@@ -137,7 +99,7 @@ public class JasperController {
             String userEmail = SessionManager.getEmailFromSession(request);
     		Integer user_id = userSvc.getUserIdByEmail(userEmail);
             // Load the JasperReport template
-            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary.jrxml");
+            ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary1.jrxml");
             InputStream inputStream = resource.getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 
@@ -146,14 +108,11 @@ public class JasperController {
             System.out.println(user_id);
             parameters.put("P_USER_ID", user_id);
 
-
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingList);
 
-            // Fill the report with datas
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 
-            // Export the report to PDF and send it to the response
             response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", "inline; filename=userDashboard.pdf");
             JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());

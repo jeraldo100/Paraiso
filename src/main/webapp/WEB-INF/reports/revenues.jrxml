@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="revenues" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a2eb839-1d31-4868-9d7b-3c4a8de9b182">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT SUM(TOTAL_PRICE) as totalRevenue
+FROM BOOKINGS]]>
+	</queryString>
+	<field name="totalrevenue" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="212" y="10" width="243" height="40" uuid="d3cd34ff-0bb8-475a-b814-1a1b938dcb69"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Bookings Revenue]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="103" y="17" width="100" height="20" uuid="083e2df4-bb57-4e28-b52c-7c2f1cfb0f75"/>
+				<textFieldExpression><![CDATA[$F{totalrevenue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="17" width="74" height="20" uuid="c9286a92-a763-4417-add3-8a6e3a55177b"/>
+				<text><![CDATA[Total Revenue:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
