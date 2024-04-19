@@ -3,6 +3,7 @@ package ph.com.paraiso.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +31,11 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import ph.com.paraiso.model.Booking;
+import ph.com.paraiso.model.Itenerary;
+import ph.com.paraiso.model.Room;
+import ph.com.paraiso.model.User;
+import ph.com.paraiso.repository.RoomRepository;
+import ph.com.paraiso.repository.UserRepository;
 import ph.com.paraiso.service.BookingService;
 import ph.com.paraiso.service.UserService;
 import ph.com.paraiso.session.SessionManager;
@@ -42,6 +48,12 @@ public class JasperController {
 
 	@Autowired
 	BookingService bookingService;
+	
+	@Autowired
+	RoomRepository roomRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	public void setCommonAttributes(HttpServletRequest request, Model model) { 
         String userEmail = SessionManager.getEmailFromSession(request);
@@ -57,7 +69,7 @@ public class JasperController {
     }
 		
 	    @GetMapping("/jasperpdfrooms/export")
-	    public void createRoomsPDF(HttpServletResponse response) throws IOException, JRException {
+	    public void createRoomsPDF(HttpServletResponse response) throws IOException, JRException {  
 	        response.setContentType("application/pdf");
 	        String headerKey = "Content-Disposition";
 	        String headerValue = "attachment; filename=rooms.pdf";
@@ -95,17 +107,37 @@ public class JasperController {
             String userEmail = SessionManager.getEmailFromSession(request);
     		Integer user_id = userSvc.getUserIdByEmail(userEmail);
     		logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
-            // Load the JasperReport template
             ServletContextResource resource = new ServletContextResource(servletContext, "/WEB-INF/reports/Itinerary.jrxml");
             InputStream inputStream = resource.getInputStream();
             JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
 
-            // Set parameters
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("P_USER_ID", user_id);
             parameters.put("P_LOGO", logo.getAbsolutePath());
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingList);
+            List<Itenerary> Itenerarys = new ArrayList<>();
+            User user = userRepository.findByuserid(user_id);
+     
+
+            	
+            	 Itenerary Itenerary = new Itenerary();
+            	  Itenerary.setFirstName(user.getFirstName());
+//           	  Itenerary.setLastName(user.getLastName());
+           	  System.out.println(Itenerary.getFirstName());
+            
+            for (Booking booking : bookingList) {
+ 
+              Itenerary.setBooking_id(booking.getBooking_id());
+              Itenerary.setCheckin_date(booking.getCheckin_date()); 
+              Itenerary.setCheckout_date(booking.getCheckout_date()); 
+              Itenerary.setTotal_price(booking.getTotal_price());
+              Itenerary.setArrival_time(booking.getArrival_time());
+              Itenerary.setAdults(booking.getAdults());
+              Itenerary.setChildren(booking.getChildren());
+              Itenerary.setStatus(booking.getStatus());
+              Itenerarys.add(Itenerary);
+            }
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Itenerarys);
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 

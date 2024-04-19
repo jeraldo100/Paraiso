@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Itinerary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="217d77c9-d9c7-427f-8df9-ad0979909469">
 	<property name="ireport.zoom" value="2.357947691000002"/>
-	<property name="ireport.x" value="4"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="P_USER_ID" class="java.lang.Integer"/>
 	<queryString>
@@ -15,7 +15,7 @@
 	<field name="arrival_time" class="java.lang.String"/>
 	<field name="adults" class="java.math.BigDecimal"/>
 	<field name="children" class="java.math.BigDecimal"/>
-	<field name="firstName" class="java.lang.String"/>
+	<field name="username" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -135,10 +135,6 @@
 				</textElement>
 				<text><![CDATA[ARRIVAL TIME:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="274" y="71" width="100" height="20" uuid="7da404d1-2d78-4080-baff-c0a4a7bfb793"/>
-				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<pageFooter>
@@ -146,6 +142,10 @@
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="227" y="15" width="100" height="20" uuid="1d7a76b5-f763-4808-898f-55487d060f9d"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="15" width="100" height="20" uuid="0c933ad1-25ce-4540-802a-cec61523dfc1"/>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

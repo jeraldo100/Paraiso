@@ -92,6 +92,12 @@ public class BookingServiceImpl implements BookingService {
 	
 	public void exportJasperReportRooms(HttpServletResponse response) throws JRException, IOException {
 	    List<Room> bookings = roomRepository.findAll();
+
+	    for (Room room : bookings) {
+	    	  System.out.println("Room Type: " + room.getType_id()); 
+	    	  System.out.println("Room Status: " + room.getStatus()); 
+	    	}
+	    
 	    File file = ResourceUtils.getFile("src/main/webapp/WEB-INF/reports/historyrooms.jrxml");
 	    JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
