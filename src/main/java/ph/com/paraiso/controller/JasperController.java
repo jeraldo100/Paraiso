@@ -3,7 +3,6 @@ package ph.com.paraiso.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.support.ServletContextResource;
 
 import jakarta.servlet.ServletContext;
@@ -29,10 +26,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import ph.com.paraiso.model.Booking;
-import ph.com.paraiso.model.Itenerary;
-import ph.com.paraiso.model.Room;
+import ph.com.paraiso.model.Itinerary;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.RoomRepository;
 import ph.com.paraiso.repository.UserRepository;
@@ -115,29 +110,29 @@ public class JasperController {
             parameters.put("P_USER_ID", user_id);
             parameters.put("P_LOGO", logo.getAbsolutePath());
             List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
-            List<Itenerary> Itenerarys = new ArrayList<>();
+            List<Itinerary> Itinerarys = new ArrayList<>();
             User user = userRepository.findByuserid(user_id);
      
 
             	
-            	 Itenerary Itenerary = new Itenerary();
-            	  Itenerary.setFirstName(user.getFirstName());
-//           	  Itenerary.setLastName(user.getLastName());
-           	  System.out.println(Itenerary.getFirstName());
+            	 Itinerary Itinerary = new Itinerary();
+            	  Itinerary.setFirstName(user.getFirstName());
+//           	  Itinerary.setLastName(user.getLastName());
+           	  System.out.println(Itinerary.getFirstName());
             
             for (Booking booking : bookingList) {
  
-              Itenerary.setBooking_id(booking.getBooking_id());
-              Itenerary.setCheckin_date(booking.getCheckin_date()); 
-              Itenerary.setCheckout_date(booking.getCheckout_date()); 
-              Itenerary.setTotal_price(booking.getTotal_price());
-              Itenerary.setArrival_time(booking.getArrival_time());
-              Itenerary.setAdults(booking.getAdults());
-              Itenerary.setChildren(booking.getChildren());
-              Itenerary.setStatus(booking.getStatus());
-              Itenerarys.add(Itenerary);
+              Itinerary.setBooking_id(booking.getBooking_id());
+              Itinerary.setCheckin_date(booking.getCheckin_date()); 
+              Itinerary.setCheckout_date(booking.getCheckout_date()); 
+              Itinerary.setTotal_price(booking.getTotal_price());
+              Itinerary.setArrival_time(booking.getArrival_time());
+              Itinerary.setAdults(booking.getAdults());
+              Itinerary.setChildren(booking.getChildren());
+              Itinerary.setStatus(booking.getStatus());
+              Itinerarys.add(Itinerary);
             }
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Itenerarys);
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Itinerarys);
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 

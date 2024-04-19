@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Itenerary {
+public class Itinerary {
 	private Integer booking_id;
 	private Integer user_id;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
