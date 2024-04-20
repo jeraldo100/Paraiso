@@ -42,169 +42,217 @@ import ph.com.paraiso.service.UserService;
 import ph.com.paraiso.session.SessionManager;
 
 @Service
-public class JasperReportsServiceImp implements JasperReportsService{
+public class JasperReportsServiceImp implements JasperReportsService {
 
-    @Autowired
-    UserService userSvc;
+	@Autowired
+	UserService userSvc;
 
-    @Autowired
-    BookingService bookingService;
-    
-    @Autowired
-    BookingRepository bookingRepository;
+	@Autowired
+	BookingService bookingService;
 
-    @Autowired
-    RoomRepository roomRepository;
+	@Autowired
+	BookingRepository bookingRepository;
 
-    @Autowired
-    UserRepository userRepository;
-    
-    
-    
+	@Autowired
+	RoomRepository roomRepository;
 
-    public void exportReportItinerary(HttpSession session, HttpServletRequest request, HttpServletResponse response,
-    		@PathVariable Integer booking_id, Model model) throws JRException, IOException {
+	@Autowired
+	UserRepository userRepository;
 
-        File logo = null;
-        try {
-            ServletContext servletContext = request.getServletContext();
-            String userEmail = SessionManager.getEmailFromSession(request);
-            Integer user_id = userSvc.getUserIdByEmail(userEmail);
-            logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
-            ServletContextResource resource = new ServletContextResource(servletContext,
-                    "/WEB-INF/reports/Itinerary.jrxml");
-            InputStream inputStream = resource.getInputStream();
-            JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("P_USER_ID", user_id);
-            parameters.put("P_LOGO", logo.getAbsolutePath());
-            List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
-            List<Itinerary> Itinerarys = new ArrayList<>();
-            User user = userRepository.findByuserid(user_id);
-            Itinerary Itinerary = new Itinerary();
-            Itinerary.setFirstName(user.getFirstName());
-            Itinerary.setLastName(user.getLastName());
+	public void exportReportItinerary(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer booking_id, Model model) throws JRException, IOException {
 
-            for (Booking booking : bookingList) {
-                Integer bookingId = booking_id;
-                List<String> roomTypeNames = bookingRepository.findRoomTypeNamesByBookingId(bookingId);
-                String roomTypeName = String.join(", ", roomTypeNames);
-                Itinerary.setRoomTypeName(roomTypeName);
-                Itinerary.setBooking_id(booking.getBooking_id());
-                Itinerary.setCheckin_date(booking.getCheckin_date());
-                Itinerary.setCheckout_date(booking.getCheckout_date());
-                Itinerary.setTotal_price(booking.getTotal_price());
-                Itinerary.setArrival_time(booking.getArrival_time());
-                Itinerary.setAdults(booking.getAdults());
-                Itinerary.setChildren(booking.getChildren());
-                Itinerary.setStatus(booking.getStatus());
-                Itinerarys.add(Itinerary);
-                
-            }
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Itinerarys);
+		File logo = null;
+		try {
+			ServletContext servletContext = request.getServletContext();
+			String userEmail = SessionManager.getEmailFromSession(request);
+			Integer user_id = userSvc.getUserIdByEmail(userEmail);
+			logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
+			ServletContextResource resource = new ServletContextResource(servletContext,
+					"/WEB-INF/reports/Itinerary.jrxml");
+			InputStream inputStream = resource.getInputStream();
+			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("P_USER_ID", user_id);
+			parameters.put("P_LOGO", logo.getAbsolutePath());
+			List<Booking> bookingList = (List<Booking>) session.getAttribute("userBookings");
+			List<Itinerary> Itinerarys = new ArrayList<>();
+			User user = userRepository.findByuserid(user_id);
+			Itinerary Itinerary = new Itinerary();
+			Itinerary.setFirstName(user.getFirstName());
+			Itinerary.setLastName(user.getLastName());
 
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+			for (Booking booking : bookingList) {
+				Integer bookingId = booking_id;
+				List<String> roomTypeNames = bookingRepository.findRoomTypeNamesByBookingId(bookingId);
+				String roomTypeName = String.join(", ", roomTypeNames);
+				Itinerary.setRoomTypeName(roomTypeName);
+				Itinerary.setBooking_id(booking.getBooking_id());
+				Itinerary.setCheckin_date(booking.getCheckin_date());
+				Itinerary.setCheckout_date(booking.getCheckout_date());
+				Itinerary.setTotal_price(booking.getTotal_price());
+				Itinerary.setArrival_time(booking.getArrival_time());
+				Itinerary.setAdults(booking.getAdults());
+				Itinerary.setChildren(booking.getChildren());
+				Itinerary.setStatus(booking.getStatus());
+				Itinerarys.add(Itinerary);
 
-            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+			}
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Itinerarys);
 
-        } catch (JRException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-	
-    
-    public void exportReportRoom(HttpSession session, HttpServletRequest request, HttpServletResponse response,
-    		@PathVariable Integer type_id, Model model) throws JRException, IOException {
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 
-        try {
-            ServletContext servletContext = request.getServletContext();
+			JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 
-            ServletContextResource resource = new ServletContextResource(servletContext,
-                    "/WEB-INF/reports/rooms.jrxml");
-            InputStream inputStream = resource.getInputStream();
-            JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-            Map<String, Object> parameters = new HashMap<>();
+		} catch (JRException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-            List<RoomHistory> roomsHistory = new ArrayList<>();
-            List<Object[]> bookingData = bookingRepository.findBookingsByTypeId(type_id);
-            for (Object[] row : bookingData) {
-                RoomHistory roomHistory = new RoomHistory();
-                roomHistory.setUser_id((BigDecimal) row[0]);
-                roomHistory.setFirstName((String) row[1]);
-                roomHistory.setLastName((String) row[2]);
-                roomHistory.setRoomTypeName((String) row[3]);
-                roomHistory.setCheckin_date((Date) row[4]);
-                roomHistory.setCheckout_date((Date) row[5]);
-                roomHistory.setTotal_price((BigDecimal) row[6]);
-                roomHistory.setStatus((String) row[7]);
-                roomsHistory.add(roomHistory);
-            }
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
+	public void exportReportRoom(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer type_id, Model model) throws JRException, IOException {
 
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+		try {
+			ServletContext servletContext = request.getServletContext();
 
-            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+			ServletContextResource resource = new ServletContextResource(servletContext,
+					"/WEB-INF/reports/rooms.jrxml");
+			InputStream inputStream = resource.getInputStream();
+			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+			Map<String, Object> parameters = new HashMap<>();
 
-        } catch (JRException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    
+			List<RoomHistory> roomsHistory = new ArrayList<>();
+			List<Object[]> bookingData = bookingRepository.findBookingsByTypeId(type_id);
+			for (Object[] row : bookingData) {
+				RoomHistory roomHistory = new RoomHistory();
+				roomHistory.setUser_id((BigDecimal) row[0]);
+				roomHistory.setFirstName((String) row[1]);
+				roomHistory.setLastName((String) row[2]);
+				roomHistory.setRoomTypeName((String) row[3]);
+				roomHistory.setCheckin_date((Date) row[4]);
+				roomHistory.setCheckout_date((Date) row[5]);
+				roomHistory.setTotal_price((BigDecimal) row[6]);
+				roomHistory.setStatus((String) row[7]);
+				roomsHistory.add(roomHistory);
+			}
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+			JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
+		} catch (JRException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void exportReportBooking(HttpSession session, HttpServletRequest request, HttpServletResponse response,
-    		Model model) throws JRException, IOException {
-      File logo = null;
-      try {
-          ServletContext servletContext = request.getServletContext();
-          String userEmail = SessionManager.getEmailFromSession(request);
-          Integer user_id = userSvc.getUserIdByEmail(userEmail);
-          logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
-          ServletContextResource resource = new ServletContextResource(servletContext,
-                  "/WEB-INF/reports/bookings.jrxml");
-          InputStream inputStream = resource.getInputStream();
-          JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-          Map<String, Object> parameters = new HashMap<>();
-          parameters.put("P_USER_ID", user_id);
-          parameters.put("P_LOGO", logo.getAbsolutePath());
+			Model model) throws JRException, IOException {
+		File logo = null;
+		try {
+			ServletContext servletContext = request.getServletContext();
+			String userEmail = SessionManager.getEmailFromSession(request);
+			Integer user_id = userSvc.getUserIdByEmail(userEmail);
+			logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
+			ServletContextResource resource = new ServletContextResource(servletContext,
+					"/WEB-INF/reports/bookings.jrxml");
+			InputStream inputStream = resource.getInputStream();
+			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("P_USER_ID", user_id);
+			parameters.put("P_LOGO", logo.getAbsolutePath());
 
-          List<Booking> bookingList = bookingRepository.findAll();
-          List<BookingHistory> bookingHistorys = new ArrayList<>();
-     
-          for (Booking booking : bookingList) {
-              BookingHistory bookingHistory = new BookingHistory(); 
-             
-              List<String> roomTypeNames = bookingRepository.findRoomTypeNamesByBookingId(booking.getBooking_id());
+			List<Booking> bookingList = bookingRepository.findAll();
+			List<BookingHistory> bookingHistorys = new ArrayList<>();
 
-              String roomTypeName = String.join(", ", roomTypeNames);
-              bookingHistory.setRoomTypeName(roomTypeName);
-              bookingHistory.setUser_id(booking.getUser_id());
-              bookingHistory.setBooking_id(booking.getBooking_id());
-              bookingHistory.setCheckin_date(booking.getCheckin_date());
-              bookingHistory.setCheckout_date(booking.getCheckout_date());
-              bookingHistory.setTotal_price(booking.getTotal_price());
-              bookingHistory.setAdults(booking.getAdults());
-              bookingHistory.setChildren(booking.getChildren());
-              bookingHistory.setStatus(booking.getStatus());
-              List<User> userList = userRepository.findByUserid(booking.getUser_id());
-              for (User user : userList) {
-              	
-                  bookingHistory.setFirstName(user.getFirstName());
-                  bookingHistory.setLastName(user.getLastName());
-              }
+			for (Booking booking : bookingList) {
+				BookingHistory bookingHistory = new BookingHistory();
 
-              bookingHistorys.add(bookingHistory);
-          }
+				List<String> roomTypeNames = bookingRepository.findRoomTypeNamesByBookingId(booking.getBooking_id());
 
-          JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingHistorys);
+				String roomTypeName = String.join(", ", roomTypeNames);
+				bookingHistory.setRoomTypeName(roomTypeName);
+				bookingHistory.setUser_id(booking.getUser_id());
+				bookingHistory.setBooking_id(booking.getBooking_id());
+				bookingHistory.setCheckin_date(booking.getCheckin_date());
+				bookingHistory.setCheckout_date(booking.getCheckout_date());
+				bookingHistory.setTotal_price(booking.getTotal_price());
+				bookingHistory.setAdults(booking.getAdults());
+				bookingHistory.setChildren(booking.getChildren());
+				bookingHistory.setStatus(booking.getStatus());
+				List<User> userList = userRepository.findByUserid(booking.getUser_id());
+				for (User user : userList) {
 
-          JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+					bookingHistory.setFirstName(user.getFirstName());
+					bookingHistory.setLastName(user.getLastName());
+				}
 
-          JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+				bookingHistorys.add(bookingHistory);
+			}
 
-      } catch (JRException | IOException e) {
-          e.printStackTrace();
-      }
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingHistorys);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+			JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
+		} catch (JRException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void exportReportRevenue(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			Model model) throws JRException, IOException {
+		File logo = null;
+		try {
+			ServletContext servletContext = request.getServletContext();
+			String userEmail = SessionManager.getEmailFromSession(request);
+			Integer user_id = userSvc.getUserIdByEmail(userEmail);
+			logo = ResourceUtils.getFile("/WEB-INF/reports/logo.png");
+			ServletContextResource resource = new ServletContextResource(servletContext,
+					"/WEB-INF/reports/bookingRevenue.jrxml");
+			InputStream inputStream = resource.getInputStream();
+			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("P_USER_ID", user_id);
+			parameters.put("P_LOGO", logo.getAbsolutePath());
+
+			List<Booking> bookingList = bookingRepository.findAll();
+			List<BookingHistory> bookingHistorys = new ArrayList<>();
+
+			for (Booking booking : bookingList) {
+				BookingHistory bookingHistory = new BookingHistory();
+
+				List<String> roomTypeNames = bookingRepository.findRoomTypeNamesByBookingId(booking.getBooking_id());
+
+				String roomTypeName = String.join(", ", roomTypeNames);
+				bookingHistory.setRoomTypeName(roomTypeName);
+				bookingHistory.setUser_id(booking.getUser_id());
+				bookingHistory.setBooking_id(booking.getBooking_id());
+				bookingHistory.setCheckin_date(booking.getCheckin_date());
+				bookingHistory.setCheckout_date(booking.getCheckout_date());
+				bookingHistory.setTotal_price(booking.getTotal_price());
+				bookingHistory.setAdults(booking.getAdults());
+				bookingHistory.setChildren(booking.getChildren());
+				bookingHistory.setStatus(booking.getStatus());
+				List<User> userList = userRepository.findByUserid(booking.getUser_id());
+				for (User user : userList) {
+
+					bookingHistory.setFirstName(user.getFirstName());
+					bookingHistory.setLastName(user.getLastName());
+				}
+
+				bookingHistorys.add(bookingHistory);
+			}
+
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookingHistorys);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+			JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
+		} catch (JRException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

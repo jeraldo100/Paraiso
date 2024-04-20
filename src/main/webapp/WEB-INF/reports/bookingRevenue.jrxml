@@ -18,7 +18,7 @@
 	<field name="firstName" class="java.lang.String"/>
 	<field name="lastName" class="java.lang.String"/>
 	<field name="roomTypeName" class="java.lang.String"/>
-	<variable name="v_revenue" class="java.math.BigDecimal" incrementType="Report" calculation="Sum">
+	<variable name="v_totalRev" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{total_price}]]></variableExpression>
 	</variable>
 	<background>
@@ -86,11 +86,7 @@
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="472" y="15" width="100" height="20" uuid="503141e5-0995-43ea-aa13-861cbb0696a5"/>
-				<textFieldExpression><![CDATA[$V{v_revenue}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="359" y="15" width="100" height="20" uuid="69acb686-a270-421b-8f10-fa962df4d0b9"/>
+				<reportElement x="414" y="15" width="100" height="20" uuid="bb9dfa6f-ba98-4c2f-bbb3-3008269bff4a"/>
 				<textFieldExpression><![CDATA[$V{v_totalRev}]]></textFieldExpression>
 			</textField>
 		</band>
