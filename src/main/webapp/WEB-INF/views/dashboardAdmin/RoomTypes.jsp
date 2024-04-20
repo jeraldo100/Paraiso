@@ -29,7 +29,7 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h1>Room Types</h1>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="button" class="btn btn-success">Print</button>
+                                   
                                     <a href="/admin/addRoomTypes" class="btn btn-success" data-dismiss="modal">Add</a>
                                 </div>
                             </div>
@@ -70,8 +70,9 @@
                                                                 class="btn btn-success m-1">Edit</a>
                                                             <a href="/admin/deleteType/${room_type.type_id}" type="button"
                                                                 class="btn btn-danger m-1">Delete</a>
-                                                             <a href="/jasperpdf/export/${room_type.type_id}" type="button"
-                                                                class="btn btn-danger m-1">Print</a>                                                           
+                                                    	    <a href="/jasperpdfrooms/export" class="btn btn-success" >
+																		Print
+															</a>                                                         
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

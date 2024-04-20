@@ -50,9 +50,6 @@
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h1>Rooms</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<a href="/jasperpdfrooms/export" class="btn btn-success" >
-									Print
-									</a>
 									<a href="/admin/addRoom" class="btn btn-success" data-dismiss="modal" >
 									Add
 									</a>

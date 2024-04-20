@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Itinerary" language="groovy" pageWidth="670" pageHeight="595" columnWidth="630" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="217d77c9-d9c7-427f-8df9-ad0979909469">
+	<property name="ireport.zoom" value="2.357947691000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_USER_ID" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT * FROM BOOKINGS B, USERS U WHERE u.USER_ID = B.USER_ID AND U.USER_ID = $P{P_USER_ID}]]>
+	</queryString>
+	<field name="booking_id" class="java.math.BigDecimal"/>
+	<field name="user_id" class="java.math.BigDecimal"/>
+	<field name="checkin_date" class="java.sql.Timestamp"/>
+	<field name="checkout_date" class="java.sql.Timestamp"/>
+	<field name="total_price" class="java.math.BigDecimal"/>
+	<field name="arrival_time" class="java.lang.String"/>
+	<field name="adults" class="java.math.BigDecimal"/>
+	<field name="children" class="java.math.BigDecimal"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="roomTypeName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50"/>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="390" y="0" width="55" height="20" uuid="6a10d1bd-32ae-404c-ba38-f3cacd0e3dda"/>
+				<text><![CDATA[checkin_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="20" uuid="f8eb6914-2a35-4471-8583-abb030754654"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="0" width="55" height="20" uuid="c098e07a-244d-4028-9d3a-9819aa14949b"/>
+				<text><![CDATA[checkout_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="555" y="0" width="55" height="20" uuid="b01d8b34-95d0-4048-accd-2144cd579422"/>
+				<text><![CDATA[total_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="0" width="55" height="20" uuid="85ca42d6-5907-4800-8425-5aa094a50440"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="380" y="0" width="165" height="20" uuid="f5db8c1d-5aba-42fa-beb3-3de00ab4b496"/>
+				<textFieldExpression><![CDATA[$F{checkin_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="55" height="20" uuid="54153725-7ea1-4cf2-a028-82abc9ec76bb"/>
+				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="459" y="0" width="55" height="20" uuid="6bf664f2-24e6-48d3-a5f9-fc5d4d1fc46b"/>
+				<textFieldExpression><![CDATA[$F{checkout_date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="555" y="0" width="55" height="20" uuid="1583cc97-1ca7-418e-8576-c8c4e7086982"/>
+				<textFieldExpression><![CDATA[$F{total_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="0" width="173" height="20" uuid="80426a71-4728-4671-9093-dae031e3aa00"/>
+				<textFieldExpression><![CDATA[$F{firstName} + "  " + $F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="163" height="20" uuid="16f965db-0ad6-4183-bc15-d9c26b88cf0d"/>
+				<textFieldExpression><![CDATA[$F{roomTypeName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="227" y="15" width="100" height="20" uuid="1d7a76b5-f763-4808-898f-55487d060f9d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

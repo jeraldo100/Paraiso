@@ -51,7 +51,7 @@
 								<h1>Bookings</h1>
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 										<a
-										href="/jasperpdf/export"
+										href="/jasperReportBooking"
 										type="button" class="btn btn-success m-1" id="printButton"> Print Booking</a>
 										<a href="addBooking" type="button"
 										class="btn btn-success">Add</a>

@@ -37,8 +37,6 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
-	private BookingRepository bookingRepository;
 	
 		@Autowired
 		UserDao userDao;
@@ -135,6 +133,5 @@ public class UserServiceImpl implements UserService{
         User user = userRepository.findByusername(username);
         return user != null;
 	}
-
 
 }

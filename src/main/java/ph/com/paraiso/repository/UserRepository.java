@@ -1,5 +1,7 @@
 package ph.com.paraiso.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +13,5 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 
 	public User findByusername(String username);
 	public User findByuserid(Integer userid);
+	public List<User> findByUserid(Integer userid);
 }
