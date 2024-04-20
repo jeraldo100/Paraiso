@@ -128,7 +128,7 @@
                 <div class="column-container">
                   <div class="signup-input signup-col1">
                     <i class="fa-solid fa-calendar"></i>
-                    <input type="text" name="dateOfBirth" placeholder="Date of Birth" onfocus="(this.type='date')" />
+                    <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="Date of Birth" max="" onfocus="(this.type='date')" />
                   </div>
 
                   <div class="signup-input signup-col2">
@@ -190,9 +190,10 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.10/js/superfish.min.js"></script>
       <script src="/scripts/NavBar.js"></script>
       <script src="/scripts/LoginSignUp.js"></script>
-      <script>
-
+  <script>
+    document.getElementById("dateOfBirth").setAttribute("max", new Date().toISOString().split("T")[0]);
 </script>
+  
       
     </body>
 

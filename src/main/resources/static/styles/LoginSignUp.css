@@ -394,3 +394,7 @@ input:-webkit-autofill:active {
 
 }
 
+.invalid-email {
+    border-color: red;
+}
+
