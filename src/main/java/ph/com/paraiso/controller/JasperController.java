@@ -80,7 +80,7 @@ public class JasperController {
     }
 
     @GetMapping("/jasperReportItinerary/{booking_id}")
-    public void printUserDashboard(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+    public void printUserItinerary(HttpSession session, HttpServletRequest request, HttpServletResponse response,
     		@PathVariable Integer booking_id,Model model) throws JRException, IOException {
         setCommonAttributes(request, model);
         response.setContentType("application/pdf");
@@ -89,6 +89,18 @@ public class JasperController {
         response.setHeader(headerKey, headerValue);
 
         jasperReportsService.exportReportItinerary(session, request, response, booking_id, model);
+    }
+    
+    @GetMapping("/jasperReportRooms/{type_id}")
+    public void printUReportRooms(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+    		@PathVariable Integer type_id,Model model) throws JRException, IOException {
+        setCommonAttributes(request, model);
+        response.setContentType("application/pdf");
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=rooms_history.pdf";
+        response.setHeader(headerKey, headerValue);
+
+        jasperReportsService.exportReportRoom(session, request, response, type_id, model);
     }
    
     @GetMapping("/jasperReportBooking")

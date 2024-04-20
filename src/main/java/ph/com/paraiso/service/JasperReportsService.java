@@ -17,4 +17,7 @@ public interface JasperReportsService {
 	
 	  public void exportReportItinerary(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 	    		@PathVariable Integer booking_id,Model model) throws JRException, IOException;
+	  
+	  public void exportReportRoom(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+	    		@PathVariable Integer type_id, Model model) throws JRException, IOException;
 }

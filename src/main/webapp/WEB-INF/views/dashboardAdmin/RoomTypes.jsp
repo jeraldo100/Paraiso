@@ -70,7 +70,7 @@
                                                                 class="btn btn-success m-1">Edit</a>
                                                             <a href="/admin/deleteType/${room_type.type_id}" type="button"
                                                                 class="btn btn-danger m-1">Delete</a>
-                                                    	    <a href="/jasperpdfrooms/export" class="btn btn-success" >
+                                                    	    <a href="/jasperReportRooms/${room_type.type_id}" class="btn btn-success" >
 																		Print
 															</a>                                                         
                                                         </td>

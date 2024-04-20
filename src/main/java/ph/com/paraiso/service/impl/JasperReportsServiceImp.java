@@ -3,7 +3,9 @@ package ph.com.paraiso.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.context.support.ServletContextResource;
 
@@ -30,6 +31,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import ph.com.paraiso.model.Booking;
 import ph.com.paraiso.model.BookingHistory;
 import ph.com.paraiso.model.Itinerary;
+import ph.com.paraiso.model.RoomHistory;
 import ph.com.paraiso.model.User;
 import ph.com.paraiso.repository.BookingRepository;
 import ph.com.paraiso.repository.RoomRepository;
@@ -61,7 +63,7 @@ public class JasperReportsServiceImp implements JasperReportsService{
     
 
     public void exportReportItinerary(HttpSession session, HttpServletRequest request, HttpServletResponse response,
-    		@PathVariable Integer booking_id,Model model) throws JRException, IOException {
+    		@PathVariable Integer booking_id, Model model) throws JRException, IOException {
 
         File logo = null;
         try {
@@ -111,6 +113,46 @@ public class JasperReportsServiceImp implements JasperReportsService{
     }
     
 	
+    
+    public void exportReportRoom(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+    		@PathVariable Integer type_id, Model model) throws JRException, IOException {
+
+        try {
+            ServletContext servletContext = request.getServletContext();
+
+            ServletContextResource resource = new ServletContextResource(servletContext,
+                    "/WEB-INF/reports/rooms.jrxml");
+            InputStream inputStream = resource.getInputStream();
+            JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+            Map<String, Object> parameters = new HashMap<>();
+
+            List<RoomHistory> roomsHistory = new ArrayList<>();
+            List<Object[]> bookingData = bookingRepository.findBookingsByTypeId(type_id);
+            for (Object[] row : bookingData) {
+                RoomHistory roomHistory = new RoomHistory();
+                roomHistory.setUser_id((BigDecimal) row[0]);
+                roomHistory.setFirstName((String) row[1]);
+                roomHistory.setLastName((String) row[2]);
+                roomHistory.setRoomTypeName((String) row[3]);
+                roomHistory.setCheckin_date((Date) row[4]);
+                roomHistory.setCheckout_date((Date) row[5]);
+                roomHistory.setTotal_price((BigDecimal) row[6]);
+                roomHistory.setStatus((String) row[7]);
+                roomsHistory.add(roomHistory);
+            }
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(roomsHistory);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+            JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+
+        } catch (JRException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
 	public void exportReportBooking(HttpSession session, HttpServletRequest request, HttpServletResponse response,
     		Model model) throws JRException, IOException {
       File logo = null;

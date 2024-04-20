@@ -51,5 +51,17 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 		              "WHERE b.booking_id = :booking_id",
 		      nativeQuery = true)
 		  List<String> findRoomTypeNamesByBookingId(@Param("booking_id") Integer booking_id);
+	
+	  @Query(
+	            value = "SELECT u.user_id, u.first_name, u.last_name, rt.name, b.checkin_date, b.checkout_date, b.total_price, b.status " +
+	                    "FROM bookings b " +
+	                    "JOIN users u ON b.user_id = u.user_id " +
+	                    "JOIN booked_rooms br ON b.booking_id = br.booking_id " +
+	                    "JOIN rooms r ON br.room_id = r.room_id " +
+	                    "JOIN room_types rt ON r.type_id = rt.type_id " +
+	                    "WHERE r.type_id = :type_id",
+	            nativeQuery = true)
+	    List<Object[]> findBookingsByTypeId(@Param("type_id") Integer type_id);
+
 		
 }
