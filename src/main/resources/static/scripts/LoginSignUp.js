@@ -29,21 +29,28 @@ $(document).ready(function() {
 
     sign_up_btn.click(function() {
         container.addClass("loginSignUpMode");
+        $('#signupMessage').text("");
+        
     });
 
     sign_in_btn.click(function() {
         container.removeClass("loginSignUpMode");
+         $('#message').text("");
     });
 
     sign_up_btn2.click(function() {
         container.addClass("loginSignUpMode2");
+         $('#signupMessage').text("");
     });
 
     sign_in_btn2.click(function() {
         container.removeClass("loginSignUpMode2");
+        $('#message').text("");
     });
 
     closeButton.click(function() {
+		$('#message').text("");
+		$('#signupMessage').text("");
         modal.css("display", "none");
     });
 
@@ -118,6 +125,16 @@ $(document).ready(function() {
             $("#password").attr("placeholder", "Weak password").css("border-color", "red");
             isValid = false;
         }
+        
+    var confirmPassword = $("#confirmPassword").val();
+    if (confirmPassword === "") {
+        $("#confirmPassword").attr("placeholder", "Must be filled out").css("border-color", "red");
+        isValid = false;
+    } else if (confirmPassword !== password) {
+        $("#confirmPassword").val(""); 
+        $("#confirmPassword").attr("placeholder", "Passwords do not match").css("border-color", "red");
+        isValid = false;
+    }
 
         return isValid; 
     }

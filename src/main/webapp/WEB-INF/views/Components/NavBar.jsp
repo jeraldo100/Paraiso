@@ -141,6 +141,10 @@
                   <i class="fas fa-lock"></i>
                   <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password"/>
                 </div>
+				<div class="signup-input">
+  				  <i class="fas fa-lock"></i>
+    			  <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" autocomplete="current-password"/>
+				</div>
                 <input type="submit" value="Submit" class="signup-btn" />
                 <p class="account-text">
                   Already have an account?
