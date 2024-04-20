@@ -39,11 +39,6 @@
                 <div class="col-md-12 b-4">
                 	<div class="bookings-wrapper">
                 		<div>Loyalty points: ${loyaltyPoints}</div> 
-                		<div
-								class="d-flex align-items-center justify-content-between mb-4">
-									<a href="/jasperReportItinerary" class="btn btn-success"
-										data-dismiss="modal">Print Itinerary</a>
-								</div>
                 		<c:forEach var="bookinglist" items="${bookingsAndRooms}">
                 			<c:forEach items="${bookinglist}" var="Map">
                 				<c:choose>
@@ -91,6 +86,7 @@
                 				</div>
                 				<div class="booking-footer">
                 					<div><p>Status: ${booking.status}</p></div>
+                					
                 					<div class="booking-actions">
                 						<c:choose>
 										    <c:when test = "${booking.status == 'PENDING'}">
@@ -103,6 +99,8 @@
 										        >Cancel</button>
 										    </c:when>
 										    <c:when test = "${booking.status == 'Approved'}">
+										    <a href="/jasperReportItinerary/${booking.booking_id}" class="btn btn-success"
+											data-dismiss="modal">Print Itinerary</a>
 										        <button
 										        	type="button" 
 										        	class="cancelButton btn btn-danger"
@@ -127,6 +125,7 @@
 										    </c:when>
 										    <c:otherwise>
 										        <div>Paid</div>
+
 										    </c:otherwise>
 										</c:choose>
                 					</div>

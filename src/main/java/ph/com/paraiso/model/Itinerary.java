@@ -18,9 +18,15 @@ public class Itinerary {
 	private String status;
 	private String firstName;
 	private String lastName;
+	private String roomTypeName;
 
 	
-	
+	public String getRoomTypeName() {
+		return roomTypeName;
+	}
+	public void setRoomTypeName(String roomTypeName) {
+		this.roomTypeName = roomTypeName;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
