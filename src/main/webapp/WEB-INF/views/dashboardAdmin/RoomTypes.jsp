@@ -66,13 +66,20 @@
                                                             <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(room_type.roomImage)}" alt="" style="max-width: 100px; max-height: 100px;">                            
                                                         </td>
                                                         <td>
-                                                            <a href="/admin/editRoomTypes/${room_type.type_id}" type="button"
+        <%--                                                     <a href="/admin/editRoomTypes/${room_type.type_id}" type="button"
                                                                 class="btn btn-success m-1">Edit</a>
                                                             <a href="/admin/deleteType/${room_type.type_id}" type="button"
                                                                 class="btn btn-danger m-1">Delete</a>
                                                     	    <a href="/jasperReportRooms/${room_type.type_id}" class="btn btn-success" >
 																		Print
-															</a>                                                         
+															</a>    --%> 
+															<select onchange="window.location.href=this.value" class="btn btn-success">
+    <option value="">Select an action</option>
+    <option value="/admin/editRoomTypes/${room_type.type_id}">Edit</option>
+    <option value="/admin/deleteType/${room_type.type_id}">Delete</option>
+    <option value="/jasperReportRooms/${room_type.type_id}">Print</option>
+</select>
+															                                                     
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
