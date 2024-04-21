@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Paraiso Hotel</title>
+<link rel="icon" type="image/png" sizes="16x16 32x32" href="/images/logo/paraisologo2.png">
 </head>
 <body>
 <%@ include file = "/WEB-INF/views/Components/CSSPlugins.jsp" %>

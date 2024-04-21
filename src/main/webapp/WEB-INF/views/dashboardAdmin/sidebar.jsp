@@ -7,7 +7,7 @@
 			class="d-flex text-decoration-none mt-1 align-items-center text-white">
 			<span
 			class="fs-4 d-none d-sm-inline-flex flex-fill justify-content-center pt-3">
-				<img src="/images/logo/logoo.png" alt="">
+				<img src="/images/logo/paraisologo2.png" alt="">
 		</span>
 		</a>
 		<ul class="nav nav-pills flex-column mt-4 pt-5">

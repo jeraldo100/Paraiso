@@ -10,6 +10,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Paraiso Hotel Dashboard</title>
+<link rel="icon" type="image/png" sizes="16x16 32x32" href="/images/logo/paraisologo2.png">
 
 <!-- BOOTSTRAP LINK -->
 
@@ -18,8 +19,6 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous" />
-	
-	<link rel="icon" href="/images/logo/logoo.png" sizes="any" type="image/png">
 	
 
 <!-- CSS LINK -->

@@ -337,6 +337,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-left: 15px;
 }
 
+ .paraisologo{
+	  width: 210px;
+  height: 50px;
+} 
+
 #nav-menu-container {
   padding-right: 15px;
 }

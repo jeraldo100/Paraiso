@@ -31,7 +31,7 @@
 		<div class="container main-menu">
 			<div class="align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="/home"><img src=" " alt="" /></a>
+					<a href="/home"><img src="/images/logo/logoparaiso.png" class="paraisologo" alt="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">

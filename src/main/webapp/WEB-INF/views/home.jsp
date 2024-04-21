@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="16x16 32x32" href="/images/logo/paraisologo2.png">
 <title>Paraiso Hotel</title>
 </head>
 <body>
