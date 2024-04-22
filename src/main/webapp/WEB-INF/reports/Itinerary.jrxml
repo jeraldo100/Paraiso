@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Itinerary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="217d77c9-d9c7-427f-8df9-ad0979909469">
-	<property name="ireport.zoom" value="2.357947691000002"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="191"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Itinerary" language="groovy" pageWidth="595" pageHeight="625" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="217d77c9-d9c7-427f-8df9-ad0979909469">
+	<property name="ireport.zoom" value="2.593742460100008"/>
+	<property name="ireport.x" value="168"/>
+	<property name="ireport.y" value="720"/>
 	<parameter name="P_USER_ID" class="java.lang.Integer"/>
+	<parameter name="P_LOGO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM BOOKINGS B, USERS U WHERE u.USER_ID = B.USER_ID AND U.USER_ID = $P{P_USER_ID}]]>
 	</queryString>
@@ -18,140 +19,278 @@
 	<field name="firstName" class="java.lang.String"/>
 	<field name="lastName" class="java.lang.String"/>
 	<field name="roomTypeName" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<variable name="v_totalDays" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[($F{checkout_date}.getTime() - $F{checkin_date}.getTime())/(1000 * 60 * 60 * 24)
+]]></variableExpression>
+		<initialValueExpression><![CDATA[($F{checkout_date}.getTime() - $F{checkin_date}.getTime())/(1000 * 60 * 60 * 24)
+]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50"/>
+		<band height="140">
+			<staticText>
+				<reportElement x="163" y="95" width="284" height="29" uuid="57998b0c-13e7-4acf-b3ab-6f51c4ef0896"/>
+				<textElement>
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<text><![CDATA[PARAISO HOTEL ITINERARY]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-22" y="-70" width="597" height="172" uuid="50847980-b2c0-4500-8d5f-7a6134147f6f"/>
+				<imageExpression><![CDATA["C:\\Users\\Admin\\eclipse-workspace2\\Paraiso\\src\\main\\webapp\\WEB-INF\\reports\\bg5.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="217">
-			<staticText>
-				<reportElement x="398" y="3" width="154" height="20" uuid="a0eeb138-e933-45cc-bcf0-eb3e285aaf41"/>
-				<textElement textAlignment="Center">
-					<font size="15"/>
-				</textElement>
-				<text><![CDATA[TOTAL PRICE]]></text>
-			</staticText>
-			<rectangle radius="10">
-				<reportElement x="398" y="25" width="154" height="37" uuid="deba6660-599c-4fae-a81a-11ca0a14aab2"/>
-			</rectangle>
-			<textField>
-				<reportElement x="398" y="23" width="157" height="41" uuid="ead73d01-b0fb-4a2b-be51-17275d8eb048"/>
+		<band height="378">
+			<textField pattern="###0">
+				<reportElement x="343" y="295" width="72" height="16" uuid="ead73d01-b0fb-4a2b-be51-17275d8eb048"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="20"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_price}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="3" width="158" height="61" uuid="b8be318b-f9bb-4f08-a3d4-f1d603f86867"/>
-				<textElement verticalAlignment="Middle">
-					<font size="15"/>
-				</textElement>
-				<text><![CDATA[ITINERARY REPORT: ]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="160" y="25" width="100" height="20" uuid="7da404d1-2d78-4080-baff-c0a4a7bfb793"/>
-				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+				<reportElement x="59" y="62" width="165" height="20" uuid="7da404d1-2d78-4080-baff-c0a4a7bfb793"/>
+				<textFieldExpression><![CDATA[$F{firstName} + " " + $F{lastName}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="240" y="25" width="100" height="20" uuid="f2fdc246-119c-48ed-b384-fcaececaf799"/>
-				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="61" y="-91" width="69" height="20" uuid="121eb64e-7f39-49da-8c42-82ab543b1419"/>
-				<textFieldExpression><![CDATA[$F{booking_id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="159" width="69" height="20" uuid="3b10f038-ad64-412b-93bd-7e7d187bdcad"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="369" y="113" width="69" height="20" uuid="3b10f038-ad64-412b-93bd-7e7d187bdcad"/>
 				<textFieldExpression><![CDATA[$F{checkout_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="44" y="96" width="69" height="20" uuid="eb2e80c0-0b61-44ca-b814-d081c50004e6"/>
+				<reportElement x="103" y="139" width="25" height="20" uuid="eb2e80c0-0b61-44ca-b814-d081c50004e6"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{adults}]]></textFieldExpression>
 			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="363" y="88" width="69" height="20" uuid="260f19e1-3295-4d66-b150-6e8d6b4e9e76"/>
+				<textFieldExpression><![CDATA[$F{checkin_date}]]></textFieldExpression>
+			</textField>
 			<textField>
-				<reportElement x="45" y="119" width="69" height="20" uuid="1145c4b2-3ae9-45ca-b95d-d58b3f71f091"/>
+				<reportElement x="372" y="241" width="137" height="20" uuid="394b7abf-1fad-425d-ab3f-9aab9b97349a"/>
+				<textFieldExpression><![CDATA[$F{roomTypeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="139" width="141" height="20" uuid="443b22e4-36a8-46b8-8ea3-1fb94534e159"/>
+				<textFieldExpression><![CDATA[$F{arrival_time}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="9" width="555" height="1" uuid="58e9446a-daaf-445d-8d0f-3724a814976f"/>
+			</line>
+			<line>
+				<reportElement x="0" y="184" width="555" height="1" uuid="139d5c16-5dd6-4b5c-8cda-ac94dfef2a64"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="20" width="133" height="20" uuid="8d9351c1-12a1-4f2b-9e7c-8f03d795dc5f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Guest Information]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="49" width="555" height="1" uuid="a634a206-6b06-4c06-9217-51726971b10f"/>
+			</line>
+			<staticText>
+				<reportElement x="22" y="62" width="37" height="20" uuid="b35dca55-2526-4dbb-86ea-39a44367c6dc"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="88" width="37" height="20" uuid="249711c6-8c3d-4725-9f8c-e53cbe1566b1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="113" width="53" height="20" uuid="68428633-9102-4b31-b997-e02cb3c196d2"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="139" width="92" height="20" uuid="a0edc516-3098-4715-a9e9-640747b046cc"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Number of Guest : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="62" width="116" height="20" uuid="2e6d5389-3775-4741-84a7-e9726db35475"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reservation Number : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="88" width="86" height="20" uuid="ee3cef09-097c-492d-a860-b49bcaacaa72"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check-in Date : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="113" width="86" height="20" uuid="f915bdde-4a18-43dd-8b16-6cb4071c31a5"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check-out Date : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="139" width="86" height="20" uuid="eec95487-371f-486f-838b-8ce5143eda3d"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Arrival Time : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="198" width="115" height="20" uuid="9d5e12b5-1474-416a-8cc4-ece215c59514"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Room Details]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="227" width="555" height="1" uuid="51b6d660-4f47-4e36-b485-90f341b41f63"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="198" width="133" height="20" uuid="d15d94a4-ed48-44e7-870f-66e33128950c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotel Information]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="267" width="37" height="20" uuid="848fd02d-5ac3-4cbc-b19a-0be721e408e3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="241" width="67" height="20" uuid="cc56ee7f-a751-4f21-9452-20904f67aac3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotel Name : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="241" width="86" height="20" uuid="25e8d74e-5d36-4040-b662-fe3fed692213"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rooms Booked : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="292" width="53" height="20" uuid="107b8a55-1f21-483a-a795-c914a72b2257"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="318" width="53" height="20" uuid="1afca078-f3ff-410e-9864-0ecb95858f0d"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Website :  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="267" width="101" height="20" uuid="79adab9b-6807-4b85-a99d-f239550eab24"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Number of Nights : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="295" width="71" height="20" uuid="06743877-8658-48cd-afe8-7639279f093b"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Cost : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="286" y="9" width="100" height="1" uuid="10968f79-a0f5-420b-8ec5-06af705b9631"/>
+			</line>
+			<line>
+				<reportElement x="263" y="10" width="1" height="340" uuid="0ceafa3b-7118-4def-862c-0a48efad77d4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="350" width="555" height="1" uuid="f6812b2f-14ea-4a5d-83ea-b62dfd6cde76"/>
+			</line>
+			<staticText>
+				<reportElement x="124" y="139" width="34" height="20" uuid="a4825f93-d512-4e84-8bd6-8429d8df7e85"/>
+				<text><![CDATA[adults, ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="155" y="139" width="24" height="20" uuid="845eaa7b-8f17-4e13-8614-7561d5eb03d3"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{children}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="321" y="-91" width="69" height="20" uuid="453aa44a-c63f-4a81-877e-b0383936d5cc"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[CHILDREN]]></text>
+				<reportElement x="175" y="139" width="43" height="20" uuid="05715a46-72df-4d53-b3f8-3e32c44efcaf"/>
+				<text><![CDATA[childrens ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="252" y="-91" width="69" height="20" uuid="9520799d-7d2e-48d1-8415-b8fd8dbd6c3c"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[ADULTS]]></text>
+				<reportElement x="87" y="241" width="100" height="20" uuid="1f345922-9fe4-45f7-b159-04ea164b8de6"/>
+				<text><![CDATA[Paraiso Hotel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="293" width="100" height="20" uuid="b3f63489-be2e-4b51-90be-4af93737fe27"/>
+				<text><![CDATA[+6309482440776]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="267" width="125" height="20" uuid="e01d023b-c951-413a-8df2-c37851690298"/>
+				<text><![CDATA[paraisohotel@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="318" width="121" height="20" uuid="761dfc68-9d18-4c5b-8bd0-270c9c1e3fa4"/>
+				<text><![CDATA[www.paraisohotel.com]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="92" y="139" width="69" height="20" uuid="260f19e1-3295-4d66-b150-6e8d6b4e9e76"/>
-				<textFieldExpression><![CDATA[$F{checkin_date}]]></textFieldExpression>
+				<reportElement x="393" y="62" width="100" height="20" uuid="a4d6f183-0506-4dcb-af3e-b020930b67c1"/>
+				<textFieldExpression><![CDATA[$F{booking_id}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="554" y="11" width="1" height="340" uuid="cb7fd67c-d1a2-42bf-b6d6-04d07db0607e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="11" width="1" height="340" uuid="bb6a0538-e4e6-4c0e-ba81-eb7cfaa63319"/>
+			</line>
+			<staticText>
+				<reportElement x="347" y="296" width="23" height="20" uuid="cbdbff0e-2eb4-4b38-abdc-9dbda98592c4"/>
+				<text><![CDATA[Php]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="20" width="115" height="20" uuid="14f135c0-ebb5-4801-a629-d7b24c8a4a54"/>
+				<textElement>
+					<font size="12" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Reservation Details]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="65" y="88" width="142" height="20" uuid="d866f971-bf9c-4137-83c4-bc5d12b72570"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="76" width="213" height="20" uuid="394b7abf-1fad-425d-ab3f-9aab9b97349a"/>
-				<textFieldExpression><![CDATA[$F{roomTypeName}]]></textFieldExpression>
+				<reportElement x="65" y="114" width="153" height="20" uuid="4cd54266-cb75-4499-a2b0-314d063f57a0"/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="179" width="90" height="20" uuid="443b22e4-36a8-46b8-8ea3-1fb94534e159"/>
-				<textFieldExpression><![CDATA[$F{arrival_time}]]></textFieldExpression>
+				<reportElement x="378" y="267" width="100" height="20" uuid="05cd442a-87be-46b3-b42b-afd33410d1e3"/>
+				<textFieldExpression><![CDATA[$V{v_totalDays}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="76" width="69" height="20" uuid="ecfdf1d5-598a-446d-b9c8-3c76f54854fc"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Rooms: ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="139" width="89" height="20" uuid="43942ef1-8bdb-400a-8700-b281adb6bc0f"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[CHECK IN DATE:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="159" width="100" height="20" uuid="1c9068a4-0ce4-490c-a264-3f823419ede2"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[CHECK OUT DATE:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="179" width="79" height="20" uuid="5d7b0eb4-bcb1-49e4-b00e-81f70a166475"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[ARRIVAL TIME:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="96" width="69" height="20" uuid="ca7f0654-a48a-4071-8da8-e1c8fffc139b"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Adults:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="119" width="69" height="20" uuid="a430ae42-eee1-407d-87a9-a7f69335c00a"/>
-				<textElement>
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Childrens:]]></text>
-			</staticText>
 		</band>
 	</pageHeader>
 	<pageFooter>
-		<band height="50">
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="227" y="15" width="100" height="20" uuid="1d7a76b5-f763-4808-898f-55487d060f9d"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="16"/>
 	</pageFooter>
 </jasperReport>

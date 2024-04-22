@@ -43,7 +43,7 @@
 				<div class="container-fluid" id="main-content">
 					<div class="row">
 						<div class="col-lg-15 ms-auto p-4 overflow-hidden">
-							<h1 class="display-3">Good morning, Admin!</h1>
+							<h1 class="display-3">Good Day, Admin!</h1>
 							<hr />
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">

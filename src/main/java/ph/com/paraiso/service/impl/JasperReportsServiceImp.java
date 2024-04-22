@@ -81,6 +81,8 @@ public class JasperReportsServiceImp implements JasperReportsService {
 			Itinerary Itinerary = new Itinerary();
 			Itinerary.setFirstName(user.getFirstName());
 			Itinerary.setLastName(user.getLastName());
+			Itinerary.setPhone(user.getPhone());
+			Itinerary.setEmail(user.getEmail());
 
 			for (Booking booking : bookingList) {
 				Integer bookingId = booking_id;
